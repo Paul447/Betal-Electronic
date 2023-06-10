@@ -1,0 +1,22 @@
+{
+    "private": true,
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build"
+        "watch": "webpack --watch"
+    },
+    "devDependencies": {
+        "axios": "^1.1.2",
+        "laravel-echo": "^1.15.0",
+        "laravel-vite-plugin": "^0.7.0",
+        "lodash": "^4.17.19",
+        "postcss": "^8.1.14",
+        "pusher-js": "^8.0.2",
+        "socket.io-client": "^4.2.0",
+        "vite": "^3.0.0"
+    },
+    "dependencies": {
+        "express": "^4.18.2",
+        "fb-watchman": "^2.0.2"
+    }
+}
