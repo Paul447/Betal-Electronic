@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="{{asset('admin/css/productCard.css')}}" />
   <link rel="stylesheet" href="{{asset('admin/css/lightSlider.css')}}" />
   <link rel="stylesheet" href="{{asset('admin/css/toast.css')}}" />
-  <link rel="stylesheet" href="{{asset('admin/css/uiLogin.css')}}" />
+  {{-- <link rel="stylesheet" href="{{asset('admin/css/uiLogin.css')}}" /> --}}
   <link rel="stylesheet" href="{{asset('admin/css/productDetail.css')}}" />
     <link rel="stylesheet" href="{{asset('admin/css/productDetail.css')}}" />
     <link rel="stylesheet" href="{{asset('admin/css/productcardmain.css')}}" />
