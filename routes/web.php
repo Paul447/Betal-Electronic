@@ -50,7 +50,7 @@ use App\Http\Controllers\viewprofileController;
 
 Route::get('/buy/{qnt},{id}', [CheckoutController::class, 'index']);
 Route::get('/', [ProductviewController::class, 'index']);
-Route::get('/productdetails/{id}', [ProductviewController::class, 'viewdetails']);
+Route::get('/productdetails/{id}/{slug}', [ProductviewController::class, 'viewdetails']);
 Route::get('/categories', [CategoryViewController::class, 'viewCatos']);
 
 Route::get('/login', function () {

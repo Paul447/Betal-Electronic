@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreign('brand')->references('brands_id')->on('brands');
             $table->string('product_name');
             $table->longText('discription');
+            $table->string('slug');
             $table->unsignedBigInteger('addedby');
             $table->foreign('addedby')->references('id')->on('users');
             $table->unsignedBigInteger('approvedby')->nullable();

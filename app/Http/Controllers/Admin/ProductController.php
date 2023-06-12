@@ -13,6 +13,7 @@ use App\Models\Admin\Productprice;
 use App\Models\Admin\Productcategory;
 use App\Models\Admin\Productvariation;
 use App\Models\addProductBatch;
+use Illuminate\Support\Str;
 
 use Image;
 
@@ -65,6 +66,7 @@ class ProductController extends Controller
                 'product_name' => $request->Productname,
                 'brand' => $request->Brand,
                 'discription' => $request->Productcontent,
+                'slug' => Str::slug($request->Productname),
                 'lowstockindication' => $request->lowstockindication,
                 'addedby' => $addedby,
                 'approvedby' => $addedby,
@@ -81,6 +83,7 @@ class ProductController extends Controller
                 'product_name' => $request->Productname,
                 'brand' => $request->Brand,
                 'discription' => $request->Productcontent,
+                'slug' => Str::slug($request->Productname),
                 'category' => 1,
                 'lowstockindication' => $request->lowstockindication,
                 'addedby' => $addedby,
