@@ -4,7 +4,7 @@ namespace App\Http\Controllers\UI;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Province;
-use App\Models\admin\User;
+use App\Models\Admin\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 

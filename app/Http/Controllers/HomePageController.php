@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\admin\Product;
+use App\Models\Admin\Product;
 use App\Models\Order;
 use App\Models\Admin\Productprice;
 use Illuminate\Http\Request;
-use App\Models\admin\User;
+use App\Models\Admin\User;
 use App\Models\addProductBatch;
 use Illuminate\Support\Facades\DB;
 

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use App\Models\admin\User;
+use App\Models\Admin\User;
 
 class UserController extends Controller
 {

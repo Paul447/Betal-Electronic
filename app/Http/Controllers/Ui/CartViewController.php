@@ -7,9 +7,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Cart;
 use App\Models\Order;
-use App\Models\admin\Product;
+use App\Models\Admin\Product;
 use App\Models\Admin\Productprice;
-use App\Models\admin\Productimage;
+use App\Models\Admin\Productimage;
 
 class CartViewController extends Controller
 {

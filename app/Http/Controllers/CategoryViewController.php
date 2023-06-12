@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 use App\Models\Admin\Category;
-use App\Models\admin\Variation;
-use App\Models\admin\Variationoption;
-use App\Models\admin\Productcategory;
-use App\Models\admin\Productimage;
-use App\Models\admin\Product;
+use App\Models\Admin\Variation;
+use App\Models\Admin\Variationoption;
+use App\Models\Admin\Productcategory;
+use App\Models\Admin\Productimage;
+use App\Models\Admin\Product;
 
 class CategoryViewController extends Controller
 {

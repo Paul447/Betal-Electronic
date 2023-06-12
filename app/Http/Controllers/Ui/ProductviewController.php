@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Ui;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Category;
 use Illuminate\Http\Request;
-Use App\Models\admin\Product;
-Use App\Models\admin\Productcategory;
+Use App\Models\Admin\Product;
+Use App\Models\Admin\Productcategory;
 use App\Models\Admin\Brand;
 
 class ProductviewController extends Controller

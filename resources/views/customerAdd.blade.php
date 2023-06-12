@@ -1,106 +1,161 @@
 @include('welcome')
 
 <style>
-        .MainText {
-            color: #440474;
-        }
-        @media(max-width : 520px) {
-            .brandImage {
-                width: 200px;
-                height: 200px;
-            }
-        }
-        @media (max-width: 992px) {
-       .rowww{
-        margin-top: 100px;
-      }
+    .MainText {
+        color: #440474;
     }
+
+    @media(max-width : 520px) {
+        .brandImage {
+            width: 200px;
+            height: 200px;
+        }
+    }
+
+    @media (max-width: 992px) {
+        .rowww {
+            margin-top: 100px;
+        }
+    }
+
     @media (min-width: 992px) {
-      .rowww{
-        margin-top: 180px;
-      }
-
+        .rowww {
+            margin-top: 180px;
+        }
     }
+
     @media (max-width: 400px) {
-      .rowww{
-        margin-top: 78px;
-      }
-
-
+        .rowww {
+            margin-top: 78px;
+        }
     }
-    </style>
-    <div class="container rowww ">
-        <div class="row align-items-center rowww justify-content-center rounded border border-1 shadow-sm px-5 ps-5 pt-2 pb-2 mb-4"
-            style="margin-top: 50px">
-            <div class="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 text-dark rounded text-center pt-4">
-                <img src="{{ asset('admin/img/mirtyunjayaam-logo.png') }}" class="brandImage" width="400px" height="400px"
-                    alt="brandLogo" />
-            </div>
-            <div class="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 text-dark rounded text-center">
-                <form class="" method="post" action="{{'/customerAdd/'}}" enctype="multipart/form-data">
-                    @csrf
-                    <h1 class="fw-bolder fs-2 mb-5 mt-4 MainText">
-                      Customer Registration
-                    </h1>
 
-                    <div class="input-group mt-3 mb-2">
-                        <span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
+    :root {
+        --red: #A50318;
+        --light-red: #aa4f5b9c;
+    }
 
-                        <input name="user_name" type="text" value="" class="form-control form-control-lg"
-                            id="Name" placeholder="Enter Your Name" required pattern="[A-Z].[A-Z a-z]+" required
-                            title="Name must be in only character, First Letter Must be in captial" />
+    .signup--container {
+        outline: 2px solid var(--red);
+        margin: 200px auto; /* temporary fix to avoid blocking */
+        max-width: 800px;
+        padding: 10px 30px;
+    }
+
+    .address--picker select {
+        width: 48.86%;
+    }
+
+    .btn--register {
+        background-color: var(--red);
+        font-weight: bold;
+        border: none;
+    }
+
+    .btn--register:focus,
+    .btn--register:hover {
+        outline: 3px solid var(--light-red);
+    }
+
+    /* while using text (login) */
+    .signup--footer a {
+        color: #A50318;
+    }
+
+    /* while using button (login) */
+    .btn--login {
+        background-color: #A50318;
+        border: none;
+    }
+
+    .error--text {
+        color: var(--red);
+        display: none;
+    }
+
+    input[type="password"] {
+        padding-right: 30px !important;
+    }
+
+    .btn--toggle-password {
+        width: 30px;
+        position: absolute;
+        right: 0;
+        top: 50%;
+    }
+
+    @media (max-width: 375px) {
+        .signup--container {
+            width: calc(100% - 40px);
+            margin: 0 20px;
+            padding: 10px 20px;
+        }
+    }
+</style>
+<section class="signup--container rounded-1 rowww">
+    <div class="signup--header">
+        <h2 class="text-center fw-bold mt-2">Registration</h2>
+    </div>
+    <p class="error--text text-center mb-2">something went wrong!!</p>
+
+    <div class="signup--form mt-4">
+        <form method="post" action="{{'/customerAdd/'}}" enctype="multipart/form-data">
+            @csrf
+            <div class="row">
+                <div class="col col-12 col-md-6">
+
+                    <div class="form--item mb-2 d-flex flex-column">
+                        <label for="name" class="mb-1">Name</label>
+                        <input type="text" name="user_name" class="rounded-1 form-control border py-1 px-2 border-dark-subtle" id="name" pattern="[A-Z].[A-Z a-z]+" title="Name must be in only character, First Letter Must be in captial" required>
                     </div>
 
-                    <div class="input-group mt-3 mb-2">
-                        <span class="input-group-text" id="basic-addon1"><i class="fas fa-envelope"></i></span>
-
-                        <input name="email" type="email" value="" class="form-control form-control-lg"
-                            id="email" placeholder="Enter Your E-Mail" />
+                    <div class="form--item mb-2 d-flex flex-column">
+                        <label for="tel" class="mb-1">Phone number</label>
+                        <input type="tel" name="contact" pattern="[0-9]+" title="Only Numbers Are allowed" class="rounded-1 form-control border py-1 px-2 border-dark-subtle" id="tel" required>
                     </div>
 
-                    <div class="input-group mt-3 mb-2">
-                        <span class="input-group-text" id="basic-addon1"><i class="fas fa-images"></i></span>
-
-                        <input name="image" type="file" value="" class="form-control form-control-lg"
-                            id="EditorImage"  required />
+                    <div class="form--item mb-2 d-flex flex-column position-relative">
+                        <label for="password" class="mb-1">Password</label>
+                        <input type="password" name="password" class="py-1 px-2 border form-control border-dark-subtle rounded-1" id="password" required>
+                        <button type="button" class="btn--toggle-password bg-transparent border-0 text-center">
+                            <i class="fa-solid fa-eye"></i>
+                        </button>
                     </div>
-                    <p class="text-danger text-start">
-                        <strong class="text-warning">Warning</strong> : Image size must be
-                        less the 2MB
-                    </p>
-
-                    <div class="input-group mt-3 mb-2">
-                        <span class="input-group-text" id="basic-addon1"><i class="fas fa-address-book"></i>
-                        </span>
-
-                        <input name="contact" type="number" value="" class="form-control form-control-lg"
-                            id="editorContact" required pattern="[0-9]+" placeholder="Enter Your Contact No"
-                            autocomplete="off" title="Only Numbers Are allowed" />
+                    <div class="form--item mb-2 d-flex flex-column position-relative">
+                        <label for="con-password" class="mb-1">Confirm password</label>
+                        <input type="password" name="con-password" class="rounded-1 form-control border py-1 px-2 border-dark-subtle" id="con-password" required>
+                        <button type="button" class="btn--toggle-password bg-transparent border-0 text-center">
+                            <i class="fa-solid fa-eye"></i>
+                        </button>
                     </div>
+                </div>
 
-                    <div class="input-group mt-3 mb-2">
-                        <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-location-dot"></i></span>
-                        <select name="province" class="form-select  form-select-lg" id="province"
-                            onchange="fetchDistrict(this.value)" class="edit">
+                <div class="col col-12 col-md-6">
+                    <div class="form--item mb-2 d-flex flex-column">
+                        <label for="email" class="mb-1">Email</label>
+                        <input type="email" name="email" class="rounded-1 border form-control py-1 px-2 border-dark-subtle" id="email" required>
+                    </div>
+                    <label for="address" class="mb-1">Address</label>
 
+                    <div class="address--picker d-flex flex-wrap justify-content-between mb-1" id="address">
+
+                        <select name="province" class="form-select form-control form-select-lg" id="province" onchange="fetchDistrict(this.value)" class="edit">
                             <option value="" disabled selected>Province</option>
                             @foreach ($province as $province)
-                                <option value="{{ $province->province_id }}">{{ $province->province }}</option>
+                            <option value="{{ $province->province_id }}">{{ $province->province }}</option>
                             @endforeach
                         </select>
 
-                        <select class="form-select ms-2 form-select-lg" name="district" id="output" class="edit"
-                            onchange="fetchMunicipalities(this.value)">
-                            <option value="District">District</option>
+                        <select name="district" id="district" class="py-1 form-control form-select px-2 rounded-1" required onchange="fetchMunicipalities(this.value)">
+                            <option value="">District</option>
                         </select>
 
-                        <select name="municipality" class="form-select ms-2 form-select-lg" id="Municipality"
-                            class="edit">
-                            <option value="District" selected>Municipality</option>
+                        <select name="municipality" id="municipality" class="mt-2 form-control form-select py-1 px-2 rounded-1" required>
+                            <option value="">Local body</option>
                         </select>
 
-                        <select name="ward" class="form-select ms-2  form-select-lg" id="ward" class="edit">
-                            <option selected>ward</option>
+                        <select name="ward" id="ward" class="mt-2 form-control form-select py-1 px-2" required>
+                            <option value="">Ward</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -138,86 +193,78 @@
                         </select>
                     </div>
 
-                    <div class="input-group mt-3 mb-2">
-                        <span class="input-group-text" id="basic-addon1"><i class="fas fa-lock"></i></span>
+                    <button type="submit" class="btn--register text-white mt-3 w-100 py-2 rounded-1">Register</button>
 
-                        <input name="password" type="password" value="" class="form-control form-control-lg"
-                            id="password" placeholder="Enter Your Password" required="true" aria-label="password"
-                            aria-describedby="basic-addon1" />
+                    <div class="signup--footer mt-2">
+                        <!-- while using text (login) -->
+                        <p class="text-center">Already have an account? <a href="{{'/customerAdd'}}">Login</a></p>
 
-                        <span class="input-group-text" id="basic-addon1" onclick="password_show_hide();">
-                            <i class="fas fa-eye" id="show_eye"></i>
-                            <i class="fas fa-eye-slash d-none" id="hide_eye"></i>
-                        </span>
+                        <!-- while using button (login) -->
+                        <!-- <p class="text-center mt-3">Already have an account?</p>
+                                                                            <button type="button" class="btn--login d-block text-white rounded-1 fw-bold py-1 mx-auto w-50">Login</button> -->
+
                     </div>
-
-                    <a href="" class="btn btn-secondary btn-lg my-4 float-end mx-3" role="button">Cancel</a>
-                    <button type="submit" class="btn btn-primary submit_btn btn-lg my-4 float-end" name="submit">
-                        Confirm
-                    </button>
-                </form>
-            </div>
-        </div>
+                </div>
+        </form>
     </div>
+    </div>
+</section>
+<script>
+    function fetchDistrict(province) {
+        var controller = "/getDistrict/";
+        var host = location.origin + controller;
+        var url = location.origin + controller + province;
+        fetch(url, {
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json',
+                },
+            })
+            .then(response => response.json())
+            .then(response => {
+                let html = `<option selected disabled value="">Select</option>`;
+                for (const x of response.districts) {
+                    html += `<option value="${x.district_id}">${x.district}</option>`;
+                }
+                document.getElementById('district').innerHTML = html;
+            })
+    }
 
-    <script>
-        function fetchDistrict(province) {
-            var controller = "/getDistrict/";
-            var host = location.origin + controller;
-            var url = location.origin + controller + province;
-            fetch(url, {
-                    method: 'GET',
-                    headers: {
-                        'Accept': 'application/json',
-                    },
-                })
-                .then(response => response.json())
-                .then(response => {
-                    let html = `<option selected disabled value="">Select</option>`;
-                    for (const x of response.districts) {
-                        html += `<option value="${x.district_id}">${x.district}</option>`;
-                    }
-                    document.getElementById('output').innerHTML = html;
-                })
-        }
+    function fetchMunicipalities(district) {
 
+        var controller = "/getMunicipality/";
+        var host = location.origin + controller;
+        var url = location.origin + controller + district;
 
-        function fetchMunicipalities(district) {
+        fetch(url, {
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json',
+                },
+            })
+            .then(response => response.json())
+            .then(response => {
+                let html = `<option selected disabled value="">Select</option>`;
+                for (const x of response.municipalitites) {
+                    html += `<option value="${x.municipalities_id}">${x.municipalities}</option>`;
+                }
+                document.getElementById('municipality').innerHTML = html;
+            })
+    }
 
-            var controller = "/getMunicipality/";
-            var host = location.origin + controller;
-            var url = location.origin + controller + district;
+    const togglePassword = document.querySelectorAll('.btn--toggle-password');
 
-            fetch(url, {
-                    method: 'GET',
-                    headers: {
-                        'Accept': 'application/json',
-                    },
-                })
-                .then(response => response.json())
-                .then(response => {
-                    let html = `<option selected disabled value="">Select</option>`;
-                    for (const x of response.municipalitites) {
-                        html += `<option value="${x.municipalities_id}">${x.municipalities}</option>`;
-                    }
-                    document.getElementById('Municipality').innerHTML = html;
-                })
-        }
-
-        function password_show_hide() {
-            var x = document.getElementById("password");
-            var show_eye = document.getElementById("show_eye");
-            var hide_eye = document.getElementById("hide_eye");
-            hide_eye.classList.remove("d-none");
-            if (x.type === "password") {
-                x.type = "text";
-                show_eye.style.display = "none";
-                hide_eye.style.display = "block";
+    togglePassword.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const input = btn.previousElementSibling;
+            if (input.type === 'password') {
+                input.type = 'text';
+                btn.innerHTML = `<i class="fa-solid fa-eye-slash"></i>`;
             } else {
-                x.type = "password";
-                show_eye.style.display = "block";
-                hide_eye.style.display = "none";
+                input.type = 'password';
+                btn.innerHTML = `<i class="fa-solid fa-eye"></i>`;
             }
-        }
-    </script>
-    @include('footermain')
+        })
+    })
+</script>
+@include('footermain')
