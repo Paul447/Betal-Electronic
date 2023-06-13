@@ -200,4 +200,18 @@ class ProductController extends Controller
         $product->save();
         return back();
     }
+
+    public function DisableProduct($id){
+        $product = Product::find($id);
+        $product->is_disabled = 1;
+        $product->save();
+        return back();
+    }
+
+    public function EnableProduct($id){
+        $product = Product::find($id);
+        $product->is_disabled = 0;
+        $product->save();
+        return back();
+    }
 }

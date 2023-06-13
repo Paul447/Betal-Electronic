@@ -101,8 +101,14 @@
                             <td>
                                 <a class="btn btn-primary text-white" href="{{ '/product/edit' }}/{{ 5 }}"
                                     style="text-decoration:none; width: 5rem; margin: 0.125rem;" role="button"> Edit </a>
-                                <button class="btn-danger btn delete_btn" value="" class="text-white"
-                                    style="text-decoration:none;  width: 5rem; margin: 0.125rem;"> Delete </button>&nbsp;
+
+                                    @if ($product->is_disabled)
+                                        <a class="btn-primary btn delete_btn" href="{{'/admin/product/enable/'. $product->product_id}}" class="text-white"
+                                            style="text-decoration:none;  width: 5rem; margin: 0.125rem;"> Enable </a>&nbsp;
+                                    @else  
+                                        <a class="btn-danger btn delete_btn" href="{{'/admin/product/disable/'. $product->product_id}}" class="text-white"
+                                        style="text-decoration:none;  width: 5rem; margin: 0.125rem;"> Disable </a>&nbsp;
+                                    @endif
 
                                 @if ($product->featured == 'unfeatured')
                                     <a href="/admin/product/feature/{{$product->product_id}}"class="btn btn-success mb-1"> Featured</a>&nbsp;

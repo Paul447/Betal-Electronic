@@ -33,6 +33,7 @@ return new class extends Migration
             $table->string('lowstockindication');
             $table->string('thumbnail');
             $table->string('featured')->default('unfeatured');
+            $table->integer('is_disabled')->default(0);
             $table->timestamps();
         });
     }

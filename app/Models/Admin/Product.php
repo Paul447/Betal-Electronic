@@ -22,6 +22,7 @@ class Product extends Model
         'updatestatus',
         'thumbnail',
         'featured',
+        'is_disabled',
     ];
     protected $primaryKey = 'product_id';
 }
