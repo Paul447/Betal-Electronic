@@ -1,24 +1,14 @@
 @include('welcome')
 
 <style>
-  @media (max-width: 992px) {
-       .productContainer{
-        margin-top: 96px;
-      }
-    }
+
     @media (min-width: 992px) {
-      .productContainer {
-        margin-top: 168px;
-      }
+  
       #CouHead {
         font-size: 12px;
       }
     }
     @media (max-width: 400px) {
-      .productContainer {
-        margin-top: 76px;
-      }
-
       .coutext {
         font-size: 0.8em;
       }
@@ -34,11 +24,12 @@
     font-weight: 600;
 }
 
+
 </style>
 <div class="toast">Please Login First To Add To Cart!</div>
-<div class="container-fluid mt-2 mb-3  " style="background-color:#eee;">
+<div class="container-fluid mb-3  " style="background-color:#eee;">
   <div class="row no-gutters mx-4 align-content-center productContainer justify-content-center pb-5" >
-    <div class="col-sm-10 mt-5 col-lg-6 col-xl-5 pr-2">
+    <div class="col-sm-10 mt-5 col-lg-6 col-xl-5 pr-2 mycol">
       <div class="card">
         <div class="demo">
           <ul id="lightSlider">
@@ -68,7 +59,7 @@
       </div>
     </div>
 
-    <div class="col-sm-10 mt-5  col-lg-6 col-xl-7">
+    <div class="col-sm-10 mt-5  col-lg-6 col-xl-7 mycol">
       <div class="card">
         {{-- <div class="ribbon-wrap">
           <div class="ribbon">Hello World</div>
@@ -130,7 +121,7 @@
             </div>
           </div>
           <hr />
-          {{-- <label class="d-flex fs-4 fw-bold justify-content-center mb-3">Choose Quantity</label>
+          <label class="d-flex fs-4 fw-bold justify-content-center mb-3">Choose Quantity</label>
         <div class="input-group spinner w-25 mx-auto">
           <span class="input-group-text input-group-btn" id="basic-addon1"><button class="btn btn-default" type="button" id="minus-btn"><i class="fas fa-minus"></i></button>
           </span>
@@ -140,13 +131,13 @@
           <span class="input-group-text input-group-btn" id="basic-addon2"><button class="btn btn-default" type="button" id="plus-btn"><i class="fas fa-plus"></i></button>
           </span>
 
-        </div> --}}
-          {{-- <div class="buttons d-flex flex-row justify-content-center pb-3">
+        </div> 
+        <div class="buttons d-flex flex-row justify-content-center pb-3">
             <button class="btn btn-outline-warning cart mx-3" value="{{$product->product_id}}" onclick="fetchData(this.value);">
               Add to Cart
             </button>
            <button class="btn btn-warning buy" value="{{$product->product_id}}" onclick="fetchpDetail(this.value);" >Buy it Now</button>
-          </div> --}}
+          </div>
         </div>
       </div>
     </div>

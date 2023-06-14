@@ -9,31 +9,7 @@
     <title>Login Form</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
     <style>
-        @media (max-width: 992px) {
-            .rowww {
-                margin-top: 150px;
-            }
-            #Cardd{
-            width: 80% !important;
-          }
-        }
-
-        @media (min-width: 992px) {
-            .rowww {
-                margin-top: 210px;
-            }
-
-        }
-
-        @media (max-width: 400px) {
-            .rowww {
-                margin-top: 78px;
-            }
-            #Cardd {
-                width: 100% !important;
-              
-            }
-        }
+      
 
         :root {
             --red: #A50318;
@@ -96,7 +72,7 @@
 </head>
 
 <body>
-    <div class="container p-0 mb-2">
+    <div class="container p-0 mb-2 pb-5">
         <form action="/customerlogin" class="rowww" method="post">
             @csrf
             <div class="card col-sm-10  offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4 mx-auto d-flex justify-content-center mt-5 " id="Cardd">
@@ -166,5 +142,5 @@
   session()->forget('logerror');
   @endphp
   @endif
-  {{-- @include('footermain') --}}
+  @include('footermain')
   <script type ="module" src=" {{asset('admin/js/googleauth.js')}}"></script>

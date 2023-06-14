@@ -32,86 +32,225 @@
   referrerpolicy="no-referrer"
 />
   <style>
-    .cont {
-      background: #440474;
-      box-shadow: 0 5px 15px rgb(0 0 0 / 6%);
-    }
-    @media (max-width: 1470px) {
-      .brandIcon {
-        font-size: 19px;
-      }
-    }
-    .dropdown-submenu {
-      position: relative;
-    }
-    ul.dropp {
-      /* background-color: #f1f1f1; */
-      /* background: #0d1137; */
-      display: none;
-      position: absolute;
-      background-color: #f1f1f1;
-      color: black;
-      min-width: 160px;
-      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-      z-index: 1;
-    }
-    a.menuu:hover {
-      background-color: #ddd;
-      color: #0A58CA;
-    }
-    /* .dropdown:hover .dropp {background-color: #440474;} */
-    .dropdown-submenu .dropdown-menu {
-      top: 0;
-      left: 100%;
-      margin-top: -1px;
-    }
-    .navbar-nav li:hover>ul.dropdown-menu {
-      display: block;
-    }
-    @media (max-width: 400px) {
-      .BrandText {
-        padding-left: 0%;
-        font-size: 14px;
-      }
-      .BrandImage {
-        height: 50px;
-        width: 50px;
-      }
-    }
-    .dropbtn {
-      background-color: #440474;
-      color: white;
-      padding: 16px;
-      font-size: 16px;
-      border: none;
-    }
-    .dropdown {
-      position: relative;
-      display: inline-block;
-    }
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      background-color: #f1f1f1;
-      min-width: 160px;
-      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-      z-index: 1;
-    }
-    .dropdown-content a {
-      color: black;
-      padding: 12px 16px;
-      text-decoration: none;
-      display: block;
-    }
-    .dropdown-content a:hover {
-      background-color: #ddd;
-    }
-    .dropdown:hover .dropdown-content {
-      display: block;
-    }
-    .dropdown:hover .dropbtn {
-      background-color: #440474;
-    }
+      
+     .feture{
+      border-bottom: 3px solid #a50318 ;
+      width: fit-content;
+      padding-bottom: 10px;
+      margin-bottom: 50px;
+     }
+
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+            list-style: none;
+        }
+
+       ul {
+          margin-bottom: 0 !important;
+        }
+
+        .navitemsss{
+            color: var(--black) !important;
+            text-decoration: none !important;
+        }
+
+        /* temporary code above */
+
+        :root {
+            --red: #A50318;
+            --light-red: #aa4f5b9c;
+            --black: #0c0c0c;
+            --white: #ffffff;
+        }
+
+        .btn--search {
+            top: 0;
+            right: 10px;
+            height: 100%;
+        }
+
+        header .logo {
+            width: 100px;
+        }
+
+        /* remove default margin from bootstrap */
+        ul {
+            margin-bottom: 0;
+            padding-left: 0;
+        }
+
+        header {
+            padding: 0 40px;
+            background-color: var(--white);
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+            height: 80px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+        }
+
+        header nav ul li,
+        .account--dropdown-container a {
+            border-bottom: 2px solid transparent;
+        }
+
+        header .middle ul li:hover,
+        .account--dropdown-container a:hover {
+            border-bottom: 2px solid var(--red);
+        }
+
+        #search {
+            width: 200px;
+            padding-right: 30px !important;
+        }
+
+        #search:focus,
+        #search:active {
+            outline: 1px solid black;
+        }
+
+        /* ======= mobile menu ======= */
+        .mobile--menu {
+            width: 28px;
+            height: 20px;
+            display: none;
+        }
+
+        .bar {
+            height: 3px;
+            background-color: var(--black);
+            margin-bottom: 4px;
+            transition: 0.3s;
+        }
+
+        .mobile--menu.active .bar1 {
+            transform: rotate(-45deg) translate(-4px, 6px);
+        }
+
+        .mobile--menu.active .bar2 {
+            opacity: 0;
+        }
+
+        .mobile--menu.active .bar3 {
+            transform: rotate(45deg) translate(-4px, -6px);
+        }
+
+        /* account dropdown menu */
+
+        .account--icon {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .account--dropdown {
+            position: absolute;
+            display: none;
+        }
+
+        .account:hover .account--dropdown {
+            display: block;
+        }
+
+        .account--dropdown-container {
+            margin-top: 10px;
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+            background-color: var(--white);
+            padding: 10px 20px;
+        }
+
+        .account--dropdown a {
+            display: block !important;
+            margin: 10px 0;
+        }
+
+        /* mobile menu */
+        @media (max-width: 860px) {
+            .middle {
+                position: fixed;
+                right: -100%;
+                width: 95%;
+                top: 90px;
+                max-width: 250px;
+                box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+                background-color: var(--white);
+                overflow: hidden;
+                transition: 0.3s ease-out;
+            }
+
+            .middle.active {
+                right: 40px;
+            }
+
+            .middle ul {
+                display: block !important;
+                padding: 10px 20px;
+            }
+
+            .middle ul li {
+                margin: 10px 0 !important;
+            }
+
+            .middle ul li:hover,
+            .account--dropdown-container a {
+                border-bottom: 2px solid transparent !important;
+            }
+
+            .mobile--menu {
+                display: block;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .right {
+                position: fixed;
+                right: -100%;
+                width: 95%;
+                box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+                background: white;
+                max-width: 250px;
+                transition: 0.3s ease-out;
+            }
+
+            .right ul {
+                width: fit-content;
+                display: block !important;
+            }
+
+            .right ul li {
+                margin: 10px 0;
+                text-align: center;
+                padding: 0 10px;
+            }
+
+              #search {
+                width: 100%;
+              }
+
+            .right ul li i {
+                font-size: 1.2rem;
+            }
+
+            .right.active {
+
+                right: 40px;
+            }
+        }
+
+        @media (max-width: 425px) {
+            header {
+                padding: 0 20px !important;
+            }
+
+            .middle.active,
+            .right.active {
+                right: 20px;
+            }
+        }
+
     .colored-toast.swal2-icon-success {
   background-color: #a5dc86 !important;
 }
@@ -132,66 +271,68 @@
 
 <body>
   @include('sweetalert::alert')
-  <nav class="navbar cont fixed-top w-100 navbar-expand-lg navbar-dark">
-    <div class="container-fluid text-white">
-      <a class="navbar-brand brandIcon d-lg-none" href="" id="BrandName">
-        <img src="{{ asset('admin/img/mirtyunjayaam-logo.png')}}" class="rounded BrandImage" width="70" height="70"
-          alt="BrandImage" />&nbsp;
-        <span class="text-white BrandText">Mirtyunjyaam Enterprises</span>
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse p-2 flex-column" id="mynavbar">
-        <div
-          class="d-flex justify-content-center align-items-center justify-content-lg-between flex-column flex-lg-row w-100">
-          <form action="{{ route('products.search') }}" class="d-flex">
-            <input class="form-control me-1" type="search" name="search" placeholder="Search" id="Search" aria-label="Search" />
-            <button class="btn btn-primary" type="submit">
-              <i class="fa-solid fa-magnifying-glass"></i>
-            </button>
-          </form> 
-         
-          <a class="navbar-brand brandIcon d-block d-none mx-auto d-lg-block" href="" id="BrandName">
-            <img src="{{ asset('admin/img/mirtyunjayaam-logo.png') }}" class="rounded BrandImage" width="70" height="70"
-              alt="BrandImage" />&nbsp;
-            <span class="text-white BrandText">Mirtyunjyaam Enterprises</span>
-          </a>
-          <ul class="navbar-nav navlinkss ">
-            @if (is_null(session('customer')))
+  <header class="d-flex justify-content-between position-relative align-items-center">
+    <a href="{{'/'}}">
+    <img src="{{ asset('admin/img/logo.jpg')}}" alt="logo" class="logo">
+  </a>
 
+    <nav class="middle">
+        <ul class="d-flex align-self-center" class="myUlclass">
+            <li class="mx-2 mx-lg-3"><a href="{{'/'}}" class="navitemsss">Home</a></li>
+            <li class="mx-2 mx-lg-3"><a href="#" class="navitemsss">About us</a></li>
+            <li class="mx-2 mx-lg-3"><a href="#" class="navitemsss">Products</a></li>
+            <li class="mx-2 mx-lg-3"><a href="#" class="navitemsss">Contact us</a></li>
+        </ul>
+    </nav>
 
-            <div class="dropdown">
-              <button class="dropbtn"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;<span
-                  class>Account</span></button>
-              <div class="dropdown-content">
-                <a href="{{'/customerAdd/create/'}}">Sign Up</a>
-                <a href="{{'/customerAdd/'}}">Log In</a>
-              </div>
-            </div>
-            @endif
-            <li class="nav-item d-flex align-items-center">
-              <a class="nav-link mx-2 text-white" href="/CartView/">
-               
-<lord-icon
-    src="https://cdn.lordicon.com/medpcfcy.json"
-    trigger="boomerang"
-    colors="primary:#ffffff"
-    style="width:30px;height:30px;">
-</lord-icon>
-                {{-- &nbsp;<span class>My Cart</span> --}}
-              </a>
+    <nav class="right">
+        <ul class="d-flex align-items-center" class="myUlclass">
+            <li class="mx-2 mx-lg-3">
+                <form action="{{ route('products.search') }}" class="position-relative">
+                    <input type="search" name="search" class="py-1 rounded-1 border border-dark-subtle px-2"
+                        id="search" placeholder="Search">
+                    <button type="submit" class="btn--search bg-transparent position-absolute border-0 ">
+                        <i class="fa-solid fa-search text-secondary"></i>
+                    </button>
+                </form>
             </li>
-          </ul>
-          <li class="nav-item navbar-dropdown dropdown-user dropdown px-3">
+            <div class="d-flex justify-content-evenly">
+              @if (is_null(session('customer')))
+                <li class="mx-2 mx-lg-3 account px-2">
+                    <i class="fa-solid fa-user account--icon"></i>
+                    <div class="account--dropdown">
+                        <div class="account--dropdown-container">
+                            <a href="{{'/customerAdd/create/'}}" class="navitemsss">Signup</a>
+                            <a href="{{'/customerAdd/'}}" class="navitemsss">Login</a>
+                        </div>
+                    </div>
+                </li>
+                @else
+                <li class="mx-2 mx-lg-3 account ">
+                  <a  href="/customerlogout/{{Session::get('customer')['id'] }}" class="navitemsss">
+                    <i class="fa fa-sign-out "></i>
+                  </a>
+                </li>
+                @endif
+                <li class="mx-2 mx-lg-3">
+                    <a href="/CartView/" class="navitemsss">
+                        <i class="fa-solid fa-shopping-cart"></i>
+                    </a>
+                </li>
+            </div>
+        </ul>
+    </nav>
+    <div class="mobile--menu">
+        <div class="bar bar1"></div>
+        <div class="bar bar2"></div>
+        <div class="bar bar3"></div>
+    </div>
+</header>
 
-<!-- toggeler -->
 
-@if (!is_null(session('customer')))
-@php
-//    dd(Session::get('customer'));
-@endphp
 
+
+{{-- @if (!is_null(session('customer'))) 
 
 <a role="button" class="nav-link  hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
   <div class="avatar avatar-online">
@@ -211,8 +352,6 @@
           </div>
         </div>
         <div class="flex-grow-1">
-          {{-- <span class="fw-semibold d-block">{{ Session::get('user')['user_name'] }}</span> --}}
-          {{-- <small class="text-muted">{{ Session::get('user')['role'] }}</small> --}}
         </div>
       </div>
     </a>
@@ -240,56 +379,19 @@
     </a>
   </li>
 
-  <li>
-    <div class="dropdown-divider"></div>
-  </li>
-
-  <li>
-    <a class="dropdown-item" href="/customerlogout/{{Session::get('customer')['id'] }}">
-      <i class="bx bx-power-off me-2"></i>
-      <span class="align-middle">Log Out</span>
-    </a>
-  </li>
-
 </ul>
 </li>
 @endif
         </div>
 
-        <div class="d-block w-100">
-          <ul class="navbar-nav d-flex justify-content-center align-items-center pt-3 navlinkss">
-            <li class="nav-item d-flex mx-2">
-              <a class="nav-link" href="{{'/'}}">
-                <span>Home</span>
-              </a>
-            </li>
-            
-            {{-- <li class="nav-item d-flex mx-2">
-              <a class="nav-link" href="javascript:void(0)">Link</a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" href="javascript:void(0)">Link</a>
-            </li>
-            <li class="nav-item dropdown dropend">
-              <a href="#" id="menu" data-bs-toggle="dropdown" class="nav-link dropdown-toggle"
-                data-bs-display="static">Dropdown</a>
-              <ul class="dropdown-menu dropp ">
-                <li class="dropdown-submenu">
-                  <a href="#" data-bs-toggle="dropdown" class="dropdown-item dropdown-toggle menuu ">Submenu 1</a>
-                  <ul class="dropdown-menu dropp">
-                    <li>
-                      <a href="#" class="dropdown-item  menuu">Item 1</a>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-            </li> --}}
-          </ul>
-        </div>
       </div>
     </div>
-  </nav>
+  </nav> --}} 
+
+
+
+
+
   <script>
         const Toast = Swal.mixin({
   toast: true,
@@ -329,5 +431,28 @@ function fetcchCart(cartvalue) {
                 })
                 }) 
 }
+
+
+
+const mobileMenu = document.querySelector('.mobile--menu');
+        const middle = document.querySelector('.middle');
+        const right = document.querySelector('.right');
+
+        mobileMenu.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            middle.classList.toggle('active')
+            right.classList.toggle('active')
+
+            if (window.innerWidth < 600) {
+                right.style.top = middle.offsetHeight + 100 + "px"
+            }
+
+        });
+        window.addEventListener("resize",function(){
+          if (window.innerWidth < 600) {
+                right.style.top = middle.offsetHeight + 100 + "px"
+            }
+        });
+      
 
   </script>

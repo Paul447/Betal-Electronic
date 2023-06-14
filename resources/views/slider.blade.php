@@ -9,48 +9,21 @@
       img.slide {
         height: 75vh;
       }
-      @media (max-width: 992px) {
-        .Slidder {
-          margin-top: 96px;
-        }
+      .Slidder
+      {
+        margin-top:20px; 
       }
-      @media (min-width: 992px) {
-        .Slidder {
-          margin-top: 168px;
-        }
-      }
-      @media (min-width: 1200px) {
-        #CouHead {
-          font-size: 42px;
-        }
+      .carousel-item{
+        z-index: -1;
       }
   
-      @media (max-width: 400px) {
-        .Slidder {
-          margin-top: 76px;
-        }
-        .cooou {
-          width: auto;
-        }
-      }
-      @media (max-width: 680px) {
-        .cooou {
-          width: 95% !important;
-        }
-      }
-  
-     
-
-
-      
       #demo {
         width: 85%;
       }
     </style>
   </head>
   
-  <!-- Carousel -->
-
+ 
     <div
       id="demo"
       class="carousel slide Slidder mx-auto justify-content-center"
@@ -88,10 +61,11 @@
                 <p style="font-size:18px; font-family: cursive;" class="animate__animated animate__fadeInBottomRight text-white bg-dark">“Affordable and quality accessories for your PC.”</p>
               </div>
           </div>
+
           <div class="carousel-item">
             <img
               class="slide"
-              src="{{ asset('admin/img/1.jpg')}}"
+              src="{{ asset('admin/img/avatar.svg')}}"
               alt=""
               class="d-block"
               height="500"
@@ -102,21 +76,11 @@
                 <p style="font-size:18px; font-family: cursive;" class="animate__animated animate__fadeInBottomRight text-white bg-dark">“The ultimate gaming accessories.”</p>
               </div>
            </div>
-  
-          <button
-            class="carousel-control-prev"
-            type="button"
-            data-bs-target="#demo"
-            data-bs-slide="prev"
-          >
+
+           <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
             <span class="carousel-control-prev-icon"></span>
           </button>
-          <button
-            class="carousel-control-next"
-            type="button"
-            data-bs-target="#demo"
-            data-bs-slide="next"
-          >
+          <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
             <span class="carousel-control-next-icon"></span>
           </button>
         </div>

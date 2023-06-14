@@ -1,31 +1,29 @@
 @php
 $cato = DB::table('categories')->where('parent', 0)->where('status','=','approved')->get(); 
    @endphp
-<div class="container mt-5" >
-    <h2 class="mt-5">Categories</h2>
-@foreach($cato as $x)
-<div class="card-categories-li hp-mod-card-hover align-left" style="background-color:#eee">
-    <a class="card-categories-li-content" href="{{"/viewCategories/$x->categorys_id"}}" title="Serum">
-        @php
-        $image = DB::table('products')->select('thumbnail')->where('product_name','like' ,'%'.$x->category_name.'%')->limit(1)->get();
-        @endphp
-            @foreach($image as $img)
-       <div class="card-categories-image-container">
-          <img class="image" src="{{asset('/storage/thumbnails/' . $img->thumbnail) }}" alt="">
-       </div>
-       @endforeach
-      <div class="card-categories-name">
-        <span class="text text-dark" >
-          {{$x->category_name}}
-        </span>
-      </div>
-    </a>
-</div>
 
-@endforeach
-
-</div><br>
-
+    <h2 class="mt-5 feture mx-auto">Categories</h2>
+    <div class="container categorycontainer">
+            @foreach($cato as $x)
+            <div class="card-categories-li hp-mod-card-hover align-left" style="background-color:#eee">
+                <a class="card-categories-li-content" href="{{"/viewCategories/$x->categorys_id"}}" title="Serum">
+                    @php
+                    $image = DB::table('products')->select('thumbnail')->where('product_name','like' ,'%'.$x->category_name.'%')->limit(1)->get();
+                    @endphp
+                        @foreach($image as $img)
+                <div class="card-categories-image-container">
+                    <img class="image" src="{{asset('/storage/thumbnails/' . $img->thumbnail) }}" alt="">
+                </div>
+                @endforeach
+                <div class="card-categories-name">
+                    <span class="text text-dark" >
+                    {{$x->category_name}}
+                    </span>
+                </div>
+                </a>
+            </div>
+        @endforeach
+    </div>
 
    
 
@@ -40,8 +38,11 @@ $cato = DB::table('categories')->where('parent', 0)->where('status','=','approve
     display: inline-block
 }
 
-.align-left {
-    float: left
+.categorycontainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 a {
     background-color: transparent;
@@ -91,7 +92,9 @@ a {
 } */
 
 .card-categories-li {
-    width: 12.5%;
+    min-width: 150px;
+    max-width: 180px;
+    /* width: 12.5%; */
     height: 148.5px;
     border-right: 1px solid #e2e2e2;
     border-bottom: 1px solid #e2e2e2;

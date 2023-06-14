@@ -30,7 +30,7 @@
    
     <section id="product1" class="section-p1"><br><br>
       @foreach ($catoName as $catname )
-      <h2 class="mt-5" id="hello">{{$catname->category_name}}</h2>
+      <h2 class="mx-auto feture" id="hello">{{$catname->category_name}}</h2>
       @endforeach
       <div class="products-container d-flex justify-content-center">
 

@@ -3,44 +3,41 @@
 
 @include('categories')
 <style>
-   @media (max-width: 992px) {
-       .section-p1{
-        margin-top: 96px;
-      }
-    }
-    @media (min-width: 992px) {
-      .section-p1{
-        margin-top: 168px;
-      }
-
-    }
-    @media (max-width: 400px) {
-      .section-p1 {
-        margin-top: 76px;
-      }
-    }   
+ 
+     .feture{
+      border-bottom: 3px solid #a50318 ;
+      width: fit-content;
+      padding-bottom: 10px;
+      margin-bottom: 50px;
+     }
+   
 </style>
 <br>
   <body style="">
     <div class="toast">Please Login First To Add To Cart!</div>
     <section id="product1" class="section-p1"><br><br>
-      <h2 class="mt-5">Featured Products</h2>
+      <h2 class="feture mx-auto">Featured Products</h2>
+
       @if (!is_null($featured))
       <div class="products-container d-flex justify-content-center">
 
         @foreach ($featured as $featured )
 
-        <div class="product-card ">
+        <div class="product-card">
+          <a href="{{'/productdetails/'.$featured ->product_id}}">
           <div class="product-image">
             <img src="{{asset('/storage/thumbnails/' . $featured->thumbnail) }}" class="imgs" id="CardImage" />
-    </div>
+          </div>
+        </a>
                  
     <div class="product-info">
       <span>{{$featured ->brand_name}}
        
       </span>
+      <a href="{{'/productdetails/'.$featured ->product_id}}" style="text-decoration: none;">
       <h4 class="product-name">{{$featured ->product_name}}</h4>
-      <p class="product-price">
+      </a>
+      <p class="product-price fw-bold text-dark">
         @php
         $price = DB::table('add_product_batches')
             ->where('product', $featured->product_id)
@@ -63,14 +60,14 @@
 @endif
       </p>
    <div class="product-buttons">
-    <a href="{{'/productdetails/'.$featured ->product_id}}" class="view-details" style="text-decoration: none;" ><i class="fas fa-info-circle"></i></a>
+    <a href="{{'/productdetails/'.$featured ->product_id}}" class="view-details"  ><i class="fas fa-info-circle"></i></a>
     @if (!is_null(session('customer')))
     <button class="add-to-cart"
         id="addToCartFromCard" value="{{$featured ->product_id}}" onclick="fetcchCart(this.value);"
       ><i class="fas fa-cart-plus"></i></button>
         
     @else
-    <button id="" class="show-toast add-to-cart"><i class="fas fa-cart-plus"></i></a>
+    <button id="" class="show-toast add-to-cart" style="background-color: #a50318"><i class="fas fa-cart-plus"></i></a>
     @endif
   </div>
       </div>
