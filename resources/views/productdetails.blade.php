@@ -1,36 +1,24 @@
 @include('welcome')
-
 <style>
+  .leftcard{
+   
+ 
+  }
+  .lSSlideWrapper {
+    height: 400px;
 
-    @media (min-width: 992px) {
-  
-      #CouHead {
-        font-size: 12px;
-      }
-    }
-    @media (max-width: 400px) {
-      .coutext {
-        font-size: 0.8em;
-      }
-      .MidText {
-        font-size: 1.2em;
-      }
-    }
-    *{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    /* font-family: "Roboto Mono", monospace; */
-    font-weight: 600;
-}
-
-
+    /* background-color: darkblue; */
+   
+  }
+  .pDetailimg{
+    object-fit: contain;
+  }
 </style>
 <div class="toast">Please Login First To Add To Cart!</div>
-<div class="container-fluid mb-3  " style="background-color:#eee;">
+<div class="container-fluid mb-3  main" style="background-color:#eee;">
   <div class="row no-gutters mx-4 align-content-center productContainer justify-content-center pb-5" >
     <div class="col-sm-10 mt-5 col-lg-6 col-xl-5 pr-2 mycol">
-      <div class="card">
+      <div class="leftcard">
         <div class="demo">
           <ul id="lightSlider">
 

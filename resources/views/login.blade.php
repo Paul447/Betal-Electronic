@@ -72,7 +72,7 @@
 </head>
 
 <body>
-    <div class="container p-0 mb-2 pb-5">
+    <div class="container p-0 mb-5 main-reg mbottom">
         <form action="/customerlogin" class="rowww" method="post">
             @csrf
             <div class="card col-sm-10  offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4 mx-auto d-flex justify-content-center mt-5 " id="Cardd">

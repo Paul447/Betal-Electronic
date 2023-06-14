@@ -24,13 +24,13 @@
 
 
 </style>
-<br>
+
 <div class="toast">Please Login First To Add To Cart!</div>
   <body style="">
    
-    <section id="product1" class="section-p1"><br><br>
+    <section id="product1" class="section-p1">
       @foreach ($catoName as $catname )
-      <h2 class="mx-auto feture" id="hello">{{$catname->category_name}}</h2>
+      <h2 class="mx-auto my-5 feture" id="hello">{{$catname->category_name}}</h2>
       @endforeach
       <div class="products-container d-flex justify-content-center">
 

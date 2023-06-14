@@ -2,7 +2,7 @@
 $cato = DB::table('categories')->where('parent', 0)->where('status','=','approved')->get(); 
    @endphp
 
-    <h2 class="mt-5 feture mx-auto">Categories</h2>
+    <h2 class=" my-5 feture mx-auto">Categories</h2>
     <div class="container categorycontainer">
             @foreach($cato as $x)
             <div class="card-categories-li hp-mod-card-hover align-left" style="background-color:#eee">

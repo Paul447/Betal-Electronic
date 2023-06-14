@@ -1,9 +1,7 @@
 @include('welcome')
 
 <style>
-    .MainText {
-        color: #440474;
-    }
+   
 
     @media(max-width : 520px) {
         .brandImage {
@@ -12,23 +10,7 @@
         }
     }
 
-    @media (max-width: 992px) {
-        .rowww {
-            margin-top: 100px;
-        }
-    }
-
-    @media (min-width: 992px) {
-        .rowww {
-            margin-top: 180px;
-        }
-    }
-
-    @media (max-width: 400px) {
-        .rowww {
-            margin-top: 78px;
-        }
-    }
+ 
 
     :root {
         --red: #A50318;
@@ -37,7 +19,7 @@
 
     .signup--container {
         outline: 2px solid var(--red);
-        margin: 200px auto; /* temporary fix to avoid blocking */
+        margin: 48px auto; 
         max-width: 800px;
         padding: 10px 30px;
     }
@@ -91,8 +73,16 @@
             padding: 10px 20px;
         }
     }
+    @media (max-width: 810px) {
+
+        .signup--container {
+
+            margin: 48px 20px !important;
+        }
+    }
 </style>
-<section class="signup--container rounded-1 rowww">
+
+<section class="signup--container rounded-1 main-reg ">
     <div class="signup--header">
         <h2 class="text-center fw-bold mt-2">Registration</h2>
     </div>
@@ -209,6 +199,7 @@
     </div>
     </div>
 </section>
+
 <script>
     function fetchDistrict(province) {
         var controller = "/getDistrict/";

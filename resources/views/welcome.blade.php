@@ -32,12 +32,18 @@
   referrerpolicy="no-referrer"
 />
   <style>
-      
+      .main{
+        margin-top: 80px!important;
+      }
+      .main-reg{
+        margin-top: 120px!important; 
+      }
+    
      .feture{
       border-bottom: 3px solid #a50318 ;
       width: fit-content;
       padding-bottom: 10px;
-      margin-bottom: 50px;
+      /* margin-bottom: 50px; */
      }
 
 * {
@@ -87,7 +93,9 @@
             background-color: var(--white);
             box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
             height: 80px;
-            position: fixed;
+            z-index: 1000;
+            position: fixed!important;
+         
             top: 0;
             left: 0;
             right: 0;
@@ -271,7 +279,7 @@
 
 <body>
   @include('sweetalert::alert')
-  <header class="d-flex justify-content-between position-relative align-items-center">
+  <header class="d-flex justify-content-between  align-items-center">
     <a href="{{'/'}}">
     <img src="{{ asset('admin/img/logo.jpg')}}" alt="logo" class="logo">
   </a>

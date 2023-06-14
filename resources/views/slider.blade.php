@@ -20,13 +20,24 @@
       #demo {
         width: 85%;
       }
+      @media (max-width:768px){
+          img.slide{
+            height: 280px;
+          }
+      }
+      @media(max-width:512px){
+        img.slide{
+          height:  200px;
+          margin-bottom:-15px; 
+        }
+      }
     </style>
   </head>
   
- 
+
     <div
       id="demo"
-      class="carousel slide Slidder mx-auto justify-content-center"
+      class="carousel slide Slidder mx-auto justify-content-center main"
       data-bs-ride="carousel"
     >
       <!-- Indicators/dots -->
@@ -56,25 +67,19 @@
               height="500"
               width="100%"
             />
-            <div class="carousel-caption">
-                <h3 class="animate__animated animate__fadeInBottomLeft text-white bg-dark" style="font-family: cursive;">“Enhance your computing experience.”</h3>
-                <p style="font-size:18px; font-family: cursive;" class="animate__animated animate__fadeInBottomRight text-white bg-dark">“Affordable and quality accessories for your PC.”</p>
-              </div>
+          
           </div>
 
           <div class="carousel-item">
             <img
               class="slide"
-              src="{{ asset('admin/img/avatar.svg')}}"
+              src="{{ asset('admin/img/Banner1.png')}}"
               alt=""
               class="d-block"
               height="500"
               width="100%"
             />
-            <div class="carousel-caption">
-                <h3 class="animate__animated animate__fadeInBottomLeft text-white bg-dark" style="font-family: cursive;">“Providing a more efficient computing experience.”</h3>
-                <p style="font-size:18px; font-family: cursive;" class="animate__animated animate__fadeInBottomRight text-white bg-dark">“The ultimate gaming accessories.”</p>
-              </div>
+          
            </div>
 
            <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
@@ -86,3 +91,4 @@
         </div>
       </div>
     </div>
+

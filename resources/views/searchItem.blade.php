@@ -24,11 +24,11 @@
 
 
 </style>
-<br>
+
 <div class="toast">Please Login First To Add To Cart!</div>
   <body style="">
    
-    <section id="product1" class="section-p1"><br>
+    <section id="product1" class="section-p1">
       <div class="products-container d-flex justify-content-center">
 
 @foreach ($data as $product )

@@ -4,19 +4,14 @@
 @include('categories')
 <style>
  
-     .feture{
-      border-bottom: 3px solid #a50318 ;
-      width: fit-content;
-      padding-bottom: 10px;
-      margin-bottom: 50px;
-     }
+  
    
 </style>
-<br>
+
   <body style="">
     <div class="toast">Please Login First To Add To Cart!</div>
-    <section id="product1" class="section-p1"><br><br>
-      <h2 class="feture mx-auto">Featured Products</h2>
+    <section id="product1" class="section-p1">
+      <h2 class="my-5 feture mx-auto">Featured Products</h2>
 
       @if (!is_null($featured))
       <div class="products-container d-flex justify-content-center">

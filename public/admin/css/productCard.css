@@ -5,6 +5,7 @@
 }
 #product1 {
   text-align: center;
+  margin-bottom: 50px ;
   
 }
 #product1 .pro:hover{
@@ -94,9 +95,7 @@ p {
   #product1 .pro {
     width: 100%;
   }
-  .section-p1 {
-    padding: 20px;
-  }
+ 
 }
 @media (max-width: 799px) {
   #product1 .pro-container {
