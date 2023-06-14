@@ -46,7 +46,7 @@ class CategoryViewController extends Controller
         $pdata = ProductCategory::where('category_id', $id)->pluck('product_id');
         $catoName = Category::where('categorys_id',$id)->get('category_name');
         // echo $catoName;
-        $data = Product::all()->whereIn('product_id',$pdata);
+        $data = Product::all()->whereIn('product_id',$pdata)->where('is_disabled',0);
         // echo $data;
         return view('viewproductasDetail')->with(compact('data','catoName'));
     }

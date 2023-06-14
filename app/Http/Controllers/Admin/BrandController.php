@@ -62,10 +62,14 @@ class BrandController extends Controller
         //        'name'=>'required|alpha_dash',
         //     ]
         //     );
+
+        $BrandImage = $request->file('Brandfile')->getClientOriginalName();
+        $Brandfile = $request->file('Brandfile')->storeAs('public/brands/', $BrandImage);
+
         $addedby = session('user')['id'];
         if (session('user')['role'] == 'Admin' || session('user')['role'] == 'SuperAdmin') {
 
-            Brand::create(array_merge($request->all(), ['addedby' => $addedby, 'approvedby' => $addedby, 'status' => "approved"]));
+            Brand::create(array_merge($request->all(), ['brand_image' => $BrandImage,'addedby' => $addedby, 'approvedby' => $addedby, 'status' => "approved"]));
             return redirect('/admin/brand/');
         } else {
             Brand::create(array_merge($request->all(), ['addedby' => $addedby]));

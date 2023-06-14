@@ -1,10 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\UI;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Province;
-use App\Models\Admin\User;
+use App\Models\admin\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 
@@ -68,7 +70,7 @@ class CustomerRegController extends Controller
     public function google_auth(Request $request)
     {
         $cookie = $request->query('cookie');
-        
+
         if (isset($cookie)) {
             $userDataObj = [];
             $userDataPairs = explode('; ', $cookie);
@@ -78,34 +80,31 @@ class CustomerRegController extends Controller
                 $value = isset($parts[1]) ? $parts[1] : '';
                 $userDataObj[$key] = $value;
             }
-           
+            
             $name = $userDataObj['profile_namee'];
             $email = $userDataObj['emaill'];
-           
+
             $sql_email = User::select()->pluck("email");
 
-        
-
-        if (in_array($email,  $sql_email->toArray())) {
-            $user  = User::where(['email' => $email])->get()->first();
-            $request->session()->put('customer', $user);
-            session()->put('message', 'Logged In Successfully');
-            return redirect('/');
-            } 
-            else {
+            if (in_array($email,  $sql_email->toArray())) {
+                $user  = User::where(['email' => $email])->get()->first();
+                $request->session()->put('customer', $user);
+                session()->put('message', 'Logged In Successfully');
+                return redirect('/');
+            } else {
                 $insert =   User::create([
                     'user_name' => $name,
-                    'email'=>$email,
-                    'password'=>'',
-                    'contact'=>'',
-                    'image'=>'',
-                    'role' => 'user', 
+                    'email' => $email,
+                    'password' => '',
+                    'contact' => '',
+                    'image' => '',
+                    'role' => 'user',
                     'user_status' => 'verified',
-                    'province'=>'1',
-                    'district'=>'1',
-                    'municipality'=>'1',
-                    'ward'=>'1',
-                 ])->id; 
+                    'province' => '1',
+                    'district' => '1',
+                    'municipality' => '1',
+                    'ward' => '1',
+                ])->id;
                 $user  = User::where(['id' => $insert])->get()->first();
                 $request->session()->put('customer', $user);
                 session()->put('message', 'Registered Successfully');
@@ -174,27 +173,30 @@ class CustomerRegController extends Controller
             return redirect('/');
         }
     }
+    
     public function login(Request $request)
     {
+        $request->validate([
+            'uname' => 'required | email',
+            'pass' => 'required'
+        ]);
 
-        $user  = User::where(['email' => $request->uname])->get()->first();
-
-        if ($user == '' || !Hash::check($request->pass, $user->password)) {
-            $request->session()->put('logerror', 'Incorrect Username or Password!');
-            return redirect('/customerAdd/');
-        } else {
-            if ($user->role == 'user' && $user->user_status == 'verified') {
+        if (auth()->attempt(['email' => $request->uname, 'password' => $request->pass]) && Auth::guard()->user()->role == "user") {
+            $user = Auth::guard()->user();
+            if ($user->user_status == 'verified') {
                 $request->session()->put('customer', $user);
                 session()->put('message', 'Logged In Successfully');
                 return redirect('/');
             } else {
-                if ($user->role == 'user' && $user->user_status == 'unverified') {
-                    session()->put('id', $user->id);
-                    return view('otpverify');
-                }
+                session()->put('id', $user->id);
+                return view('otpverify');
             }
+        } else {
+            $request->session()->put('logerror', 'Incorrect Username or Password!');
+            return redirect('/customerAdd');
         }
     }
+
     public function logout(Request $request)
     {
         $request->session()->flush();

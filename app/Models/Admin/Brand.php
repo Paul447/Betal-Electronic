@@ -12,6 +12,7 @@ class Brand extends Model
         'brand_name',
         'url',
         'brand_discription',
+        'brand_image',
         'addedby',
         'approvedby',
         'updatedby',
@@ -21,5 +22,5 @@ class Brand extends Model
 
 
     ];
-    protected $primaryKey= 'brands_id';
+    protected $primaryKey = 'brands_id';
 }

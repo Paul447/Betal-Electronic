@@ -60,7 +60,9 @@
 @endif
       </p>
    <div class="product-buttons">
-    <a href="{{'/productdetails/'.$featured ->product_id}}" class="view-details"  ><i class="fas fa-info-circle"></i></a>
+
+    <a href="{{'/productdetails/'.$featured ->product_id."/".$featured ->slug}}" class="view-details" style="text-decoration: none;" ><i class="fas fa-info-circle"></i></a>
+
     @if (!is_null(session('customer')))
     <button class="add-to-cart"
         id="addToCartFromCard" value="{{$featured ->product_id}}" onclick="fetcchCart(this.value);"

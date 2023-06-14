@@ -67,7 +67,7 @@
 
       </p> 
       <div class="product-buttons">
-        <a href="{{'/productdetails/'.$product->product_id}}" class="view-details" style="text-decoration: none;" ><i class="fas fa-info-circle"></i></a>
+        <a href="{{'/productdetails/'.$product->product_id."/".$product ->slug}}" class="view-details" style="text-decoration: none;" ><i class="fas fa-info-circle"></i></a>
         @if (!is_null(session('customer')))
         <button class="add-to-cart"
             id="addToCartFromCard" value="{{$product->product_id}}" onclick="fetcchCart(this.value);"

@@ -13,6 +13,7 @@ use App\Models\Admin\Productprice;
 use App\Models\Admin\Productcategory;
 use App\Models\Admin\Productvariation;
 use App\Models\addProductBatch;
+use Illuminate\Support\Str;
 
 use Image;
 
@@ -65,6 +66,7 @@ class ProductController extends Controller
                 'product_name' => $request->Productname,
                 'brand' => $request->Brand,
                 'discription' => $request->Productcontent,
+                'slug' => Str::slug($request->Productname),
                 'lowstockindication' => $request->lowstockindication,
                 'addedby' => $addedby,
                 'approvedby' => $addedby,
@@ -81,6 +83,7 @@ class ProductController extends Controller
                 'product_name' => $request->Productname,
                 'brand' => $request->Brand,
                 'discription' => $request->Productcontent,
+                'slug' => Str::slug($request->Productname),
                 'category' => 1,
                 'lowstockindication' => $request->lowstockindication,
                 'addedby' => $addedby,
@@ -194,6 +197,20 @@ class ProductController extends Controller
         $product = Product::find($id);
         // $product->update(['featured'=>'featured']);
         $product->featured="unfeatured";
+        $product->save();
+        return back();
+    }
+
+    public function DisableProduct($id){
+        $product = Product::find($id);
+        $product->is_disabled = 1;
+        $product->save();
+        return back();
+    }
+
+    public function EnableProduct($id){
+        $product = Product::find($id);
+        $product->is_disabled = 0;
         $product->save();
         return back();
     }

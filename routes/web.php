@@ -50,7 +50,7 @@ use App\Http\Controllers\viewprofileController;
 
 Route::get('/buy/{qnt},{id}', [CheckoutController::class, 'index']);
 Route::get('/', [ProductviewController::class, 'index']);
-Route::get('/productdetails/{id}', [ProductviewController::class, 'viewdetails']);
+Route::get('/productdetails/{id}/{slug}', [ProductviewController::class, 'viewdetails']);
 Route::get('/categories', [CategoryViewController::class, 'viewCatos']);
 
 Route::get('/login', function () {
@@ -93,6 +93,8 @@ Route::group(['prefix' => '/admin', 'middleware' => 'editor'], function () {
     Route::get('/edit', [UserController::class, 'editprofile']);
     Route::get('product/unfeature/{id}', [ProductController::class, 'unfeature']);
     Route::get('/product/feature/{id}', [ProductController::class, 'feature']);
+    Route::get('/product/enable/{id}', [ProductController::class, 'EnableProduct']);
+    Route::get('/product/disable/{id}', [ProductController::class, 'DisableProduct']);
     Route::resources([
         //number of product to notify low stock of a product
         '/product' => ProductController::class,

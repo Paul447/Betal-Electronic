@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id('brands_id');
             $table->string('brand_name');
             $table->longText('brand_discription');
+            $table->string('brand_image');
             $table->string('url');
             $table->unsignedBigInteger('addedby');
             $table->foreign('addedby')->references('id')->on('users');
