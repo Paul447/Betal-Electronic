@@ -39,7 +39,7 @@
   </div>
 
          <div class="product-info">
-            <span>{{$product->brand_name}}
+            <span style="text-dark">{{$product->brand_name}}
             </span>
             <h4 class="product-name">{{$product->product_name}}</h4>
             <p class="product-price">
@@ -71,12 +71,7 @@
         @if (!is_null(session('customer')))
         <button class="add-to-cart"
             id="addToCartFromCard" value="{{$product->product_id}}" onclick="fetcchCart(this.value);"
-          ><lord-icon
-          src="https://cdn.lordicon.com/medpcfcy.json"
-          trigger="boomerang"
-          colors="primary:#ffffff"
-          style="width:30px;height:30px;">
-      </lord-icon></button>
+          ><i class="fas fa-cart-plus"></i></button>
             
         @else
         <button id="" class="show-toast add-to-cart"><i class="fas fa-cart-plus"></i></a>

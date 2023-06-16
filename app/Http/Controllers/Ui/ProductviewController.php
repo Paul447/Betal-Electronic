@@ -28,13 +28,13 @@ class ProductviewController extends Controller
     ->get();
     $cato = ProductCategory::where('product_id', $id)->pluck('category_id');
     $productIds = ProductCategory::whereIn('category_id', $cato)->pluck('product_id');
-    $getProductDetail = Product::all()->whereIn('product_id',$productIds);
+    $getProductDetail = Product::join('brands','brand','brands_id')->whereIn('product_id',$productIds)->get();
 
     return view('productdetails')->with(compact('data','getProductDetail'));
    }
    public function search(Request $request){
       $search = $request->input('search');
-      $data  = Product::where('product_name','LIKE',"%$search")->get();
+      $data  = Product::join('brands','brand','brands_id')->where('product_name','LIKE',"%$search")->get();
       
       return view('searchItem')->with(compact('data'));
    }

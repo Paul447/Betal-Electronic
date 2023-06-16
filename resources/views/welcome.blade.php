@@ -1,64 +1,62 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
-  <link rel="stylesheet" href="{{asset('admin/bootstrap-5.2.3-dist/css/bootstrap.min.css')}}" />
-  <link rel="stylesheet" href="{{asset('admin/css/productCard.css')}}" />
-  <link rel="stylesheet" href="{{asset('admin/css/lightSlider.css')}}" />
-  <link rel="stylesheet" href="{{asset('admin/css/toast.css')}}" />
-  {{-- <link rel="stylesheet" href="{{asset('admin/css/uiLogin.css')}}" /> --}}
-  <link rel="stylesheet" href="{{asset('admin/css/productDetail.css')}}" />
-    <link rel="stylesheet" href="{{asset('admin/css/productDetail.css')}}" />
-    <link rel="stylesheet" href="{{asset('admin/css/productcardmain.css')}}" />
-    <link rel="stylesheet" href="{{asset('admin/css/foot.css')}}" />
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
-  {{-- <link rel="stylesheet" href="{{ asset('vendor/sweetalert2/sweetalert2.min.css') }}"> --}}
-  <link rel="stylesheet" href="{{asset('admin/css/sty.css')}}" />
-  <script src=" {{asset('admin/bootstrap-5.2.3-dist/js/bootstrap.bundle.min.js')}}" ></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-  <script src=" {{asset('admin/js/lightSlider.js')}}"></script>
-  
-  <link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-  integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-  crossorigin="anonymous"
-  referrerpolicy="no-referrer"
-/>
-  <style>
-      .main{
-        margin-top: 80px!important;
-      }
-      .main-reg{
-        margin-top: 120px!important; 
-      }
-    
-     .feture{
-      border-bottom: 3px solid #a50318 ;
-      width: fit-content;
-      padding-bottom: 10px;
-      /* margin-bottom: 50px; */
-     }
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ asset('admin/bootstrap-5.2.3-dist/css/bootstrap.min.css') }}" />
+    {{-- <link rel="stylesheet" href="{{ asset('admin/css/productCard.css') }}" /> --}}
+    <link rel="stylesheet" href="{{ asset('admin/css/productcardmain.css') }}" />
+    <link rel="stylesheet" href="{{ asset('admin/css/toast.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/login.css') }}" />
+    <link rel="stylesheet" href="{{ asset('admin/css/foot.css') }}" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
+    {{-- <link rel="stylesheet" href="{{ asset('vendor/sweetalert2/sweetalert2.min.css') }}"> --}}
+    <link rel="stylesheet" href="{{ asset('admin/css/sty.css') }}" />
+    <script src=" {{ asset('admin/bootstrap-5.2.3-dist/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src=" {{ asset('admin/js/lightSlider.js') }}"></script>
 
-* {
-            margin: 0;
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+        * {
+            font-family: "Roboto", sans-serif;
             padding: 0;
+            margin: 0;
             box-sizing: border-box;
             text-decoration: none;
             list-style: none;
         }
 
-       ul {
-          margin-bottom: 0 !important;
+        .main {
+            margin-top: 80px !important;
         }
 
-        .navitemsss{
+        .main-reg {
+            margin-top: 120px !important;
+        }
+
+        .feture {
+            border-bottom: 3px solid #a50318;
+            width: fit-content;
+            padding-bottom: 10px;
+            /* margin-bottom: 50px; */
+        }
+
+
+
+        ul {
+            margin-bottom: 0 !important;
+        }
+
+        .navitemsss {
             color: var(--black) !important;
             text-decoration: none !important;
         }
@@ -94,8 +92,8 @@
             box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
             height: 80px;
             z-index: 1000;
-            position: fixed!important;
-         
+            position: fixed !important;
+
             top: 0;
             left: 0;
             right: 0;
@@ -234,9 +232,9 @@
                 padding: 0 10px;
             }
 
-              #search {
+            #search {
                 width: 100%;
-              }
+            }
 
             .right ul li i {
                 font-size: 1.2rem;
@@ -259,88 +257,88 @@
             }
         }
 
-    .colored-toast.swal2-icon-success {
-  background-color: #a5dc86 !important;
-}
-.colored-toast.swal2-icon-error {
-  background-color: #f27474 !important;
-}
+        .colored-toast.swal2-icon-success {
+            background-color: #a5dc86 !important;
+        }
 
-.colored-toast.swal2-icon-warning {
-  background-color: #f8bb86 !important;
-}
+        .colored-toast.swal2-icon-error {
+            background-color: #f27474 !important;
+        }
 
-.colored-toast.swal2-icon-info {
-  background-color: #3fc3ee !important;
-}
+        .colored-toast.swal2-icon-warning {
+            background-color: #f8bb86 !important;
+        }
 
-  </style>
+        .colored-toast.swal2-icon-info {
+            background-color: #3fc3ee !important;
+        }
+    </style>
 </head>
 
 <body>
-  @include('sweetalert::alert')
-  <header class="d-flex justify-content-between  align-items-center">
-    <a href="{{'/'}}">
-    <img src="{{ asset('admin/img/logo.jpg')}}" alt="logo" class="logo">
-  </a>
+    @include('sweetalert::alert')
+    <header class="d-flex justify-content-between  align-items-center">
+        <a href="{{ '/' }}">
+            <img src="{{ asset('admin/img/logo.jpg') }}" alt="logo" class="logo">
+        </a>
 
-    <nav class="middle">
-        <ul class="d-flex align-self-center" class="myUlclass">
-            <li class="mx-2 mx-lg-3"><a href="{{'/'}}" class="navitemsss">Home</a></li>
-            <li class="mx-2 mx-lg-3"><a href="#" class="navitemsss">About us</a></li>
-            <li class="mx-2 mx-lg-3"><a href="#" class="navitemsss">Products</a></li>
-            <li class="mx-2 mx-lg-3"><a href="#" class="navitemsss">Contact us</a></li>
-        </ul>
-    </nav>
+        <nav class="middle">
+            <ul class="d-flex align-self-center" class="myUlclass">
+                <li class="mx-2 mx-lg-3"><a href="{{ '/' }}" class="navitemsss">Home</a></li>
+                <li class="mx-2 mx-lg-3"><a href="#" class="navitemsss">About us</a></li>
+                <li class="mx-2 mx-lg-3"><a href="#" class="navitemsss">Products</a></li>
+                <li class="mx-2 mx-lg-3"><a href="#" class="navitemsss">Contact us</a></li>
+            </ul>
+        </nav>
 
-    <nav class="right">
-        <ul class="d-flex align-items-center" class="myUlclass">
-            <li class="mx-2 mx-lg-3">
-                <form action="{{ route('products.search') }}" class="position-relative">
-                    <input type="search" name="search" class="py-1 rounded-1 border border-dark-subtle px-2"
-                        id="search" placeholder="Search">
-                    <button type="submit" class="btn--search bg-transparent position-absolute border-0 ">
-                        <i class="fa-solid fa-search text-secondary"></i>
-                    </button>
-                </form>
-            </li>
-            <div class="d-flex justify-content-evenly">
-              @if (is_null(session('customer')))
-                <li class="mx-2 mx-lg-3 account px-2">
-                    <i class="fa-solid fa-user account--icon"></i>
-                    <div class="account--dropdown">
-                        <div class="account--dropdown-container">
-                            <a href="{{'/customerAdd/create/'}}" class="navitemsss">Signup</a>
-                            <a href="{{'/customerAdd/'}}" class="navitemsss">Login</a>
-                        </div>
-                    </div>
-                </li>
-                @else
-                <li class="mx-2 mx-lg-3 account ">
-                  <a  href="/customerlogout/{{Session::get('customer')['id'] }}" class="navitemsss">
-                    <i class="fa fa-sign-out "></i>
-                  </a>
-                </li>
-                @endif
+        <nav class="right">
+            <ul class="d-flex align-items-center" class="myUlclass">
                 <li class="mx-2 mx-lg-3">
-                    <a href="/CartView/" class="navitemsss">
-                        <i class="fa-solid fa-shopping-cart"></i>
-                    </a>
+                    <form action="{{ route('products.search') }}" class="position-relative">
+                        <input type="search" name="search" class="py-1 rounded-1 border border-dark-subtle px-2"
+                            id="search" placeholder="Search">
+                        <button type="submit" class="btn--search bg-transparent position-absolute border-0 ">
+                            <i class="fa-solid fa-search text-secondary"></i>
+                        </button>
+                    </form>
                 </li>
-            </div>
-        </ul>
-    </nav>
-    <div class="mobile--menu">
-        <div class="bar bar1"></div>
-        <div class="bar bar2"></div>
-        <div class="bar bar3"></div>
-    </div>
-</header>
+                <div class="d-flex justify-content-evenly">
+                    @if (is_null(session('customer')))
+                        <li class="mx-2 mx-lg-3 account px-2">
+                            <i class="fa-solid fa-user account--icon"></i>
+                            <div class="account--dropdown">
+                                <div class="account--dropdown-container">
+                                    <a href="{{ '/customerAdd/create/' }}" class="navitemsss">Signup</a>
+                                    <a href="{{ '/customerAdd/' }}" class="navitemsss">Login</a>
+                                </div>
+                            </div>
+                        </li>
+                    @else
+                        <li class="mx-2 mx-lg-3 account ">
+                            <a href="/customerlogout/{{ Session::get('customer')['id'] }}" class="navitemsss">
+                                <i class="fa fa-sign-out "></i>
+                            </a>
+                        </li>
+                    @endif
+                    <li class="mx-2 mx-lg-3">
+                        <a href="/CartView/" class="navitemsss">
+                            <i class="fa-solid fa-shopping-cart"></i>
+                        </a>
+                    </li>
+                </div>
+            </ul>
+        </nav>
+        <div class="mobile--menu">
+            <div class="bar bar1"></div>
+            <div class="bar bar2"></div>
+            <div class="bar bar3"></div>
+        </div>
+    </header>
 
 
 
 
-{{-- @if (!is_null(session('customer'))) 
+    {{-- @if (!is_null(session('customer'))) 
 
 <a role="button" class="nav-link  hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
   <div class="avatar avatar-online">
@@ -394,55 +392,58 @@
 
       </div>
     </div>
-  </nav> --}} 
+  </nav> --}}
 
 
 
 
 
-  <script>
+    <script>
         const Toast = Swal.mixin({
-  toast: true,
-  position: 'top-end',
-  iconColor: 'white',
-  showConfirmButton: false,
-  customClass: {
-    popup: 'colored-toast'
-  },
-  timer: 3000,
-  timerProgressBar: true,
-  didOpen: (toast) => {
-    toast.addEventListener('mouseenter', Swal.stopTimer)
-    toast.addEventListener('mouseleave', Swal.resumeTimer)
-  }
-})
-function fetcchCart(cartvalue) {
-                var controller = "/CartVieww/";
-                var host = location.origin + controller;
-                var url = location.origin + controller + cartvalue;
-                fetch(url, {
-                        method: 'GET',
-                        headers: {
-                          'Accept': 'application/json',
-                        },
-                    })
-                    .then(response => response.json())
-                .then(response => {
-                  let html = response.status; 
-                    Toast.fire({
-                    icon: 'success',
-                    title: html,
-                    }) 
-                Toast.fire({
-                  icon: 'success',
-                  title: html,
+            toast: true,
+            position: 'top-end',
+            iconColor: 'white',
+            showConfirmButton: false,
+            customClass: {
+                popup: 'colored-toast'
+            },
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                const toastContainer = Swal.getContainer()
+                toastContainer.style.marginTop = '70px';
+            }
+        })
+
+        function fetcchCart(cartvalue) {
+            var controller = "/CartVieww/";
+            var host = location.origin + controller;
+            var url = location.origin + controller + cartvalue;
+            fetch(url, {
+                    method: 'GET',
+                    headers: {
+                        'Accept': 'application/json',
+                    },
                 })
-                }) 
-}
+                .then(response => response.json())
+                .then(response => {
+                    let html = response.status;
+                    Toast.fire({
+                        icon: 'success',
+                        title: html,
+                    })
+                    Toast.fire({
+                        icon: 'success',
+                        title: html,
+                    })
+                })
+        }
 
 
 
-const mobileMenu = document.querySelector('.mobile--menu');
+        const mobileMenu = document.querySelector('.mobile--menu');
         const middle = document.querySelector('.middle');
         const right = document.querySelector('.right');
 
@@ -456,11 +457,9 @@ const mobileMenu = document.querySelector('.mobile--menu');
             }
 
         });
-        window.addEventListener("resize",function(){
-          if (window.innerWidth < 600) {
+        window.addEventListener("resize", function() {
+            if (window.innerWidth < 600) {
                 right.style.top = middle.offsetHeight + 100 + "px"
             }
         });
-      
-
-  </script>
+    </script>
