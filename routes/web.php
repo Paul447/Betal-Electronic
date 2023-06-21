@@ -84,6 +84,7 @@ Route::get('/products/search', [ProductviewController::class, 'search'])->name('
 Route::get('/viewprofile',[viewprofileController::class,'viewProfile']);
 Route::get('/myorder',[viewprofileController::class,'myorder']);
 Route::get('/mydataView',[viewprofileController::class,'mydataView']);
+Route::get('/categorychoice',[CategoryViewController::class,'viewBychoice']);
 
 
 Route::get('admin/order/orderProductDetailView/',[OrderController::class,'orderPDV']);

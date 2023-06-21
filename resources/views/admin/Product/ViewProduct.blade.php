@@ -20,7 +20,7 @@
                         <th>Status</th>
                         <th>Thumbnail</th>
                         <th>Brand Name</th>
-                        <th>Added By</th>
+                        {{-- <th>Added By</th> --}}
                         <th>Category Name</th>
                         <th>Action</th>
                     </tr>
@@ -77,13 +77,13 @@
                             @php
 
                             @endphp
-                            @if (session('user')['role'] == 'Admin' || session('user')['role'] == 'SuperAdmin')
+                            {{-- @if (session('user')['role'] == 'Admin' || session('user')['role'] == 'SuperAdmin')
                                 <td>
                                     <a href="{{ url('/admin/editor/' . $product->id . '/viewadmin') }}">
                                         {{ $product->user_name }}
                                     </a>
                                 </td>
-                            @endif
+                            @endif --}}
                             <td>
                                 @php
                                     $category = DB::table('productcategories')

@@ -75,4 +75,11 @@ class CategoryViewController extends Controller
         // echo $mine;
         // return view ('categories')->with(compact('heck'));
     }
+    public function viewBychoice()
+    {
+        $viewcategorydata = Category::with('ds')
+        ->where('is_visible', '=', 0)
+        ->get();
+        return view('categorychoice')->with(compact('viewcategorydata'));
+    }
 }

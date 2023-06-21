@@ -18,6 +18,11 @@
     <link rel="stylesheet" href="{{ asset('admin/css/sty.css') }}" />
     <script src=" {{ asset('admin/bootstrap-5.2.3-dist/js/bootstrap.bundle.min.js') }}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" defer></script>
     <script src=" {{ asset('admin/js/lightSlider.js') }}"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
@@ -25,6 +30,305 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+.hp-mod-price-text {
+    text-decoration: line-through
+}
+
+.inline {
+    display: inline-block
+}
+
+.categorycontainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+a {
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects
+}
+
+
+img {
+    border-style: none
+}
+
+.card-categories-ul {
+    width: 100%;
+    background-color: #fff;
+    min-height: 297px
+}
+
+.card-categories-ul li:nth-of-type(8n) {
+    margin-right: 0
+}
+
+.card-categories-name {
+    text-align: center;
+    margin-top: 10px
+}
+
+.card-categories-name .text {
+    margin: 8px 12px 0;
+    font-size: 14px;
+    color: #212121;
+    line-height: 18px;
+    height: 36px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+a {
+    color: #000;
+    text-decoration: none;
+     /* text-align: center; */
+}
+
+/* a,html {
+    -webkit-tap-highlight-color: transparent
+} */
+
+.card-categories-li {
+    min-width: 150px;
+    max-width: 180px;
+    /* width: 12.5%; */
+    height: 148.5px;
+    border-right: 1px solid #e2e2e2;
+    border-bottom: 1px solid #e2e2e2;
+    background-color: #fff
+}
+
+.card-categories-li:nth-child(8n) {
+    border-right: 0;
+}
+
+.card-categories-li:nth-child(10),.card-categories-li:nth-child(11),.card-categories-li:nth-child(12),.card-categories-li:nth-child(13),.card-categories-li:nth-child(14),.card-categories-li:nth-child(15),.card-categories-li:nth-child(16),.card-categories-li:nth-child(9) {
+    border-bottom: 0;
+}
+
+.card-categories-li-content {
+    width: 100%;
+    height: 100%;
+    display: block;
+    padding-top: 16px;
+}
+.hp-mod-card-hover:hover {
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.25);
+    -webkit-transform: all .3s ease-in-out;
+    -ms-transform: all .3s ease-in-out;
+    transform: all .3s ease-in-out;
+    position: relative;
+}
+.card-categories-image-container {
+    margin: 0 auto;
+    width: 80px;
+    height: 80px
+}
+
+.card-categories-image-container .image {
+    width: 100%;
+    height: 100%
+}
+.card-channels-img-wrap .image {
+    width: 100%;
+    height: 100%;
+    border-radius: 16px
+}
+
+      img.slide {
+        height: 75vh;
+      }
+      .Slidder
+      {
+        margin-top:20px; 
+      }
+      .carousel-item{
+        z-index: -1;
+      }
+  
+      #demo {
+        width: 85%;
+      }
+      @media (max-width:768px){
+          img.slide{
+            height: 280px;
+          }
+      }
+      @media(max-width:512px){
+        img.slide{
+          height:  200px;
+          margin-bottom:-15px; 
+        }
+      }
+        .brand-slider {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            gap: 40px;
+            cursor: grab;
+        }
+
+        .slider-container {
+            min-width: 100px;
+            max-width: 170px;
+            height: 70px;
+            user-select: none;
+        }
+
+        .slider-container img {
+            width: 100% !important;
+            height: 100% !important;
+
+            object-fit: contain;
+            filter: grayscale(1);
+            pointer-events: none;
+        }
+
+        .slider-container:hover img {
+            filter: grayscale(0);
+        }
+
+        @media (max-width: 768px) {
+            .brand-slider {
+                gap: 20px;
+            }
+
+            .slider-container {
+                min-width: 150px;
+                max-width: 170px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .slider-container {
+                min-width: 40px;
+                max-width: 40px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .owl-carousel.owl-drag .owl-item {
+                margin-right: 10px;
+            }
+        }
+      
+        :root {
+            --footer-bg: #d9d9d9;
+            --footer-text: #0a0a0a;
+            --primary-red: #a50318;
+        }
+
+        footer {
+            background-color: var(--footer-bg);
+            color: var(--footer-text);
+            margin-top: 40px;
+            padding: 40px;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+        }
+
+        footer .section--title {
+            width: fit-content;
+        }
+
+        .divider {
+            margin-top: 5px;
+            margin-bottom: 30px;
+            height: 2px;
+            background-color: var(--primary-red);
+            width: 85%;
+        }
+
+        footer a {
+            margin-right: 20px;
+            color: var(--footer-text);
+        }
+
+        footer a:hover {
+            color: var(--primary-red);
+        }
+
+        footer a i {
+            color: var(--primary-red);
+            font-size: 1.5rem;
+        }
+
+        .text--stay-connected {
+            margin-bottom: 15px;
+        }
+
+        .copyright {
+            margin-top: 50px;
+            font-size: 0.825rem;
+        }
+
+        footer li {
+            margin: 15px 0;
+        }
+
+        footer .fas {
+            margin-right: 10px;
+            color: var(--primary-red);
+        }
+
+        footer a i:hover {
+            color: var(--footer-text);
+        }
+
+        .map iframe {
+            width: 100%;
+            height: 100%;
+        }
+
+        .map {
+            width: 380px;
+            height: 220px;
+        }
+
+        /* media queries */
+        @media (max-width: 1120px) {
+            .map {
+                width: 280px;
+                height: 220px;
+            }
+
+            footer {
+                padding: 40px 20px;
+            }
+        }
+        @media (max-width: 985px) {
+            footer {
+                flex-wrap: wrap;
+            }
+
+            footer .map {
+                width: 100%;
+                height: 300px;
+                margin-top: 40px;
+            }
+        }
+
+        @media (max-width: 695px) {
+            footer {
+                padding: 40px 20px;
+                flex-direction: column-reverse;
+            }
+
+            .map {
+                margin: 0 0 20px 0!important;
+            }
+
+            .section--title {
+                margin-top: 20px;
+            }
+
+        }
 
         * {
             font-family: "Roboto", sans-serif;
@@ -396,9 +700,25 @@
 
 
 
-
-
     <script>
+         $(document).ready(function() {
+            $('.owl-carousel').owlCarousel({
+                loop: true,
+                autoplay: true,
+                autoplayTimeout: 2000,
+                responsive: {
+                    0: {
+                        items: 5
+                    },
+                    600: {
+                        items: 5
+                    },
+                    1000: {
+                        items: 8
+                    }
+                }
+            });
+        });
         const Toast = Swal.mixin({
             toast: true,
             position: 'top-end',

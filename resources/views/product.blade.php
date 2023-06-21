@@ -2,13 +2,9 @@
 @include('slider')
 
 @include('categories')
-<style>
 
 
-
-</style>
-
-<body style="">
+<body>
     <div class="toast">Please Login First To Add To Cart!</div>
     <section id="product1" class="section-p1 text-align-center">
         <h2 class="my-5 feture mx-auto">Featured Products</h2>
@@ -78,13 +74,11 @@
                 @endforeach
             </div>
         @endif
-
-
     </section>
 
-
+    @include('categorychoice')
+    @include('footermain')
     <body>
-        @include('footermain')
 
         <script>
             const showToastButton = document.querySelectorAll(".show-toast");
