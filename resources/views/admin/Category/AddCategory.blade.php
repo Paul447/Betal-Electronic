@@ -67,10 +67,20 @@
             @foreach ($cat as $category )
                 <option value="{{$category->categorys_id}}">{{$category->category_name}}</option>
             @endforeach
-
+           
 
           </select>
         </div>
+
+        <div class="col col-12  mb-3">
+          <label for="formFile" class="form-label">Product Thumbnail Image</label>
+          <input type="file" class="form-control" id="ProductFile" name="categorythumbnail"
+              accept="image/jpg,image/png" required />
+          <p class="text-danger">
+              <strong class="text-warning">Warning</strong> : Image size must be
+              less the 2MB
+          </p>
+      </div>
 
 
           <!-- Modal footer -->

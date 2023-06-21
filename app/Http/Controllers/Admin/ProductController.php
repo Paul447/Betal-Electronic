@@ -40,9 +40,11 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $url = "/admin/product/";
-        $title = "Add Product";
-        $category = Category::all()->where('parent', 0)->where('status', '=', 'approved');
+        $url = '/admin/product/';
+        $title = 'Add Product';
+        $category = Category::all()
+            ->where('parent', 0)
+            ->where('status', '=', 'approved');
         $brand = Brand::all()->where('status', '=', 'approved');
         $variatioon = Variation::all();
         $data = compact('url', 'title', 'category', 'brand', 'variatioon');
@@ -57,11 +59,11 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-
-        $filename = time() . "." . $request->file('Productthumbfile')->getClientOriginalExtension();
-        $request->file('Productthumbfile')->storeAs('public/thumbnails', $filename);
         $addedby = session('user')['id'];
         if (session('user')['role'] == 'Admin' || session('user')['role'] == 'SuperAdmin') {
+            $file = $request->file('Productthumbfile');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path() . '/storage/thumbnails/', $filename);
             $id = Product::create([
                 'product_name' => $request->Productname,
                 'brand' => $request->Brand,
@@ -72,14 +74,13 @@ class ProductController extends Controller
                 'approvedby' => $addedby,
                 'thumbnail' => $filename,
                 'status' => 'approved',
-
-
-
-
             ])->product_id;
             return $this->uploadimage($id, $request);
         } else {
-            $id =   Product::create([
+            $file = $request->file('Productthumbfile');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path() . '/storage/thumbnails/', $filename);
+            $id = Product::create([
                 'product_name' => $request->Productname,
                 'brand' => $request->Brand,
                 'discription' => $request->Productcontent,
@@ -88,8 +89,6 @@ class ProductController extends Controller
                 'lowstockindication' => $request->lowstockindication,
                 'addedby' => $addedby,
                 'thumbnail' => $filename,
-
-
             ])->product_id;
             return $this->uploadimage($id, $request);
         }
@@ -140,10 +139,9 @@ class ProductController extends Controller
     }
     function uploadimage($id, Request $request)
     {
-       
         $image = [];
         foreach ($request->file('Productfile') as $file) {
-            $filename = time() . "." . $file->getClientOriginalExtension();
+            $filename = time() . '.' . $file->getClientOriginalExtension();
             $file->move(public_path() . '/storage/product/', $filename);
             $image[] = $filename;
         }
@@ -153,13 +151,13 @@ class ProductController extends Controller
             'product_id' => $id,
         ]);
         addProductBatch::create([
-            'batchid'=>1,
-            'product'=>$id,
-            'costprice'=>$request->productprice,
-            'sellingprice'=>$request->productsprice,
-            'availablequantity'=>$request->qty,
-            'soldquantity'=> '0',
-            'profit'=>'0',
+            'batchid' => 1,
+            'product' => $id,
+            'costprice' => $request->productprice,
+            'sellingprice' => $request->productsprice,
+            'availablequantity' => $request->qty,
+            'soldquantity' => '0',
+            'profit' => '0',
         ]);
         Productprice::create([
             'price' => $request->productprice,
@@ -172,22 +170,13 @@ class ProductController extends Controller
                 'category_id' => $category[$i],
             ]);
         }
-        // $varition = $request->Varition;
-        // $varitionValue = $request->varitionValue;
-        // for ($i = 0; $i < count($varition); $i++) {
-        //     Productvariation::insert([
-        //         'product' => $id,
-        //         'variation_id' => $varition[$i],
-        //         'variationoption_id' => $varitionValue[$i],
-        //     ]);
-        // }
         return back();
     }
     public function feature($id)
     {
         $product = Product::find($id);
         // dd($product->featured);
-        $product->featured="featured";
+        $product->featured = 'featured';
         $product->save();
         // $product->update(['featured'=>'']);
         return back();
@@ -196,19 +185,21 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
         // $product->update(['featured'=>'featured']);
-        $product->featured="unfeatured";
+        $product->featured = 'unfeatured';
         $product->save();
         return back();
     }
 
-    public function DisableProduct($id){
+    public function DisableProduct($id)
+    {
         $product = Product::find($id);
         $product->is_disabled = 1;
         $product->save();
         return back();
     }
 
-    public function EnableProduct($id){
+    public function EnableProduct($id)
+    {
         $product = Product::find($id);
         $product->is_disabled = 0;
         $product->save();

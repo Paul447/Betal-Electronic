@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->id('categorys_id');
             $table->string('category_name');
+            $table->string('categorythumbnail');
             $table->integer('parent');
             $table->unsignedBigInteger('addedby');
             $table->foreign('addedby')->references('id')->on('users');
@@ -27,6 +28,7 @@ return new class extends Migration
             $table->foreign('updateapprovedby')->references('id')->on('users');
             $table->string('status')->default('pending');
             $table->string('updatestatus')->nullable();
+            $table->integer('is_visible')->default(0);
             $table->timestamps();
         });
     }

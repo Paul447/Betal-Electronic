@@ -95,6 +95,9 @@ Route::group(['prefix' => '/admin', 'middleware' => 'editor'], function () {
     Route::get('/product/feature/{id}', [ProductController::class, 'feature']);
     Route::get('/product/enable/{id}', [ProductController::class, 'EnableProduct']);
     Route::get('/product/disable/{id}', [ProductController::class, 'DisableProduct']);
+
+    Route::get('/category/visible/{id}', [CategoryController::class, 'showcategory']);
+    Route::get('/category/invisible/{id}', [CategoryController::class, 'hidecategory']);
     Route::resources([
         //number of product to notify low stock of a product
         '/product' => ProductController::class,

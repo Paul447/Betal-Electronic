@@ -15,12 +15,11 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $data= Category::with('ds')
-        ->where('status','=','approved')
-        ->get();
+        $data = Category::with('ds')
+            ->where('status', '=', 'approved')
+            ->get();
 
-
-        return view('admin.Category.ViewCategory')->with('data',$data);
+        return view('admin.Category.ViewCategory')->with('data', $data);
     }
 
     /**
@@ -30,13 +29,12 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $url ="/admin/category/";
-        $title="Add Category";
-         $cat= Category::where('status','=','approved')->get();
-        $data = compact('title','url','cat');
+        $url = '/admin/category/';
+        $title = 'Add Category';
+        $cat = Category::where('status', '=', 'approved')->get();
+        $data = compact('title', 'url', 'cat');
 
         return view('admin.Category.AddCategory')->with($data);
-
     }
 
     /**
@@ -47,26 +45,25 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //    var_dump($request->input());
-        $request->validate(
-           [
-            'category_name'=>'required|alpha_dash',
-             'parent'=>'required|numeric',
-           ]
-        );
+        
+        $request->validate([
+            'category_name' => 'required|alpha_dash',
+            'parent' => 'required|numeric',
+        ]);
         $addedby = session('user')['id'];
-        if (session('user')['role'] == 'Admin' || session('user')['role'] == 'SuperAdmin')
-        {
-
-            Category::create(array_merge($request->all(),['addedby'=>$addedby,'approvedby'=>$addedby,'status'=>'approved']));
+        if (session('user')['role'] == 'Admin' || session('user')['role'] == 'SuperAdmin') {
+            $file = $request->file('categorythumbnail');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path() . '/storage/categorythumbnail/', $filename);
+            Category::create(array_merge($request->all(), ['categorythumbnail' => $filename, 'addedby' => $addedby, 'approvedby' => $addedby, 'status' => 'approved']));
+            return redirect('/admin/category/');
+        } else {
+            $file = $request->file('categorythumbnail');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path() . '/storage/categorythumbnail/', $filename);
+            Category::create(array_merge($request->all(), ['categorythumbnail' => $filename, 'addedby' => $addedby]));
             return redirect('/admin/category/');
         }
-        else
-        {
-            Category::create(array_merge($request->all(),['addedby'=>$addedby]));
-            return redirect('/admin/category/');
-        }
-
     }
 
     /**
@@ -88,12 +85,11 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-         $url="/admin/category/$id";
-         $title = "Update Category";
-         $cat = Category::with('ds')->get();
-         $data = Category::find($id);
-         return view('admin.Category.AddCategory')->with(compact('url','title','cat','data'));
-
+        $url = "/admin/category/$id";
+        $title = 'Update Category';
+        $cat = Category::with('ds')->get();
+        $data = Category::find($id);
+        return view('admin.Category.AddCategory')->with(compact('url', 'title', 'cat', 'data'));
     }
 
     /**
@@ -105,28 +101,39 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate(
-            [
-             'category_name'=>'required|alpha_dash',
-              'parent'=>'required|numeric',
-            ]
-         );
-         $updatedby = session('user')['id'];
-         $category = Category::find($id);
-         if (session('user')['role'] == 'Admin' || session('user')['role'] == 'SuperAdmin')
-         {
+        $request->validate([
+            'category_name' => 'required|alpha_dash',
+            'parent' => 'required|numeric',
+        ]);
+        $updatedby = session('user')['id'];
+        $category = Category::find($id);
+        if (session('user')['role'] == 'Admin' || session('user')['role'] == 'SuperAdmin') {
+            $file = $request->file('categorythumbnail');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path() . '/storage/categorythumbnail/', $filename);
+            $image_name = Category::where('categorys_id', $id)->value('categorythumbnail');
+            $image_path = public_path('/storage/categorythumbnail/' . $image_name);
+            if (file_exists($image_path)) {
+                unlink($image_path);
+            }
+            $category->update(array_merge($request->all(), ['categorythumbnail' => $filename, 'updatedby' => $updatedby, 'updateapprovedby' => $updatedby, 'updatestatus' => 'approved']));
+            return redirect('/admin/category/');
+        } else {
+            $file = $request->file('categorythumbnail');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path() . '/storage/categorythumbnail/', $filename);
 
-             $category->update(array_merge($request->all(), ['updatedby' => $updatedby, 'updateapprovedby' => $updatedby, 'updatestatus' => "approved"]));
-             return redirect('/admin/category/');
-         }
-         else
-         {
-             Category::create(array_merge($request->all(),['updatedby'=>$updatedby, 'updatestatus' => 'pending']));
-             return redirect('/admin/category/');
-         }
+            $image_name = Category::where('categorys_id', $id)->value('categorythumbnail');
+            $image_path = public_path('/storage/categorythumbnail/' . $image_name);
+            if (file_exists($image_path)) {
+                unlink($image_path);
+            }
+            Category::create(array_merge($request->all(), ['categorythumbnail' => $filename, 'updatedby' => $updatedby, 'updatestatus' => 'pending']));
+            return redirect('/admin/category/');
+        }
 
-         $category->update($request->all());
-         return redirect('/admin/category/');
+        $category->update($request->all());
+        return redirect('/admin/category/');
     }
 
     /**
@@ -137,9 +144,29 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-       $category = Category::find($id);
+        $category = Category::find($id);
+        $image_name = Category::where('categorys_id', $id)->value('categorythumbnail');
+            $image_path = public_path('/storage/categorythumbnail/' . $image_name);
+            if (file_exists($image_path)) {
+                unlink($image_path);
+            }
+        $category->delete();
+        return redirect('/admin/category/');
+    }
 
-       $category->delete();
-       return redirect('/admin/category/');
+    public function hidecategory($id)
+    {
+        $category = Category::find($id);
+        $category->is_visible = 1;
+        $category->save();
+        return back();
+    }
+
+    public function showcategory($id)
+    {
+        $category = Category::find($id);
+        $category->is_visible = 0;
+        $category->save();
+        return back();
     }
 }

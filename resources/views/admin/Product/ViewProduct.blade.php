@@ -66,13 +66,13 @@
                           echo $item;
                         @endphp --}}
 
-                                    <img src="{{ asset('/storage/product/' . $item) }}" alt="" height="100px"
-                                        width="100px">
+                                    <img src="{{ asset('/storage/product/' . $item) }}" alt="" height="50px"
+                                        width="50px">
                                 @endforeach
                             </td>
                             <td>{{ $product->status }}</td>
-                            <td><img src="{{ asset('/storage/thumbnails/' . $product->thumbnail) }}" height="200px"
-                                    width="200px"></td>
+                            <td><img src="{{ asset('/storage/thumbnails/' . $product->thumbnail) }}" height="50px"
+                                    width="50px"></td>
                             <td>{{ $product->brand_name }}</td>
                             @php
 

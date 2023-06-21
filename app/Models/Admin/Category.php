@@ -15,10 +15,10 @@ class Category extends Model
         'approvedby',
         'updatedby',
         'updateapprovedby',
+        'categorythumbnail',
         'status',
+        'is_visible',
         'updatestatus',
-
-
     ];
     public function ds(){
         return $this->hasMany(self::class, 'categorys_id','parent');

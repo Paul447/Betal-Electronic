@@ -7,10 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Details</title>
     <style>
-      
-        .category-info{
-          padding: 0 !important;
-          margin: 0 !important;
+        .category-info {
+            padding: 0 !important;
+            margin: 0 !important;
         }
 
         :root {
@@ -57,7 +56,7 @@
             border-radius: 5px;
             font-size: 1.2rem;
             max-width: 200px;
-           
+
         }
 
         .view-details:focus,
@@ -173,7 +172,7 @@
             transform: translateY(-50%);
             width: 40px;
             height: 40px;
-            background-color: #a50318 ;
+            background-color: #a50318;
             color: #fff;
             font-size: 24px;
             line-height: 40px;
@@ -346,7 +345,7 @@
                             {{ $value = session()->get('succes') }}
                         </span>
                         <h4 class="product-name">{{ $product->product_name }}</h4>
-                        <p class="product-price  fw-bold text-dark" >
+                        <p class="product-price  fw-bold text-dark">
 
 
 
@@ -387,26 +386,25 @@
         </div>
     </section>
     <script>
+        $(document).ready(function() {
 
-$(document).ready(function() {
-
-$("#plus-btn").click(function() {
-    var value = parseInt($("input").val());
-    if (value < 100) {
-        value = value + 1;
-        $("input").val(value);
-    }
-});
+            $("#plus-btn").click(function() {
+                var value = parseInt($("input").val());
+                if (value < 100) {
+                    value = value + 1;
+                    $("input").val(value);
+                }
+            });
 
 
-$("#minus-btn").click(function() {
-    var value = parseInt($("input").val());
-    if (value > 1) {
-        value = value - 1;
-        $("input").val(value);
-    }
-});
-});
+            $("#minus-btn").click(function() {
+                var value = parseInt($("input").val());
+                if (value > 1) {
+                    value = value - 1;
+                    $("input").val(value);
+                }
+            });
+        });
         const slider = document.querySelector('.slider');
         const slides = document.querySelectorAll('.slide');
         const thumbnails = document.querySelectorAll('.thumbnail');
