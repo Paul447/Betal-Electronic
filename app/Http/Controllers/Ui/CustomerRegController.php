@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Province;
 use App\Models\admin\User;
+use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
@@ -39,33 +40,49 @@ class CustomerRegController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
 
-        $picture = $request->file('image');
-        if (!is_null($picture)) {
-            $filename = time() . "." . $request->file('image')->getClientOriginalExtension();
-            $isuploaded =  $request->file('image')->storeAs('public/editor', $filename);
-            if ($isuploaded) {
+        // $picture = $request->file('image');
+        // if (!is_null($picture)) {
+        //     $filename = time() . "." . $request->file('image')->getClientOriginalExtension();
+        //     $isuploaded =  $request->file('image')->storeAs('public/editor', $filename);
+        //     if ($isuploaded) {
 
-                $password = Hash::make($request->password);
+        $password = Hash::make($request->password);
 
-                $rand = mt_rand(10000, 99999);
-                $insert = User::create(array_merge($request->all(), ['image' => $filename, 'password' => $password, 'role' => 'user', 'user_status' => 'unverified', 'otp' => $rand]))->id;
-                if ($insert) {
+        $rand = mt_rand(10000, 99999);
+        $insert = User::create(array_merge($request->all(), ['image' => "avatar.svg", 'password' => $password, 'role' => 'user', 'user_status' => 'unverified', 'otp' => $rand]))->id;
+        if ($insert) {
 
-                    $ismailsended = Mail::send('otp', ['name' => $request->user_name, 'otp' => $rand], function ($message)  use ($request) {
+            try {
+                $ismailsended = Mail::send('otp', ['name' => $request->user_name, 'otp' => $rand], function ($message)  use ($request) {
 
-                        $message->to($request->email);
+                    $message->to($request->email);
 
-                        $message->subject('Login Credintial');
-                    });
-                    if ($ismailsended) {
-                        session()->put('id', $insert);
-                        session()->put('otpSend', 'Please Check The Gmail And Enter OTP!');
-                        return view('otpVerify');
-                    }
+                    $message->subject('Login Credintial');
+                });
+                if ($ismailsended) {
+                    session()->put('id', $insert);
+                    session()->put('otpSend', 'Please Check The Gmail And Enter OTP!');
+                    return view('otpVerify');
                 }
+            } catch (Exception $e) {
+                echo "Something went wrong, mail can't be sent";
+            }
+            // $ismailsended = Mail::send('otp', ['name' => $request->user_name, 'otp' => $rand], function ($message)  use ($request) {
+
+            //     $message->to($request->email);
+
+            //     $message->subject('Login Credintial');
+            // });
+            if ($ismailsended) {
+                session()->put('id', $insert);
+                session()->put('otpSend', 'Please Check The Gmail And Enter OTP!');
+                return view('otpVerify');
             }
         }
+        //     }
+        // }
     }
     public function google_auth(Request $request)
     {
@@ -80,7 +97,7 @@ class CustomerRegController extends Controller
                 $value = isset($parts[1]) ? $parts[1] : '';
                 $userDataObj[$key] = $value;
             }
-            
+
             $name = $userDataObj['profile_namee'];
             $email = $userDataObj['emaill'];
 
@@ -173,7 +190,7 @@ class CustomerRegController extends Controller
             return redirect('/');
         }
     }
-    
+
     public function login(Request $request)
     {
         $request->validate([

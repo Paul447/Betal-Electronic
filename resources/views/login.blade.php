@@ -92,7 +92,7 @@
                         Continue With Google
                     </a>
                     <p class="d-flex justify-content-center mt-3 mb-3">Don't have an Account?</p>
-                    <a href="#"
+                    <a href="{{url('/customerAdd/create')}}"
                         class="btn btnn btn-lg btn-block fw-bold fs-6 d-flex justify-content-center mx-auto">Sign Up</a>
                 </div>
             </div>
