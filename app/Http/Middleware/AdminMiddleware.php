@@ -25,7 +25,7 @@ class AdminMiddleware
             return redirect('/login');
         }
 
-        if(session('user')['role']=='Admin' || session('user')['role']=='SuperAdmin'   )
+        if(session('user')['role']=='Admin')
         {
         return $next($request);
         }

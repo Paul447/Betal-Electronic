@@ -32,27 +32,6 @@
               </ul>
             </li>
 
-            @if(session('user')['role'] == 'Admin' || session('user')['role'] == 'SuperAdmin' )
-            <li class="dropdown nav-items">
-              <a
-                href="#homeSubmenu"
-                class="dropdown dropdown-toggle nav-link"
-                data-bs-toggle="collapse"
-                data-bs-target="#editor"
-                aria-expanded="false"
-                >
-                Editor</a
-              >
-              <ul class="list-unstyled collapse" id="editor">
-                <li>
-                  <a href="{{'/admin/editor/create'}}" class="nav-link" id="">Add Editor</a>
-                </li>
-                <li>
-                  <a href="{{'/admin/editor/'}}" class="nav-link">View Editor Data</a>
-                </li>
-              </ul>
-            </li>
-            @endif
             <!-- Brand add and view  -->
             <li class="dropdown nav-items">
               <a
@@ -202,23 +181,6 @@
                 id="navbarSupportedContent"
               >
                 <ul class="nav navbar-nav ml-auto">
-                @if (session('user')['role'] =='Admin' || session('user')['role'] =='SuperAdmin' )
-
-
-                  <li class="nav-item active">
-                    <a class="nav-link" href="{{'/admin/approverequest'}}">Approve</a>
-                  </li>
-
-                  {{-- <li class="nav-item">
-                    <a class="nav-link" href="#">Page</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Page</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Page</a>
-                  </li> --}}
-                  @endif
                   {{-- <li class="nav-item"><div class="input-group">
                     <div class="input-group">
                       <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
