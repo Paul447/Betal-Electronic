@@ -11,7 +11,6 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\VariationController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\admin\VariationoptionController;
-use App\Http\Controllers\admin\EditorController;
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\Admin\ApproverequestController;
 use Illuminate\Routing\RouteGroup;
@@ -114,13 +113,6 @@ Route::group(['prefix' => '/admin', 'middleware' => 'editor'], function () {
     Route::post('/delivery/add/', [DeliveryController::class, 'add']);
     Route::post('/delivery/confirm/', [DeliveryController::class, 'confirm']);
 
-   
-
-    Route::group(['middleware' => 'admin'], function () {
-        Route::get('/editor/{id}/viewadmin', [EditorController::class, 'viewadmin']);
-        Route::resource('/editor', EditorController::class);
-        Route::get('/approverequest', [ApproverequestController::class, 'approve']);
-    });
 
     // Route::resource('/product',ProductController::class);
     // Route::resource('/brand',BrandController::class);
