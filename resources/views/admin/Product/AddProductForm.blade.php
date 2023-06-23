@@ -45,7 +45,7 @@
                             </p>
                         </div>
 
-                        <div class="col col-12 col-lg-6 col-sm-12 col-md-12 col-xl-4 mb-3">
+                        <div class="col col-12  mb-3">
                             <label for="recipient-name" class="col-form-label">Product Content</label>
                             <textarea id="Productcontent" name="Productcontent" class="form-control" id="" cols="30" rows="5"
                                 required autocomplete="off"></textarea>
