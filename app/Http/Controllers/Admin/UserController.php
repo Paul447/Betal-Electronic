@@ -21,7 +21,7 @@ class UserController extends Controller
         }
 
         else{
-            if(  $user->role =='Admin')
+            if(  $user->role =='SuperAdmin')
             {
                 $req->session()->put('user',$user);
                 return redirect('/home');
