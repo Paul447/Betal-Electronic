@@ -9,6 +9,13 @@
     <title>Login Form</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
     <style>
+        ol,ul{
+            padding: 0;
+        }
+        a {
+            text-decoration: none;
+        }
+
         .errorView {
             color: #a50318;
         }
@@ -92,7 +99,7 @@
                         Continue With Google
                     </a>
                     <p class="d-flex justify-content-center mt-3 mb-3">Don't have an Account?</p>
-                    <a href="{{url('/customerAdd/create')}}"
+                    <a href="{{ url('/customerAdd/create') }}"
                         class="btn btnn btn-lg btn-block fw-bold fs-6 d-flex justify-content-center mx-auto">Sign Up</a>
                 </div>
             </div>
@@ -116,4 +123,20 @@
     @endphp
 @endif
 @include('footermain')
+<script>
+    const togglePassword = document.querySelectorAll('.btn--toggle-password');
+
+    togglePassword.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const input = btn.previousElementSibling;
+            if (input.type === 'password') {
+                input.type = 'text';
+                btn.innerHTML = `<i class="fa-solid fa-eye-slash"></i>`;
+            } else {
+                input.type = 'password';
+                btn.innerHTML = `<i class="fa-solid fa-eye"></i>`;
+            }
+        })
+    })
+</script>
 <script type="module" src=" {{ asset('admin/js/googleauth.js') }}"></script>

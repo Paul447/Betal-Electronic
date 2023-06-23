@@ -21,52 +21,51 @@
                             </div>
                         </a>
 
-                      
-                            <span>{{ $featured->brand_name }}
 
-                            </span>
-                            <a href="{{ '/productdetails/' . $featured->product_id }}" style="text-decoration: none;">
-                                <h4 class="product-name">{{ $featured->product_name }}</h4>
-                            </a>
-                            <p class="product-price fw-bold text-dark">
-                                @php
-                                    $price = DB::table('add_product_batches')
-                                        ->where('product', $featured->product_id)
-                                        ->first();
-                                    $xy = $price->availablequantity;
-                                    
-                                    $hello = DB::table('add_product_batches')
-                                        ->where('product', $featured->product_id)
-                                        ->whereNotNull('availablequantity')
-                                        ->where('availablequantity', '<>', 0)
-                                        ->orderBy('batchid', 'asc')
-                                        ->limit(1)
-                                        ->pluck('sellingprice')
-                                        ->first();
-                                    $val = 'Out Of Stock';
-                                    
-                                @endphp
-                                @if (is_null($hello))
-                                    {{ $val }}
-                                @else
-                                    Rs.{{ $hello }}
-                                @endif
-                            </p>
-                            <div class="product-buttons">
+                        <span>{{ $featured->brand_name }}
 
-                                <a href="{{ '/productdetails/' . $featured->product_id . '/' . $featured->slug }}"
-                                    class="view-details" style="text-decoration: none;"><i
-                                        class="fas fa-info-circle"></i></a>
+                        </span>
+                        <a href="{{ '/productdetails/' . $featured->product_id }}" style="text-decoration: none;">
+                            <h4 class="product-name">{{ $featured->product_name }}</h4>
+                        </a>
+                        <p class="product-price fw-bold text-dark">
+                            @php
+                                $price = DB::table('add_product_batches')
+                                    ->where('product', $featured->product_id)
+                                    ->first();
+                                $xy = $price->availablequantity;
+                                
+                                $hello = DB::table('add_product_batches')
+                                    ->where('product', $featured->product_id)
+                                    ->whereNotNull('availablequantity')
+                                    ->where('availablequantity', '<>', 0)
+                                    ->orderBy('batchid', 'asc')
+                                    ->limit(1)
+                                    ->pluck('sellingprice')
+                                    ->first();
+                                $val = 'Out Of Stock';
+                                
+                            @endphp
+                            @if (is_null($hello))
+                                {{ $val }}
+                            @else
+                                Rs.{{ $hello }}
+                            @endif
+                        </p>
+                        <div class="product-buttons">
 
-                                @if (!is_null(session('customer')))
-                                    <button class="add-to-cart" id="addToCartFromCard"
-                                        value="{{ $featured->product_id }}" onclick="fetcchCart(this.value);"><i
-                                            class="fas fa-cart-plus"></i></button>
-                                @else
-                                    <button id="" class="show-toast add-to-cart"><i
-                                            class="fas fa-cart-plus"></i></a>
-                                @endif
-                            </div>
+                            <a href="{{ '/productdetails/' . $featured->product_id . '/' . $featured->slug }}"
+                                class="view-details" style="text-decoration: none;"><i
+                                    class="fas fa-info-circle"></i></a>
+
+                            @if (!is_null(session('customer')))
+                                <button class="add-to-cart" id="addToCartFromCard" value="{{ $featured->product_id }}"
+                                    onclick="fetcchCart(this.value);"><i class="fas fa-cart-plus"></i></button>
+                            @else
+                                <button id="" class="show-toast add-to-cart"><i
+                                        class="fas fa-cart-plus"></i></a>
+                            @endif
+                        </div>
                         {{-- </div> --}}
 
 
@@ -78,6 +77,7 @@
 
     @include('categorychoice')
     @include('footermain')
+
     <body>
 
         <script>
@@ -117,4 +117,3 @@
                 session()->forget('Registered');
             @endphp
         @endif
-       

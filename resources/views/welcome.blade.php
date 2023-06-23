@@ -800,4 +800,18 @@
                 right.style.top = middle.offsetHeight + 100 + "px"
             }
         });
+
+        
+        
     </script>
+    @if (session('errormessage'))
+    <script>
+        Toast.fire({
+            icon: 'error',
+            title: '{{ session('errormessage') }}'
+        })
+    </script>
+    @php
+        session()->forget('errormessage');
+    @endphp
+    @endif

@@ -139,6 +139,7 @@ Route::get('/storeorderInfo/', [CheckoutController::class, 'datastore']);
 
 Route::get('/postCartData', [CartViewController::class, 'fetchDataForCart']);
 Route::resource('/customerAdd', CustomerRegController::class);
+Route::post('/customerAdd', [CustomerRegController::class, 'store']);
 Route::post('/otpverify', [CustomerRegController::class, 'otpverify']);
 Route::post('/customerlogin', [CustomerRegController::class, 'login']);
 Route::get('/logout', [UserController::class, 'logout']);

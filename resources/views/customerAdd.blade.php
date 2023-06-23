@@ -1,8 +1,6 @@
 @include('welcome')
 
 <style>
-   
-
     @media(max-width : 520px) {
         .brandImage {
             width: 200px;
@@ -10,7 +8,7 @@
         }
     }
 
- 
+
 
     :root {
         --red: #A50318;
@@ -19,7 +17,7 @@
 
     .signup--container {
         outline: 2px solid var(--red);
-        margin: 48px auto; 
+        margin: 48px auto;
         max-width: 800px;
         padding: 10px 30px;
     }
@@ -73,6 +71,7 @@
             padding: 10px 20px;
         }
     }
+
     @media (max-width: 810px) {
 
         .signup--container {
@@ -89,62 +88,91 @@
     <p class="error--text text-center mb-2">something went wrong!!</p>
 
     <div class="signup--form mt-4">
-        <form method="post" action="{{'/customerAdd/'}}" enctype="multipart/form-data">
+
+        <form method="post" action="{{ '/customerAdd/' }}" enctype="multipart/form-data">
             @csrf
+       
+           
             <div class="row">
+
                 <div class="col col-12 col-md-6">
 
                     <div class="form--item mb-2 d-flex flex-column">
                         <label for="name" class="mb-1">Name</label>
-                        <input type="text" name="user_name" class="rounded-1 form-control border py-1 px-2 border-dark-subtle" id="name" pattern="[A-Z].[A-Z a-z]+" title="Name must be in only character, First Letter Must be in captial" required>
+                        <input type="text" name="user_name"
+                            class="rounded-1 form-control border py-1 px-2 border-dark-subtle" id="name" value="{{ old('user_name') }}">
+                            @error('user_name')
+                            <span class=" text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
 
                     <div class="form--item mb-2 d-flex flex-column">
                         <label for="tel" class="mb-1">Phone number</label>
-                        <input type="tel" name="contact" pattern="[0-9]+" title="Only Numbers Are allowed" class="rounded-1 form-control border py-1 px-2 border-dark-subtle" id="tel" required>
+                        <input type="tel" name="contact" pattern="[0-9]+" title="Only Numbers Are allowed"
+                            class="rounded-1 form-control border py-1 px-2 border-dark-subtle" id="tel" value="{{old('contact')}}">
+                            @error('contact')
+                            <span class=" text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
 
                     <div class="form--item mb-2 d-flex flex-column position-relative">
                         <label for="password" class="mb-1">Password</label>
-                        <input type="password" name="password" class="py-1 px-2 border form-control border-dark-subtle rounded-1" id="password" required>
+                        <input type="password" name="password"
+                            class="py-1 px-2 border form-control border-dark-subtle rounded-1" id="password" value="{{old('password')}}">
+                          
                         <button type="button" class="btn--toggle-password bg-transparent border-0 text-center">
                             <i class="fa-solid fa-eye"></i>
                         </button>
                     </div>
+                    @error('password')
+                    <span class=" text-danger">{{ $message }}</span>
+                @enderror
                     <div class="form--item mb-2 d-flex flex-column position-relative">
                         <label for="con-password" class="mb-1">Confirm password</label>
-                        <input type="password" name="con-password" class="rounded-1 form-control border py-1 px-2 border-dark-subtle" id="con-password" required>
+                        <input type="password" name="password_confirmation"
+                            class="rounded-1 form-control border py-1 px-2 border-dark-subtle" id="password_confirmation" value="{{old('password_confirmation')}}">
+                        
                         <button type="button" class="btn--toggle-password bg-transparent border-0 text-center">
                             <i class="fa-solid fa-eye"></i>
                         </button>
                     </div>
+                    @error('con-password')
+                    <span class=" text-danger">{{ $message }}</span>
+                @enderror
                 </div>
 
                 <div class="col col-12 col-md-6">
                     <div class="form--item mb-2 d-flex flex-column">
                         <label for="email" class="mb-1">Email</label>
-                        <input type="email" name="email" class="rounded-1 border form-control py-1 px-2 border-dark-subtle" id="email" required>
+                        <input type="email" name="email"
+                            class="rounded-1 border form-control py-1 px-2 border-dark-subtle" value="{{old('email')}}"id="email">
+                            @error('email')
+                            <span class=" text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                     <label for="address" class="mb-1">Address</label>
 
                     <div class="address--picker d-flex flex-wrap justify-content-between mb-1" id="address">
 
-                        <select name="province" class="form-select form-control form-select-lg" id="province" onchange="fetchDistrict(this.value)" class="edit">
+                        <select name="province" class="form-select form-control form-select-lg" id="province"
+                            onchange="fetchDistrict(this.value)" class="edit">
                             <option value="" disabled selected>Province</option>
                             @foreach ($province as $province)
-                            <option value="{{ $province->province_id }}">{{ $province->province }}</option>
+                                <option value="{{ $province->province_id }}">{{ $province->province }}</option>
                             @endforeach
                         </select>
 
-                        <select name="district" id="district" class="py-1 form-control form-select px-2 rounded-1" required onchange="fetchMunicipalities(this.value)">
+                        <select name="district" id="district" class="py-1 form-control form-select px-2 rounded-1"
+                            onchange="fetchMunicipalities(this.value)">
                             <option value="">District</option>
                         </select>
 
-                        <select name="municipality" id="municipality" class="mt-2 form-control form-select py-1 px-2 rounded-1" required>
+                        <select name="municipality" id="municipality"
+                            class="mt-2 form-control form-select py-1 px-2 rounded-1">
                             <option value="">Local body</option>
                         </select>
 
-                        <select name="ward" id="ward" class="mt-2 form-control form-select py-1 px-2" required>
+                        <select name="ward" id="ward" class="mt-2 form-control form-select py-1 px-2">
                             <option value="">Ward</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -183,11 +211,12 @@
                         </select>
                     </div>
 
-                    <button type="submit" class="btn--register text-white mt-3 w-100 py-2 rounded-1">Register</button>
+                    <button type="submit"
+                        class="btn--register text-white mt-3 w-100 py-2 rounded-1">Register</button>
 
                     <div class="signup--footer mt-2">
                         <!-- while using text (login) -->
-                        <p class="text-center">Already have an account? <a href="{{'/customerAdd'}}">Login</a></p>
+                        <p class="text-center">Already have an account? <a href="{{ '/customerAdd' }}">Login</a></p>
 
                         <!-- while using button (login) -->
                         <!-- <p class="text-center mt-3">Already have an account?</p>
@@ -258,4 +287,5 @@
         })
     })
 </script>
+
 @include('footermain')
