@@ -60,7 +60,7 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $addedby = session('user')['id'];
-        if (session('user')['role'] == 'Admin' || session('user')['role'] == 'SuperAdmin') {
+        if (session('user')['role'] == 'Admin') {
             $file = $request->file('Productthumbfile');
             $filename = time() . '.' . $file->getClientOriginalExtension();
             $file->move(public_path() . '/storage/thumbnails/', $filename);
@@ -74,21 +74,6 @@ class ProductController extends Controller
                 'approvedby' => $addedby,
                 'thumbnail' => $filename,
                 'status' => 'approved',
-            ])->product_id;
-            return $this->uploadimage($id, $request);
-        } else {
-            $file = $request->file('Productthumbfile');
-            $filename = time() . '.' . $file->getClientOriginalExtension();
-            $file->move(public_path() . '/storage/thumbnails/', $filename);
-            $id = Product::create([
-                'product_name' => $request->Productname,
-                'brand' => $request->Brand,
-                'discription' => $request->Productcontent,
-                'slug' => Str::slug($request->Productname),
-                'category' => 1,
-                'lowstockindication' => $request->lowstockindication,
-                'addedby' => $addedby,
-                'thumbnail' => $filename,
             ])->product_id;
             return $this->uploadimage($id, $request);
         }

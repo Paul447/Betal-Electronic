@@ -22,9 +22,9 @@ class UserSeeder extends Seeder
          $data=
             [
                 'user_name' => 'Subesh Raj Pandey' ,
-                'email' => 'pandeypaul137@gmail.com',
-                'password' => Hash::make('12345'),
-                'role'=>'SuperAdmin',
+                'email' => 'admin@admin.com',
+                'password' => Hash::make('12345678'),
+                'role'=>'Admin',
                 'contact'=>'098765577',
                 'province'=>1,
                 'district'=>1,
