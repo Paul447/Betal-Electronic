@@ -23,7 +23,7 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" defer></script>
-    <script src=" {{ asset('admin/js/lightSlider.js') }}"></script>
+    {{-- <script src=" {{ asset('admin/js/lightSlider.js') }}"></script> --}}
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
         integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
@@ -188,58 +188,7 @@
             }
         }
 
-        .brand-slider {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 20px;
-            gap: 40px;
-            cursor: grab;
-        }
 
-        .slider-container {
-            min-width: 100px;
-            max-width: 170px;
-            height: 70px;
-            user-select: none;
-        }
-
-        .slider-container img {
-            width: 100% !important;
-            height: 100% !important;
-
-            object-fit: contain;
-            filter: grayscale(1);
-            pointer-events: none;
-        }
-
-        .slider-container:hover img {
-            filter: grayscale(0);
-        }
-
-        @media (max-width: 768px) {
-            .brand-slider {
-                gap: 20px;
-            }
-
-            .slider-container {
-                min-width: 150px;
-                max-width: 170px;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .slider-container {
-                min-width: 40px;
-                max-width: 40px;
-            }
-        }
-
-        @media (max-width: 400px) {
-            .owl-carousel.owl-drag .owl-item {
-                margin-right: 10px;
-            }
-        }
 
         :root {
             --footer-bg: #d9d9d9;
@@ -651,6 +600,53 @@
             background-color: #fff;
             outline-color: #ffff;
             outline-style: outset;
+        }
+        body {
+            overflow-x: hidden;
+        }
+
+        .swiper-container {
+            padding: 20px;
+            margin: 40px;
+            background-color: #d9d9d9;
+            overflow: hidden;
+        }
+
+        .swiper-wrapper {
+            width: fit-content;
+            margin: 0 auto;
+        }
+
+        .swiper-slide {
+            max-width: 100px;
+            max-height: 100px;
+        }
+
+        @media (max-width: 768px) {
+            .swiper-slide {
+                max-width: 80px;
+                max-height: 80px;
+            }
+        }
+
+        .swiper-slide:first-child {
+            margin-left: 40px;
+        }
+
+        .swiper-slide:last-child {
+            margin-right: 40px;
+        }
+
+        .swiper-slide img {
+            max-width: 100%;
+            max-height: 100%;
+            cursor: pointer;
+            object-fit: contain;
+            filter: grayscale(1);
+        }
+
+        .swiper-slide img:hover {
+            filter: grayscale(0);
         }
     </style>
 </head>
