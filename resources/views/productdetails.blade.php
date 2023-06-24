@@ -335,16 +335,20 @@
         <div class="products-container d-flex justify-content-center -" style="text-align: center;">
             @foreach ($getProductDetail as $product)
                 <div class="product-card ">
-                    <div class="product-image">
-                        <img src="{{ asset('/storage/thumbnails/' . $product->thumbnail) }}" class="imgs"
-                            id="CardImage" />
-                    </div>
+                    <a href="{{ '/productdetails/' . $product->product_id . '/' . $product->slug }}">
+                        <div class="product-image">
+                            <img src="{{ asset('/storage/thumbnails/' . $product->thumbnail) }}" class="imgs"
+                                id="CardImage" />
+                        </div>
+                    </a>
 
                     <div class="product-info">
                         <span>{{ $product->brand_name }}
                             {{ $value = session()->get('succes') }}
                         </span>
-                        <h4 class="product-name">{{ $product->product_name }}</h4>
+                        <a href="{{ '/productdetails/' . $product->product_id . '/' . $product->slug }}">
+                            <h4 class="product-name">{{ $product->product_name }}</h4>
+                        </a>
                         <p class="product-price  fw-bold text-dark">
 
 

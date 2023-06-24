@@ -33,6 +33,9 @@
         a{
             text-decoration: none;
         }
+      .brandname{
+            text-align: center!important;
+        }
         .hp-mod-price-text {
             text-decoration: line-through
         }

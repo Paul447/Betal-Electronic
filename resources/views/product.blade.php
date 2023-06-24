@@ -14,7 +14,7 @@
 
                 @foreach ($featured as $featured)
                     <div class="product-card">
-                        <a href="{{ '/productdetails/' . $featured->product_id }}">
+                        <a href="{{ '/productdetails/' . $featured->product_id . '/' . $featured->slug }}">
                             <div class="product-image">
                                 <img src="{{ asset('/storage/thumbnails/' . $featured->thumbnail) }}" class="imgs"
                                     id="CardImage" />
@@ -25,7 +25,8 @@
                         <span>{{ $featured->brand_name }}
 
                         </span>
-                        <a href="{{ '/productdetails/' . $featured->product_id }}" style="text-decoration: none;">
+                        <a href="{{ '/productdetails/' . $featured->product_id . '/' . $featured->slug }}"
+                            style="text-decoration: none;">
                             <h4 class="product-name">{{ $featured->product_name }}</h4>
                         </a>
                         <p class="product-price fw-bold text-dark">
@@ -66,7 +67,7 @@
                                         class="fas fa-cart-plus"></i></a>
                             @endif
                         </div>
-                        {{-- </div> --}}
+
 
 
                     </div>

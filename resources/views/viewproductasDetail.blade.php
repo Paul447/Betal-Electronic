@@ -5,7 +5,7 @@
 
 <div class="toast">Please Login First To Add To Cart!</div>
 
-<body >
+<body>
 
     <section id="product1" class="section-p1">
         @foreach ($catoName as $catname)
@@ -15,15 +15,19 @@
 
             @foreach ($data as $product)
                 <div class="product-card">
-                    <div class="product-image">
-                        <img src="{{ asset('/storage/thumbnails/' . $product->thumbnail) }}" class="imgs"
-                            id="CardImage" />
-                    </div>
+                    <a href="{{ '/productdetails/' . $product->product_id . '/' . $product->slug }}">
+                        <div class="product-image">
+                            <img src="{{ asset('/storage/thumbnails/' . $product->thumbnail) }}" class="imgs"
+                                id="CardImage" />
+                        </div>
+                    </a>
 
                     <div class="product-info text-align-center">
                         <span class="text-align-center">{{ $product->brand_name }}
                         </span>
-                        <h4 class="product-name">{{ $product->product_name }}</h4>
+                        <a href="{{ '/productdetails/' . $product->product_id . '/' . $product->slug }}">
+                            <h4 class="product-name">{{ $product->product_name }}</h4>
+                        </a>
                         <p class="product-price">
 
                             @php
@@ -57,8 +61,7 @@
                             @if (!is_null(session('customer')))
                                 <button class="add-to-cart" id="addToCartFromCard" value="{{ $product->product_id }}"
                                     onclick="fetcchCart(this.value);">
-                                    <i
-                                    class="fas fa-cart-plus"></i>
+                                    <i class="fas fa-cart-plus"></i>
                                 </button>
                             @else
                                 <button id="" class="show-toast add-to-cart"><i
