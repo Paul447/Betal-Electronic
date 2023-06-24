@@ -32,6 +32,8 @@ return new class extends Migration
             $table->string('createdby')->default('system');
             $table->string('updatedby')->nullable();
             $table->string('otp')->nullable();
+            $table->string('reset_password_otp')->nullable();
+            $table->integer('retry')->default(3);
             $table->timestamps();
         });
     }

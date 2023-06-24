@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Province;
 use App\Models\admin\User;
 use Exception;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
@@ -20,10 +21,6 @@ class CustomerRegController extends Controller
     public function index()
     {
         return view('login');
-    }
-    public function forgot()
-    {
-        return view('resetpassword');
     }
 
     /**
@@ -243,13 +240,98 @@ class CustomerRegController extends Controller
         $request->session()->flush();
         return redirect('/');
     }
-    public function otpverifypass(Request $request)
+
+    public function forgot()
     {
-        return view('otpverifyfochangepass');
+        return view('resetpassword');
     }
+
+    function generateOTP(Request $request)
+    {
+
+
+        $request->validate([
+            // this will check if the input email exist in the data base
+
+            // 'email' => 'email | required | exists:users',
+
+
+            // this method will validate of all the email belongs to role user only.
+            'email' => [
+                'required',
+                'email',
+                Rule::exists('users')->where(function ($query) {
+                    $query->where('role', 'user');
+                }),
+            ]
+        ]);
+
+
+        $user = User::where('email', $request->email)->get()->first();
+        $user_id = $user->id;
+        $name = $user->user_name;
+
+        $rand = mt_rand(10000, 99999);
+        try {
+            Mail::send('forgot_password_otp', ['name' => $name, 'otp' => $rand], function ($message) use ($request) {
+                $message->to($request->email)->subject('Verify Your Email');
+            });
+
+            $user->reset_password_otp = $rand;
+            $user->save();
+
+            // $user->update(['reset_password_otp'=>$rand]);
+
+            return view('otpverifyfochangepass')->with(compact('user_id'));
+            // return redirect('/customerLogin/verify');
+        } catch (Exception $e) {
+            echo "something went wrong, mail can't be sent";
+        }
+    }
+
     public function changepassconfirm(Request $request)
     {
-        return view('changepassconfirm');
+        $user = User::find($request->user_id);
+
+        $user_id = $user->id;
+
+        if ($user->reset_password_otp == $request->otp) {
+            $user->reset_password_otp = null;
+            $user->retry = 3;
+            $user->save();
+            return view('changepassconfirm')->with(compact('user_id'));
+        } else {
+            session()->put('errormessage', 'Invalid OTP');
+            $retry = $user->retry - 1;
+            $user->retry = $retry;
+            $user->save();
+            if ($user->retry >= 0) {
+                return view('otpverifyfochangepass')->with(compact('user_id', 'retry'));
+            } else {
+                $user->retry = 3;
+                $user->save();
+                return redirect('/customerLogin/forgot')->with(compact('user_id'));
+            }
+        }
     }
-    
+
+    function resetPassword(Request $request)
+    {
+        if ($request->password == $request->password_confirmation) {
+            $user = User::find($request->user_id);
+            $user->password = Hash::make($request->password);
+            $user->save();
+
+            try {
+                Mail::send('password_reset', ['name' => $user->username], function ($message) use ($user) {
+                    $message->to($user->email)->subject('Password Reset Successfully');
+                });
+            } catch (Exception $e) {
+                echo "something went wrong, mail can't be sent";
+            }
+
+            session()->put('errormessage', "Password Reset Successfully");
+            return redirect('/customerAdd');
+        }
+    }
 }

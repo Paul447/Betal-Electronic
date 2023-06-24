@@ -145,8 +145,9 @@ Route::post('/customerAdd', [CustomerRegController::class, 'store']);
 Route::post('/otpverify', [CustomerRegController::class, 'otpverify']);
 Route::post('/customerlogin', [CustomerRegController::class, 'login']);
 Route::get('/customerLogin/forgot', [CustomerRegController::class, 'forgot']);
-Route::post('/customerLogin/otpverifypass', [CustomerRegController::class, 'otpverifypass']);
-Route::post('/customerLogin/changepassconfirm', [CustomerRegController::class, 'changepassconfirm']);
+Route::post('/customerLogin/forgot', [CustomerRegController::class, 'generateOTP']);
+Route::post('/customerLogin/verify', [CustomerRegController::class, 'changepassconfirm']);
+Route::post('/customerLogin/resetpassword', [CustomerRegController::class, 'resetPassword']);
 
 
 
