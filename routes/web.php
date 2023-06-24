@@ -142,6 +142,11 @@ Route::resource('/customerAdd', CustomerRegController::class);
 Route::post('/customerAdd', [CustomerRegController::class, 'store']);
 Route::post('/otpverify', [CustomerRegController::class, 'otpverify']);
 Route::post('/customerlogin', [CustomerRegController::class, 'login']);
+Route::get('/customerLogin/forgot', [CustomerRegController::class, 'forgot']);
+Route::post('/customerLogin/otpverifypass', [CustomerRegController::class, 'otpverifypass']);
+Route::post('/customerLogin/changepassconfirm', [CustomerRegController::class, 'changepassconfirm']);
+
+
 Route::get('/logout', [UserController::class, 'logout']);
 
 Route::get('/getBatchAssociatedProduct/{id}', [BatchController::class, 'fetchBatchAssociatesProduct']);

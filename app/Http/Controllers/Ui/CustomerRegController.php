@@ -21,6 +21,10 @@ class CustomerRegController extends Controller
     {
         return view('login');
     }
+    public function forgot()
+    {
+        return view('resetpassword');
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -239,4 +243,13 @@ class CustomerRegController extends Controller
         $request->session()->flush();
         return redirect('/');
     }
+    public function otpverifypass(Request $request)
+    {
+        return view('otpverifyfochangepass');
+    }
+    public function changepassconfirm(Request $request)
+    {
+        return view('changepassconfirm');
+    }
+    
 }

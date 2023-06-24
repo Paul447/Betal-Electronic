@@ -30,12 +30,16 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-        a{
+
+
+        a {
             text-decoration: none;
         }
-      .brandname{
-            text-align: center!important;
+
+        .brandname {
+            text-align: center !important;
         }
+
         .hp-mod-price-text {
             text-decoration: line-through
         }
@@ -597,6 +601,57 @@
         .colored-toast.swal2-icon-info {
             background-color: #3fc3ee !important;
         }
+
+        ol,
+        ul {
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .errorView {
+            color: #a50318;
+        }
+
+        .btnn {
+            background-color: #a50318;
+            color: #ffffff;
+        }
+
+        .btnn:focus,
+        .btnn:hover {
+            /* opacity: 0.9; */
+            background-color: #a50318;
+            color: #ffffff;
+            outline: 3px solid var(--light-red) !important;
+            /* outline-color: #a50318; */
+            /* outline-style: outset; */
+        }
+
+        .googlebutton {
+            background-color: aliceblue;
+            text-decoration: none;
+            height: 45px;
+        }
+
+        input[type="password"] {
+            padding-right: 30px !important;
+        }
+
+        .btn--toggle-password {
+            width: 30px;
+            position: absolute;
+            right: 0;
+            top: 50%;
+        }
+
+        .googlebutton:hover {
+            background-color: #fff;
+            outline-color: #ffff;
+            outline-style: outset;
+        }
     </style>
 </head>
 
@@ -803,18 +858,15 @@
                 right.style.top = middle.offsetHeight + 100 + "px"
             }
         });
-
-        
-        
     </script>
     @if (session('errormessage'))
-    <script>
-        Toast.fire({
-            icon: 'error',
-            title: '{{ session('errormessage') }}'
-        })
-    </script>
-    @php
-        session()->forget('errormessage');
-    @endphp
+        <script>
+            Toast.fire({
+                icon: 'error',
+                title: '{{ session('errormessage') }}'
+            })
+        </script>
+        @php
+            session()->forget('errormessage');
+        @endphp
     @endif
