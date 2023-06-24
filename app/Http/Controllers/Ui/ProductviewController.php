@@ -35,17 +35,20 @@ class ProductviewController extends Controller
    public function search(Request $request){
       $search = $request->input('search');
       $data  = Product::join('brands','brand','brands_id')->where('product_name','LIKE',"%$search")->get();
-      
-      return view('searchItem')->with(compact('data'));
+      $mydata = "Searched Result";
+      return view('searchItem')->with(compact('data','mydata'));
    }
 
    public function categorySearch($id){
       $dataname = Productcategory::where('category_id' ,$id)->pluck('product_id');
       $data = Product::whereIn('product_id', $dataname)->get();
-      return view('searchItem')->with(compact('data'));      
+      $mydata = Category::where('categorys_id',$id)->value('category_name');
+      // echo $mydata;
+      return view('searchItem')->with(compact('data','mydata'));      
    }
    public function fetchbyBrand($id){
       $data = Product::where('brand',$id)->get();
-      return view('searchItem')->with(compact('data'));     
+      $mydata = Brand::where('brands_id',$id)->value('brand_name');
+      return view('searchItem')->with(compact('data','mydata'));     
    }
 }
