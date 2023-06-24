@@ -63,13 +63,14 @@ class BrandController extends Controller
         //     ]
         //     );
 
-        $BrandImage = $request->file('Brandfile')->getClientOriginalName();
-        $Brandfile = $request->file('Brandfile')->storeAs('public/brands/', $BrandImage);
-
+        
         $addedby = session('user')['id'];
         if (session('user')['role'] == 'Admin' || session('user')['role'] == 'SuperAdmin') {
+            $file = $request->file('Brandfile');
+            $filename = $file->getClientOriginalName();
+            $file->move(public_path() . '/storage/brands/', $filename);
 
-            Brand::create(array_merge($request->all(), ['brand_image' => $BrandImage,'addedby' => $addedby, 'approvedby' => $addedby, 'status' => "approved"]));
+            Brand::create(array_merge($request->all(), ['brand_image' => $filename,'addedby' => $addedby, 'approvedby' => $addedby, 'status' => "approved"]));
             return redirect('/admin/brand/');
         } else {
             Brand::create(array_merge($request->all(), ['addedby' => $addedby]));
@@ -116,10 +117,14 @@ class BrandController extends Controller
         //        'name'=>'required|alpha_dash',
         //     ]
         //     );
+        
         if (session('user')['role'] == 'Admin' || session('user')['role'] == 'SuperAdmin') {
+            $file = $request->file('Brandfile');
+            $filename = $file->getClientOriginalName();
+            $file->move(public_path() . '/storage/brands/', $filename);
             $brand =  Brand::find($id);
             $updatedby = session('user')['id'];
-            $brand->update(array_merge($request->all(), ['updatedby' => $updatedby, 'updateapprovedby' => $updatedby, 'updatestatus' => "approved"]));
+            $brand->update(array_merge($request->all(), ['brand_image' => $filename,'updatedby' => $updatedby, 'updateapprovedby' => $updatedby, 'updatestatus' => "approved"]));
             return redirect('/admin/brand/');
         }
         $brand =  Brand::find($id);

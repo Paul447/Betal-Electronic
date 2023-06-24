@@ -38,4 +38,14 @@ class ProductviewController extends Controller
       
       return view('searchItem')->with(compact('data'));
    }
+
+   public function categorySearch($id){
+      $dataname = Productcategory::where('category_id' ,$id)->pluck('product_id');
+      $data = Product::whereIn('product_id', $dataname)->get();
+      return view('searchItem')->with(compact('data'));      
+   }
+   public function fetchbyBrand($id){
+      $data = Product::where('brand',$id)->get();
+      return view('searchItem')->with(compact('data'));     
+   }
 }

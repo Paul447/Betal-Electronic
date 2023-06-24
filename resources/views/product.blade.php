@@ -1,8 +1,8 @@
 @include('welcome')
 @include('slider')
 
+@include('brandchoice')
 @include('categories')
-
 
 <body>
     <div class="toast">Please Login First To Add To Cart!</div>

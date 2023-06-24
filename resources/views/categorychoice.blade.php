@@ -32,8 +32,14 @@
             display: block;
             width: 90px;
             height: 120px;
+            filter: grayscale(1);
+            pointer-events: none;
             object-fit: contain;
         }
+        swiper-slide:hover img{
+            filter: grayscale(0);
+        }
+
 
         swiper-container {
             width: 100%;
@@ -73,7 +79,7 @@
 
         @foreach ($viewcategorydata as $catdata)
             <swiper-slide class="">
-                <a href="">
+                <a href="{{url('/categorySearch/'.$catdata->categorys_id)}}">
                     <li class="splide__slide">
                         <img src="{{ asset('/storage/categorythumbnail/' . $catdata->categorythumbnail) }}"
                             alt="">

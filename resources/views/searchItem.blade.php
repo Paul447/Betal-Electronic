@@ -14,7 +14,7 @@
                     style="text-decoration: none;">
                     <div class="product-image">
                         <img src="{{ asset('/storage/thumbnails/' . $product->thumbnail) }}" class="imgs"
-                           alt="{{$product->product_name}}" id="CardImage" />
+                            alt="{{ $product->product_name }}" id="CardImage" />
                     </div>
                 </a>
 
@@ -53,7 +53,8 @@
                 </p>
                 <div class="product-buttons ">
                     <a href="{{ '/productdetails/' . $product->product_id . '/' . $product->slug }}"
-                        class="view-details" style="text-decoration: none; text-align:center;"><i class="fas fa-info-circle"></i></a>
+                        class="view-details" style="text-decoration: none; text-align:center;"><i
+                            class="fas fa-info-circle"></i></a>
                     @if (!is_null(session('customer')))
                         <button class="add-to-cart" id="addToCartFromCard" value="{{ $product->product_id }}"
                             onclick="fetcchCart(this.value);"><i class="fas fa-cart-plus"></i></button>
@@ -62,10 +63,6 @@
                     @endif
                 </div>
 
-
-                {{-- <div class="ribbon-wrap">
-            <div class="ribbon"></div>
-          </div> --}}
             </div>
         @endforeach
     </div>
@@ -92,25 +89,9 @@
             session()->forget('QtyUpdated');
         @endphp
     @endif
-    {{-- @if (session('addedToCart'))
-      <script>
-           Swal.fire({
-            title: 'Hello!',
-            text: '{{session('addedToCart')}}',
-            icon: 'success',
-            confirmButtonText: 'OK'
-    });
-      </script>
-    @php
-    session()->forget('addedToCart');
-    @endphp
-@endif --}}
-
 </section>
 
-
 @include('footermain')
-
 <script>
     function fetcchCart(cartvalue) {
         var controller = "/CartVieww/";

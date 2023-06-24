@@ -45,7 +45,6 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        
         $request->validate([
             'category_name' => 'required|alpha_dash',
             'parent' => 'required|numeric',
@@ -102,7 +101,7 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'category_name' => 'required|alpha_dash',
+            'category_name' => 'required|',
             'parent' => 'required|numeric',
         ]);
         $updatedby = session('user')['id'];
@@ -146,10 +145,10 @@ class CategoryController extends Controller
     {
         $category = Category::find($id);
         $image_name = Category::where('categorys_id', $id)->value('categorythumbnail');
-            $image_path = public_path('/storage/categorythumbnail/' . $image_name);
-            if (file_exists($image_path)) {
-                unlink($image_path);
-            }
+        $image_path = public_path('/storage/categorythumbnail/' . $image_name);
+        if (file_exists($image_path)) {
+            unlink($image_path);
+        }
         $category->delete();
         return redirect('/admin/category/');
     }

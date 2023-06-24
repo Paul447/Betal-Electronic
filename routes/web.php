@@ -48,6 +48,8 @@ use App\Http\Controllers\viewprofileController;
 // }]]);
 
 Route::get('/buy/{qnt},{id}', [CheckoutController::class, 'index']);
+Route::get('/categorySearch/{id}', [ProductviewController::class, 'categorySearch']);
+Route::get('/fetchbyBrand/{id}', [ProductviewController::class, 'fetchbyBrand']);
 Route::get('/', [ProductviewController::class, 'index']);
 Route::get('/productdetails/{id}/{slug}', [ProductviewController::class, 'viewdetails']);
 Route::get('/categories', [CategoryViewController::class, 'viewCatos']);
@@ -145,6 +147,7 @@ Route::post('/customerlogin', [CustomerRegController::class, 'login']);
 Route::get('/customerLogin/forgot', [CustomerRegController::class, 'forgot']);
 Route::post('/customerLogin/otpverifypass', [CustomerRegController::class, 'otpverifypass']);
 Route::post('/customerLogin/changepassconfirm', [CustomerRegController::class, 'changepassconfirm']);
+
 
 
 Route::get('/logout', [UserController::class, 'logout']);
