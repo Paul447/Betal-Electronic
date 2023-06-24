@@ -1,4 +1,4 @@
-{{-- {{-- <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"> --}}
+
 @php
     $viewcategorydata = DB::table('categories')
         ->where('is_visible', '=', 1)
@@ -14,8 +14,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
 
     <style>
-     
-
         swiper-container {
             width: 50%;
             height: 50%;
@@ -40,9 +38,9 @@
         swiper-container {
             width: 100%;
             height: 150px;
-            
+
         }
-     
+
         swiper-pagination {
             display: none;
         }
@@ -67,22 +65,22 @@
 </head>
 
 <body>
-   
-    <h2 class="feture mx-auto featured brand mt-5 mb-5">Featured Brand</h2>
+
+    <h2 class="feture mx-auto featured brand mt-5 mb-5">Featured Category</h2>
     <hr class="mx-5">
-    <swiper-container class="mySwiper container" slides-per-view="3" centered-slides="true" space-between="120" pagination="true"
-        pagination-type="fraction" navigation="true">
+    <swiper-container class="mySwiper container" slides-per-view="3" centered-slides="true" space-between="120"
+        pagination="true" pagination-type="fraction" navigation="true">
 
         @foreach ($viewcategorydata as $catdata)
             <swiper-slide class="">
-               <a href=""><li class="splide__slide">
-                    <img
-                        src="{{ asset('/storage/categorythumbnail/' . $catdata->categorythumbnail) }}" alt="">
-                  
-                </li>
-            </a> 
+                <a href="">
+                    <li class="splide__slide">
+                        <img src="{{ asset('/storage/categorythumbnail/' . $catdata->categorythumbnail) }}"
+                            alt="">
+
+                    </li>
+                </a>
             </swiper-slide>
-  
         @endforeach
 
     </swiper-container>
@@ -131,5 +129,5 @@
             });
     </script>
 </body>
-</html>
 
+</html>

@@ -269,7 +269,7 @@
                 @foreach ($images as $item)
                     <div class="slide">
 
-                        <img src="{{ asset('/storage/product/' . $item) }}" alt="Image 1">
+                        <img src="{{ asset('/storage/product/' . $item) }}" alt="{{$product->product_name}}">
                     </div>
                 @endforeach
             </div>
@@ -277,7 +277,7 @@
                 <div class="control-button prev-button">&#8249;</div>
                 <div class="thumbnail-container">
                     @foreach ($images as $item)
-                        <div class="thumbnail"><img src="{{ asset('/storage/product/' . $item) }}" alt="Image 2"></div>
+                        <div class="thumbnail"><img src="{{ asset('/storage/product/' . $item) }}" alt="{{$product->product_name}}"></div>
                     @endforeach
                 </div>
                 <div class="control-button next-button">&#8250;</div>
@@ -338,7 +338,7 @@
                     <a href="{{ '/productdetails/' . $product->product_id . '/' . $product->slug }}">
                         <div class="product-image">
                             <img src="{{ asset('/storage/thumbnails/' . $product->thumbnail) }}" class="imgs"
-                                id="CardImage" />
+                            id="CardImage" alt="{{$product->product_name}}" />
                         </div>
                     </a>
 

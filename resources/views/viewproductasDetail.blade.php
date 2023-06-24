@@ -18,7 +18,7 @@
                     <a href="{{ '/productdetails/' . $product->product_id . '/' . $product->slug }}">
                         <div class="product-image">
                             <img src="{{ asset('/storage/thumbnails/' . $product->thumbnail) }}" class="imgs"
-                                id="CardImage" />
+                               alt="{{$product->product_name}}" id="CardImage" />
                         </div>
                     </a>
 
