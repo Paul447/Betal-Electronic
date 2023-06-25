@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\admin\Variation;
 use App\Models\Admin\Category;
 use Illuminate\Support\Facades\DB;
+
 class VariationController extends Controller
 {
     /**
@@ -16,7 +17,7 @@ class VariationController extends Controller
      */
     public function index()
     {
-        $data = Variation::where('status','=','approved')->get();
+        $data = Variation::where('status', '=', 'approved')->get();
 
         return view('admin.Varition.ViewVarition')->with(compact('data'));
     }
@@ -28,10 +29,10 @@ class VariationController extends Controller
      */
     public function create()
     {
-        $url="/admin/variation/";
-        $title ="Add Varition";
-        $category =Category::where('status','=','approved');
-        $data =compact('url','title','category');
+        $url = "/admin/variation/";
+        $title = "Add Varition";
+        $category = Category::where('status', '=', 'approved');
+        $data = compact('url', 'title', 'category');
         return view('admin.Varition.AddVarition')->with($data);
     }
 
@@ -46,22 +47,19 @@ class VariationController extends Controller
         // print_r($request->input());
         $request->validate(
             [
-               'variation_name'=>'required|alpha_dash',
+                'variation_name' => 'required|alpha_dash',
             ]
-            );
+        );
 
 
 
         $addedby = session('user')['id'];
-        if (session('user')['role'] == 'Admin' || session('user')['role'] == 'SuperAdmin')
-        {
+        if (session('user')['role'] == 'Admin') {
 
-            Variation::create(array_merge($request->all(),['addedby'=>$addedby,'approvedby'=>$addedby,'status'=>'approved']));
+            Variation::create(array_merge($request->all(), ['addedby' => $addedby, 'approvedby' => $addedby, 'status' => 'approved']));
             return redirect('/admin/variation/');
-        }
-        else
-        {
-            Variation::create(array_merge($request->all(),['addedby'=>$addedby]));
+        } else {
+            Variation::create(array_merge($request->all(), ['addedby' => $addedby]));
             return redirect('/admin/variation/');
         }
     }
@@ -85,12 +83,12 @@ class VariationController extends Controller
      */
     public function edit($id)
     {
-        $url="/admin/variation/$id";
-        $title= "Edit Variation";
-        $category = Category::where('status','=','approved');
+        $url = "/admin/variation/$id";
+        $title = "Edit Variation";
+        $category = Category::where('status', '=', 'approved');
         $data = Variation::find($id);
 
-        return view('admin.Varition.AddVarition')->with(compact('url','title','category','data'));
+        return view('admin.Varition.AddVarition')->with(compact('url', 'title', 'category', 'data'));
     }
 
     /**
@@ -103,29 +101,25 @@ class VariationController extends Controller
     public function update(Request $request, $id)
     {
         // $request->validate(
-            // [
-            //    'variation_name'=>'required|alpha_dash',
-            //    'category'=>'required|numeric,'
-            // ]
-            // );
+        // [
+        //    'variation_name'=>'required|alpha_dash',
+        //    'category'=>'required|numeric,'
+        // ]
+        // );
 
 
 
 
         $updatedby = session('user')['id'];
-        $variation =Variation::find($id);
-        if (session('user')['role'] == 'Admin' || session('user')['role'] == 'SuperAdmin')
-        {
+        $variation = Variation::find($id);
+        if (session('user')['role'] == 'Admin') {
 
             $variation->update(array_merge($request->all(), ['updatedby' => $updatedby, 'updateapprovedby' => $updatedby, 'updatestatus' => "approved"]));
             return redirect('/admin/variation/');
-        }
-        else
-        {
-            $variation->update(array_merge($request->all(),['updatedby'=>$updatedby, 'updatestatus' => 'pending']));
+        } else {
+            $variation->update(array_merge($request->all(), ['updatedby' => $updatedby, 'updatestatus' => 'pending']));
             return redirect('/admin/variation/');
         }
-
     }
 
     /**

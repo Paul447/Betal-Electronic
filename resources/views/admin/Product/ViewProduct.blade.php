@@ -1,8 +1,8 @@
 @extends('admin.index')
 @section('viewproduct')
-<style>
+    <style>
 
-</style>
+    </style>
     <!-- Striped Rows -->
     <div class="container  " style="margin-top: 85px;" id="tabul">
         <!-- <div class="container mt-3"> -->
@@ -32,30 +32,32 @@
                             <td>{{ $product->product_name }}</td>
                             <td>
                                 @php
-              $price = DB::table('add_product_batches')
-                  ->where('product', $product->product_id)
-                  ->first();
-                  $xy = $price->availablequantity;
-                  
-             
-                $hello = DB::table('add_product_batches')
-                ->where('product', $product->product_id)->whereNotNull('availablequantity')
-                      ->where('availablequantity', '<>', 0)
-                ->orderBy('batchid', 'asc')->limit(1)->pluck('sellingprice')->first();
-                      $val = "Out Of Stock";   
-              
-              
-          @endphp
-       @if(is_null($hello))
-              {{$val}}
-       @else
-          Rs.{{$hello}}
-      @endif
+                                    $price = DB::table('add_product_batches')
+                                        ->where('product', $product->product_id)
+                                        ->first();
+                                    $xy = $price->availablequantity;
+                                    
+                                    $hello = DB::table('add_product_batches')
+                                        ->where('product', $product->product_id)
+                                        ->whereNotNull('availablequantity')
+                                        ->where('availablequantity', '<>', 0)
+                                        ->orderBy('batchid', 'asc')
+                                        ->limit(1)
+                                        ->pluck('sellingprice')
+                                        ->first();
+                                    $val = 'Out Of Stock';
+                                    
+                                @endphp
+                                @if (is_null($hello))
+                                    {{ $val }}
+                                @else
+                                    Rs.{{ $hello }}
+                                @endif
                             </td>
 
                             <td>
                                 @php
-
+                                    
                                     $image = DB::table('productimages')
                                         ->where('product_id', $product->product_id)
                                         ->first();
@@ -75,9 +77,9 @@
                                     width="50px"></td>
                             <td>{{ $product->brand_name }}</td>
                             @php
-
+                                
                             @endphp
-                            {{-- @if (session('user')['role'] == 'Admin' || session('user')['role'] == 'SuperAdmin')
+                            {{-- @if (session('user')['role'] == 'Admin')
                                 <td>
                                     <a href="{{ url('/admin/editor/' . $product->id . '/viewadmin') }}">
                                         {{ $product->user_name }}
@@ -90,7 +92,7 @@
                                         ->where('product_id', $product->product_id)
                                         ->join('categories', 'category_id', '=', 'categorys_id')
                                         ->get();
-
+                                    
                                 @endphp
                                 @foreach ($category as $cat)
                                     {{ $cat->category_name }}
@@ -102,19 +104,24 @@
                                 <a class="btn btn-primary text-white" href="{{ '/product/edit' }}/{{ 5 }}"
                                     style="text-decoration:none; width: 5rem; margin: 0.125rem;" role="button"> Edit </a>
 
-                                    @if ($product->is_disabled)
-                                        <a class="btn-primary btn delete_btn" href="{{'/admin/product/enable/'. $product->product_id}}" class="text-white"
-                                            style="text-decoration:none;  width: 5rem; margin: 0.125rem;"> Enable </a>&nbsp;
-                                    @else  
-                                        <a class="btn-danger btn delete_btn" href="{{'/admin/product/disable/'. $product->product_id}}" class="text-white"
+                                @if ($product->is_disabled)
+                                    <a class="btn-primary btn delete_btn"
+                                        href="{{ '/admin/product/enable/' . $product->product_id }}" class="text-white"
+                                        style="text-decoration:none;  width: 5rem; margin: 0.125rem;"> Enable </a>&nbsp;
+                                @else
+                                    <a class="btn-danger btn delete_btn"
+                                        href="{{ '/admin/product/disable/' . $product->product_id }}" class="text-white"
                                         style="text-decoration:none;  width: 5rem; margin: 0.125rem;"> Disable </a>&nbsp;
-                                    @endif
+                                @endif
 
                                 @if ($product->featured == 'unfeatured')
-                                    <a href="/admin/product/feature/{{$product->product_id}}"class="btn btn-success mb-1"> Featured</a>&nbsp;
+                                    <a
+                                        href="/admin/product/feature/{{ $product->product_id }}"class="btn btn-success mb-1">
+                                        Featured</a>&nbsp;
                                 @endif
-                                @if ($product->featured =='featured')
-                                    <a href="/admin/product/unfeature/{{$product->product_id}}" class="btn btn-warning">UnFeatured</a>
+                                @if ($product->featured == 'featured')
+                                    <a href="/admin/product/unfeature/{{ $product->product_id }}"
+                                        class="btn btn-warning">UnFeatured</a>
                                 @endif
 
 
@@ -130,51 +137,51 @@
 
     </html>
     <script>
-         (function() {
-	'use strict';
+        (function() {
+            'use strict';
 
-var TableFilter = (function() {
- var Arr = Array.prototype;
-		var input;
-  
-		function onInputEvent(e) {
-			input = e.target;
-			var table1 = document.getElementsByClassName(input.getAttribute('data-table'));
-			Arr.forEach.call(table1, function(table) {
-				Arr.forEach.call(table.tBodies, function(tbody) {
-					Arr.forEach.call(tbody.rows, filter);
-				});
-			});
-		}
+            var TableFilter = (function() {
+                var Arr = Array.prototype;
+                var input;
 
-		function filter(row) {
-			var text = row.textContent.toLowerCase();
-       //console.log(text);
-      var val = input.value.toLowerCase();
-      //console.log(val);
-			row.style.display = text.indexOf(val) === -1 ? 'none' : 'table-row';
-		}
+                function onInputEvent(e) {
+                    input = e.target;
+                    var table1 = document.getElementsByClassName(input.getAttribute('data-table'));
+                    Arr.forEach.call(table1, function(table) {
+                        Arr.forEach.call(table.tBodies, function(tbody) {
+                            Arr.forEach.call(tbody.rows, filter);
+                        });
+                    });
+                }
 
-		return {
-			init: function() {
-				var inputs = document.getElementsByClassName('table-filter');
-				Arr.forEach.call(inputs, function(input) {
-					input.oninput = onInputEvent;
-				});
-			}
-		};
- 
-	})();
+                function filter(row) {
+                    var text = row.textContent.toLowerCase();
+                    //console.log(text);
+                    var val = input.value.toLowerCase();
+                    //console.log(val);
+                    row.style.display = text.indexOf(val) === -1 ? 'none' : 'table-row';
+                }
 
-  /*console.log(document.readyState);
-	document.addEventListener('readystatechange', function() {
-		if (document.readyState === 'complete') {
-      console.log(document.readyState);
-			TableFilter.init();
-		}
-	}); */
-  
- TableFilter.init(); 
-})();
+                return {
+                    init: function() {
+                        var inputs = document.getElementsByClassName('table-filter');
+                        Arr.forEach.call(inputs, function(input) {
+                            input.oninput = onInputEvent;
+                        });
+                    }
+                };
+
+            })();
+
+            /*console.log(document.readyState);
+    	document.addEventListener('readystatechange', function() {
+    		if (document.readyState === 'complete') {
+          console.log(document.readyState);
+    			TableFilter.init();
+    		}
+    	}); */
+
+            TableFilter.init();
+        })();
     </script>
 @endsection

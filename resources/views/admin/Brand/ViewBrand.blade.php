@@ -28,7 +28,7 @@
                             <th>Brand Description</th>
 
 
-                            @if (session('user')['role'] == 'Admin' || session('user')['role'] == 'SuperAdmin')
+                            @if (session('user')['role'] == 'Admin')
                                 <th>Added By</th>
                                 {{-- <th>Approved By</th>
                                 <th>Updated By</th>
@@ -45,7 +45,7 @@
                                 <td>{{ $brand->url }}</td>
                                 <td>{{ $brand->brand_discription }}</td>
                                 
-                                @if (session('user')['role'] == 'Admin' || session('user')['role'] == 'SuperAdmin')
+                                @if (session('user')['role'] == 'Admin')
                                     {{-- <td>{{$data->user_name}}</td> --}}
                                     {{-- @if(sizeof($data->ds))
                                     @foreach ($data->ds as $value)
