@@ -20,27 +20,27 @@
 </swiper-container>
 
 <script>
-    const swiperEl = document.querySelector('swiper-container')
-    Object.assign(swiperEl, {
-        slidesPerView: 1,
-        spaceBetween: 10,
-        pagination: {
-            clickable: true,
-        },
-        breakpoints: {
-            640: {
+       const swiperEl = document.querySelector('swiper-container')
+            Object.assign(swiperEl, {
                 slidesPerView: 1,
-                spaceBetween: 20,
-            },
-            768: {
-                slidesPerView: 3,
-                spaceBetween: 40,
-            },
-            1024: {
-                slidesPerView: 4,
-                spaceBetween: 50,
-            },
-        },
-    });
-    swiperEl.initialize();
+                spaceBetween: 10,
+                pagination: {
+                    clickable: true,
+                },
+                breakpoints: {
+                    640: {
+                        slidesPerView: 1,
+                        spaceBetween: 20,
+                    },
+                    768: {
+                        slidesPerView: 3,
+                        spaceBetween: 40,
+                    },
+                    1024: {
+                        slidesPerView: 4,
+                        spaceBetween: 50,
+                    },
+                },
+            });
+            swiperEl.initialize();
 </script>
