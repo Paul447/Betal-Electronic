@@ -50,7 +50,7 @@ class CategoryController extends Controller
             'parent' => 'required|numeric',
         ]);
         $addedby = session('user')['id'];
-        if (session('user')['role'] == 'Admin' || session('user')['role'] == 'SuperAdmin') {
+        if (session('user')['role'] == 'Admin') {
             $file = $request->file('categorythumbnail');
             $filename = time() . '.' . $file->getClientOriginalExtension();
             $file->move(public_path() . '/storage/categorythumbnail/', $filename);
@@ -106,7 +106,7 @@ class CategoryController extends Controller
         ]);
         $updatedby = session('user')['id'];
         $category = Category::find($id);
-        if (session('user')['role'] == 'Admin' || session('user')['role'] == 'SuperAdmin') {
+        if (session('user')['role'] == 'Admin') {
             $file = $request->file('categorythumbnail');
             $filename = time() . '.' . $file->getClientOriginalExtension();
             $file->move(public_path() . '/storage/categorythumbnail/', $filename);

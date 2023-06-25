@@ -37,6 +37,7 @@ class DatabaseSeeder extends Seeder
            ProductcategorySeeder::class,
            Batch_MigrationSeeder::class,
            addPbatch::class,
+           BannerSeeder::class,
         ]);
     }
 }

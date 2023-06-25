@@ -17,9 +17,9 @@ class VariationoptionController extends Controller
      */
     public function index()
     {
-        $data = Variationoption::join('variations','variation','=','variations.variation_id')
-        ->where('variationoptions.status','=','approved')->get();
-       return view('admin.variationoption.viewvariationoption')->with('data',$data);
+        $data = Variationoption::join('variations', 'variation', '=', 'variations.variation_id')
+            ->where('variationoptions.status', '=', 'approved')->get();
+        return view('admin.variationoption.viewvariationoption')->with('data', $data);
     }
 
     /**
@@ -29,10 +29,10 @@ class VariationoptionController extends Controller
      */
     public function create()
     {
-        $url ="/admin/variationoption/";
-        $title ="Add Variation Option";
-        $variation = Variation::where('status','=','approved')->get();
-        $data = compact('url','title','variation');
+        $url = "/admin/variationoption/";
+        $title = "Add Variation Option";
+        $variation = Variation::where('status', '=', 'approved')->get();
+        $data = compact('url', 'title', 'variation');
         return view('admin.variationoption.variationoption')->with($data);
     }
 
@@ -51,19 +51,14 @@ class VariationoptionController extends Controller
         //     ]
         //     );
         $addedby = session('user')['id'];
-        if (session('user')['role'] == 'Admin' || session('user')['role'] == 'SuperAdmin')
-        {
+        if (session('user')['role'] == 'Admin') {
 
-            Variationoption::create(array_merge($request->all(),['addedby'=>$addedby,'approvedby'=>$addedby,'status'=>'approved']));
+            Variationoption::create(array_merge($request->all(), ['addedby' => $addedby, 'approvedby' => $addedby, 'status' => 'approved']));
+            return redirect('/admin/variationoption/');
+        } else {
+            Variationoption::create(array_merge($request->all(), ['addedby' => $addedby]));
             return redirect('/admin/variationoption/');
         }
-        else
-        {
-            Variationoption::create(array_merge($request->all(),['addedby'=>$addedby]));
-            return redirect('/admin/variationoption/');
-        }
-
-
     }
 
     /**
@@ -85,12 +80,12 @@ class VariationoptionController extends Controller
      */
     public function edit($id)
     {
-        $url ="/admin/variationoption/$id";
-        $title ="Update Variation Option";
-        $variation = Variation::where('status','=','approved')->get();
-        $data= Variationoption::join('variations','variation','=','variations.variation_id')->find($id);
+        $url = "/admin/variationoption/$id";
+        $title = "Update Variation Option";
+        $variation = Variation::where('status', '=', 'approved')->get();
+        $data = Variationoption::join('variations', 'variation', '=', 'variations.variation_id')->find($id);
 
-        return view('admin.variationoption.variationoption')->with(compact('url','title','variation','data'));
+        return view('admin.variationoption.variationoption')->with(compact('url', 'title', 'variation', 'data'));
     }
 
     /**
@@ -113,15 +108,12 @@ class VariationoptionController extends Controller
 
         $updatedby = session('user')['id'];
         $var = Variationoption::find($id);
-        if (session('user')['role'] == 'Admin' || session('user')['role'] == 'SuperAdmin')
-        {
+        if (session('user')['role'] == 'Admin') {
 
             $var->update(array_merge($request->all(), ['updatedby' => $updatedby, 'updateapprovedby' => $updatedby, 'updatestatus' => "approved"]));
             return redirect(('admin/variationoption/'));
-        }
-        else
-        {
-            $var->update(array_merge($request->all(),['updatedby'=>$updatedby, 'updatestatus' => 'pending']));
+        } else {
+            $var->update(array_merge($request->all(), ['updatedby' => $updatedby, 'updatestatus' => 'pending']));
             return redirect(('admin/variationoption/'));
         }
     }
