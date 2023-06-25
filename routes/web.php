@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\admin\VariationoptionController;
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\Admin\ApproverequestController;
+use App\Http\Controllers\admin\BannerController;
 use Illuminate\Routing\RouteGroup;
 use App\Http\Controllers\Ui\ProductviewController;
 use App\Http\Controllers\Ui\CustomerRegController;
@@ -59,7 +60,7 @@ Route::get('/login', function () {
 });
 Route::post('/login', [UserController::class, 'login']);
 
-Route::get('/home',[HomePageController::class, 'homeView'])->name('home');
+Route::get('/home', [HomePageController::class, 'homeView'])->name('home');
 //editor routes
 Route::get('/customerlogin', function () {
     return view('/login');
@@ -72,23 +73,23 @@ Route::get('/googleauth', [CustomerRegController::class, 'google_auth']);
 //     return view('/welcome');
 // });
 
-Route::get('/admin/order/pendingOrder',[OrderController::class,'pendingOrder']);
-Route::get('/admin/order/completeOrder',[OrderController::class,'completeOrder']);
-Route::get('/admin/order/calculation',[OrderController::class,'calculation']);
-Route::get('/admin/order/viewAllProductProfit/{id}',[OrderController::class,'viewAllProductProfit']);
+Route::get('/admin/order/pendingOrder', [OrderController::class, 'pendingOrder']);
+Route::get('/admin/order/completeOrder', [OrderController::class, 'completeOrder']);
+Route::get('/admin/order/calculation', [OrderController::class, 'calculation']);
+Route::get('/admin/order/viewAllProductProfit/{id}', [OrderController::class, 'viewAllProductProfit']);
 Route::get('/products/search', [ProductviewController::class, 'search'])->name('products.search');
 
 
 
 
 
-Route::get('/viewprofile',[viewprofileController::class,'viewProfile']);
-Route::get('/myorder',[viewprofileController::class,'myorder']);
-Route::get('/mydataView',[viewprofileController::class,'mydataView']);
-Route::get('/categorychoice',[CategoryViewController::class,'viewBychoice']);
+Route::get('/viewprofile', [viewprofileController::class, 'viewProfile']);
+Route::get('/myorder', [viewprofileController::class, 'myorder']);
+Route::get('/mydataView', [viewprofileController::class, 'mydataView']);
+Route::get('/categorychoice', [CategoryViewController::class, 'viewBychoice']);
 
 
-Route::get('admin/order/orderProductDetailView/',[OrderController::class,'orderPDV']);
+Route::get('admin/order/orderProductDetailView/', [OrderController::class, 'orderPDV']);
 
 Route::group(['prefix' => '/admin', 'middleware' => 'editor'], function () {
     Route::get('/profile/{id}', [UserController::class, 'viewprofile']);
@@ -110,6 +111,7 @@ Route::group(['prefix' => '/admin', 'middleware' => 'editor'], function () {
         '/delivery' => DeliveryController::class,
         '/variation' => VariationController::class,
         '/variationoption' => VariationoptionController::class,
+        '/banner' => BannerController::class,
     ]);
     Route::post('/batch/add/', [BatchController::class, 'add']);
     Route::post('/delivery/add/', [DeliveryController::class, 'add']);
@@ -131,8 +133,8 @@ Route::get('/CheckOutDetail/{inpvalue},{productId}', [CartViewController::class,
 
 
 
-Route::get('/check/{qty},{idd}',[CheckoutController::class , 'store']);
-Route::get('/viewCategories/{catoid}',[CategoryViewController::class , 'viewCategories']);
+Route::get('/check/{qty},{idd}', [CheckoutController::class, 'store']);
+Route::get('/viewCategories/{catoid}', [CategoryViewController::class, 'viewCategories']);
 
 Route::post('/confirm/', [CheckoutController::class, 'store']);
 Route::get('/storeorderInfo/', [CheckoutController::class, 'datastore']);
@@ -160,5 +162,3 @@ Route::get('/getMunicipality/{id}', [AddressController::class, 'municipality']);
 Route::get('/getCatValue/{id}', [CategoryViewController::class, 'readCategory']);
 Route::get('/getVarValue/', [CategoryViewController::class, 'readVarition']);
 Route::get('/getVarOptValue/{id}', [CategoryViewController::class, 'readVaritionOption']);
-
-
