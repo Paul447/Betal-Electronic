@@ -53,7 +53,7 @@ class CategoryController extends Controller
         if (session('user')['role'] == 'Admin') {
             $file = $request->file('categorythumbnail');
             $filename = time() . '.' . $file->getClientOriginalExtension();
-            $file->move(public_path() . '/storage/categorythumbnail/', $filename);
+            $file->storeAs('public/categorythumbnail', $filename);
             Category::create(array_merge($request->all(), ['categorythumbnail' => $filename, 'addedby' => $addedby, 'approvedby' => $addedby, 'status' => 'approved']));
             return redirect('/admin/category/');
         } else {
