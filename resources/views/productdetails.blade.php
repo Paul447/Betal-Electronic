@@ -269,7 +269,7 @@
                 @foreach ($images as $item)
                     <div class="slide">
 
-                        <img src="{{ asset('/storage/product/' . $item) }}" alt="{{$product->product_name}}">
+                        <img src="{{ asset('/storage/product/' . $item) }}" alt="{{ $product->product_name }}">
                     </div>
                 @endforeach
             </div>
@@ -277,7 +277,8 @@
                 <div class="control-button prev-button">&#8249;</div>
                 <div class="thumbnail-container">
                     @foreach ($images as $item)
-                        <div class="thumbnail"><img src="{{ asset('/storage/product/' . $item) }}" alt="{{$product->product_name}}"></div>
+                        <div class="thumbnail"><img src="{{ asset('/storage/product/' . $item) }}"
+                                alt="{{ $product->product_name }}"></div>
                     @endforeach
                 </div>
                 <div class="control-button next-button">&#8250;</div>
@@ -316,7 +317,7 @@
 
             <div class="spinnerrr">
                 <button class="decreament" id="minus-btn">-</button>
-                <input type="number" name="quantity" id="" class="quantity-info" value="1">
+                <input type="number" name="quantity" id="quantity" class="quantity-info" value="1">
                 <button class="increament" id="plus-btn">+</button>
             </div>
             @if (!is_null(session('customer')))
@@ -338,7 +339,7 @@
                     <a href="{{ '/productdetails/' . $product->product_id . '/' . $product->slug }}">
                         <div class="product-image">
                             <img src="{{ asset('/storage/thumbnails/' . $product->thumbnail) }}" class="imgs"
-                            id="CardImage" alt="{{$product->product_name}}" />
+                                id="CardImage" alt="{{ $product->product_name }}" />
                         </div>
                     </a>
 
@@ -393,19 +394,19 @@
         $(document).ready(function() {
 
             $("#plus-btn").click(function() {
-                var value = parseInt($("input").val());
+                var value = parseInt($("#quantity").val());
                 if (value < 100) {
                     value = value + 1;
-                    $("input").val(value);
+                    $("#quantity").val(value);
                 }
             });
 
 
             $("#minus-btn").click(function() {
-                var value = parseInt($("input").val());
+                var value = parseInt($("#quantity").val());
                 if (value > 1) {
                     value = value - 1;
-                    $("input").val(value);
+                    $("#quantity").val(value);
                 }
             });
         });
