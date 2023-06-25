@@ -1,359 +1,68 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Details</title>
-    <style>
-       
-     
+  <meta charset="utf-8" />
+  <title>Swiper demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
 
-        :root {
-            --red: #A50318;
-            --light-red: #aa4f5b9c;
-            --black: #0c0c0c;
-            --white: #ffffff;
-        }
+  <style>
+    html,
+    body {
+      position: relative;
+      height: 100%;
+    }
 
-        hr {
-            border-color: #a50318;
-        }
+    body {
+      background: #eee;
+      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      color: #000;
+      margin: 0;
+      padding: 0;
+    }
 
-        .spinnerrr>* {
-            padding: 7px 10px;
-        }
+    swiper-container {
+      width: 70%;
+      height: 50%;
+    }
 
-        .quantity-info {
-            width: 50px;
-        }
+    swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-        .description-content {
-            margin-bottom: 20px;
-        }
-
-        .spinnerrr {
-            margin-bottom: 40px;
-        }
-
-        .discriptio-info {
-            padding: 20px 0 10px;
-        }
-
-        .view-details,
-        .add-to-cart {
-            background-color: #a50318;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            transition: background-color 0.2s ease;
-            border-radius: 5px;
-            font-size: 1.2rem;
-            max-width: 200px;
-            margin-right: 20px;
-        }
-
-        .view-details:focus,
-        .add-to-cart:focus,
-        .view-details:hover,
-        .add-to-cart:hover {
-            background-color: #a50318;
-            color: #ffffff;
-            outline: 3px solid var(--light-red) !important;
-        }
-
-        .merobody {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin: 40px 20px;
-        }
-
-        .paisa-info {
-            font-size: 1.2em;
-            padding-bottom: 10px;
-        }
-
-        .slider-container {
-            position: relative;
-            width: 40%;
-            max-width: 600px;
-            height: 350px;
-            overflow: hidden;
-            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .info-container {
-            width: 50%;
-            padding: 20px 20px 30px 20px;
-            height: fit-content;
-            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .productname-info {
-            padding: 10px 0;
-            text-transform: uppercase;
-        }
-
-        .slider {
-            display: flex;
-            transition: transform 0.5s ease;
-        }
-
-        .slide {
-            flex: 0 0 100%;
-            overflow: hidden;
-            padding-bottom: 5px;
-            width: 100%;
-            height: 260px;
-            position: relative;
-        }
-
-        .slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-
-        .slide:hover img {
-            transform: scale(1.1);
-        }
-
-        .slider-controls {
-            position: absolute;
-            bottom: 10px;
-            left: 0;
-            right: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .thumbnail-container {
-            margin-top: 10px;
-            text-align: center;
-        }
-
-        .thumbnail {
-            display: inline-block;
-            width: 50px;
-            height: 50px;
-            margin: 0 5px;
-            cursor: pointer;
-            opacity: 0.7;
-            transition: opacity 0.3s ease;
-        }
-
-        .thumbnail img {
-            object-fit: cover;
-            height: 50px !important;
-            width: 50px !important;
-        }
-
-        .thumbnail:hover {
-            opacity: 1;
-        }
-
-        .thumbnail.active {
-            opacity: 1;
-            border: 2px solid #000;
-        }
-
-        .control-button {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 40px;
-            height: 40px;
-            background-color: #a50318;
-            color: #fff;
-            font-size: 24px;
-            line-height: 40px;
-            text-align: center;
-            cursor: pointer;
-        }
-
-        .prev-button {
-            left: 10px;
-        }
-
-        .next-button {
-            right: 10px;
-        }
-
-        @media only screen and (max-width: 850px) {
-
-            .merobody {
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            .slider-container {
-                width: 95%;
-                margin: auto;
-            }
-
-            .info-container {
-                width: 95%;
-                max-width: 600px;
-                margin: auto;
-            }
-
-        }
-
-        @media (max-width: 430px) {
-            .desc-btn {
-                display: block;
-                text-align: center;
-            }
-
-            .desc-btn.add-to-cart {
-                margin-bottom: 20px;
-            }
-        }
-
-        @media only screen and (max-width: 400px) {
-            .slider-container {
-                height: auto;
-            }
-
-            .slide {
-                height: auto;
-                padding-bottom: 0;
-            }
-
-            .slide img {
-                height: auto;
-            }
-
-            .thumbnail-container {
-                margin-top: 5px;
-            }
-
-            .control-button {
-                font-size: 18px;
-                width: 30px;
-                height: 30px;
-                line-height: 30px;
-            }
-        }
-    </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-
+    swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
 </head>
 
 <body>
 
-    <div class="merobody">
-        <div class="slider-container">
-            <div class="slider">
-                <div class="slide">
-                    <img src="../../public/admin/img/banner1.png" alt="Image 1">
-                </div>
-                <div class="slide">
-                    <img src="../../public/admin/img/logo.jpg" alt="Image 2">
-                </div>
-            </div>
-            <div class="slider-controls">
-                <div class="control-button prev-button">&#8249;</div>
-                <div class="thumbnail-container">
-                    <div class="thumbnail active"><img src="../../public/admin/img/banner1.png" alt="Image 1"></div>
-                    <div class="thumbnail"><img src="../../public/admin/img/logo.jpg" alt="Image 2"></div>
-                </div>
-                <div class="control-button next-button">&#8250;</div>
-            </div>
-        </div>
-
-        <div class="info-container">
-            <p class="category-info">LogicTech</p>
-            <h2 class="productname-info">Havit Mouse</h2>
-            <p class="paisa-info">Rs.1500</p>
-            <hr>
-            <h3 class="discriptio-info"> Description</h3>
-            <p class="description-content">Mouse, Ideal Fr: Desktop | Laptop Lifestyle: Everyday Use Connection
-                Type:
-                Wired Precise Optical Tracking Movement Resolution: 1000 DPI</p>
-
-            <div class="spinnerrr">
-                <button class="decreament" id="minus-btn">-</button>
-                <input type="number" name="quantity" id="" class="quantity-info" value="1">
-                <button class="increament" id="plus-btn">+</button>
-            </div>
-            <a id="" class="show-toast add-to-cart desc-btn">Add To Cart</a>
-            <a href="" class="view-details desc-btn" style="text-decoration: none;">Buy Now</a>
-        </div>
-    </div>
-
-    <script>
-        const slider = document.querySelector('.slider');
-        const slides = document.querySelectorAll('.slide');
-        const thumbnails = document.querySelectorAll('.thumbnail');
-        const prevButton = document.querySelector('.prev-button');
-        const nextButton = document.querySelector('.next-button');
-        let currentSlide = 0;
-
-        function showSlide(index) {
-            slider.style.transform = `translateX(-${index * 100}%)`;
-            thumbnails.forEach((thumbnail, i) => {
-                thumbnail.classList.toggle('active', i === index);
-            });
-        }
-
-        function nextSlide() {
-            currentSlide++;
-            if (currentSlide === slides.length) {
-                currentSlide = 0;
-            }
-            showSlide(currentSlide);
-        }
-
-        function previousSlide() {
-            currentSlide--;
-            if (currentSlide < 0) {
-                currentSlide = slides.length - 1;
-            }
-            showSlide(currentSlide);
-        }
-
-        thumbnails.forEach((thumbnail, index) => {
-            thumbnail.addEventListener('click', () => {
-                currentSlide = index;
-                showSlide(currentSlide);
-            });
-        });
-
-        prevButton.addEventListener('click', previousSlide);
-        nextButton.addEventListener('click', nextSlide);
-
-        setInterval(nextSlide, 5000); // Change slide every 5 seconds
+  <swiper-container class="mySwiper" slides-per-view="2"  space-between="120"
+  pagination="true" pagination-type="fraction" navigation="true">
+    <swiper-slide>Slide 1</swiper-slide>
+    <swiper-slide>Slide 2</swiper-slide>
+    <swiper-slide>Slide 3</swiper-slide>
+    <swiper-slide>Slide 4</swiper-slide>
+    <swiper-slide>Slide 5</swiper-slide>
+    <swiper-slide>Slide 6</swiper-slide>
+    <swiper-slide>Slide 7</swiper-slide>
+    <swiper-slide>Slide 8</swiper-slide>
+    <swiper-slide>Slide 9</swiper-slide>
+  </swiper-container>
 
 
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-element-bundle.min.js"></script>
 
-        $(document).ready(function () {
-
-            $("#plus-btn").click(function () {
-                var value = parseInt($("input").val());
-                if (value < 100) {
-                    value = value + 1;
-                    $("input").val(value);
-                }
-            });
-
-
-            $("#minus-btn").click(function () {
-                var value = parseInt($("input").val());
-                if (value > 1) {
-                    value = value - 1;
-                    $("input").val(value);
-                }
-            });
-        });
-    </script>
 </body>
+
+</html>
