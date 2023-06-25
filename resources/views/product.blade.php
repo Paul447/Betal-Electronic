@@ -1,7 +1,7 @@
 @include('welcome')
 @include('slider')
-
 @include('brandchoice')
+
 @include('categories')
 
 <body>
@@ -17,7 +17,7 @@
                         <a href="{{ '/productdetails/' . $featured->product_id . '/' . $featured->slug }}">
                             <div class="product-image">
                                 <img src="{{ asset('/storage/thumbnails/' . $featured->thumbnail) }}" class="imgs"
-                                id="CardImage" alt="{{$featured->product_name}}" />
+                                    id="CardImage" alt="{{ $featured->product_name }}" />
                             </div>
                         </a>
 
@@ -92,6 +92,7 @@
                     })
                 })
             });
+        
         </script>
         {{-- Logged In successfully message --}}
         @if (session('message'))

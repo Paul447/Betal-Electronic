@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="{{ asset('admin/bootstrap-5.2.3-dist/css/bootstrap.min.css') }}" />
-    {{-- <link rel="stylesheet" href="{{ asset('admin/css/productCard.css') }}" /> --}}
     <link rel="stylesheet" href="{{ asset('admin/css/productcardmain.css') }}" />
     <link rel="stylesheet" href="{{ asset('admin/css/toast.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/login.css') }}" />
@@ -23,7 +22,7 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" defer></script>
-    {{-- <script src=" {{ asset('admin/js/lightSlider.js') }}"></script> --}}
+
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
         integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
@@ -601,53 +600,7 @@
             outline-color: #ffff;
             outline-style: outset;
         }
-        body {
-            overflow-x: hidden;
-        }
-
-        .swiper-container {
-            padding: 20px;
-            margin: 40px;
-            background-color: #d9d9d9;
-            overflow: hidden;
-        }
-
-        .swiper-wrapper {
-            width: fit-content;
-            margin: 0 auto;
-        }
-
-        .swiper-slide {
-            max-width: 100px;
-            max-height: 100px;
-        }
-
-        @media (max-width: 768px) {
-            .swiper-slide {
-                max-width: 80px;
-                max-height: 80px;
-            }
-        }
-
-        .swiper-slide:first-child {
-            margin-left: 40px;
-        }
-
-        .swiper-slide:last-child {
-            margin-right: 40px;
-        }
-
-        .swiper-slide img {
-            max-width: 100%;
-            max-height: 100%;
-            cursor: pointer;
-            object-fit: contain;
-            filter: grayscale(1);
-        }
-
-        .swiper-slide img:hover {
-            filter: grayscale(0);
-        }
+      
     </style>
 </head>
 
