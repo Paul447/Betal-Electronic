@@ -25,11 +25,7 @@
                         <label for="recipient-name" class="col-form-label">
                             Brand Name</label>
                         <input type="text" class="form-control" id="Brandname" name="brand_name" required
-                            value="
-              @if (Route::currentRouteName() == 'brand.edit') {{ $data->brand_name }}
-                 @else
-                 {{ ' ' }} @endif
-              "
+                            value="@if (Route::currentRouteName() == 'brand.edit'){{ $data->brand_name }}@endif"
                             {{-- pattern="[A-Z].[A-Z a-z]+"
               required
               title="Name must be in only character, First Letter Must be in captial"
@@ -39,12 +35,7 @@
                         <label for="recipient-name" class="col-form-label">
                             Brand URL</label>
                         <input type="text" class="form-control" id="Brandname" name="url" required
-                            value="
-              @if (Route::currentRouteName() == 'brand.edit') {{ $data->url }}
-                 @else
-                 {{ ' ' }} @endif
-              "
-                            {{-- pattern="[A-Z].[A-Z a-z]+"
+                            value="@if (Route::currentRouteName() == 'brand.edit'){{ $data->url }}@endif" {{-- pattern="[A-Z].[A-Z a-z]+"
               required
               title="Name must be in only character, First Letter Must be in captial"
               autocomplete="off" --}} />
