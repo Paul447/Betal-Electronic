@@ -54,7 +54,15 @@
 
                     <div class="col col-12 col-lg-6 col-sm-12 col-md-12 col-xl-4 mb-3">
                         <label for="formFile" class="form-label">Brand Image</label>
-                        <input type="file" class="form-control" id="BrandFile" name="Brandfile" required />
+                        @if (Route::currentRouteName() == 'brand.edit')
+                            <input type="hidden" name="previousFile" value="{{ $data->brand_image }}">
+                            <div class="mb-3">
+                                <img width="100%" style="border:1px solid rgb(135, 135, 135); border-radius: 4px"
+                                    id="imagePreview" src="{{ asset('/storage/brands/' . $data->brand_image) }}">
+                            </div>
+                        @endif
+                        <input type="file" class="form-control" id="BrandFile" name="Brandfile"
+                            @if (Route::currentRouteName() != 'brand.edit') {{ 'required' }} @endif />
                         <p class="text-danger">
                             <strong class="text-warning">Warning</strong> : Image size must be
                             less the 2MB
@@ -83,6 +91,22 @@
 
             </div>
         </div>
+        <script>
+            let imageInput = document.getElementById("BrandFile");
+            const img = document.querySelector('#imagePreview');
+            imageInput.addEventListener("change", function() {
+                img.style.display = "block";
+                const choosedFile = this.files[0];
+                if (choosedFile) {
+                    const reader = new FileReader(); //FileReader is a predefined function of JS
+                    reader.addEventListener('load', function() {
+                        img.setAttribute('src', reader
+                            .result);
+                    });
+                    reader.readAsDataURL(choosedFile);
+                }
+            })
+        </script>
     </body>
 
     </html>
