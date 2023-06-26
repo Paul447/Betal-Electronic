@@ -97,10 +97,6 @@
             /* text-align: center; */
         }
 
-        /* a,html {
-    -webkit-tap-highlight-color: transparent
-} */
-
         .card-categories-li {
             min-width: 150px;
             max-width: 180px;
@@ -600,7 +596,6 @@
             outline-color: #ffff;
             outline-style: outset;
         }
-      
     </style>
 </head>
 
@@ -764,8 +759,10 @@
 
         function fetcchCart(cartvalue) {
             var controller = "/CartVieww/";
+            let quantity = parseInt($("#quantity").val());
             var host = location.origin + controller;
-            var url = location.origin + controller + cartvalue;
+            var url = location.origin + controller + cartvalue + "/" + quantity;
+            console.log(url);
             fetch(url, {
                     method: 'GET',
                     headers: {

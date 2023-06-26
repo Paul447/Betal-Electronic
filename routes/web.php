@@ -118,7 +118,7 @@ Route::group(['prefix' => '/admin', 'middleware' => 'editor'], function () {
 });
 Route::get('/CartView/', [CartViewController::class, 'index']);
 Route::delete('/cart/{id}', [CartViewController::class, 'destroy']);
-Route::get('/CartVieww/{id}', [CartViewController::class, 'storedata']);
+Route::get('/CartVieww/{id}/{quantity}', [CartViewController::class, 'storedata']);
 Route::get('/CartViewww/{id},{hel}', [CartViewController::class, 'storedataa']);
 Route::get('/CheckOutDetail/{inpvalue},{productId}', [CartViewController::class, 'inc']);
 
