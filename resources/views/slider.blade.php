@@ -1,6 +1,14 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-
-<div id="demo" class="carousel slide Slidder mx-auto justify-content-center main" data-bs-ride="carousel">
+<style>
+    img.slide {
+        width: 100%;
+        max-inline-size: 100%;
+        block-size: auto;
+        aspect-ratio: 16 / 9;
+    }
+    
+</style>
+<div id="demo" class="carousel  mx-auto justify-content-center main" data-bs-ride="carousel">
 
     @php
         $banners = DB::table('banners')->get();
@@ -27,14 +35,14 @@
             @endphp
             @foreach ($banners as $banner)
                 @if ($banner_count == 0)
-                    <div class="carousel-item active">
+                    <div class="carousel-item active animate__animated animate__bounceInDown ">
                         <img class="slide" src="{{ asset('storage/banner/' . $banner->banner_img) }}"
-                            alt="{{ $banner->image_alt_text }}" class="d-block" height="500" width="100%" />
+                            alt="{{ $banner->image_alt_text }}" />
                     </div>
                 @else
-                    <div class="carousel-item">
+                    <div class="carousel-item animate__animated animate__bounceInDown">
                         <img class="slide" src="{{ asset('storage/banner/' . $banner->banner_img) }}"
-                            alt="{{ $banner->image_alt_text }}" class="d-block" height="500" width="100%" />
+                            alt="{{ $banner->image_alt_text }}" />
                     </div>
                 @endif
                 @php $banner_count++; @endphp

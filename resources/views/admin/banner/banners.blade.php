@@ -6,6 +6,7 @@
             height: 20px;
             width: 20px;
         }
+
     </style>
     </head>
 
@@ -33,8 +34,8 @@
                         @foreach ($data as $banner)
                             <tr>
                                 <td> {{ $i++ }}</td>
-                                <td>
-                                    <img src="{{asset('storage/banner/'.$banner->banner_img) }}" alt="{{ $banner->image_alt_text }}">
+                                <td class="justify-content-center d-flex">
+                                    <img id="imagePreview" src="{{asset('storage/banner/'.$banner->banner_img) }}" alt="{{ $banner->image_alt_text }}">
                                 </td>
                                 <td>{{ $banner->image_alt_text }}</td>
                                 <td>{{ $banner->meta_description }}</td>

@@ -1,11 +1,7 @@
 @extends('admin.index')
 @section('addbrand')
     <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
-    <style>
-        .card-header {
-            background: #440474;
-        }
-    </style>
+    
     </head>
 
     <body>

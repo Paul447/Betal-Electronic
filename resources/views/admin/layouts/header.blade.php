@@ -29,5 +29,14 @@
     ></script> -->
     <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
   </head>
+  <style>
+    #imagePreview{
+      height: 100px;
+      width: 100px;
+    }
+    .card-header {
+            background: #440474;
+        }
+  </style>
 
   <body>
