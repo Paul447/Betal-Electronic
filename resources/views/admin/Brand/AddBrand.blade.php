@@ -64,13 +64,12 @@
                     <div class="mb-3">
                         <label for="recipient-name" class="col-form-label">
                             Brand Discription</label>
-                        <textarea id="branddiscription" name="brand_discription" class="form-control"
-                            value="
-        @if (Route::currentRouteName() == 'brand.edit') {{ $data->brand_discription }}
-           @else
-           {{ ' ' }} @endif
-        "
-                            cols="30" rows="5" required autocomplete="off"></textarea>
+                        <textarea id="branddiscription" name="brand_discription" class="form-control" cols="30" rows="5" required
+                            autocomplete="off">
+@if (Route::currentRouteName() == 'brand.edit')
+{{ $data->brand_discription }}
+@endif
+</textarea>
                     </div>
 
                     <!-- Modal footer -->
