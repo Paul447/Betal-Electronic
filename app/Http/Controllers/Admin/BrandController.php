@@ -120,8 +120,13 @@ class BrandController extends Controller
 
         if (session('user')['role'] == 'Admin') {
             $file = $request->file('Brandfile');
-            $filename = $file->getClientOriginalName();
-            $file->move(public_path() . '/storage/brands/', $filename);
+
+            if ($request->Brandfile) {
+                $filename = $file->getClientOriginalName();
+                $file->move(public_path() . '/storage/brands/', $filename);
+            } else {
+                $filename = $request->previousFile;
+            }
             $brand =  Brand::find($id);
             $updatedby = session('user')['id'];
             $brand->update(array_merge($request->all(), ['brand_image' => $filename, 'updatedby' => $updatedby, 'updateapprovedby' => $updatedby, 'updatestatus' => "approved"]));

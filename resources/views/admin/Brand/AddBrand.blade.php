@@ -21,11 +21,7 @@
                         <label for="recipient-name" class="col-form-label">
                             Brand Name</label>
                         <input type="text" class="form-control" id="Brandname" name="brand_name" required
-                            value="
-              @if (Route::currentRouteName() == 'brand.edit') {{ $data->brand_name }}
-                 @else
-                 {{ ' ' }} @endif
-              "
+                            value="@if (Route::currentRouteName() == 'brand.edit'){{ $data->brand_name }}@endif"
                             {{-- pattern="[A-Z].[A-Z a-z]+"
               required
               title="Name must be in only character, First Letter Must be in captial"
@@ -35,12 +31,7 @@
                         <label for="recipient-name" class="col-form-label">
                             Brand URL</label>
                         <input type="text" class="form-control" id="Brandname" name="url" required
-                            value="
-              @if (Route::currentRouteName() == 'brand.edit') {{ $data->url }}
-                 @else
-                 {{ ' ' }} @endif
-              "
-                            {{-- pattern="[A-Z].[A-Z a-z]+"
+                            value="@if (Route::currentRouteName() == 'brand.edit'){{ $data->url }}@endif" {{-- pattern="[A-Z].[A-Z a-z]+"
               required
               title="Name must be in only character, First Letter Must be in captial"
               autocomplete="off" --}} />
@@ -50,7 +41,15 @@
 
                     <div class="col col-12 col-lg-6 col-sm-12 col-md-12 col-xl-4 mb-3">
                         <label for="formFile" class="form-label">Brand Image</label>
-                        <input type="file" class="form-control" id="BrandFile" name="Brandfile" required />
+                        @if (Route::currentRouteName() == 'brand.edit')
+                            <input type="hidden" name="previousFile" value="{{ $data->brand_image }}">
+                            <div class="mb-3">
+                                <img width="100%" style="border:1px solid rgb(135, 135, 135); border-radius: 4px"
+                                    id="imagePreview" src="{{ asset('/storage/brands/' . $data->brand_image) }}">
+                            </div>
+                        @endif
+                        <input type="file" class="form-control" id="BrandFile" name="Brandfile"
+                            @if (Route::currentRouteName() != 'brand.edit') {{ 'required' }} @endif />
                         <p class="text-danger">
                             <strong class="text-warning">Warning</strong> : Image size must be
                             less the 2MB
@@ -60,13 +59,12 @@
                     <div class="mb-3">
                         <label for="recipient-name" class="col-form-label">
                             Brand Discription</label>
-                        <textarea id="branddiscription" name="brand_discription" class="form-control"
-                            value="
-        @if (Route::currentRouteName() == 'brand.edit') {{ $data->brand_discription }}
-           @else
-           {{ ' ' }} @endif
-        "
-                            cols="30" rows="5" required autocomplete="off"></textarea>
+                        <textarea id="branddiscription" name="brand_discription" class="form-control" cols="30" rows="5" required
+                            autocomplete="off">
+@if (Route::currentRouteName() == 'brand.edit')
+{{ $data->brand_discription }}
+@endif
+</textarea>
                     </div>
 
                     <!-- Modal footer -->
@@ -80,6 +78,22 @@
 
             </div>
         </div>
+        <script>
+            let imageInput = document.getElementById("BrandFile");
+            const img = document.querySelector('#imagePreview');
+            imageInput.addEventListener("change", function() {
+                img.style.display = "block";
+                const choosedFile = this.files[0];
+                if (choosedFile) {
+                    const reader = new FileReader(); //FileReader is a predefined function of JS
+                    reader.addEventListener('load', function() {
+                        img.setAttribute('src', reader
+                            .result);
+                    });
+                    reader.readAsDataURL(choosedFile);
+                }
+            })
+        </script>
     </body>
 
     </html>
