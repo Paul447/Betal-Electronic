@@ -53,6 +53,27 @@
             </li>
 
 
+            <!-- Banner add and view  -->
+            <li class="dropdown nav-items">
+              <a
+                href="#homeSubmenu"
+                class="dropdown dropdown-toggle nav-link"
+                data-bs-toggle="collapse"
+                data-bs-target="#banner"
+                aria-expanded="false"
+                >Banner</a
+              >
+              <ul class="list-unstyled collapse" id="banner">
+                <li>
+                  <a href="{{'/admin/banner/create'}}" class="nav-link" id="">Add Banner</a>
+                </li>
+                <li>
+                  <a href="{{'/admin/banner'}}" class="nav-link">View Banner Data</a>
+                </li>
+              </ul>
+            </li>
+
+
             <!-- Category Add And View -->
 
             <li class="dropdown nav-items">
