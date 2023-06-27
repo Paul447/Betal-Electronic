@@ -37,6 +37,9 @@ google && google.addEventListener('click', (_e) => {
                         let profile_name = profile.displayName;
                         document.cookie = "profile_namee=" + profile_name;
                         let email = profile.email;
+                        let profile_image = user.photoURL; // Retrieve profile image URL
+                        console.log(profile_image);
+                        document.cookie = "profile_imagee=" + profile_image;
                         document.cookie = "emaill=" + email;
                         location.reload();
                         var cookieValue = encodeURIComponent(document.cookie);

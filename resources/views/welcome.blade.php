@@ -13,7 +13,9 @@
     <link rel="stylesheet" href="{{ asset('admin/css/foot.css') }}" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.min.js" integrity="sha512-3dZ9wIrMMij8rOH7X3kLfXAzwtcHpuYpEgQg1OA4QAob1e81H8ntUQmQm3pBudqIoySO5j0tHN4ENzA6+n2r4w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.min.js"
+        integrity="sha512-3dZ9wIrMMij8rOH7X3kLfXAzwtcHpuYpEgQg1OA4QAob1e81H8ntUQmQm3pBudqIoySO5j0tHN4ENzA6+n2r4w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     {{-- <link rel="stylesheet" href="{{ asset('vendor/sweetalert2/sweetalert2.min.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset('admin/css/sty.css') }}" />
     <script src=" {{ asset('admin/bootstrap-5.2.3-dist/js/bootstrap.bundle.min.js') }}"></script>
@@ -21,7 +23,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" integrity="sha512-t4GWSVZO1eC8BM339Xd7Uphw5s17a86tIZIj8qRxhnKub6WoyhnrxeCIMeAqBPgdZGlCcG2PrZjMc+Wr78+5Xg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+        integrity="sha512-t4GWSVZO1eC8BM339Xd7Uphw5s17a86tIZIj8qRxhnKub6WoyhnrxeCIMeAqBPgdZGlCcG2PrZjMc+Wr78+5Xg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" defer></script>
 
@@ -599,189 +603,193 @@
             outline-style: outset;
         }
 
-.products-container {
-  display: flex;
-  flex-wrap: wrap;
-  /* justify-content: space-between; */
+        .products-container {
+            display: flex;
+            flex-wrap: wrap;
+            /* justify-content: space-between; */
 
-}
+        }
 
-.product-card {
-  flex-basis: calc(25% - 20px);
-  margin:20px;
-  display: flex;
-  flex-direction: column;
+        .product-card {
+            flex-basis: calc(25% - 20px);
+            margin: 20px;
+            display: flex;
+            flex-direction: column;
 
-  justify-content: space-between;
-  border-radius: 10px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  width: 100%;
-  min-width: 250px;
-  max-width: 280px!important;
-  font-family: 'Roboto', sans-serif;
-}
-.product-card > *:not(:first-child){
-  padding-left: 20px;
-  padding-right: 20px;
-  
-}
-.product-card > *:last-child{
-padding-bottom:20px;
-}
-.product-card:hover {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+            justify-content: space-between;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 100%;
+            min-width: 250px;
+            max-width: 280px !important;
+            font-family: 'Roboto', sans-serif;
+        }
 
+        .product-card>*:not(:first-child) {
+            padding-left: 20px;
+            padding-right: 20px;
 
-.product-image {
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  margin: 0 auto;
-  width: 100%;
-  height: 200px;
- 
-}
+        }
 
-.product-image img {
-  display: block;
-  width: auto;
-  height: 100%;
-  transition: transform 0.5s ease;
-  border-radius: 10px;
-}
+        .product-card>*:last-child {
+            padding-bottom: 20px;
+        }
 
-.product-image:hover img {
-  transform: scale(1.1);
-}
-
-.product-image:before {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2));
-  opacity: 0;
-  transition: opacity 0.5s ease;
-  z-index: 1;
-}
-
-.product-image:hover:before {
-  opacity: 1;
-}
-
-.product-info {
-  padding: 20px;
-}
-
-.product-name {
-  font-size: 1.0rem;
-  font-weight: 700;
-  margin: 8px 0;
-  color: #333;
-  text-transform: uppercase;
-  text-align: center;
-}
-
-.product-price {
-  font-size: 1.1rem;
-  margin: 8px 0 16px 0;
-  color: #343a40!important;
-  text-align: center;
-}
-
-.product-description {
-  margin: 20px 0;
-  color: #666;
-  line-height: 1.5;
-  text-align: justify;
-}
-
-.product-buttons {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-.view-details,
-.add-to-cart {
-  background-color: #a50318;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-  border-radius: 5px;
-  font-size: 1.2rem;
-  width: 100%;
-  max-width: 200px;
-  margin: 0 10px;
-}
-
-.view-details:focus,
-.add-to-cart:focus,
-.view-details:hover,
-.add-to-cart:hover {
-  background-color: #a50318;
-  color: #ffffff;
-  outline: 3px solid var(--light-red) !important;
-}
-
-.product-card span{
-  padding-top: 8px;
-}
+        .product-card:hover {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
 
 
+        .product-image {
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            margin: 0 auto;
+            width: 100%;
+            height: 200px;
 
-/* Responsive styles */
-@media only screen and (max-width: 600px) {
-  .product-card {
-    max-width: 100%;
-  }
+        }
+
+        .product-image img {
+            display: block;
+            width: auto;
+            height: 100%;
+            transition: transform 0.5s ease;
+            border-radius: 10px;
+        }
+
+        .product-image:hover img {
+            transform: scale(1.1);
+        }
+
+        .product-image:before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: 1;
+        }
+
+        .product-image:hover:before {
+            opacity: 1;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-name {
+            font-size: 1.0rem;
+            font-weight: 700;
+            margin: 8px 0;
+            color: #333;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .product-price {
+            font-size: 1.1rem;
+            margin: 8px 0 16px 0;
+            color: #343a40 !important;
+            text-align: center;
+        }
+
+        .product-description {
+            margin: 20px 0;
+            color: #666;
+            line-height: 1.5;
+            text-align: justify;
+        }
+
+        .product-buttons {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+
+        .view-details,
+        .add-to-cart {
+            background-color: #a50318;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            width: 100%;
+            max-width: 200px;
+            margin: 0 10px;
+        }
+
+        .view-details:focus,
+        .add-to-cart:focus,
+        .view-details:hover,
+        .add-to-cart:hover {
+            background-color: #a50318;
+            color: #ffffff;
+            outline: 3px solid var(--light-red) !important;
+        }
+
+        .product-card span {
+            padding-top: 8px;
+        }
 
 
 
-  .product-name {
-    font-size: 0.9rem;
-  }
+        /* Responsive styles */
+        @media only screen and (max-width: 600px) {
+            .product-card {
+                max-width: 100%;
+            }
 
-  .product-price {
-    font-size: 1.3rem;
-    margin: 10px 0;
-  }
 
-  .product-description {
-    font-size: 1rem;
-  }
 
-  .view-details,
-  .add-to-cart {
-    font-size: 1.1rem;
-  }
-}
-@media screen and (max-width: 992px) {
-  .product-card {
-    flex-basis: calc(33.33% - 20px);
-  }
-}
+            .product-name {
+                font-size: 0.9rem;
+            }
 
-@media screen and (max-width: 768px) {
- 
-  
-  .product-card {
-    flex-basis: calc(50% - 20px);
-  }
-}
+            .product-price {
+                font-size: 1.3rem;
+                margin: 10px 0;
+            }
 
-@media screen and (max-width: 576px) {
-  .product-card {
-    flex-basis: 100%;
-  }
-}
+            .product-description {
+                font-size: 1rem;
+            }
+
+            .view-details,
+            .add-to-cart {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media screen and (max-width: 992px) {
+            .product-card {
+                flex-basis: calc(33.33% - 20px);
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+
+
+            .product-card {
+                flex-basis: calc(50% - 20px);
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            .product-card {
+                flex-basis: 100%;
+            }
+        }
     </style>
 </head>
 
@@ -795,7 +803,7 @@ padding-bottom:20px;
         <nav class="middle">
             <ul class="d-flex align-self-center" class="myUlclass">
                 <li class="mx-2 mx-lg-3"><a href="{{ '/' }}" class="navitemsss">Home</a></li>
-                <li class="mx-2 mx-lg-3"><a href="{{'/newarrivals'}}" class="navitemsss">New Arrivals</a></li>
+                <li class="mx-2 mx-lg-3"><a href="{{ '/newarrivals' }}" class="navitemsss">New Arrivals</a></li>
                 <li class="mx-2 mx-lg-3"><a href="#" class="navitemsss">Blogs</a></li>
                 {{-- <li class="mx-2 mx-lg-3"><a href="#" class="navitemsss">Contact us</a></li> --}}
             </ul>
@@ -829,14 +837,29 @@ padding-bottom:20px;
                                 <i class="fa fa-sign-out "></i>
                             </a>
                         </li>
+                        <li class="mx-2 mx-lg-3 account px-2">
+                            <i class="fa-solid fa-user account--icon"></i>
+                            <div class="account--dropdown">
+                                <div class="account--dropdown-container">
+                                    <a class="navitemsss" href="{{ '/viewprofile' }}">
+                                        My Profile
+                                    </a>
+                                    <a class="navitemsss" href="{{ '/myorder' }}">
+                                        
+                                        My Orders
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
                     @endif
                     <li class="mx-2 mx-lg-3">
                         <a href="/CartView/" class="navitemsss">
                             <i class="fa-solid fa-shopping-cart"></i>
                         </a>
                     </li>
+
+                
                 </div>
-            </ul>
         </nav>
         <div class="mobile--menu">
             <div class="bar bar1"></div>
@@ -848,61 +871,7 @@ padding-bottom:20px;
 
 
 
-    {{-- @if (!is_null(session('customer'))) 
 
-<a role="button" class="nav-link  hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
-  <div class="avatar avatar-online">
-    <img src="{{ asset('/storage/editor/'.Session::get('customer')['image'])}}" height="30px" alt class=" rounded-circle" />My Profile
-  </div>
-</a>
-
-
-<!-- main -->
-<ul class="dropdown-menu dropdown-menu-end">
-  <li>
-    <a class="dropdown-item" href="#">
-      <div class="d-flex">
-        <div class="flex-shrink-0 me-3">
-          <div class="avatar avatar-online">
-            <img src="{{ asset('/storage/editor/'.Session::get('customer')['image']) }}" height="50px" alt class="w-px-40 rounded-circle" />My Profile
-          </div>
-        </div>
-        <div class="flex-grow-1">
-        </div>
-      </div>
-    </a>
-  </li>
-
-  <li>
-    <div class="dropdown-divider"></div>
-  </li>
-
-  <li>
-    <a class="dropdown-item" href="{{'/viewprofile'}}">
-      <i class="bx bx-user me-2"></i>
-      <span class="align-middle">My Profile</span>
-    </a>
-  </li>
-
-  <li>
-    <div class="dropdown-divider"></div>
-  </li>
-
-  <li>
-    <a class="dropdown-item" href="{{'/myorder'}}">
-      <i class="bx bx-user me-2"></i>
-      <span class="align-middle">My Orders</span>
-    </a>
-  </li>
-
-</ul>
-</li>
-@endif
-        </div>
-
-      </div>
-    </div>
-  </nav> --}}
 
 
 

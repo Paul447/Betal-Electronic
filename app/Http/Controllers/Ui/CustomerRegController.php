@@ -116,6 +116,8 @@ class CustomerRegController extends Controller
 
             $name = $userDataObj['profile_namee'];
             $email = $userDataObj['emaill'];
+            $image = $userDataObj['profile_imagee'];
+            
 
             $sql_email = User::select()->pluck('email');
 
@@ -132,7 +134,7 @@ class CustomerRegController extends Controller
                     'email' => $email,
                     'password' => '',
                     'contact' => '',
-                    'image' => '',
+                    'image' => $image,
                     'role' => 'user',
                     'user_status' => 'verified',
                     'province' => '1',
