@@ -51,4 +51,10 @@ class ProductviewController extends Controller
       $mydata = Brand::where('brands_id',$id)->value('brand_name');
       return view('searchItem')->with(compact('data','mydata'));     
    }
+   public function newarrivals(){
+      $mydata = "New Arrivals";
+      $data = Product::latest()->limit(10)->get();
+      return view('searchItem')->with(compact('data','mydata'));   
+   }
+   
 }

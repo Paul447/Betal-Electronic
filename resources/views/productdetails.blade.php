@@ -326,7 +326,7 @@
             @else
                 <button class="show-toast add-to-cart">Add To Cart</button>
             @endif
-            <button class="view-details buy desc-btn" value="{{ $product->product_id }}"
+            <button class="view-details buy desc-btn mt-3" value="{{ $product->product_id }}"
                 onclick="fetchpDetail(this.value);">Buy Now</button>
         </div>
     </div>
