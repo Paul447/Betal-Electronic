@@ -221,7 +221,7 @@ class CustomerRegController extends Controller
             'pass' => 'required',
         ]);
 
-        if (auth()->attempt(['email' => $request->uname, 'password' => $request->pass]) && Auth::guard()->user()->role == 'user') {
+        if (auth()->attempt(['email' => $request->uname, 'password' => $request->pass, 'role' => 'user'])) {
             $user = Auth::guard()->user();
             if ($user->user_status == 'verified') {
                 $request->session()->put('customer', $user);
