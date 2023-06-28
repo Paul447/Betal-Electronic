@@ -147,7 +147,11 @@
     @foreach ($data as $dtata)
         <div class="profile-card">
             <div class="profile-img">
-                <img src="{{ $dtata->image }}" alt="Profile Image" />
+                @if (isset($dtata->password))
+                    <img src="{{ asset('/admin/img/' . $dtata->image) }}" alt="Profile Image" />
+                @else
+                    <img src="{{ $dtata->image }}" alt="Profile Image" />
+                @endif
             </div>
             <div class="profile-details">
                 <h5 class="customer-name" style="color: #a50318;">{{ $dtata->user_name }}</h5>
