@@ -96,7 +96,7 @@
     function fetcchCart(cartvalue) {
         var controller = "/CartVieww/";
         var host = location.origin + controller;
-        var url = location.origin + controller + cartvalue;
+        var url = location.origin + controller + cartvalue + "/1";
         fetch(url, {
                 method: 'GET',
                 headers: {
