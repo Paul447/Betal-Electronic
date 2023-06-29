@@ -3,10 +3,10 @@
     integrity="sha256-dWvV84T6BhzO4vG6gWhsWVKVoa4lVmLnpBOZh/CAHU4=" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
 <style>
+    .cont {
+        margin-top: 90px
+    }
 
-.cont{
-  margin-top:90px 
-}
     :root {
         --primary-color: #a50318;
         --secondary-color: #eaeaea;
@@ -304,8 +304,9 @@
                                 @endphp
                                 <input id="CartDataValue" type="number" min="1" max="{{ $hello }}"
                                     name="{{ $cartData->product_name }}" value="{{ $cartData->quantity }}"
-                                    type="number" class="itemQty form-control form-control-sm" style="width: 50px"
-                                    disabled />
+                                    type="number" id="quantity" class="itemQty form-control form-control-sm"
+                                    style="width: 50px"
+                                    onchange="fetcchCart({{ $cartData->product_id }}, this.value, 1)" />
 
                                 <button class="cart_inc btn btn-link px-2" name="{{ $cartData->product_id }}"
                                     onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
@@ -345,71 +346,72 @@
 
 
 <div class="container mt-3">
-  <div class="row justify-content-center mb-4">
-      <div class="col col-md-4 col-md-mx-4 order-md-2 mb-4 prodetail">
-          <section id="cart-add" class="section-p1">
-              <div id="subTotal">
-                  <h3>Cart Totals</h3>
-                  <table id="table2">
-                      <tbody>
-                          <tr>
-                              <td>Cart SubTotal</td>
-                              <td class="cardTotals" id="sumDiv"></td>
-                          </tr>
-                          <tr>
-                              <td>Shipping</td>
-                              <td>free</td>
-                          </tr>
-                          <tr>
-                              <td><strong>Total</strong></td>
-                              <td style="font-weight: bold" class="cardTotals" id="sumDiv">$0</td>
-                          </tr>
-                      </tbody>
-                  </table>
-              </div>
-          </section>
-      </div>
-      <div class="col-md-7 order-md-1 mine me-2">
-          <h4 class="mb-3 mt-3 fw-bold">Shipping Details</h4>
-          <form class="needs-validation" method="post" id="myForm" action="{{ '/confirm' }}">
-              @csrf
-              <div class="row">
-                  <div class="col-md-6 mb-3">
-                      <label for="firstName"><i class="fa fa-user"></i> Full Name</label>
-                      <input type="hidden" name="selectedProductId" id="selectedValuesInput">
-                      <input type="hidden" name="selectedCart" id="selectedCartQty">
-                      <input type="hidden" name="totalCartData" id="ttlAmount">
-                      <input type="hidden" name="pname" id="productName">
-                      <input type="text" class="form-control mt-2" id="firstName"
-                          placeholder="Enter your Full Name" value="" name="name" required
-                          pattern="[A-Z].[A-Z a-z]+" title="Name must be in only character, First Letter Must be Capital" />
-                      <div class="invalid-feedback">
-                          Valid first name is required.
-                      </div>
-                  </div>
-                  <div class="col-md-6 mb-3">
-                      <label for="address"><i class="fa fa-institution"></i> Address</label>
-                      <input type="text" class="form-control mt-2" id="address" required="" name="address"
-                          placeholder="Enter Primary Address..." />
-                  </div>
-                  <div class="col-md-6 mb-3">
-                      <label for="phone"><i class="fa fa-phone"></i> Phone Number</label>
-                      <input type="number" class="form-control mt-2" id="phone" required="" name="phone"
-                          placeholder="Enter Phone Number..." />
-                  </div>
-                  <div class="col-md-6 mb-3">
-                      <label for="zip">Zip Code</label>
-                      <input type="text" class="form-control mt-2" id="zip" name="zipcode"
-                          placeholder="Zip Code..." required="" />
-                  </div>
-              </div>
-              <hr class="mb-2" />
-              <div class="col">
-                  <button class="normal" type="submit" onclick="myfunctionCheck">Proceed to checkout</button>
-              </div>
-          </form>
-      </div>
-  </div>
+    <div class="row justify-content-center mb-4">
+        <div class="col col-md-4 col-md-mx-4 order-md-2 mb-4 prodetail">
+            <section id="cart-add" class="section-p1">
+                <div id="subTotal">
+                    <h3>Cart Totals</h3>
+                    <table id="table2">
+                        <tbody>
+                            <tr>
+                                <td>Cart SubTotal</td>
+                                <td class="cardTotals" id="sumDiv"></td>
+                            </tr>
+                            <tr>
+                                <td>Shipping</td>
+                                <td>free</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Total</strong></td>
+                                <td style="font-weight: bold" class="cardTotals" id="sumDiv">$0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+        <div class="col-md-7 order-md-1 mine me-2">
+            <h4 class="mb-3 mt-3 fw-bold">Shipping Details</h4>
+            <form class="needs-validation" method="post" id="myForm" action="{{ '/confirm' }}">
+                @csrf
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="firstName"><i class="fa fa-user"></i> Full Name</label>
+                        <input type="hidden" name="selectedProductId" id="selectedValuesInput">
+                        <input type="hidden" name="selectedCart" id="selectedCartQty">
+                        <input type="hidden" name="totalCartData" id="ttlAmount">
+                        <input type="hidden" name="pname" id="productName">
+                        <input type="text" class="form-control mt-2" id="firstName"
+                            placeholder="Enter your Full Name" value="" name="name" required
+                            pattern="[A-Z].[A-Z a-z]+"
+                            title="Name must be in only character, First Letter Must be Capital" />
+                        <div class="invalid-feedback">
+                            Valid first name is required.
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="address"><i class="fa fa-institution"></i> Address</label>
+                        <input type="text" class="form-control mt-2" id="address" required="" name="address"
+                            placeholder="Enter Primary Address..." />
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="phone"><i class="fa fa-phone"></i> Phone Number</label>
+                        <input type="number" class="form-control mt-2" id="phone" required=""
+                            name="phone" placeholder="Enter Phone Number..." />
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="zip">Zip Code</label>
+                        <input type="text" class="form-control mt-2" id="zip" name="zipcode"
+                            placeholder="Zip Code..." required="" />
+                    </div>
+                </div>
+                <hr class="mb-2" />
+                <div class="col">
+                    <button class="normal" type="submit" onclick="myfunctionCheck">Proceed to checkout</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 
 <script>
@@ -491,7 +493,7 @@
             }, 1000);
         })
     });
-    
+
     cartDecBtn.forEach((btnInc, i) => {
         btnInc.addEventListener("click", (e) => {
             e.preventDefault()

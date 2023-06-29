@@ -71,7 +71,7 @@ class CartViewController extends Controller
         return view('login');
     }
 
-    public function storedata($id, $quantity)
+    public function storedata($id, $quantity, $reset = 0)
     {
         $pID = $id;
         $customerId = session('customer')['id'];
@@ -81,8 +81,13 @@ class CartViewController extends Controller
         $wordCount = $findExistingProduct->count();
         if ($wordCount > 0) {
             $qty = Cart::select('quantity')->where('product', $pID)->get();
-            $updatedQty = $qty[0]->quantity + $quantity;
-            $subbTTl = $updatedQty * $productPrice[0];
+            if ($reset) {
+                $updatedQty = $quantity;
+                $subbTTl = $updatedQty * $productPrice[0];
+            } else {
+                $updatedQty = $qty[0]->quantity + $quantity;
+                $subbTTl = $updatedQty * $productPrice[0];
+            }
             Cart::where('product', $pID)->update(array('quantity' => $updatedQty, 'subtotal' => $subbTTl));
             // session()->put('QtyUpdated', );
 

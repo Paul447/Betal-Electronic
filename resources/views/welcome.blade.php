@@ -845,7 +845,7 @@
                                         My Profile
                                     </a>
                                     <a class="navitemsss" href="{{ '/myorder' }}">
-                                        
+
                                         My Orders
                                     </a>
                                 </div>
@@ -858,7 +858,7 @@
                         </a>
                     </li>
 
-                
+
                 </div>
         </nav>
         <div class="mobile--menu">
@@ -912,11 +912,11 @@
             }
         })
 
-        function fetcchCart(cartvalue) {
+        function fetcchCart(cartvalue, quantitySent, reset) {
             var controller = "/CartVieww/";
-            let quantity = parseInt($("#quantity").val());
+            let quantity = isNaN(parseInt($("#quantity").val())) ? quantitySent : parseInt($("#quantity").val());
             var host = location.origin + controller;
-            var url = location.origin + controller + cartvalue + "/" + quantity;
+            var url = location.origin + controller + cartvalue + "/" + quantity + "/" + reset;
             console.log(url);
             fetch(url, {
                     method: 'GET',
@@ -936,6 +936,12 @@
                         title: html,
                     })
                 })
+
+            if (reset) {
+                setTimeout(function() {
+                    location.reload();
+                }, 1000);
+            }
         }
 
 
