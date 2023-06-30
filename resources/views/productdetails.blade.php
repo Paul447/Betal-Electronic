@@ -30,7 +30,7 @@
         }
 
         .quantity-info {
-            width: 50px;
+            width: 60px;
         }
 
         .description-content {
