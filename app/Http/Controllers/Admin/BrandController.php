@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Http\Request;
 use App\Models\Admin\Brand;
 use App\Models\admin\User;
@@ -17,9 +18,11 @@ class BrandController extends Controller
      */
     public function index()
     {
+        Paginator::useBootstrap();
+
         $data = Brand::join('users', 'brands.addedby', '=', 'users.id')
             ->where('brands.status', '=', 'approved')
-            ->get();
+            ->Paginate(5);
 
 
         // print_r($data);

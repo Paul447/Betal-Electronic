@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\Paginator;
 use App\Models\Admin\Category;
 
 class CategoryController extends Controller
@@ -15,9 +16,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
+        Paginator::useBootstrap();
         $data = Category::with('ds')
             ->where('status', '=', 'approved')
-            ->get();
+            ->Paginate(5);
 
         return view('admin.Category.ViewCategory')->with('data', $data);
     }

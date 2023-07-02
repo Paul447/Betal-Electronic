@@ -9,14 +9,15 @@
 </head>
 <body>
     <!-- Striped Rows -->
-    <div class="container  " style="margin-top: 85px;" id="tabul">
-        <!-- <div class="container mt-3"> -->
-        <div class="table-wrapper-scroll-y my-custom-scrollbar  shadow-lg p-5 mb-5  rounded">
+    <div class="container cont  d-flex justify-content-center align-content-center" style="margin-top: 85px;"
+            id="tabul">
+            <!-- <div class="container mt-3"> -->
+            <div class="table-responsive w-100">
             <h2 class=" text-uppercase  text-center" style="font-family:Times New Roman, Times, serif">UserTable
             </h2>
-            <table class="table   table-striped table-hover   border border-dark border-3">
+            <table class="table table-striped table-fixed order-table">
                 <thead>
-                    <tr class="p-3 mb-5 rounded border  border-dark border-3">
+                    <tr class="">
                         <th>S.N</th>
                         <th>Editor Name</th>
                         <th>Image </th>

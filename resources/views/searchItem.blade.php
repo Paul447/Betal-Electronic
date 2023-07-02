@@ -93,29 +93,7 @@
 
 @include('footermain')
 <script>
-    function fetcchCart(cartvalue) {
-        var controller = "/CartVieww/";
-        var host = location.origin + controller;
-        var url = location.origin + controller + cartvalue + "/1";
-        fetch(url, {
-                method: 'GET',
-                headers: {
-                    'Accept': 'application/json',
-                },
-            })
-            .then(response => response.json())
-            .then(response => {
-                let html = response.status;
-                Toast.fire({
-                    icon: 'success',
-                    title: html,
-                })
-                Toast.fire({
-                    icon: 'success',
-                    title: html,
-                })
-            })
-    }
+ 
     const showToastButton = document.querySelectorAll(".show-toast");
     var toast = document.querySelector('.toast');
     showToastButton.forEach((btnToast, i) => {

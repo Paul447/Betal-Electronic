@@ -1,25 +1,25 @@
 @extends('admin.index')
 @section('viewproduct')
     <style>
-
     </style>
     <!-- Striped Rows -->
-    <div class="container  " style="margin-top: 85px;" id="tabul">
+    <div class="container cont  d-flex justify-content-center align-content-center" style="margin-top: 85px;" id="tabul">
         <!-- <div class="container mt-3"> -->
-        <div class="table-wrapper-scroll-y my-custom-scrollbar shadow-lg p-5 mb-5  rounded">
+        <div class="table-responsive w-100">
             <h2 class=" text-uppercase  text-center" style="font-family:Times New Roman, Times, serif">Product Detail Table
             </h2>
             <input type="text" class="table-filter" data-table="order-table" placeholder="Item to filter.." />
-            <table class="table   table-striped table-hover   border border-dark border-3 order-table table">
+            <table class="table table-striped table-fixed order-table">
                 <thead>
-                    <tr class="p-3 mb-5 rounded border  border-dark border-3">
-                        <th>S.N</th>
-                        <th>Product Name</th>
-                        <th>Price</th>
-                        <th>Image</th>
-                        <th>Status</th>
-                        <th>Thumbnail</th>
-                        <th>Brand Name</th>
+                    <tr>
+           
+                        <th scope="col" class="fixed-column">S.N</th>
+                        <th scope="col" class="fixed-column">Product Name</th>
+                        <th scope="col" >Price</th>
+                        <th  scope="col" >Image</th>
+                        <th  scope="col" >Status</th>
+                        <th  scope="col" >Thumbnail</th>
+                        <th scope="col">Brand Name</th>
                         {{-- <th>Added By</th> --}}
                         <th>Category Name</th>
                         <th>Action</th>
@@ -130,6 +130,9 @@
                     @endforeach
                 </tbody>
             </table>
+            <div class="d-flex justify-content-center">
+                {!! $data->links() !!}
+            </div>
         </div>
     </div>
 

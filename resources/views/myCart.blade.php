@@ -250,7 +250,6 @@
 
 {{-- <h1> Cart Item</h1> --}}
 <div class="container cont d-flex justify-content-center align-content-center ">
-
     <div class="table-responsive w-100">
         <table class="table table-striped table-fixed">
             <thead>
@@ -318,7 +317,7 @@
                                     name="{{ $cartData->product_name }}" value="{{ $cartData->quantity }}"
                                     type="number" id="quantity" class="itemQty form-control form-control-sm"
                                     style="width: 50px"
-                                    onchange="fetcchCart({{ $cartData->product_id }}, this.value, 1)" />
+                                    onchange="fetccchCart({{ $cartData->product_id }}, this.value, 1)" />
 
                                 <button class="cart_inc btn btn-link px-2" name="{{ $cartData->product_id }}"
                                     onclick="this.parentNode.querySelector('input[type=number]').stepUp()">

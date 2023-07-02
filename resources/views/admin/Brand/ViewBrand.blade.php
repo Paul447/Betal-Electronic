@@ -4,24 +4,18 @@
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
     </script> -->
-    <style>
-        svg {
-            height: 20px;
-            width: 20px;
-        }
-    </style>
+   
     </head>
 
     <body>
         <!-- Striped Rows -->
-        <div class="container  " style="margin-top: 85px;" id="tabul">
-            <!-- <div class="container mt-3"> -->
-            <div class="table-wrapper-scroll-y my-custom-scrollbar  shadow-lg p-5 mb-5  rounded">
+        <div class="container cont  d-flex justify-content-center align-content-center" style="margin-top: 85px;" id="tabul">
+            <div class="table-responsive w-100">
                 <h2 class=" text-uppercase  text-center" style="font-family:Times New Roman, Times, serif">Brand Detail Table
                 </h2>
-                <table class="table   table-striped table-hover   border border-dark border-3">
+                <table class="table table-striped table-fixed order-table">
                     <thead>
-                        <tr class="p-3 mb-5 rounded border  border-dark border-3">
+                        <tr >
                             <th>S.N</th>
                             <th>Brand Name</th>
                             <th>Brand URL</th>
@@ -91,6 +85,9 @@
                         </div>
                     </tbody>
                 </table>
+                <div class="d-flex justify-content-center">
+                    {{$data->links() }}
+                </div>
             </div>
         </div>
 

@@ -2,43 +2,7 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 <script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
-<style>
-    .hello {
-        color: rgb(68, 4, 116);
 
-    }
-
-    .hello:hover {
-        color: white;
-        background-color: rgb(68, 4, 116);
-    }
-
-    .my-custom-scrollbar {
-        position: relative;
-        height: 600px;
-        overflow: auto;
-    }
-
-    .table-wrapper-scroll-y {
-        display: block;
-    }
-
-    .colored-toast.swal2-icon-success {
-        background-color: #a5dc86 !important;
-    }
-
-    .colored-toast.swal2-icon-error {
-        background-color: #f27474 !important;
-    }
-
-    .colored-toast.swal2-icon-warning {
-        background-color: #f8bb86 !important;
-    }
-
-    .colored-toast.swal2-icon-info {
-        background-color: #3fc3ee !important;
-    }
-</style>
 <h2>
     <!-- SideBar -->
 
@@ -70,6 +34,10 @@
     @yield('viewdelivery')
     @yield('add_banner')
     @yield('view_banners')
+    @yield('assignvarition')
+    @yield('viewassignvar')
+
+    
 
 
 
@@ -300,6 +268,7 @@
         }
     })
 </script>
+
 @if (session('NoOrder'))
     <script>
         Toast.fire({
@@ -311,6 +280,19 @@
         session()->forget('NoOrder');
     @endphp
 @endif
+
+@if (session('AdminFaliure'))
+    <script>
+        Toast.fire({
+            icon: 'info',
+            title: '{{ session('AdminFaliure') }}'
+        })
+    </script>
+    @php
+        session()->forget('AdminFaliure');
+    @endphp
+@endif
+
 @if (session('deliveredSuccess'))
     <script>
         Toast.fire({
@@ -335,15 +317,15 @@
     @endphp
 @endif
 
-@if (session('BatchProduct'))
+@if (session('AdminSuccess'))
     <script>
         Toast.fire({
             icon: 'success',
-            title: '{{ session('BatchProduct') }}'
+            title: '{{ session('AdminSuccess') }}'
         })
     </script>
     @php
-        session()->forget('BatchProduct');
+        session()->forget('AdminSuccess');
     @endphp
 @endif
 

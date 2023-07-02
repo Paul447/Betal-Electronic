@@ -5,6 +5,7 @@ use App\Models\Order;
 
 use App\Models\deliverys;
 use App\Models\addProductBatch;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\DB;
 use App\Models\admin\User;
 use App\Http\Controllers\Controller;
@@ -120,8 +121,8 @@ class OrderController extends Controller
     }
 
     public function viewAllProductProfit($id){
-        $data = addProductBatch::where('batchid',$id)->join('products','add_product_batches.product','=','products.product_id')->get();;
-
+        Paginator::useBootstrap();
+        $data = addProductBatch::where('batchid',$id)->join('products','add_product_batches.product','=','products.product_id')->Paginate(5);;
         return view('admin.viewBatchesProdDet')->with(compact('data'));
        
     }
