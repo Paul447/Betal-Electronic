@@ -330,6 +330,52 @@
                 onclick="fetchpDetail(this.value);">Buy Now</button>
         </div>
     </div>
+
+
+
+    <h2 class="feture mx-auto">Product Specification</h2>
+    <div class="container d-flex justify-content-center align-content-center mt-5  mb-5">
+        <div class="table-responsive w-100">
+            <table class="table table-striped table-fixed">
+                <thead>
+                    <tr>
+                        <th scope="col" class="fixed-column">Attribute</th>
+                        <th scope="col" class="fixed-column">Attribute Data</th>
+                      
+                    </tr>
+                </thead>
+                <tbody>
+                    @php
+                    foreach ($productData as $data) {
+                        $variationName = $data->variation_name;
+                        $optionName = $data->option_name;
+            
+                        if (!isset($variations[$variationName])) {
+                            $variations[$variationName] = [];
+                        }
+            
+                        $variations[$variationName][] = $optionName;
+                    }
+                    @endphp
+        @if(!isset($variations))
+
+        @else
+                    @foreach ($variations as $variationName => $optionNames)
+                        <tr>
+                            <td>
+                                {{$variationName}}
+                            </td>
+                            <td>
+                                {{implode(', ', $optionNames)}}
+                            </td>
+                        </tr>
+                    @endforeach
+                    @endif
+                </tbody>
+            </table>
+        </div>
+    </div>
+
     <section id="product1" class="section-p1 ">
         <h2 class="feture mx-auto">Relatable Product</h2>
         <p class="mx-auto" style="width:fit-content;">Check This Out?</p>

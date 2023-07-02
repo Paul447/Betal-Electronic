@@ -87,8 +87,7 @@ class AssignAttribute extends Controller
     {
         //
     }
-
-  
+    
     public function destroy($id)
     {
         $data = Productvariation::where('product',$id)->pluck('id')->flatten()

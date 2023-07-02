@@ -238,7 +238,6 @@
 
 {{-- <h1> Cart Item</h1> --}}
 <div class="container cont d-flex justify-content-center align-content-center ">
-
     <div class="table-responsive w-100">
         <table class="table table-striped table-fixed">
             <thead>
