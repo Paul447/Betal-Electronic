@@ -38,7 +38,7 @@
                         <div class="col col-12 col-lg-6 col-sm-12 col-md-12 col-xl-4 mb-3">
                             <label for="formFile" class="form-label">Product Image</label>
                             <input type="file" class="form-control" id="ProductFile" name="Productfile[]"
-                                accept="image/jpg,image/png"  multiple="multiple" required />
+                                accept="image/jpg,image/png" multiple="multiple" required />
                             <p class="text-danger">
                                 <strong class="text-warning">Warning</strong> : Image size must be
                                 less the 2MB
@@ -82,7 +82,6 @@
                         <div class="col col-12 col-lg-6 col-sm-12 col-md-12 col-xl-4 mb-3">
                             <label for="recipient-name" class="col-form-label">Low Stock Indication</label>
                             <input type="text" class="form-control" id="Productname" name="lowstockindication" required
-
                                 autocomplete="off" />
                         </div>
 
@@ -98,35 +97,33 @@
                             </select>
                         </div>
 
-                        {{-- <div class="col col-12 col-lg-6 col-sm-12 col-md-12 col-xl-4 mb-3" id="output" ><label for="recipient-name" class="col-form-label"
-                            >Select Varition</label>
-                             <select class="form-select" name="Varition[]" aria-label="Default select example" onchange="fetchVaritionOption(this.value)">
-                              <option selected >Choose The Menu</option> 
-                              @foreach ($variatioon as $variatioon)
-                              <option value="{{ $variatioon->variation_id }}">{{ $variatioon->variation_name }}</option>
-                          @endforeach
-                             </select>
-                        </div>--}}
-                    </div> 
-                 
-
+                        {{-- <div class="col col-12 col-lg-6 col-sm-12 col-md-12 col-xl-4 mb-3" id="output"><label
+                                for="recipient-name" class="col-form-label">Select Varition</label>
+                            <select class="form-select" name="Varition[]" aria-label="Default select example"
+                                onchange="fetchVaritionOption(this.value)">
+                                <option selected>Choose The Menu</option>
+                                @foreach ($variatioon as $variatioon)
+                                    <option value="{{ $variatioon->variation_id }}">{{ $variatioon->variation_name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div> --}}
 
                     <div class="modal-footer">
                         {{-- <button class=" btn btn-success btn-md " onclick="fetchVarition()">Add Varation Fields</button> --}}
-
                         <a href="" class="btn btn-secondary btn-md m-4" role="button">Cancel</a>
                         <button type="submit" class="btn btn-primary btn-md float-start" name="submit">
                             Submit
                         </button>
-
                     </div>
                 </form>
 
             </div>
         </div>
 
-        {{-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> --}}
-        <script>            
+      
+        <script>
             function fetcchCategory(catvalue) {
                 var controller = "/getCatValue/";
                 var host = location.origin + controller;
@@ -157,65 +154,65 @@
             }
 
 
-            function fetchVarition() {
-                var controller = "/getVarValue/";
-                var host = location.origin + controller;
-                var url = location.origin + controller;
-                fetch(url, {
-                        method: 'GET',
-                        headers: {
-                            'Accept': 'application/json',
-                        },
-                    })
-                    .then(response => response.json())
-                    .then(response => {
-                        let html = ` <div class="col col-12 col-lg-6 col-sm-12 col-md-12 col-xl-4 mb-3" id="output" ><label for="recipient-name" class="col-form-label"
-                                >Select Varition</label>
-                                 <select class="form-select" name="Varition[]" aria-label="Default select example" onchange="fetchVaritionOption(this.value)">
-                                  <option selected >Choose The Menu</option> `;
+            // function fetchVarition() {
+            //     var controller = "/getVarValue/";
+            //     var host = location.origin + controller;
+            //     var url = location.origin + controller;
+            //     fetch(url, {
+            //             method: 'GET',
+            //             headers: {
+            //                 'Accept': 'application/json',
+            //             },
+            //         })
+            //         .then(response => response.json())
+            //         .then(response => {
+            //             let html = ` <div class="col col-12 col-lg-6 col-sm-12 col-md-12 col-xl-4 mb-3" id="output" ><label for="recipient-name" class="col-form-label"
+            //                     >Select Varition</label>
+            //                      <select class="form-select" name="Varition[]" aria-label="Default select example" onchange="fetchVaritionOption(this.value)" multiple>
+            //                       <option selected >Choose The Menu</option> `;
 
-                        for (const x of response.varValue) {
-                            html += `<option value="${x.variation_id}">${x.variation_name}</option>`;
-                        }
+            //             for (const x of response.varValue) {
+            //                 html += `<option value="${x.variation_id}">${x.variation_name}</option>`;
+            //             }
 
-                        if (response.varValue.length === 0) {
-                            // alert("No More Categories To Add ");
-                            return;
-                        } else {
-                            $('#output').append(html)
-                        }
+            //             if (response.varValue.length === 0) {
+            //                 // alert("No More Categories To Add ");
+            //                 return;
+            //             } else {
+            //                 $('#output').append(html)
+            //             }
 
 
-                    })
-            }
+            //         })
+            // }
 
-            function fetchVaritionOption(vOptValue) {
-                var controller = "/getVarOptValue/";
-                var host = location.origin + controller;
-                var url = location.origin + controller + vOptValue;
-                fetch(url, {
-                        method: 'GET',
-                        headers: {
-                            'Accept': 'application/json',
-                        },
-                    })
-                    .then(response => response.json())
-                    .then(response => {
-                        let html = ` <div class="col col-12 col-lg-6 col-sm-12 col-md-12 col-xl-4 mb-3" id="output" ><label for="recipient-name" class="col-form-label"
-                                >Varition Value</label>
-                                 <select class="form-select" name="varitionValue[]" aria-label="Default select example">
-                                  <option selected >Choose The Menu</option> `;
-                        for (const x of response.varOptValue) {
-                            html += ` <option value="${x.variationoption_id}">${x.value}</option>`
-                        }
-                        console.log(response);
-                        if (response.varOptValue.length === 0) {
-                            return;
-                        } else {
-                            $('#output').append(html)
-                        }
-                    })
-            }
+            // function fetchVaritionOption(vOptValue) {
+            //     var controller = "/getVarOptValue/";
+            //     var host = location.origin + controller;
+            //     var url = location.origin + controller + vOptValue;
+            //     fetch(url, {
+            //             method: 'GET',
+            //             headers: {
+            //                 'Accept': 'application/json',
+            //             },
+            //         })
+            //         .then(response => response.json())
+            //         .then(response => {
+            //             let html = ` <div class="col col-12 col-lg-6 col-sm-12 col-md-12 col-xl-4 mb-3" id="output" ><label for="recipient-name" class="col-form-label"
+            //                     >Varition Value</label>
+            //                      <select class="form-select" name="varitionValue[]" aria-label="Default select example" multiple>
+            //                       <option selected >Choose The Menu</option> `;
+            //             for (const x of response.varOptValue) {
+            //                 html += ` <option value="${x.value}">${x.value}</option>`
+            //             }
+                    
+            //             if (response.varOptValue.length === 0) {
+            //                 return;
+            //             } else {
+            //                 $('#output').append(html)
+            //             }
+            //         })
+            // }
         </script>
     </body>
 @endsection

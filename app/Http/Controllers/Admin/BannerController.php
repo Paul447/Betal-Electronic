@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Pagination\Paginator;
 use App\Models\admin\Banner;
 use Illuminate\Http\Request;
 
@@ -10,8 +11,8 @@ class BannerController extends Controller
 {
     public function index()
     {
-        $data = Banner::all();
-
+        Paginator::useBootstrap();
+        $data = Banner::Paginate(5);
         return view('admin.banner.banners')->with(compact('data'));
     }
 
@@ -31,7 +32,7 @@ class BannerController extends Controller
 
         Banner::create(array_merge($request->all(),['banner_img'=>$name]));
 
-        session()->put('errorbanner', "Banner Added Successfully");
+        session()->put('AdminSuccess', "Banner Added Successfully");
         return redirect('/admin/banner');
     }
 
@@ -52,7 +53,7 @@ class BannerController extends Controller
     public function update(Request $request, $id)
     {
         Banner::find($id)->update($request->all());
-        session()->put('errormessage', "Banner Data Updated Successfully");
+        session()->put('AdminFaliure', "Banner Data Updated Successfully");
         return redirect('/admin/banner');
     }
 
@@ -61,7 +62,7 @@ class BannerController extends Controller
         $banner = Banner::find($id);
         if (!is_null($banner)) {
             $banner->delete();
-            session()->put('errormessage', "Banner Deleted Successfully");
+            session()->put('AdminFaliure', "Banner Deleted Successfully");
         }
         return redirect('/admin/banner');
     }

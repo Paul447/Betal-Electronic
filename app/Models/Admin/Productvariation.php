@@ -13,4 +13,5 @@ class Productvariation extends Model
         'variation_id',
         'variationoption_id',
     ];
+    protected $primaryKey = 'id';
 }

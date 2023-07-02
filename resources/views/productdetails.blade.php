@@ -322,7 +322,7 @@
             </div>
             @if (!is_null(session('customer')))
                 <button a id="" class="add-to-cart" id="addToCartFromCard" value="{{ $product->product_id }}"
-                    onclick="fetcchCart(this.value);">Add To Cart</button>
+                    onclick="fetccchCart(this.value);">Add To Cart</button>
             @else
                 <button class="show-toast add-to-cart">Add To Cart</button>
             @endif

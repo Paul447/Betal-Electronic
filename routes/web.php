@@ -22,6 +22,7 @@ use App\Http\Controllers\Ui\CheckoutController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\BatchController;
 use App\Http\Controllers\DeliveryController;
+use App\Http\Controllers\Admin\AssignAttribute;
 
 use App\Http\Controllers\viewprofileController;
 
@@ -106,10 +107,14 @@ Route::group(['prefix' => '/admin', 'middleware' => 'editor'], function () {
         '/variation' => VariationController::class,
         '/variationoption' => VariationoptionController::class,
         '/banner' => BannerController::class,
+        '/assign' => AssignAttribute::class,
+
     ]);
     Route::post('/batch/add/', [BatchController::class, 'add']);
     Route::post('/delivery/add/', [DeliveryController::class, 'add']);
     Route::post('/delivery/confirm/', [DeliveryController::class, 'confirm']);
+
+  
 
     // Route::resource('/product',ProductController::class);
     // Route::resource('/brand',BrandController::class);

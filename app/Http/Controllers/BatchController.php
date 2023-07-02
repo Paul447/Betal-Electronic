@@ -65,8 +65,8 @@ class BatchController extends Controller
             'soldquantity' => '0',
             'profit' => '0',
         ]);
-        session()->put('BatchProduct', 'Prodcut Assign To New Batch');
-        return redirect('/home');
+        session()->put('AdminSuccess', 'Prodcut Assign To New Batch');
+        return redirect('/admin/batch/show');
     }
     public function fetchBatchAssociatesProduct($id)
     {

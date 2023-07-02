@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Http\Request;
 use App\Models\Admin\Category;
 use App\Models\Admin\Variation;
@@ -24,12 +25,13 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+   
     public function index()
     {
+        Paginator::useBootstrap();
         $data = Product::join('brands', 'brand', 'brands_id')
             ->join('users', 'products.addedby', 'users.id')
-            ->where('products.status', '=', 'approved')
-            ->get();
+            ->where('products.status', '=', 'approved')->Paginate(5);
         return view('admin.Product.ViewProduct')->with(compact('data'));
     }
 
@@ -59,6 +61,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+       
         $addedby = session('user')['id'];
         if (session('user')['role'] == 'Admin') {
             $file = $request->file('Productthumbfile');
@@ -75,6 +78,7 @@ class ProductController extends Controller
                 'thumbnail' => $filename,
                 'status' => 'approved',
             ])->product_id;
+            session()->put('AdminSuccess', 'Product Added');
             return $this->uploadimage($id, $request);
         }
     }

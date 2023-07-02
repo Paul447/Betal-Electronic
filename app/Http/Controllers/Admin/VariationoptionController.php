@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Pagination\Paginator;
 use App\Models\admin\Variation;
 use App\Models\admin\Variationoption;
 use Illuminate\Http\Request;
@@ -17,8 +18,9 @@ class VariationoptionController extends Controller
      */
     public function index()
     {
+        Paginator::useBootstrap();
         $data = Variationoption::join('variations', 'variation', '=', 'variations.variation_id')
-            ->where('variationoptions.status', '=', 'approved')->get();
+            ->where('variationoptions.status', '=', 'approved')->Paginate(5);
         return view('admin.variationoption.viewvariationoption')->with('data', $data);
     }
 
@@ -54,10 +56,11 @@ class VariationoptionController extends Controller
         if (session('user')['role'] == 'Admin') {
 
             Variationoption::create(array_merge($request->all(), ['addedby' => $addedby, 'approvedby' => $addedby, 'status' => 'approved']));
-            return redirect('/admin/variationoption/');
+            session()->put('AdminSuccess', 'New Attribute Option Created');
+            return redirect('/admin/variationoption/create');
         } else {
             Variationoption::create(array_merge($request->all(), ['addedby' => $addedby]));
-            return redirect('/admin/variationoption/');
+            return redirect('/admin/variationoption/create');
         }
     }
 
@@ -84,7 +87,7 @@ class VariationoptionController extends Controller
         $title = "Update Variation Option";
         $variation = Variation::where('status', '=', 'approved')->get();
         $data = Variationoption::join('variations', 'variation', '=', 'variations.variation_id')->find($id);
-
+       
         return view('admin.variationoption.variationoption')->with(compact('url', 'title', 'variation', 'data'));
     }
 
@@ -97,20 +100,11 @@ class VariationoptionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // $request->validate(
-        //     [
-        //        'variation_name'=>'required|alpha_dash',
-        //        'category'=>'required|numeric,'
-        //     ]
-        //     );
-
-
-
         $updatedby = session('user')['id'];
         $var = Variationoption::find($id);
         if (session('user')['role'] == 'Admin') {
-
             $var->update(array_merge($request->all(), ['updatedby' => $updatedby, 'updateapprovedby' => $updatedby, 'updatestatus' => "approved"]));
+            session()->put('AdminFaliure', 'Attribute Option Updated');
             return redirect(('admin/variationoption/'));
         } else {
             $var->update(array_merge($request->all(), ['updatedby' => $updatedby, 'updatestatus' => 'pending']));
@@ -128,6 +122,7 @@ class VariationoptionController extends Controller
     {
         $var = Variationoption::find($id);
         $var->delete();
+        session()->put('AdminFaliure', 'Attribute-Option Deleted');
         return redirect('/admin/variationoption');
     }
 }

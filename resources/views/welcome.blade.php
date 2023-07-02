@@ -911,8 +911,31 @@
                 toastContainer.style.marginTop = '70px';
             }
         })
+        function fetcchCart(cartvalue) {
+        var controller = "/CartVieww/";
+        var host = location.origin + controller;
+        var url = location.origin + controller + cartvalue + "/1";
+        fetch(url, {
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json',
+                },
+            })
+            .then(response => response.json())
+            .then(response => {
+                let html = response.status;
+                Toast.fire({
+                    icon: 'success',
+                    title: html,
+                })
+                Toast.fire({
+                    icon: 'success',
+                    title: html,
+                })
+            })
+    }
 
-        function fetcchCart(cartvalue, quantitySent, reset) {
+        function fetccchCart(cartvalue, quantitySent, reset) {
             var controller = "/CartVieww/";
             let quantity = isNaN(parseInt($("#quantity").val())) ? quantitySent : parseInt($("#quantity").val());
             var host = location.origin + controller;

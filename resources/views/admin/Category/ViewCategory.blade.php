@@ -1,14 +1,13 @@
 @extends('admin.index')
 @section('viewcategory')
     <!-- Striped Rows -->
-    <div class="container  " style="margin-top: 85px;" id="tabul">
-        <!-- <div class="container mt-3"> -->
-        <div class="table-wrapper-scroll-y my-custom-scrollbar shadow-lg p-5  mb-5  rounded">
+    <div class="container cont  d-flex justify-content-center align-content-center" style="margin-top: 85px;" id="tabul">
+        <div class="table-responsive w-100">
             <h2 class=" text-uppercase  text-center" style="font-family:Times New Roman, Times, serif">Category Detail Table
             </h2>
-            <table class="table   table-striped table-hover   border border-dark border-3">
+            <table class="table table-striped table-fixed order-table">
                 <thead>
-                    <tr class="p-3 mb-5 rounded border  border-dark border-3">
+                    <tr>
                         <th>S.N</th>
                         <th>Category Name</th>
                         <th>Category Image</th>
@@ -58,6 +57,9 @@
                     @endforeach
                 </tbody>
             </table>
+            <div class="d-flex justify-content-center">
+                {{$data->links() }}
+            </div>
         </div>
     </div>
 
