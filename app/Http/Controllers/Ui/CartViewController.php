@@ -150,9 +150,14 @@ class CartViewController extends Controller
         $findexistingProduct = Cart::where('product', '=', $pId)->where('user', '=', $customerID)->get();
         $pproductPrice = Productprice::where('product', '=', $pId)->pluck('price');
         $worDCount = $findexistingProduct->count();
+        $available_quantity = addProductBatch::find($productId)->availablequantity;
         if ($worDCount > 0) {
             $qtty = Cart::select('quantity')->where('product', $pId)->get();
             $updatedQTy = $qtty[0]->quantity + $qtyAmount;
+            if ($available_quantity < $updatedQTy) {
+                // change status message div 
+                return  response()->json(['changedQty' => "Invalid Item Quantity " . $updatedQTy]);
+            }
             if ($updatedQTy == 0) {
                 $updatedQTy = 1;
             } else {
