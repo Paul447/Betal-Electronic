@@ -84,7 +84,7 @@ class CartViewController extends Controller
         if ($wordCount > 0) {
             $qty = Cart::select('quantity')->where('product', $pID)->get();
             if ($reset) {
-                if ($available_quantity < $quantity) {
+                if ($available_quantity < $quantity || $quantity <= 0) {
                     // change status message div 
                     return  response()->json(['status' => "Invalid Item Quantity " . $quantity]);
                 }
@@ -92,7 +92,7 @@ class CartViewController extends Controller
                 $subbTTl = $updatedQty * $productPrice[0];
             } else {
                 $updatedQty = $qty[0]->quantity + $quantity;
-                if ($available_quantity < $updatedQty) {
+                if ($available_quantity < $updatedQty || $updatedQty <= 0) {
                     // change status message div 
                     return  response()->json(['status' => "Invalid Item Quantity " . $quantity]);
                 }
@@ -105,10 +105,10 @@ class CartViewController extends Controller
             // Sesssion::set('itemIncresed') = ""; 
         } else {
             $subTotal = $productPrice[0] * $quantity;
-            if ($available_quantity < $quantity) {
-                    // change status message div 
-                    return  response()->json(['status' => "Invalid Item Quantity " . $quantity]);
-                }
+            if ($available_quantity < $quantity || $quantity <= 0) {
+                // change status message div 
+                return  response()->json(['status' => "Invalid Item Quantity " . $quantity]);
+            }
             Cart::create([
                 'product' => $pID,
                 'user' => $customerId,
@@ -154,7 +154,7 @@ class CartViewController extends Controller
         if ($worDCount > 0) {
             $qtty = Cart::select('quantity')->where('product', $pId)->get();
             $updatedQTy = $qtty[0]->quantity + $qtyAmount;
-            if ($available_quantity < $updatedQTy) {
+            if ($available_quantity < $updatedQTy || $updatedQTy <= 0) {
                 // change status message div 
                 return  response()->json(['changedQty' => "Invalid Item Quantity " . $updatedQTy]);
             }
