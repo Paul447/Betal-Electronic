@@ -939,7 +939,11 @@
             var controller = "/CartVieww/";
             let quantity = isNaN(parseInt($("#quantity").val())) ? quantitySent : parseInt($("#quantity").val());
             var host = location.origin + controller;
-            var url = location.origin + controller + cartvalue + "/" + quantity + "/" + reset;
+            if (reset) {
+                var url = location.origin + controller + cartvalue + "/" + quantity + "/" + reset;
+            }else{
+                var url = location.origin + controller + cartvalue + "/" + quantity;
+            }
             console.log(url);
             fetch(url, {
                     method: 'GET',
