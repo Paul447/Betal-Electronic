@@ -147,7 +147,7 @@
     @foreach ($data as $dtata)
         <div class="profile-card">
             <div class="profile-img">
-                @if (isset($dtata->password))
+                @if ($dtata->password != '' || $dtata->password != null)
                     <img src="{{ asset('/admin/img/' . $dtata->image) }}" alt="Profile Image" />
                 @else
                     <img src="{{ $dtata->image }}" alt="Profile Image" />
