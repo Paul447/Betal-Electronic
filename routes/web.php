@@ -47,7 +47,9 @@ use App\Http\Controllers\viewprofileController;
 //     return $next($request);
 // }]]);
 
-Route::get('/buy/{qnt},{id}', [CheckoutController::class, 'index']);
+Route::get('/buy/{quantity},{product_id}', [CheckoutController::class, 'index']);
+Route::post('/buy/confirm', [CheckoutController::class, 'confirm']);
+Route::get('/buy/confirm/', [CheckoutController::class, 'store_buy_data']);
 Route::get('/categorySearch/{id}', [ProductviewController::class, 'categorySearch']);
 Route::get('/fetchbyBrand/{id}', [ProductviewController::class, 'fetchbyBrand']);
 Route::get('/', [ProductviewController::class, 'index']);

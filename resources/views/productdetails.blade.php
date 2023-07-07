@@ -341,35 +341,34 @@
                     <tr>
                         <th scope="col" class="fixed-column">Attribute</th>
                         <th scope="col" class="fixed-column">Attribute Data</th>
-                      
+
                     </tr>
                 </thead>
                 <tbody>
                     @php
-                    foreach ($productData as $data) {
-                        $variationName = $data->variation_name;
-                        $optionName = $data->option_name;
-            
-                        if (!isset($variations[$variationName])) {
-                            $variations[$variationName] = [];
+                        foreach ($productData as $data) {
+                            $variationName = $data->variation_name;
+                            $optionName = $data->option_name;
+                        
+                            if (!isset($variations[$variationName])) {
+                                $variations[$variationName] = [];
+                            }
+                        
+                            $variations[$variationName][] = $optionName;
                         }
-            
-                        $variations[$variationName][] = $optionName;
-                    }
                     @endphp
-        @if(!isset($variations))
-
-        @else
-                    @foreach ($variations as $variationName => $optionNames)
-                        <tr>
-                            <td>
-                                {{$variationName}}
-                            </td>
-                            <td>
-                                {{implode(', ', $optionNames)}}
-                            </td>
-                        </tr>
-                    @endforeach
+                    @if (!isset($variations))
+                    @else
+                        @foreach ($variations as $variationName => $optionNames)
+                            <tr>
+                                <td>
+                                    {{ $variationName }}
+                                </td>
+                                <td>
+                                    {{ implode(', ', $optionNames) }}
+                                </td>
+                            </tr>
+                        @endforeach
                     @endif
                 </tbody>
             </table>
@@ -518,21 +517,25 @@
 
 
         function fetchpDetail(detailValue) {
+            console.log("buying product", detailValue);
             var controll = "/buy/";
-            var x = document.getElementById("itemValue").value;
+            var x = document.getElementById("quantity").value;
             const dataa = [];
             dataa[0] = x;
             dataa[1] = detailValue;
             var urll = location.origin + controll + dataa;
+            window.location.href = urll;
 
-            fetch(urll, {
-                method: 'GET',
-                headers: {
-                    'Accept': 'application/json',
-                },
+            
+            // console.log(urll);
+            // fetch(urll, {
+            //     method: 'GET',
+            //     headers: {
+            //         'Accept': 'application/json',
+            //     },
 
 
-            })
+            // })
         }
         const showToastButton = document.querySelectorAll(".show-toast");
         var toast = document.querySelector('.toast');
