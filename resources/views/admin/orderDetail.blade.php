@@ -1,12 +1,12 @@
 @extends('admin.index')
 @section('viewOrderDetail')
-{{-- <script src="/socket.io/socket.io.js"></script> --}}
+
 @php 
 $pending = DB::table('deliverys')->where('status', '=','pending')->count();
 $delivered = DB::table('deliverys')->where('status', '=', 'delivered')->count();
 
 @endphp
-<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.1/socket.io.js" integrity="sha512-xbQU0+iHqhVt7VIXi6vBJKPh3IQBF5B84sSHdjKiSccyX/1ZI7Vnkt2/8y8uruj63/DVmCxfUNohPNruthTEQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 <div class="container-fluid px-4">
     <div id="data-container"></div>
     <div class="container d-flex align-items-center justify-content-center"> 
@@ -36,37 +36,5 @@ $delivered = DB::table('deliverys')->where('status', '=', 'delivered')->count();
 
     </div>
   </div>
-  <script>
-//     const socket = io('ws://localhost:6001');
-// socket.on('connect', () => {
-//     socket.emit('subscribe', {
-//         channel: 'orders',
-//     });
-// });
 
-// socket.on('orders', (data) => {
-//     // update the HTML element with the new data
-//     document.getElementById('data-container').innerHTML = data;
-// });
-// import WebSocket from 'websocket';
-
-// const socket = new WebSocket('ws://localhost:6001');
-
-// socket.addEventListener('open', (event) => {
-//     console.log('WebSocket connection established');
-    
-//     // Send a request to connect to the private channel for the current user
-//     socket.send(JSON.stringify({
-//         event: 'pusher:subscribe',
-//         data: {
-//             channel: `private-user.${userId}`,
-//             auth: {
-//                 headers: {
-//                     'X-CSRF-Token': csrfToken,
-//                 },
-//             },
-//         },
-//     }))
-// });
-  </script>
   @endsection

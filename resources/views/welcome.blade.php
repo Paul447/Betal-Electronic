@@ -7,25 +7,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="{{ asset('admin/bootstrap-5.2.3-dist/css/bootstrap.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('admin/css/productcardmain.css') }}" />
-    <link rel="stylesheet" href="{{ asset('admin/css/toast.css') }}" />
+    {{-- <link rel="stylesheet" href="{{ asset('admin/css/productcardmain.css') }}" /> --}}
+    {{-- <link rel="stylesheet" href="{{ asset('admin/css/toast.css') }}" /> --}}
     <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/login.css') }}" />
     <link rel="stylesheet" href="{{ asset('admin/css/foot.css') }}" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.min.js"
+
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.min.js"
         integrity="sha512-3dZ9wIrMMij8rOH7X3kLfXAzwtcHpuYpEgQg1OA4QAob1e81H8ntUQmQm3pBudqIoySO5j0tHN4ENzA6+n2r4w=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
     {{-- <link rel="stylesheet" href="{{ asset('vendor/sweetalert2/sweetalert2.min.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset('admin/css/sty.css') }}" />
     <script src=" {{ asset('admin/bootstrap-5.2.3-dist/js/bootstrap.bundle.min.js') }}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+   
+    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
         integrity="sha512-t4GWSVZO1eC8BM339Xd7Uphw5s17a86tIZIj8qRxhnKub6WoyhnrxeCIMeAqBPgdZGlCcG2PrZjMc+Wr78+5Xg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+        crossorigin="anonymous" referrerpolicy="no-referrer" /> --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" defer></script>
 
@@ -100,13 +99,13 @@
         a {
             color: #000;
             text-decoration: none;
-            /* text-align: center; */
+          
         }
 
         .card-categories-li {
             min-width: 150px;
             max-width: 180px;
-            /* width: 12.5%; */
+           
             height: 148.5px;
             border-right: 1px solid #e2e2e2;
             border-bottom: 1px solid #e2e2e2;
@@ -265,7 +264,7 @@
             height: 220px;
         }
 
-        /* media queries */
+
         @media (max-width: 1120px) {
             .map {
                 width: 280px;
@@ -326,7 +325,7 @@
             border-bottom: 3px solid #a50318;
             width: fit-content;
             padding-bottom: 10px;
-            /* margin-bottom: 50px; */
+        
         }
 
 
@@ -340,7 +339,7 @@
             text-decoration: none !important;
         }
 
-        /* temporary code above */
+
 
         :root {
             --red: #A50318;
@@ -359,7 +358,7 @@
             width: 100px;
         }
 
-        /* remove default margin from bootstrap */
+
         ul {
             margin-bottom: 0;
             padding-left: 0;
@@ -398,7 +397,7 @@
             outline: 1px solid black;
         }
 
-        /* ======= mobile menu ======= */
+ 
         .mobile--menu {
             width: 28px;
             height: 20px;
@@ -424,7 +423,7 @@
             transform: rotate(45deg) translate(-4px, -6px);
         }
 
-        /* account dropdown menu */
+    
 
         .account--icon {
             position: relative;
@@ -452,7 +451,7 @@
             margin: 10px 0;
         }
 
-        /* mobile menu */
+
         @media (max-width: 860px) {
             .middle {
                 position: fixed;
@@ -572,12 +571,11 @@
 
         .btnn:focus,
         .btnn:hover {
-            /* opacity: 0.9; */
+   
             background-color: #a50318;
             color: #ffffff;
             outline: 3px solid var(--light-red) !important;
-            /* outline-color: #a50318; */
-            /* outline-style: outset; */
+         
         }
 
         .googlebutton {
@@ -606,7 +604,7 @@
         .products-container {
             display: flex;
             flex-wrap: wrap;
-            /* justify-content: space-between; */
+
 
         }
 
@@ -744,7 +742,7 @@
 
 
 
-        /* Responsive styles */
+
         @media only screen and (max-width: 600px) {
             .product-card {
                 max-width: 100%;
@@ -789,7 +787,7 @@
             .product-card {
                 flex-basis: 100%;
             }
-        }
+        } 
     </style>
 </head>
 

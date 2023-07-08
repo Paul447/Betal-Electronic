@@ -43,10 +43,8 @@
     </section>
   
     <div class="map">
-        <iframe
-            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d17906.0163096983!2d87.89461198436425!3d26.692480727033814!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sne!2snp!4v1687076183416!5m2!1sne!2snp"
-            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.3871419640996!2d85.32051591506202!3d27.70533068279279!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb197b3f1754c7%3A0x58f5291f731a295a!2sBetal%20International%20(Complete%20ICT%20Solution)!5e0!3m2!1sen!2snp!4v1688782528102!5m2!1sen!2snp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
     </div>
   
   </footer>

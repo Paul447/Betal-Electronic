@@ -8,10 +8,15 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="style.css">
+
     <title>view profile</title>
 </head>
 <style>
+    a{
+        text-decoration: none;
+    }
+
+   
     /* Container styles */
     .container.emp-profile {
         margin-top: 95px;
@@ -148,9 +153,9 @@
         <div class="profile-card">
             <div class="profile-img">
                 @if (isset($dtata->password))
-                    <img src="{{ asset('/admin/img/' . $dtata->image) }}" alt="Profile Image" />
+                    <img src="{{ $dtata->image }}" alt="Profile Image" />
                 @else
-                <img src="{{ $dtata->image }}" alt="Profile Image" />
+                    <img src="{{ asset('/admin/img/' . $dtata->image) }}" alt="Profile Image" />
                 @endif
             </div>
             <div class="profile-details">
@@ -158,26 +163,16 @@
                 <div class="profile-info">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="info-item">
-                                <label>Email:</label>
-                                <p>{{ $dtata->email }}</p>
-                            </div>
-                            <div class="info-item">
-                                <label>Phone:</label>
-                                <p>{{ $dtata->contact }}</p>
-                            </div>
-                            <div class="info-item">
-                                <label>Province:</label>
-                                <p>{{ $dtata->province }}</p>
-                            </div>
-                            <div class="info-item">
-                                <label>District:</label>
-                                <p>{{ $dtata->district }}</p>
-                            </div>
-                            <div class="info-item">
-                                <label>Ward:</label>
-                                <p>{{ $dtata->ward }}</p>
-                            </div>
+                            <table>
+                                <thead>
+                                    <th class="pb-4">Email :&nbsp;{{ $dtata->email }} </th>
+                                </thead>
+                                <tbody >
+                                    <td class="justify-content-center d-flex" >
+                                        <a href="{{'/changepass'}}"  style="text-decoration: none;" class="view-details">Change Password</a>
+                                    </td>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>

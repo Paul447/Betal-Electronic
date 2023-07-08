@@ -21,7 +21,7 @@
         <swiper-slide class="">
             <a href="{{ url('/categorySearch/' . $catdata->categorys_id) }}">
 
-                <li class="splide__slide">
+                <li class="">
                     <img src="{{ asset('/storage/categorythumbnail/' . $catdata->categorythumbnail) }}" alt="">
                 </li>
                 <p> {{ $catdata->category_name }}</p>

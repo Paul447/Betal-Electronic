@@ -45,7 +45,7 @@
         <swiper-slide class="">
             <a href="{{ url('/fetchbyBrand/' . $branddata->brands_id) }}">
 
-                <li class="splide__slide">
+                <li class="">
                     <img src="{{ asset('/storage/brands/' . $branddata->brand_image) }}" alt="">
                 </li>
             </a>

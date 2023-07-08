@@ -183,12 +183,17 @@
                             </td>
                             <td> {{ $dta->quantity }}</td>
                             @php
-                                $price = DB::table('productprices')
+                                $sellprice = DB::table('add_product_batches')
                                     ->where('product', $dta->product)
-                                    ->latest()
+                                    ->whereNotNull('availablequantity')
+                                    ->where('availablequantity', '<>', 0)
+                                    ->orderBy('batchid', 'asc')
+                                    ->limit(1)
+                                    ->pluck('sellingprice')
                                     ->first();
+                               
                             @endphp
-                            <td> Rs.{{ $price->price }} </td>
+                            <td> Rs.{{ $sellprice }} </td>
                             <td> <strong> Rs.{{ $dta->price }} @php
                                 $var += $dta->price;
                                 

@@ -92,7 +92,6 @@
                     })
                 })
             });
-        
         </script>
         {{-- Logged In successfully message --}}
         @if (session('message'))

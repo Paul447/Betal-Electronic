@@ -23,6 +23,7 @@ use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\BatchController;
 use App\Http\Controllers\DeliveryController;
 use App\Http\Controllers\Admin\AssignAttribute;
+use App\Http\Controllers\Admin\ChangePasswordController;
 
 use App\Http\Controllers\viewprofileController;
 
@@ -99,7 +100,6 @@ Route::group(['prefix' => '/admin', 'middleware' => 'editor'], function () {
     Route::get('/category/visible/{id}', [CategoryController::class, 'showcategory']);
     Route::get('/category/invisible/{id}', [CategoryController::class, 'hidecategory']);
     Route::resources([
-        //number of product to notify low stock of a product
         '/product' => ProductController::class,
         '/order' => OrderController::class,
         '/brand' => BrandController::class,
@@ -110,13 +110,11 @@ Route::group(['prefix' => '/admin', 'middleware' => 'editor'], function () {
         '/variationoption' => VariationoptionController::class,
         '/banner' => BannerController::class,
         '/assign' => AssignAttribute::class,
-
     ]);
+
     Route::post('/batch/add/', [BatchController::class, 'add']);
     Route::post('/delivery/add/', [DeliveryController::class, 'add']);
     Route::post('/delivery/confirm/', [DeliveryController::class, 'confirm']);
-
-  
 
     // Route::resource('/product',ProductController::class);
     // Route::resource('/brand',BrandController::class);
@@ -124,6 +122,7 @@ Route::group(['prefix' => '/admin', 'middleware' => 'editor'], function () {
     // Route::resource('/variation',VariationController::class);
     // Route::resource('/variationoption',VariationoptionController::class);
 });
+Route::resource('/changepass', ChangePasswordController::class);
 Route::get('/CartView/', [CartViewController::class, 'index']);
 Route::delete('/cart/{id}', [CartViewController::class, 'destroy']);
 Route::get('/CartVieww/{id}/{quantity}/{reset?}', [CartViewController::class, 'storedata']);
