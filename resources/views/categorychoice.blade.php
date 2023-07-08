@@ -24,6 +24,7 @@
                 <li class="splide__slide">
                     <img src="{{ asset('/storage/categorythumbnail/' . $catdata->categorythumbnail) }}" alt="">
                 </li>
+                <p> {{ $catdata->category_name }}</p>
             </a>
         </swiper-slide>
     @endforeach

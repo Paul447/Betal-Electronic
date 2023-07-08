@@ -148,9 +148,9 @@
         <div class="profile-card">
             <div class="profile-img">
                 @if (isset($dtata->password))
-                    <img src="{{ asset('/admin/img/' . $dtata->image) }}" alt="Profile Image" />
+                <img src="{{ asset('/admin/img/' . $dtata->image) }}" alt="Profile Image" />
                 @else
-                    <img src="{{ $dtata->image }}" alt="Profile Image" />
+                <img src="{{ $dtata->image }}" alt="Profile Image" />
                 @endif
             </div>
             <div class="profile-details">

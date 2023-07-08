@@ -57,6 +57,7 @@ class CategoryController extends Controller
             $filename = time() . '.' . $file->getClientOriginalExtension();
             $file->storeAs('public/categorythumbnail', $filename);
             Category::create(array_merge($request->all(), ['categorythumbnail' => $filename, 'addedby' => $addedby, 'approvedby' => $addedby, 'status' => 'approved']));
+            session()->put('AdminSuccess', 'Category Added');
             return redirect('/admin/category/');
         } else {
             $file = $request->file('categorythumbnail');
@@ -118,6 +119,7 @@ class CategoryController extends Controller
                 unlink($image_path);
             }
             $category->update(array_merge($request->all(), ['categorythumbnail' => $filename, 'updatedby' => $updatedby, 'updateapprovedby' => $updatedby, 'updatestatus' => 'approved']));
+            session()->put('AdminFaliure', 'Category Updated');
             return redirect('/admin/category/');
         } else {
             $file = $request->file('categorythumbnail');
@@ -152,6 +154,7 @@ class CategoryController extends Controller
             unlink($image_path);
         }
         $category->delete();
+        session()->put('AdminFaliure', 'Category Deleted');
         return redirect('/admin/category/');
     }
 
