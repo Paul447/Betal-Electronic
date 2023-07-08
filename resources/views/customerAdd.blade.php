@@ -10,6 +10,7 @@
             height: 200px;
         }
     }
+
     :root {
         --red: #A50318;
         --light-red: #aa4f5b9c;
@@ -91,8 +92,8 @@
 
         <form method="post" action="{{ '/customerAdd/' }}" enctype="multipart/form-data">
             @csrf
-       
-           
+
+
             <div class="row">
 
                 <div class="col col-12 col-md-6">
@@ -100,8 +101,9 @@
                     <div class="form--item mb-2 d-flex flex-column">
                         <label for="name" class="mb-1">Name</label>
                         <input type="text" name="user_name"
-                            class="rounded-1 form-control border py-1 px-2 border-dark-subtle" id="name" value="{{ old('user_name') }}">
-                            @error('user_name')
+                            class="rounded-1 form-control border py-1 px-2 border-dark-subtle" id="name"
+                            value="{{ old('user_name') }}">
+                        @error('user_name')
                             <span class=" text-danger">{{ $message }}</span>
                         @enderror
                     </div>
@@ -109,8 +111,9 @@
                     <div class="form--item mb-2 d-flex flex-column">
                         <label for="tel" class="mb-1">Phone number</label>
                         <input type="tel" name="contact" pattern="[0-9]+" title="Only Numbers Are allowed"
-                            class="rounded-1 form-control border py-1 px-2 border-dark-subtle" id="tel" value="{{old('contact')}}">
-                            @error('contact')
+                            class="rounded-1 form-control border py-1 px-2 border-dark-subtle" id="tel"
+                            value="{{ old('contact') }}">
+                        @error('contact')
                             <span class=" text-danger">{{ $message }}</span>
                         @enderror
                     </div>
@@ -118,35 +121,38 @@
                     <div class="form--item mb-2 d-flex flex-column position-relative">
                         <label for="password" class="mb-1">Password</label>
                         <input type="password" name="password"
-                            class="py-1 px-2 border form-control border-dark-subtle rounded-1" id="password" value="{{old('password')}}">
-                          
+                            class="py-1 px-2 border form-control border-dark-subtle rounded-1" id="password"
+                            value="{{ old('password') }}">
+
                         <button type="button" class="btn--toggle-password bg-transparent border-0 text-center">
                             <i class="fa-solid fa-eye"></i>
                         </button>
                     </div>
                     @error('password')
-                    <span class=" text-danger">{{ $message }}</span>
-                @enderror
+                        <span class=" text-danger">{{ $message }}</span>
+                    @enderror
                     <div class="form--item mb-2 d-flex flex-column position-relative">
                         <label for="con-password" class="mb-1">Confirm password</label>
                         <input type="password" name="password_confirmation"
-                            class="rounded-1 form-control border py-1 px-2 border-dark-subtle" id="password_confirmation" value="{{old('password_confirmation')}}">
-                        
+                            class="rounded-1 form-control border py-1 px-2 border-dark-subtle"
+                            id="password_confirmation" value="{{ old('password_confirmation') }}">
+
                         <button type="button" class="btn--toggle-password bg-transparent border-0 text-center">
                             <i class="fa-solid fa-eye"></i>
                         </button>
                     </div>
                     @error('con-password')
-                    <span class=" text-danger">{{ $message }}</span>
-                @enderror
+                        <span class=" text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <div class="col col-12 col-md-6">
                     <div class="form--item mb-2 d-flex flex-column">
                         <label for="email" class="mb-1">Email</label>
                         <input type="email" name="email"
-                            class="rounded-1 border form-control py-1 px-2 border-dark-subtle" value="{{old('email')}}"id="email">
-                            @error('email')
+                            class="rounded-1 border form-control py-1 px-2 border-dark-subtle"
+                            value="{{ old('email') }}"id="email">
+                        @error('email')
                             <span class=" text-danger">{{ $message }}</span>
                         @enderror
                     </div>

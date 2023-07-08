@@ -251,9 +251,10 @@
 </style>
 
 
-{{-- <h1> Cart Item</h1> --}}
+
 <div class="container cont d-flex justify-content-center align-content-center ">
     <div class="table-responsive w-100">
+        <h2 class="feture mx-auto  mt-5 mb-5 "> Cart Item</h2>
         <table class="table table-striped table-fixed">
             <thead>
                 <tr>
@@ -360,6 +361,7 @@
 
 
 <div class="container mt-3">
+    <h2 class="feture mx-auto  mt-5 mb-5 "> Check Out? </h2>
     <div class="row justify-content-center mb-4">
         <div class="col col-md-4 col-md-mx-4 order-md-2 mb-4 prodetail">
             <section id="cart-add" class="section-p1">

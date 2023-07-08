@@ -36,9 +36,6 @@
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 
-        a {
-            text-decoration: none;
-        }
 
         .brandname {
             text-align: center !important;

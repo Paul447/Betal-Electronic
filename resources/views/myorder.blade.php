@@ -206,69 +206,66 @@
     }
 </style>
 
-<body class="rowww">
 
-    <main class="table-responsive container">
-        <section class="table__header">
-            <h1>Your Orders</h1>
-            <div class="input-group">
-                <input type="text" class="table-filter" data-table="order-table" placeholder="Item to filter.." />
-            </div>
-        </section>
-        <section class=" table-responsive">
-            <div style=overflow-x:auto;>
-                <table class="order-table">
 
-                    <thead>
-                        <tr>
-                            <th>Sn.</th>
-                            <th> Customer </th>
-                            <th> Location </th>
-                            <th> Order ID </th>
-                            <th> Amount </th>
-                            <th> Delivery Status </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <form id="submit-form" action="mydataView">
-                            <input type="hidden" name="my" id="myvalueee" value="" />
-                        </form>
-                        @php
-                            $i = 1;
-                        @endphp
+<div class="rowww" style="margin-top:135px; ">
+    <h1 class="feture mx-auto  mt-5 mb-5 ">Your Orders</h1>
+<main class="table-responsive container ">
+    <section class=" table-responsive">
+        <div style=overflow-x:auto;>
+            <table class="order-table">
 
-                        @if (isset($result))
-                            @foreach ($result as $data)
-                                <tr data-href="{{ 'orderProductDetailView' }}" data-value="{{ $data->order_id }}">
-                                    <td>{{ $i }}</td>
-                                    <td> {{ $data->customer_name }}</td>
-                                    <td> {{ $data->location }}</td>
-                                    <td> {{ $data->order_id }}</td>
-                                    <td> <strong> Rs.{{ $data->amount }} </strong></td>
-                                    <td>
-                                        @if ($data->status == 'Pending')
-                                            <p class="status pending text-uppercase text-white">{{ $data->status }}</p>
-                                        @endif
+                <thead>
+                    <tr>
+                        <th>Sn.</th>
+                        <th> Customer </th>
+                        <th> Location </th>
+                        <th> Order ID </th>
+                        <th> Amount </th>
+                        <th> Delivery Status </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <form id="submit-form" action="mydataView">
+                        <input type="hidden" name="my" id="myvalueee" value="" />
+                    </form>
+                    @php
+                        $i = 1;
+                    @endphp
 
-                                        @if ($data->status == 'delivered')
-                                            <p class="status delivered text-uppercase">{{ $data->status }}</p>
-                                        @endif
-                                    </td>
-                                </tr>
-                            @endforeach
-                        @else
-                            <tr>
-                                <td colspan="6">No Record Found</td>
+                    @if (isset($result))
+                        @foreach ($result as $data)
+                            <tr data-href="{{ 'orderProductDetailView' }}" data-value="{{ $data->order_id }}">
+                                <td>{{ $i }}</td>
+                                <td> {{ $data->customer_name }}</td>
+                                <td> {{ $data->location }}</td>
+                                <td> {{ $data->order_id }}</td>
+                                <td> <strong> Rs.{{ $data->amount }} </strong></td>
+                                <td>
+                                    @if ($data->status == 'Pending')
+                                        <p class="status pending text-uppercase text-white">{{ $data->status }}</p>
+                                    @endif
+
+                                    @if ($data->status == 'delivered')
+                                        <p class="status delivered text-uppercase">{{ $data->status }}</p>
+                                    @endif
+                                </td>
                             </tr>
-                        @endif
+                        @endforeach
+                    @else
+                        <tr>
+                            <td colspan="6">No Record Found</td>
+                        </tr>
+                    @endif
 
-                    </tbody>
-                </table>
-            </div>
-        </section>
-    </main>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</main>
+</div>
 
-</body>
+
 
 <script>
     var submitForm = document.getElementById('submit-form');
@@ -281,49 +278,7 @@
             submitForm.submit();
         });
     });
-
-
-    (function() {
-        'use strict';
-
-        var TableFilter = (function() {
-            var Arr = Array.prototype;
-            var input;
-
-            function onInputEvent(e) {
-                input = e.target;
-                var table1 = document.getElementsByClassName(input.getAttribute('data-table'));
-                Arr.forEach.call(table1, function(table) {
-                    Arr.forEach.call(table.tBodies, function(tbody) {
-                        Arr.forEach.call(tbody.rows, filter);
-                    });
-                });
-            }
-
-            function filter(row) {
-                var text = row.textContent.toLowerCase();
-                //console.log(text);
-                var val = input.value.toLowerCase();
-                //console.log(val);
-                row.style.display = text.indexOf(val) === -1 ? 'none' : 'table-row';
-            }
-
-            return {
-                init: function() {
-                    var inputs = document.getElementsByClassName('table-filter');
-                    Arr.forEach.call(inputs, function(input) {
-                        input.oninput = onInputEvent;
-                    });
-                }
-            };
-
-        })();
-
-
-
-        TableFilter.init();
-    })();
 </script>
 
-</html>
-{{-- @include('footermain') --}}
+
+@include('footermain')

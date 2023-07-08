@@ -34,10 +34,9 @@ class ProductviewController extends Controller
         $productIds = ProductCategory::whereIn('category_id', $cato)->pluck('product_id');
         $getProductDetail = Product::join('brands', 'brand', 'brands_id')
             ->whereIn('product_id', $productIds)
+            ->whereNotIn('product_id', [$id])
             ->get();
-
         $variations = [];
-
         $productData = DB::table('productvariations')
             ->where('product', $id)
             ->join('products', 'products.product_id', '=', 'productvariations.product')
@@ -46,8 +45,8 @@ class ProductviewController extends Controller
             ->select('products.product_name as product_name', 'variations.variation_name as variation_name', 'variationoptions.value as option_name')
             ->groupBy('variation_name', 'product_name', 'option_name')
             ->get();
-           
-         return view('productdetails')->with(compact('data','getProductDetail','productData',));
+
+        return view('productdetails')->with(compact('data', 'getProductDetail', 'productData'));
     }
     public function search(Request $request)
     {

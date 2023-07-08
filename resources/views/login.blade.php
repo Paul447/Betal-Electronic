@@ -60,7 +60,6 @@
         session()->forget('logerror');
     @endphp
 @endif
-@include('footermain')
 <script>
     const togglePassword = document.querySelectorAll('.btn--toggle-password');
 
@@ -78,3 +77,5 @@
     })
 </script>
 <script type="module" src=" {{ asset('admin/js/googleauth.js') }}"></script>
+@include('footermain')
+
