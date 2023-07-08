@@ -1,3 +1,6 @@
+<script>
+    document.title = "Betal International | Checkout Page"
+</script>
 @include('welcome')
 <style>
     .prodetail {
@@ -16,7 +19,7 @@
 </style>
 
 <body>
-    <div class="container">
+    <div class="container mt-5">
         <div class="py-5 text-center">
             <!-- <img class="d-block mx-auto mb-4" src="img\logo.png" alt="" width="130" height="130"> -->
             <h1 class="text-danger fs-1">Checkout Page</h1>

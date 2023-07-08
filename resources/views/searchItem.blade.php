@@ -1,3 +1,7 @@
+<script>
+    var message = '{{ $mydata}}';
+    document.title = "Betal International | "+message
+</script>
 @include('welcome')
 @include('slider')
 

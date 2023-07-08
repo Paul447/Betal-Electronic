@@ -1,3 +1,6 @@
+<script>
+    document.title = "Betal International | Change Password"
+</script>
 @include('welcome')
 <div class="container p-0 mb-5 main-reg mbottom">
     <form action="" class="rowww" method="post">

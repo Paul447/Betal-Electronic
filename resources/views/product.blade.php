@@ -1,10 +1,18 @@
+<script>
+    document.title = "Betal International | Home"
+</script>
+<meta name="description" content="Power up your world with Betal International - Your one-stop computer shop!">
+<meta name="keywords" content="Laptop accessories Kathmandu,Gaming accessories Nepal,Computer peripherals Kathmandu,Printers and scanners Nepal,Best deals on computer accessories Kathmandu,Keyboard and mouse Kathmandu">
+<meta name="title" content="Best Computer Store - Buy Laptops, PC Components in Nepal">
+<meta property="og:title" content="Best Computer Store - Buy Laptops, PC Components in Nepal">
+<meta property="og:site_name" content="Betal International">
 @include('welcome')
 @include('slider')
 @include('brandchoice')
 
 @include('categories')
 
-<body>
+
     <div class="toast">Please Login First To Add To Cart!</div>
     <section id="product1" class="section-p1 text-align-center">
         <h2 class="my-5 feture mx-auto">Featured Products</h2>

@@ -1,3 +1,6 @@
+<script>
+    document.title = "Betal International | OTP Verify"
+</script>
 @include('welcome')
 <style>
     @media (max-width: 992px) {

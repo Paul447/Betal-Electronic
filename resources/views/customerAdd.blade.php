@@ -1,3 +1,6 @@
+<script>
+    document.title = "Betal International | Register"
+</script>
 @include('welcome')
 
 <style>
@@ -7,9 +10,6 @@
             height: 200px;
         }
     }
-
-
-
     :root {
         --red: #A50318;
         --light-red: #aa4f5b9c;

@@ -1,4 +1,6 @@
-
+<script>
+  document.title = "Betal International | Confirm Payment"
+</script>
 <!DOCTYPE html>
 <html lang="en">
 

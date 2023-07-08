@@ -1,3 +1,6 @@
+<script>
+    document.title = "Betal International | Confirm Buy"
+</script>
 <!DOCTYPE html>
 <html lang="en">
 

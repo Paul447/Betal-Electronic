@@ -1,11 +1,24 @@
-@include('welcome')
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
+   
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Details</title>
+    <meta name="author" content="Mukesh,Subesh,Suresh">
+    @foreach ($data as $product)
+    @endforeach
+    <meta name="description" content="{{ $product->discription }}">
+    <meta name="application-name" content="{{ $product->product_name }}">
+    <meta name="keywords" content="{{ $product->lowstockindication }},Computer accessories in Kathmandu,Buy computer accessories Kathmandu">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Betal International - Betal International">
+    <meta property="og:image" content="{{ asset('/storage/thumbnails/' . $product->thumbnail) }}">
+    <meta property="og:site_name" content="Betal International">
+    <script>
+        var message = '{{ $product->product_name}}';
+        document.title = "Betal International | "+message
+    </script>
+@include('welcome')
+
+
+  
     <style>
         .category-info {
             padding: 0 !important;
@@ -22,7 +35,6 @@
         hr {
             border-top: 2px solid #a50318 !important;
             opacity: 1 !important;
-            /* border-color: ; */
         }
 
         .spinnerrr>* {
@@ -268,7 +280,6 @@
                 @endphp
                 @foreach ($images as $item)
                     <div class="slide">
-
                         <img src="{{ asset('/storage/product/' . $item) }}" alt="{{ $product->product_name }}">
                     </div>
                 @endforeach

@@ -3,14 +3,6 @@
         ->where('is_visible', '=', 1)
         ->get();
 @endphp
-
-
-
-
-
-
-
-
 <h2 class="feture mx-auto featured brand mt-5 mb-5">Featured Category</h2>
 
 

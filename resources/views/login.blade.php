@@ -1,3 +1,6 @@
+<script>
+    document.title = "Betal International | Login"
+</script>
 @include('welcome')
 
 <div class="container p-0 mb-5 main-reg mbottom">

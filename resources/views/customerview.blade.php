@@ -1,3 +1,6 @@
+<script>
+    document.title = "Betal International | View User"
+</script>
 @include('welcome')
 <!doctype html>
 <html lang="en">

@@ -1,3 +1,6 @@
+<script>
+    document.title = "Betal International | Order Detail"
+</script>
 @include('welcome')
 <!DOCTYPE html>
 <html>

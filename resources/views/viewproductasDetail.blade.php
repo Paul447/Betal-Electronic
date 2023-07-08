@@ -1,11 +1,15 @@
+@foreach ($catoName as $catname)
+<script>
+    var message = '{{ $catname->category_name }}';
+    document.title = "Betal International | "+message
+</script>
+@endforeach
 @include('welcome')
 @include('slider')
 
 
-
 <div class="toast">Please Login First To Add To Cart!</div>
 
-<body>
 
     <section id="product1" class="section-p1">
         @foreach ($catoName as $catname)

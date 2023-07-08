@@ -1,3 +1,6 @@
+<script>
+    document.title = "Betal International | Reset Password"
+</script>
 @include('welcome')
 
 
