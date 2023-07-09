@@ -1,11 +1,7 @@
+<script>
+    document.title = "Betal International | Terms and Condition"
+</script>
 <style>
-    .privacy_header {
-
-        color: #0b1a48;
-        padding: 20px;
-        text-align: center;
-    }
-
     .privacy_h1 {
         margin: 0;
     }
@@ -14,10 +10,8 @@
         padding: 20px;
     }
 
-
-
     .privacy_h2 {
-        font-size: 15px;
+        font-size: 16px;
         margin-bottom: 10px;
     }
 
@@ -32,13 +26,12 @@
         }
     }
 </style>
-
-<header class="privacy_header">
-    <h1 class="privacy_h1 feture">Terms and Conditions</h1>
-</header>
-
-<main class="privacy_main">
-    <h2>Welcome To Betal International</h2>
+@include('welcome')
+<main class="privacy_main container cont">
+    <div class="d-flex justify-content-center mb-5">
+        <h1 class="privacy_h1 feture  fs-2">Terms and Conditions</h1>
+    </div>
+    <h2 class="fs-4 mb-3">Welcome To Betal International!</h2>
     <section class="privacy_section">
         <h2 class="privacy_h2">Terms and Conditions</h2>
         <p class="privacy_p text-muted">These terms and conditions outline the rules and regulations for the use of
@@ -48,7 +41,8 @@
 
     <section class="privacy_section">
         <h2 class="privacy_h2">Introduction:-</h2>
-        <p class="privacy_p text-muted">Welcome to Betalinternational Your contract with us contains these Terms and Conditions
+        <p class="privacy_p text-muted">Welcome to Betalinternational Your contract with us contains these Terms and
+            Conditions
             (“Agreements”). You admit that you have read and agreed on Contracts, and decide to be assured by them. If
             you do not approve of (or cannot comply with) Contracts, then you may not use the Facility, but please let
             us see by sending at info@betalinternational.com.np so we can go to find an explanation. These Terms apply
@@ -57,7 +51,8 @@
 
     <section class="privacy_section">
         <h2 class="privacy_h2">Terms:-</h2>
-        <p class="privacy_p text-muted">By opening the website at https://www.betalinternational.com.np, you are approving to be
+        <p class="privacy_p text-muted">By opening the website at https://www.betalinternational.com.np, you are
+            approving to be
             sure by these terms of facility, all valid laws, and rules, and decide that you are answerable for agreement
             with any relevant native rules. If you do not approve of any of these terms, you are banned from using or
             accessing this site. The resources confined in this website are safe by appropriate copyright and trademark
@@ -92,7 +87,8 @@
 
     <section class="privacy_section">
         <h2 class="privacy_h2">Links:-</h2>
-        <p class="privacy_p text-muted">Betalinternational has not revised all of the sites related to its website and is not
+        <p class="privacy_p text-muted">Betalinternational has not revised all of the sites related to its website and
+            is not
             liable for the fillings of some such connected sites. The presence of any link does not indicate
             authorization by Betalinternational of the site. Usage of some such associated websites is at the user's
             personal risk. Modifications to Terms We may adjust Terms at some period by placement the edited terms on
@@ -109,7 +105,8 @@
 
     <section class="privacy_section">
         <h2 class="privacy_h2">Cookies</h2>
-        <p class="privacy_p text-muted">We employ the use of cookies. By accessing Betalinternational, you agreed to use cookies in
+        <p class="privacy_p text-muted">We employ the use of cookies. By accessing Betalinternational, you agreed to use
+            cookies in
             agreement with the Betal's Privacy Policy.
             <br>
             Most interactive websites use cookies to let us retrieve the user’s details for each visit. Cookies are used
@@ -118,3 +115,4 @@
         </p>
     </section>
 </main>
+@include('footermain')

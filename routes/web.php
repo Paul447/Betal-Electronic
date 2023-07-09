@@ -23,7 +23,7 @@ use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\BatchController;
 use App\Http\Controllers\DeliveryController;
 use App\Http\Controllers\Admin\AssignAttribute;
-use App\Http\Controllers\Admin\ChangePasswordController;
+use App\Http\Controllers\Ui\ChangePasswordController;
 
 use App\Http\Controllers\viewprofileController;
 
@@ -136,6 +136,11 @@ Route::post('/confirm/', [CheckoutController::class, 'store']);
 Route::get('/storeorderInfo/', [CheckoutController::class, 'datastore']);
 
 Route::get('/postCartData', [CartViewController::class, 'fetchDataForCart']);
+Route::get('/termncondition', [CartViewController::class, 'termncondition']);
+Route::get('/aboutbetal', [CartViewController::class, 'aboutbetal']);
+
+
+
 Route::resource('/customerAdd', CustomerRegController::class);
 Route::post('/customerAdd', [CustomerRegController::class, 'store']);
 Route::post('/otpverify', [CustomerRegController::class, 'otpverify']);

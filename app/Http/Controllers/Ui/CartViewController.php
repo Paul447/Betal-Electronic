@@ -174,4 +174,11 @@ class CartViewController extends Controller
         session()->put('DeletedItem', 'Item Deleted From Cart');
         return back();
     }
+    public function termncondition(){
+        return view('TermandCondition');
+    }
+    public function aboutbetal(){
+        return view('aboutbetal');
+    }
+    
 }

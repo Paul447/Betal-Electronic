@@ -506,7 +506,7 @@
         prevButton.addEventListener('click', previousSlide);
         nextButton.addEventListener('click', nextSlide);
 
-        setInterval(nextSlide, 5000); // Change slide every 5 seconds
+        setInterval(nextSlide, 5000); 
 
         function fetchData(pdetailValue) {
             var controller = "/CartViewww/";
@@ -521,7 +521,7 @@
                 headers: {
                     'Accept': 'application/json',
                 },
-                // body: JSON.stringify(data)
+           
 
             })
         }
@@ -536,17 +536,6 @@
             dataa[1] = detailValue;
             var urll = location.origin + controll + dataa;
             window.location.href = urll;
-
-            
-            // console.log(urll);
-            // fetch(urll, {
-            //     method: 'GET',
-            //     headers: {
-            //         'Accept': 'application/json',
-            //     },
-
-
-            // })
         }
         const showToastButton = document.querySelectorAll(".show-toast");
         var toast = document.querySelector('.toast');

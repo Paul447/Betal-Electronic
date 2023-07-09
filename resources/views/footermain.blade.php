@@ -20,8 +20,8 @@
             <div class="divider"></div>
         </div>
         <ul>
-            <li><a href="#">Terms of use</a></li>
-            <li><a href="#">Privacy policy</a></li>
+            <li><a href="{{'/termncondition'}}">Terms of use</a></li>
+            <li><a href="{{'/aboutbetal'}}">About Betal</a></li>
         </ul>
     </section>
   

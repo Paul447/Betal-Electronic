@@ -6,9 +6,7 @@
     integrity="sha256-dWvV84T6BhzO4vG6gWhsWVKVoa4lVmLnpBOZh/CAHU4=" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
 <style>
-    .cont {
-        margin-top: 90px
-    }
+   
 
     :root {
         --primary-color: #a50318;

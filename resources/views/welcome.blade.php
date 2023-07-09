@@ -785,6 +785,9 @@
                 flex-basis: 100%;
             }
         } 
+        .cont {
+        margin-top: 90px
+    }
     </style>
 </head>
 
