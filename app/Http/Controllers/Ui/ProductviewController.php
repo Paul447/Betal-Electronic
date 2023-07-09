@@ -16,10 +16,11 @@ class ProductviewController extends Controller
     public function index()
     {
         $featured = Product::join('brands', 'brand', 'brands_id')
-            ->where('featured', '=', 'featured')
+            ->where([['products.featured', '=', 'featured'], ['products.is_disabled', '=', 0]])
             ->get();
+
         $data = Product::join('brands', 'brand', 'brands_id')
-            ->where('featured', '=', 'unfeatured')
+            ->where([['products.featured', '=', ' unfeatured'], ['products.is_disabled', '=', 0]])
             ->get();
         return view('product')->with(compact('data', 'featured'));
     }
@@ -32,7 +33,7 @@ class ProductviewController extends Controller
             ->get();
         $cato = ProductCategory::where('product_id', $id)->pluck('category_id');
         $productIds = ProductCategory::whereIn('category_id', $cato)->pluck('product_id');
-        $getProductDetail = Product::join('brands', 'brand', 'brands_id')
+        $getProductDetail = Product::join('brands', 'brand', 'brands_id')->where('is_disabled', 0)
             ->whereIn('product_id', $productIds)
             ->whereNotIn('product_id', [$id])
             ->get();
@@ -52,7 +53,7 @@ class ProductviewController extends Controller
     {
         $search = $request->input('search');
         $data = Product::join('brands', 'brand', 'brands_id')
-            ->where('product_name', 'LIKE', "%$search")
+        ->where([['products.product_name', 'LIKE', "%$search"], ['products.is_disabled', '=', 0]])
             ->get();
         $mydata = 'Searched Result';
         return view('searchItem')->with(compact('data', 'mydata'));

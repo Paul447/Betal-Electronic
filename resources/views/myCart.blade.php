@@ -6,8 +6,6 @@
     integrity="sha256-dWvV84T6BhzO4vG6gWhsWVKVoa4lVmLnpBOZh/CAHU4=" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
 <style>
-   
-
     :root {
         --primary-color: #a50318;
         --secondary-color: #eaeaea;
@@ -346,7 +344,6 @@
                             <input class="form-check-input" type="checkbox" id="checkbox1"
                                 value="{{ $total }},{{ $cartData->product_id }},{{ $cartData->quantity }},{{ $cartData->product_name }}">
                         </td>
-
                     </tr>
                 @endforeach
             </tbody>
