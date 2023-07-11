@@ -3,12 +3,12 @@
     document.title = "Betal International | "+message
 </script>
 @include('welcome')
-@include('slider')
+
 
 
 <div class="toast">Please Login First To Add To Cart!</div>
 
-<section id="product1" class="section-p1">
+<section id="product1" class="section-p1 cont">
     <h2 class="my-5 feture mx-auto">{{$mydata}}</h2>
     <div class="products-container d-flex justify-content-center">
 
