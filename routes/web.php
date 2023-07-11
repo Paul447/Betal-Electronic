@@ -122,7 +122,10 @@ Route::group(['prefix' => '/admin', 'middleware' => 'editor'], function () {
     // Route::resource('/variation',VariationController::class);
     // Route::resource('/variationoption',VariationoptionController::class);
 });
-Route::resource('/changepass', ChangePasswordController::class);
+
+Route::get('/changepass', [ChangePasswordController::class, 'index']);
+Route::post('/changepass', [ChangePasswordController::class, 'store']);
+
 Route::get('/CartView/', [CartViewController::class, 'index']);
 Route::delete('/cart/{id}', [CartViewController::class, 'destroy']);
 Route::get('/CartVieww/{id}/{quantity}/{reset?}', [CartViewController::class, 'storedata']);
