@@ -52,8 +52,16 @@ class ProductviewController extends Controller
     public function search(Request $request)
     {
         $search = $request->input('search');
-        $data = Product::join('brands', 'brand', 'brands_id')
-            ->where([['products.product_name', 'LIKE', "%$search"], ['products.is_disabled', '=', 0]])
+
+        $data = Productcategory::join('categories', 'category_id', 'categorys_id')
+            ->join('products', 'productcategories.product_id', 'products.product_id')
+            ->join('brands', 'products.brand', 'brands_id')
+            ->where('products.is_disabled', 0)
+            ->where(function ($query) use ($search) {
+                $query->where('products.product_name', 'LIKE', "%$search")
+                    ->orWhere('brand_name', $search)
+                    ->orWhere('category_name', 'LIKE', "$search%");
+            })
             ->get();
         $mydata = 'Searched Result';
         return view('searchItem')->with(compact('data', 'mydata'));
