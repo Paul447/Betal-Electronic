@@ -53,7 +53,7 @@ class ProductviewController extends Controller
     {
         $search = $request->input('search');
         $data = Product::join('brands', 'brand', 'brands_id')
-        ->where([['products.product_name', 'LIKE', "%$search"], ['products.is_disabled', '=', 0]])
+            ->where([['products.product_name', 'LIKE', "%$search"], ['products.is_disabled', '=', 0]])
             ->get();
         $mydata = 'Searched Result';
         return view('searchItem')->with(compact('data', 'mydata'));
@@ -76,7 +76,7 @@ class ProductviewController extends Controller
     public function newarrivals()
     {
         $mydata = 'New Arrivals';
-        $data = Product::latest()
+        $data = Product::latest()->where('is_disabled', 0)
             ->limit(10)
             ->get();
         return view('searchItem')->with(compact('data', 'mydata'));
