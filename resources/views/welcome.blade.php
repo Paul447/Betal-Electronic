@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
+
     <link rel="stylesheet" href="{{ asset('admin/bootstrap-5.2.3-dist/css/bootstrap.min.css') }}" />
     {{-- <link rel="stylesheet" href="{{ asset('admin/css/productcardmain.css') }}" /> --}}
     {{-- <link rel="stylesheet" href="{{ asset('admin/css/toast.css') }}" /> --}}
@@ -21,14 +21,14 @@
     <script src=" {{ asset('admin/bootstrap-5.2.3-dist/js/bootstrap.bundle.min.js') }}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-   
-    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
-        integrity="sha512-t4GWSVZO1eC8BM339Xd7Uphw5s17a86tIZIj8qRxhnKub6WoyhnrxeCIMeAqBPgdZGlCcG2PrZjMc+Wr78+5Xg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" /> --}}
+
+
+    <script src="https://code.jquery.com/jquery-3.6.4.slim.js"
+        integrity="sha256-dWvV84T6BhzO4vG6gWhsWVKVoa4lVmLnpBOZh/CAHU4=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" defer></script>
 
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
         integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -96,13 +96,13 @@
         a {
             color: #000;
             text-decoration: none;
-          
+
         }
 
         .card-categories-li {
             min-width: 150px;
             max-width: 180px;
-           
+
             height: 148.5px;
             border-right: 1px solid #e2e2e2;
             border-bottom: 1px solid #e2e2e2;
@@ -322,7 +322,7 @@
             border-bottom: 3px solid #a50318;
             width: fit-content;
             padding-bottom: 10px;
-        
+
         }
 
 
@@ -394,7 +394,7 @@
             outline: 1px solid black;
         }
 
- 
+
         .mobile--menu {
             width: 28px;
             height: 20px;
@@ -420,7 +420,7 @@
             transform: rotate(45deg) translate(-4px, -6px);
         }
 
-    
+
 
         .account--icon {
             position: relative;
@@ -568,11 +568,11 @@
 
         .btnn:focus,
         .btnn:hover {
-   
+
             background-color: #a50318;
             color: #ffffff;
             outline: 3px solid var(--light-red) !important;
-         
+
         }
 
         .googlebutton {
@@ -784,10 +784,11 @@
             .product-card {
                 flex-basis: 100%;
             }
-        } 
+        }
+
         .cont {
-        margin-top: 90px
-    }
+            margin-top: 90px
+        }
     </style>
 </head>
 
@@ -901,29 +902,30 @@
                 toastContainer.style.marginTop = '70px';
             }
         })
+
         function fetcchCart(cartvalue) {
-        var controller = "/CartVieww/";
-        var host = location.origin + controller;
-        var url = location.origin + controller + cartvalue + "/1";
-        fetch(url, {
-                method: 'GET',
-                headers: {
-                    'Accept': 'application/json',
-                },
-            })
-            .then(response => response.json())
-            .then(response => {
-                let html = response.status;
-                Toast.fire({
-                    icon: 'success',
-                    title: html,
+            var controller = "/CartVieww/";
+            var host = location.origin + controller;
+            var url = location.origin + controller + cartvalue + "/1";
+            fetch(url, {
+                    method: 'GET',
+                    headers: {
+                        'Accept': 'application/json',
+                    },
                 })
-                Toast.fire({
-                    icon: 'success',
-                    title: html,
+                .then(response => response.json())
+                .then(response => {
+                    let html = response.status;
+                    Toast.fire({
+                        icon: 'success',
+                        title: html,
+                    })
+                    Toast.fire({
+                        icon: 'success',
+                        title: html,
+                    })
                 })
-            })
-    }
+        }
 
         function fetccchCart(cartvalue, quantitySent, reset) {
             var controller = "/CartVieww/";
@@ -931,7 +933,7 @@
             var host = location.origin + controller;
             if (reset) {
                 var url = location.origin + controller + cartvalue + "/" + quantity + "/" + reset;
-            }else{
+            } else {
                 var url = location.origin + controller + cartvalue + "/" + quantity;
             }
             console.log(url);

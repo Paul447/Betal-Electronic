@@ -2,9 +2,8 @@
     document.title = "Betal International | Cart"
 </script>
 @include('welcome')
-<script src="https://code.jquery.com/jquery-3.6.4.slim.js"
-    integrity="sha256-dWvV84T6BhzO4vG6gWhsWVKVoa4lVmLnpBOZh/CAHU4=" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+
+
 <style>
     :root {
         --primary-color: #a50318;
@@ -245,9 +244,6 @@
         }
     }
 </style>
-
-
-
 <div class="container cont d-flex justify-content-center align-content-center ">
     <div class="table-responsive w-100">
         <h2 class="feture mx-auto  mt-5 mb-5 "> Cart Item</h2>
@@ -350,11 +346,6 @@
         </table>
     </div>
 </div>
-
-
-
-
-
 <div class="container mt-3">
     <h2 class="feture mx-auto  mt-5 mb-5 "> Check Out? </h2>
     <div class="row justify-content-center mb-4">
@@ -402,8 +393,8 @@
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="address"><i class="fa fa-institution"></i> Address</label>
-                        <input type="text" class="form-control mt-2" id="address" required="" name="address"
-                            placeholder="Enter Primary Address..." />
+                        <input type="text" class="form-control mt-2" id="address" required=""
+                            name="address" placeholder="Enter Primary Address..." />
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="phone"><i class="fa fa-phone"></i> Phone Number</label>
@@ -520,7 +511,7 @@
                     headers: {
                         'Accept': 'application/json',
                     },
-                    // body: JSON.stringify(data)
+              
                 })
                 .then(response => response.json())
                 .then(response => {
@@ -551,8 +542,6 @@
             headers: {
                 'Accept': 'application/json',
             },
-            // body: JSON.stringify(data)
-
         })
     }
 
