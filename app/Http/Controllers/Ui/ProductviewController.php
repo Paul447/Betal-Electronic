@@ -52,7 +52,6 @@ class ProductviewController extends Controller
     public function search(Request $request)
     {
         $search = $request->input('search');
-
         $data = Productcategory::join('categories', 'category_id', 'categorys_id')
             ->join('products', 'productcategories.product_id', 'products.product_id')
             ->join('brands', 'products.brand', 'brands_id')
@@ -62,6 +61,8 @@ class ProductviewController extends Controller
                     ->orWhere('brand_name', $search)
                     ->orWhere('category_name', 'LIKE', "$search%");
             })
+            ->select(['products.product_id', 'brand_name', 'product_name', 'thumbnail', 'slug'])
+            ->distinct()
             ->get();
         $mydata = 'Searched Result';
         return view('searchItem')->with(compact('data', 'mydata'));
