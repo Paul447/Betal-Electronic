@@ -197,14 +197,19 @@
                                         <div class="d-flex">
                                             <div class="flex-shrink-0 me-3">
                                                 <div class="avatar avatar-online">
-                                                    <img src="{{ asset('/storage/editor/' . Session::get('user')['image']) }}"
+                                                    <img src="{{ asset('/storage/editor/' . Auth::guard()->user()->image) }}"
                                                         height="50px" alt class="w-px-40 rounded-circle" />
+                                                    {{-- <img src="{{ asset('/storage/editor/' . Session::get('user')['image']) }}"
+                                                        height="50px" alt class="w-px-40 rounded-circle" /> --}}
                                                 </div>
                                             </div>
                                             <div class="flex-grow-1">
                                                 <span
+                                                    class="fw-semibold d-block">{{ Auth::guard()->user()->user_name }}</span>
+                                                <small class="text-muted">{{ Auth::guard()->user()->role }}</small>
+                                                {{-- <span
                                                     class="fw-semibold d-block">{{ Session::get('user')['user_name'] }}</span>
-                                                <small class="text-muted">{{ Session::get('user')['role'] }}</small>
+                                                <small class="text-muted">{{ Session::get('user')['role'] }}</small> --}}
                                             </div>
                                         </div>
                                     </a>
@@ -216,7 +221,7 @@
 
                                 <li>
                                     <a class="dropdown-item"
-                                        href="{{ url('/admin/profile/' . Session::get('user')['id']) }}">
+                                        href="{{ url('/admin/profile/' . Auth::guard()->user()->id) }}">
                                         <i class="bx bx-user me-2"></i>
                                         <span class="align-middle">My Profile</span>
                                     </a>

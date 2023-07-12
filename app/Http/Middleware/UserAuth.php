@@ -20,9 +20,9 @@ class UserAuth
             return redirect('/home');
         }
 
-        if(!$request->session()->has('user')){
-            return redirect('/login');
-        }
+        // if(!$request->session()->has('user')){
+        //     return redirect('/login');
+        // }
         return $next($request);
     }
 }
