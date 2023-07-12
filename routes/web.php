@@ -57,13 +57,6 @@ Route::get('/', [ProductviewController::class, 'index']);
 Route::get('/productdetails/{id}/{slug}', [ProductviewController::class, 'viewdetails']);
 Route::get('/categories', [CategoryViewController::class, 'viewCatos']);
 
-Route::get('/login', function () {
-    return view('admin/login');
-});
-Route::post('/login', [UserController::class, 'login']);
-
-Route::get('/home', [HomePageController::class, 'homeView'])->name('home');
-//editor routes
 Route::get('/customerlogin', function () {
     return view('/login');
 });
@@ -75,10 +68,6 @@ Route::get('/googleauth', [CustomerRegController::class, 'google_auth']);
 //     return view('/welcome');
 // });
 
-Route::get('/admin/order/pendingOrder', [OrderController::class, 'pendingOrder']);
-Route::get('/admin/order/completeOrder', [OrderController::class, 'completeOrder']);
-Route::get('/admin/order/calculation', [OrderController::class, 'calculation']);
-Route::get('/admin/order/viewAllProductProfit/{id}', [OrderController::class, 'viewAllProductProfit']);
 Route::get('/products/search', [ProductviewController::class, 'search'])->name('products.search');
 
 Route::get('/viewprofile', [viewprofileController::class, 'viewProfile']);
@@ -87,9 +76,17 @@ Route::get('/mydataView', [viewprofileController::class, 'mydataView']);
 Route::get('/categorychoice', [CategoryViewController::class, 'viewBychoice']);
 Route::get('/newarrivals', [ProductviewController::class, 'newarrivals']);
 
-Route::get('admin/order/orderProductDetailView/', [OrderController::class, 'orderPDV']);
 
-Route::group(['prefix' => '/admin', 'middleware' => 'editor'], function () {
+Route::group(['middleware' => 'guest'], function () {
+    Route::get('/login', function () {
+        return view('admin/login');
+    });
+    Route::post('/login', [UserController::class, 'login']);
+});
+
+Route::get('/home', [HomePageController::class, 'homeView'])->name('home')->middleware('admin');
+
+Route::group(['prefix' => '/admin', 'middleware' => 'admin'], function () {
     Route::get('/profile/{id}', [UserController::class, 'viewprofile']);
     Route::get('/edit', [UserController::class, 'editprofile']);
     Route::get('product/unfeature/{id}', [ProductController::class, 'unfeature']);
@@ -101,7 +98,7 @@ Route::group(['prefix' => '/admin', 'middleware' => 'editor'], function () {
     Route::get('/category/invisible/{id}', [CategoryController::class, 'hidecategory']);
     Route::resources([
         '/product' => ProductController::class,
-        '/order' => OrderController::class,
+        // '/order' => OrderController::class,
         '/brand' => BrandController::class,
         '/category' => CategoryController::class,
         '/batch' => BatchController::class,
@@ -121,6 +118,13 @@ Route::group(['prefix' => '/admin', 'middleware' => 'editor'], function () {
     // Route::resource('/category', CategoryController::class);
     // Route::resource('/variation',VariationController::class);
     // Route::resource('/variationoption',VariationoptionController::class);
+
+    Route::get('/order/', [OrderController::class, 'index']);
+    Route::get('/order/pendingOrder', [OrderController::class, 'pendingOrder']);
+    Route::get('/order/completeOrder', [OrderController::class, 'completeOrder']);
+    Route::get('/order/calculation', [OrderController::class, 'calculation']);
+    Route::get('/order/viewAllProductProfit/{id}', [OrderController::class, 'viewAllProductProfit']);
+    Route::get('/order/orderProductDetailView/', [OrderController::class, 'orderPDV']);
 });
 
 Route::get('/changepass', [ChangePasswordController::class, 'index']);
