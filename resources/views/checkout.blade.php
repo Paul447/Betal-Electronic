@@ -22,7 +22,7 @@
 <div class="container mt-5">
     <div class="py-5 text-center">
         <!-- <img class="d-block mx-auto mb-4" src="img\logo.png" alt="" width="130" height="130"> -->
-        <h1 class="text-danger fs-1">Checkout Page</h1>
+        <h1 class="feture text-center mx-auto fs-1">Checkout Page</h1>
     </div>
     <div class="row justify-content-center">
         <div class="col-md-4 col-md-mx-4 order-md-2 mb-4 prodetail h-50">
@@ -94,11 +94,12 @@
                 </div>
 
                 <hr class="mb-2" />
-                <button class="btn btn-outline-success btn-md btn-block float-end mb-5" type="submit">
+                <button class="normal" type="submit">
                     Continue to checkout
                 </button>
             </form>
         </div>
     </div>
 </div>
+@include('footermain')
 

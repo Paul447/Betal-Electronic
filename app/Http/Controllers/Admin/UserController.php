@@ -16,7 +16,7 @@ class UserController extends Controller
         if($user=='' || !hash::check($req->pass, $user->password ))
         {
 
-            $req->session()->put('logerror','incorrect Username or password');
+            $req->session()->put('AdminFaliure','incorrect Username or password');
             return redirect('/login');
         }
 
@@ -28,7 +28,7 @@ class UserController extends Controller
             }
             else
             {
-                $req->session()->put('logerror','incorrect Username or password');
+                $req->session()->put('AdminFaliure','incorrect Username or password');
                 return redirect('/login');
             }
 

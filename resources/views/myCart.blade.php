@@ -260,6 +260,11 @@
                 </tr>
             </thead>
             <tbody>
+                @if($productIddata->isEmpty())
+                <tr class="text-center mb-5 align-item-center align-item-basline">
+                    <td colspan="7" class="fs-5">No Product added To cart</td>
+                </tr>
+                @endif
                 @foreach ($productIddata as $cartData)
                     <tr>
                         <td>
@@ -393,8 +398,8 @@
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="address"><i class="fa fa-institution"></i> Address</label>
-                        <input type="text" class="form-control mt-2" id="address" required=""
-                            name="address" placeholder="Enter Primary Address..." />
+                        <input type="text" class="form-control mt-2" id="address" required="" name="address"
+                            placeholder="Enter Primary Address..." />
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="phone"><i class="fa fa-phone"></i> Phone Number</label>
@@ -484,7 +489,7 @@
                 })
                 .then(response => response.json())
                 .then(response => {
-                    let html = response.changedQty;
+                    let html = response.uisuccess;
                     Toast.fire({
                         icon: 'info',
                         title: html,
@@ -511,11 +516,11 @@
                     headers: {
                         'Accept': 'application/json',
                     },
-              
+
                 })
                 .then(response => response.json())
                 .then(response => {
-                    let html = response.changedQty;
+                    let html = response.uisuccess;
                     Toast.fire({
                         icon: 'info',
                         title: html,
@@ -562,30 +567,7 @@
         })
     }
 </script>
-@if (session('SuccessfullyPaid'))
-    <script>
-        Swal.fire({
-            icon: 'success',
-            title: '{{ session('SuccessfullyPaid') }}',
-        })
-    </script>
-    @php
-        session()->forget('SuccessfullyPaid');
-    @endphp
-@endif
 
-
-@if (session('UnsuccessfullyPaid'))
-    <script>
-        Swal.fire({
-            icon: 'error',
-            title: '{{ session('UnsuccessfullyPaid') }}',
-        })
-    </script>
-    @php
-        session()->forget('UnsuccessfullyPaid');
-    @endphp
-@endif
 
 
 @if (session('DeletedItem'))
@@ -611,5 +593,28 @@
     session()->forget('Qty');
     @endphp
     @endif --}}
+{{-- @if (session('uifail'))
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: '{{ session('uifail') }}',
+        })
+    </script>
+    @php
+        session()->forget('uifail');
+    @endphp
+@endif
+
+@if (session('uisuccess'))
+    <script>
+        Toast.fire({
+            icon: 'success',
+            title: '{{ session('uisuccess') }}'
+        })
+    </script>
+    @php
+        session()->forget('uisuccess');
+    @endphp
+@endif --}}
 
 @include('footermain')

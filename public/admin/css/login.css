@@ -11,7 +11,7 @@
 	border-width: 2px;
 	padding: 0;
 	margin: 0;
-	/* margin-bottom: 20px; */
+	
 }
 
 .errorView {
@@ -25,12 +25,11 @@
 
 .btnn:focus,
 .btnn:hover {
-	/* opacity: 0.9; */
+
 	background-color: #a50318;
 	color: #ffffff;
 	outline: 3px solid var(--light-red) !important;
-	/* outline-color: #a50318; */
-	/* outline-style: outset; */
+
 }
 
 .googlebutton {
@@ -45,7 +44,7 @@ input[type="password"] {
 	width: 30px;
 	position: absolute;
 	right: 0;
-	top: 50%;
+	top: 54%;
 }
 
 .googlebutton:hover {

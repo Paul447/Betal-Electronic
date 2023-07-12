@@ -13,7 +13,7 @@ class AddressController extends Controller
         if (!is_null($districts)) {
             return response()->json(array('districts' => $districts), 200);
         } else {
-            return response()->json(array('Error' => "No Records Found"), 404);
+            return response()->json(array('uifail' => "No Records Found"), 404);
         }
     }
 

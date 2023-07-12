@@ -589,7 +589,7 @@
             width: 30px;
             position: absolute;
             right: 0;
-            top: 50%;
+            top: 56%;
         }
 
         .googlebutton:hover {
@@ -915,7 +915,7 @@
                 })
                 .then(response => response.json())
                 .then(response => {
-                    let html = response.status;
+                    let html = response.uisuccess;
                     Toast.fire({
                         icon: 'success',
                         title: html,
@@ -936,7 +936,7 @@
             } else {
                 var url = location.origin + controller + cartvalue + "/" + quantity;
             }
-            console.log(url);
+
             fetch(url, {
                     method: 'GET',
                     headers: {
@@ -945,7 +945,7 @@
                 })
                 .then(response => response.json())
                 .then(response => {
-                    let html = response.status;
+                    let html = response.uisuccess;
                     Toast.fire({
                         icon: 'success',
                         title: html,
@@ -996,3 +996,4 @@
             session()->forget('errormessage');
         @endphp
     @endif
+ 

@@ -88,16 +88,7 @@
 
 
 <script>
-    const showToastButton = document.querySelectorAll(".show-toast");
-    var toast = document.querySelector('.toast');
-    showToastButton.forEach((btnToast, i) => {
-        btnToast.addEventListener("click", (e) => {
-            Toast.fire({
-                icon: 'info',
-                title: 'Please Login First to Countinue'
-            })
-        })
-    });
+   
 </script>
 {{-- Logged In successfully message --}}
 @if (session('message'))

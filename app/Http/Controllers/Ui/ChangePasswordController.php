@@ -30,7 +30,7 @@ class ChangePasswordController extends Controller
         ]);
 
         User::find($request->user_id)->update(['password' => Hash::make($request->new_password)]);
-        session()->put('password_changed', 'Password Changed Successfully');
+        session()->put('uisuccess', 'Password Changed Successfully');
         return redirect('/');
     }
 }

@@ -62,7 +62,7 @@
         width: 30px;
         position: absolute;
         right: 0;
-        top: 50%;
+        top: 54%;
     }
 
     @media (max-width: 375px) {
@@ -160,7 +160,7 @@
 
                     <div class="address--picker d-flex flex-wrap justify-content-between mb-1" id="address">
 
-                        <select name="province" class="form-select form-control form-select-lg" id="province"
+                        <select name="province" class="form-select form-control form-select-sm" id="province"
                             onchange="fetchDistrict(this.value)" class="edit">
                             <option value="" disabled selected>Province</option>
                             @foreach ($province as $province)
@@ -168,17 +168,17 @@
                             @endforeach
                         </select>
 
-                        <select name="district" id="district" class="py-1 form-control form-select px-2 rounded-1"
+                        <select name="district" id="district" class="py-1 form-control form-select-sm px-2 rounded-1"
                             onchange="fetchMunicipalities(this.value)">
                             <option value="">District</option>
                         </select>
 
                         <select name="municipality" id="municipality"
-                            class="mt-2 form-control form-select py-1 px-2 rounded-1">
+                            class="mt-2 form-control form-select-sm py-1 px-2 rounded-1">
                             <option value="">Local body</option>
                         </select>
 
-                        <select name="ward" id="ward" class="mt-2 form-control form-select py-1 px-2">
+                        <select name="ward" id="ward" class="mt-2 form-control form-select-sm py-1 px-2">
                             <option value="">Ward</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -236,62 +236,7 @@
 </section>
 
 <script>
-    function fetchDistrict(province) {
-        var controller = "/getDistrict/";
-        var host = location.origin + controller;
-        var url = location.origin + controller + province;
-        fetch(url, {
-                method: 'GET',
-                headers: {
-                    'Accept': 'application/json',
-                },
-            })
-            .then(response => response.json())
-            .then(response => {
-                let html = `<option selected disabled value="">Select</option>`;
-                for (const x of response.districts) {
-                    html += `<option value="${x.district_id}">${x.district}</option>`;
-                }
-                document.getElementById('district').innerHTML = html;
-            })
-    }
-
-    function fetchMunicipalities(district) {
-
-        var controller = "/getMunicipality/";
-        var host = location.origin + controller;
-        var url = location.origin + controller + district;
-
-        fetch(url, {
-                method: 'GET',
-                headers: {
-                    'Accept': 'application/json',
-                },
-            })
-            .then(response => response.json())
-            .then(response => {
-                let html = `<option selected disabled value="">Select</option>`;
-                for (const x of response.municipalitites) {
-                    html += `<option value="${x.municipalities_id}">${x.municipalities}</option>`;
-                }
-                document.getElementById('municipality').innerHTML = html;
-            })
-    }
-
-    const togglePassword = document.querySelectorAll('.btn--toggle-password');
-
-    togglePassword.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const input = btn.previousElementSibling;
-            if (input.type === 'password') {
-                input.type = 'text';
-                btn.innerHTML = `<i class="fa-solid fa-eye-slash"></i>`;
-            } else {
-                input.type = 'password';
-                btn.innerHTML = `<i class="fa-solid fa-eye"></i>`;
-            }
-        })
-    })
+   
 </script>
 
 @include('footermain')

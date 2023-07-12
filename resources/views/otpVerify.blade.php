@@ -30,7 +30,7 @@
             style="margin-top:100px">
             <form class="rounded   bg-white shadow p-5" method="post" action="{{ '/otpverify' }}">
                 @csrf
-                <h3 class=" fw-bolder fs-4 mb-2 text-success">Vefify Account</h5>
+                <h3 class=" fw-bolder fs-4 mb-2 text-danger">Verify Account</h5>
                     <div class="input-group mt-5  mb-3">
                         <input name="otp" type="text" value="" class="form-control form-control-lg"
                             id="password" placeholder="Enter The OTP" required="true" aria-label="password"

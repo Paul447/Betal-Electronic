@@ -9,7 +9,14 @@
 <div class="toast">Please Login First To Add To Cart!</div>
 
 <section id="product1" class="section-p1 cont">
-    <h2 class="my-5 feture mx-auto">{{$mydata}}</h2>
+    <h2 class="my-5 feture mx-auto mb-5">{{$mydata}}
+   
+    </h2>
+    @if($data->isEmpty())
+    <div class="infodiv" style="margin-bottom: 230px;">
+    <h1 class="text-center mb-5 align-item-center align-item-basline"  >No Search Result</h1>
+</div>
+    @endif
     <div class="products-container d-flex justify-content-center">
 
         @foreach ($data as $product)
@@ -69,43 +76,9 @@
 
             </div>
         @endforeach
+      
     </div>
-
-    @if (session('cart'))
-        <script>
-            Toast.fire({
-                icon: 'success',
-                title: '{{ session('cart') }}'
-            })
-        </script>
-        @php
-            session()->forget('cart');
-        @endphp
-    @endif
-    @if (session('QtyUpdated'))
-        <script>
-            Toast.fire({
-                icon: 'success',
-                title: '{{ session('QtyUpdated') }}'
-            })
-        </script>
-        @php
-            session()->forget('QtyUpdated');
-        @endphp
-    @endif
 </section>
 
 @include('footermain')
-<script>
- 
-    const showToastButton = document.querySelectorAll(".show-toast");
-    var toast = document.querySelector('.toast');
-    showToastButton.forEach((btnToast, i) => {
-        btnToast.addEventListener("click", (e) => {
-            Toast.fire({
-                icon: 'info',
-                title: 'Please Login First to Countinue'
-            })
-        })
-    });
-</script>
+
