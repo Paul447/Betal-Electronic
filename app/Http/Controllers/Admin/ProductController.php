@@ -148,10 +148,7 @@ class ProductController extends Controller
             'soldquantity' => '0',
             'profit' => '0',
         ]);
-        Productprice::create([
-            'price' => $request->productprice,
-            'product' => $id,
-        ]);
+     
         $category = $request->Category;
         for ($i = 0; $i < count($category); $i++) {
             Productcategory::insert([

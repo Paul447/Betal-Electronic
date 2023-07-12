@@ -13,7 +13,7 @@
             <div class="col col-md-10 card p-0 mt-4 d-inline-block  border border-1 shadow-sm overflow-auto boxxx">
                 <div class="card-header text-center h2 text-uppercase text-white">{{ $title }}</div>
 
-
+                <p class="text-danger fs-5 text-center mx-5">!!!First add Category,Brand,Batch and assign product to batches..Only after that you are alloweded to Add Product!!!</p>
                 <form action="{{ $url }}" method="post" class="p-4" enctype="multipart/form-data">
                     @csrf
                     <div class="row mb-3 main-Wrapper" id="output">
