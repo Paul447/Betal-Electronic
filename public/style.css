@@ -959,13 +959,6 @@ swiper-slide:hover img {
     margin: 0 !important
 }
 
-:root {
-    --red: #A50318;
-    --light-red: #aa4f5b9c;
-    --black: #0c0c0c;
-    --white: #ffffff
-}
-
 hr {
     border-top: 2px solid var(--primary-red) !important;
     opacity: 1 !important
@@ -1288,12 +1281,6 @@ h1 {
     z-index: 1;
     background-color: var(--white);
     padding: 20px
-}
-
-.product-image {
-    max-width: 100px;
-    height: 60px;
-    object-fit: contain
 }
 
 .mb-4 {
