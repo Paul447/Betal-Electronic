@@ -37,7 +37,7 @@
                     class="google googlebutton btn btn-light btn-lg btn-block d-flex justify-content-start align-items-center text-dark fs-6"
                     id="google">
                     <img src="{{ asset('admin/img/google.ico') }}" height="40px" width="40px" class="mx-4"
-                        class="google" alt="Google logo" id="google">
+                        class="google" alt="Google logo" id="google" loading="lazy">
                     Continue With Google
                 </a>
                 <p class="d-flex justify-content-center mt-3 mb-3">Don't have an Account?</p>

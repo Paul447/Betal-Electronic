@@ -138,14 +138,14 @@
 </style>
 @include('welcome')
 
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 <div class="container emp-profile">
     @foreach ($data as $dtata)
         <div class="profile-card">
             <div class="profile-img">
                 @if (is_null($dtata->password))
                   
-                <img src="{{ asset('/admin/img/' . $dtata->image) }}" alt="Profile Image" />
+                <img src="{{ asset('/admin/img/' . $dtata->image) }}" alt="Profile Image" loading="lazy" />
                 @else
                 <img src="{{ $dtata->image }}" alt="Profile Image" />
                

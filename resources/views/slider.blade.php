@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
 <style>
     img.slide {
         width: 100%;
@@ -35,14 +35,14 @@
             @endphp
             @foreach ($banners as $banner)
                 @if ($banner_count == 0)
-                    <div class="carousel-item active animate__animated animate__bounceInDown ">
+                    <div class="carousel-item active ">
                         <img class="slide" src="{{ asset('storage/banner/' . $banner->banner_img) }}"
-                            alt="{{ $banner->image_alt_text }}" />
+                            alt="{{ $banner->image_alt_text }}" loading="lazy"/>
                     </div>
                 @else
-                    <div class="carousel-item animate__animated animate__bounceInDown">
+                    <div class="carousel-item ">
                         <img class="slide" src="{{ asset('storage/banner/' . $banner->banner_img) }}"
-                            alt="{{ $banner->image_alt_text }}" />
+                            alt="{{ $banner->image_alt_text }}" loading="lazy" />
                     </div>
                 @endif
                 @php $banner_count++; @endphp

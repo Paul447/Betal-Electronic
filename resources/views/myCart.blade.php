@@ -277,7 +277,7 @@
                             @method('DELETE')
                         </form>
                         <td><img src="{{ asset('/storage/thumbnails/' . $cartData->thumbnail) }}" alt="Product Image"
-                                class="product-image"></td>
+                                class="product-image" loading="lazy"></td>
                         <td>{{ $cartData->product_name }}</td>
                         <td>@php
                             $hello = DB::table('add_product_batches')

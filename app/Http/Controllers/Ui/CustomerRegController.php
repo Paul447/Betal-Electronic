@@ -61,10 +61,10 @@ class CustomerRegController extends Controller
         $sql_contact = User::select()->pluck('contact');
 
         if (in_array($email, $sql_email->toArray())) {
-            session()->put('errormessage', 'Username Or Previously Exist');
+            session()->put('uifail', 'Username Or Previously Exist');
             return redirect('/customerAdd/create');
         } elseif (in_array($contact, $sql_contact->toArray())) {
-            session()->put('errormessage', 'Phone Number already Exist');
+            session()->put('uifail', 'Phone Number already Exist');
             return redirect('/customerAdd/create');
         }
 
@@ -81,7 +81,7 @@ class CustomerRegController extends Controller
                 });
                 if ($ismailsended) {
                     session()->put('id', $insert);
-                    session()->put('otpSend', 'Please Check The Gmail And Enter OTP!');
+                    session()->put('uisuccess', 'Please Check The Gmail And Enter OTP!');
                     return view('otpVerify');
                 }
             } catch (Exception $e) {
@@ -94,7 +94,7 @@ class CustomerRegController extends Controller
             });
             if ($ismailsended) {
                 session()->put('id', $insert);
-                session()->put('otpSend', 'Please Check The Gmail And Enter OTP!');
+                session()->put('uisuccess', 'Please Check The Gmail And Enter OTP!');
                 return view('otpVerify');
             }
         }
@@ -125,7 +125,7 @@ class CustomerRegController extends Controller
                     ->get()
                     ->first();
                 $request->session()->put('customer', $user);
-                session()->put('message', 'Logged In Successfully');
+                session()->put('uisuccess', 'Logged In Successfully');
                 return redirect('/');
             } else {
                 $insert = User::create([
@@ -145,7 +145,7 @@ class CustomerRegController extends Controller
                     ->get()
                     ->first();
                 $request->session()->put('customer', $user);
-                session()->put('message', 'Registered Successfully');
+                session()->put('uisuccess', 'Registered Successfully');
                 return redirect('/');
             }
         }
@@ -202,12 +202,12 @@ class CustomerRegController extends Controller
             ->first();
 
         if ($user->otp != $request->otp) {
-            session()->put('otperror', 'OTP Does not Match Check Your Mail And Try Again');
+            session()->put('uifail', 'OTP Does not Match Check Your Mail And Try Again');
             return view('otpVerify');
         } else {
             $request->session()->put('customer', $user);
             $find = User::find($id);
-            session()->put('Registered', 'Your Account Registered Successfully');
+            session()->put('uisuccess', 'Your Account Registered Successfully');
             $find->update(['user_status' => 'verified', 'otp' => '']);
             return redirect('/');
         }
@@ -224,7 +224,7 @@ class CustomerRegController extends Controller
             $user = Auth::guard()->user();
             if ($user->user_status == 'verified') {
                 $request->session()->put('customer', $user);
-                session()->put('message', 'Logged In Successfully');
+                session()->put('uisuccess', 'Logged In Successfully');
                 return redirect('/');
             } else {
                 session()->put('id', $user->id);

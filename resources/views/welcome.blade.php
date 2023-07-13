@@ -19,7 +19,7 @@
     {{-- <link rel="stylesheet" href="{{ asset('vendor/sweetalert2/sweetalert2.min.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset('admin/css/sty.css') }}" />
     <script src=" {{ asset('admin/bootstrap-5.2.3-dist/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script> --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
 
 
@@ -985,15 +985,4 @@
             }
         });
     </script>
-    @if (session('errormessage'))
-        <script>
-            Toast.fire({
-                icon: 'error',
-                title: '{{ session('errormessage') }}'
-            })
-        </script>
-        @php
-            session()->forget('errormessage');
-        @endphp
-    @endif
- 
+   

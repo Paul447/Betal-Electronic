@@ -42,29 +42,4 @@
             </form>
         </div>
 </section>
-{{-- otp not match message --}}
-@if (session('otperror'))
-    <script>
-        Toast.fire({
-            icon: 'error',
-            title: '{{ session('otperror') }}'
-        })
-    </script>
-    @php
-        session()->forget('otperror');
-    @endphp
-@endif
-{{-- Otp sent message --}}
-@if (session('otpSend'))
-    <script>
-        Toast.fire({
-            icon: 'info',
-            title: '{{ session('otpSend') }}'
-        })
-    </script>
-    @php
-        session()->forget('otpSend');
-    @endphp
-@endif
-
 @include('footermain')
