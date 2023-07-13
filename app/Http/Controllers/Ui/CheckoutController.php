@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\deliverys;
 use App\Models\addProductBatch;
-use App\Models\admin\Product;
+use App\Models\Admin\Product;
 use App\Models\Admin\Productprice;
 use Database\Seeders\addPbatch;
 use Illuminate\Support\Facades\DB;

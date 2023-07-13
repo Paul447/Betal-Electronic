@@ -1,31 +1,7 @@
 <script>
     document.title = "Betal International | Terms and Condition"
 </script>
-<style>
-    .privacy_h1 {
-        margin: 0;
-    }
 
-    .privacy_main {
-        padding: 20px;
-    }
-
-    .privacy_h2 {
-        font-size: 16px;
-        margin-bottom: 10px;
-    }
-
-    .privacy_p {
-        line-height: 1.5;
-    }
-
-
-    @media only screen and (max-width: 600px) {
-        .privacy_h2 {
-            font-size: 20px;
-        }
-    }
-</style>
 @include('welcome')
 <main class="privacy_main container cont">
     <div class="d-flex justify-content-center mb-5">

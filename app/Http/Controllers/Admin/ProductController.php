@@ -8,8 +8,8 @@ use Illuminate\Http\Request;
 use App\Models\Admin\Category;
 use App\Models\Admin\Variation;
 use App\Models\Admin\Brand;
-use App\Models\admin\Productimage;
-use App\Models\admin\Product;
+use App\Models\Admin\Productimage;
+use App\Models\Admin\Product;
 use App\Models\Admin\Productprice;
 use App\Models\Admin\Productcategory;
 use App\Models\Admin\Productvariation;
@@ -63,8 +63,8 @@ class ProductController extends Controller
     public function store(Request $request)
     {
 
-        $addedby = Auth::guard()->user()->id;
-        if (Auth::guard()->user()->role == 'Admin') {
+        $addedby = session('user')['id'];
+        if (session('user')['role'] == 'Admin') {
             $file = $request->file('Productthumbfile');
             $filename = time() . '.' . $file->getClientOriginalExtension();
             $file->move(public_path() . '/storage/thumbnails/', $filename);

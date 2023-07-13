@@ -5,7 +5,7 @@ namespace App\Http\Controllers\UI;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Province;
-use App\Models\admin\User;
+use App\Models\Admin\User;
 use Exception;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
@@ -326,7 +326,7 @@ class CustomerRegController extends Controller
         $user = User::find($request->user_id);
         $user_id = $user->id;
         if ($request->password == $request->password_confirmation) {
-           
+
             $user->password = Hash::make($request->password);
             $user->save();
 

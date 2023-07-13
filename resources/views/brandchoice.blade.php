@@ -2,40 +2,6 @@
     $viewBrand = DB::table('brands')->get();
 @endphp
 
-<style>
-    swiper-container {
-        width: 85%;
-        height: 210px;
-        /* margin: 10px; */
-        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-        max-width: 1320px;
-        
-    }
-
-    swiper-slide {
-        text-align: center;
-        font-size: 18px;
-        background: #fff;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    swiper-slide img {
-        display: block;
-        width: 90px;
-        height: 100px;
-        filter: grayscale(1);
-        pointer-events: none;
-        object-fit: contain;
-    }
-
-    swiper-slide:hover img {
-        filter: grayscale(0);
-    }
-</style>
-
-
 <h2 class="feture mx-auto featured brand mt-5 mb-5 ">Featured Brand</h2>
 
 <swiper-container class="mySwiper " space-between="120" autoplay-delay="2500"

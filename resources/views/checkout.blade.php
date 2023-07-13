@@ -2,22 +2,6 @@
     document.title = "Betal International | Checkout Page"
 </script>
 @include('welcome')
-<style>
-    .prodetail {
-        background-color: #f2f2f2;
-        padding: 5px 20px 15px 20px;
-        border: 1px solid lightgrey;
-        border-radius: 3px;
-    }
-
-    .mine {
-        background-color: #f2f2f2;
-        padding: 5px 20px 15px 20px;
-        border: 1px solid lightgrey;
-        border-radius: 3px;
-    }
-</style>
-
 
 <div class="container mt-5">
     <div class="py-5 text-center">

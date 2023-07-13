@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Pagination\Paginator;
-use App\Models\admin\Variation;
-use App\Models\admin\Variationoption;
+use App\Models\Admin\Variation;
+use App\Models\Admin\Variationoption;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 

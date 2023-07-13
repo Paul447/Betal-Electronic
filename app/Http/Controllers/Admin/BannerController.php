@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Pagination\Paginator;
-use App\Models\admin\Banner;
+use App\Models\Admin\Banner;
 use Illuminate\Http\Request;
 
 class BannerController extends Controller
@@ -30,7 +30,7 @@ class BannerController extends Controller
         $name = $file->getClientOriginalName();
         $file->storeAs("public/banner", $name);
 
-        Banner::create(array_merge($request->all(),['banner_img'=>$name]));
+        Banner::create(array_merge($request->all(), ['banner_img' => $name]));
 
         session()->put('AdminSuccess', "Banner Added Successfully");
         return redirect('/admin/banner');

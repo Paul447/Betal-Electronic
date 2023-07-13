@@ -40,7 +40,7 @@ class AssignAttribute extends Controller
         return view('admin.AssignAttributes.viewassignVariation')->with(compact('products', 'productId', 'productData'));
     }
 
-  
+
     public function create()
     {
         $url = '/admin/assign/';
@@ -52,7 +52,7 @@ class AssignAttribute extends Controller
         return view('admin.AssignAttributes.assignVariation')->with($data);
     }
 
-   
+
     public function store(Request $request)
     {
         $selectedItems = $request->input('Selectedvalue', []);
@@ -70,29 +70,29 @@ class AssignAttribute extends Controller
         return redirect('/admin/assign/create');
     }
 
- 
+
     public function show($id)
     {
         //
     }
 
- 
+
     public function edit($id)
     {
         //
     }
 
-   
+
     public function update(Request $request, $id)
     {
         //
     }
-    
+
     public function destroy($id)
     {
-        $data = Productvariation::where('product',$id)->pluck('id')->flatten()
-        ->toArray();;
-        Productvariation::whereIn('id',$data)->delete();
+        $data = Productvariation::where('product', $id)->pluck('id')->flatten()
+            ->toArray();;
+        Productvariation::whereIn('id', $data)->delete();
         session()->put('AdminFaliure', 'Attributes Deleted');
         return redirect('admin/assign/');
     }
