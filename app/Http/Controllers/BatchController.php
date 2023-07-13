@@ -7,15 +7,15 @@ use App\Models\addProductBatch;
 use App\Models\Admin\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Auth;
 
 
 class BatchController extends Controller
 {
     public function index()
     {
-        $addedby = session('user')['id'];
-        if (session('user')['role'] == 'Admin') {
+        $addedby = Auth::guard()->user()->id;
+        if (Auth::guard()->user()->role == 'Admin') {
             $data  = DB::table('_batch__migration')->latest('batch_name')->value('batch_name');
             if (isset($data)) {
                 $parts = explode(" ", trim($data));

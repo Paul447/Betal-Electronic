@@ -15,6 +15,7 @@ use App\Models\Admin\Productcategory;
 use App\Models\Admin\Productvariation;
 use App\Models\addProductBatch;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 
 use Image;
 
@@ -25,7 +26,7 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-   
+
     public function index()
     {
         Paginator::useBootstrap();
@@ -61,9 +62,9 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-       
-        $addedby = session('user')['id'];
-        if (session('user')['role'] == 'Admin') {
+
+        $addedby = Auth::guard()->user()->id;
+        if (Auth::guard()->user()->role == 'Admin') {
             $file = $request->file('Productthumbfile');
             $filename = time() . '.' . $file->getClientOriginalExtension();
             $file->move(public_path() . '/storage/thumbnails/', $filename);
@@ -148,7 +149,7 @@ class ProductController extends Controller
             'soldquantity' => '0',
             'profit' => '0',
         ]);
-     
+
         $category = $request->Category;
         for ($i = 0; $i < count($category); $i++) {
             Productcategory::insert([

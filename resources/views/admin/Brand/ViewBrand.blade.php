@@ -4,25 +4,26 @@
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
     </script> -->
-   
+
     </head>
 
     <body>
         <!-- Striped Rows -->
-        <div class="container cont  d-flex justify-content-center align-content-center" style="margin-top: 85px;" id="tabul">
+        <div class="container cont  d-flex justify-content-center align-content-center" style="margin-top: 85px;"
+            id="tabul">
             <div class="table-responsive w-100">
                 <h2 class=" text-uppercase  text-center" style="font-family:Times New Roman, Times, serif">Brand Detail Table
                 </h2>
                 <table class="table table-striped table-fixed order-table">
                     <thead>
-                        <tr >
+                        <tr>
                             <th>S.N</th>
                             <th>Brand Name</th>
                             <th>Brand URL</th>
                             <th>Brand Description</th>
 
 
-                            @if (session('user')['role'] == 'Admin')
+                            @if (Auth::guard()->user()->role == 'Admin')
                                 <th>Added By</th>
                                 {{-- <th>Approved By</th>
                                 <th>Updated By</th>
@@ -38,10 +39,10 @@
                                 <td>{{ $brand->brand_name }}</td>
                                 <td>{{ $brand->url }}</td>
                                 <td>{{ $brand->brand_discription }}</td>
-                                
-                                @if (session('user')['role'] == 'Admin')
+
+                                @if (Auth::guard()->user()->role == 'Admin')
                                     {{-- <td>{{$data->user_name}}</td> --}}
-                                    {{-- @if(sizeof($data->ds))
+                                    {{-- @if (sizeof($data->ds))
                                     @foreach ($data->ds as $value)
 
 
@@ -55,11 +56,11 @@
                                 @endforeach
                                 @endif --}}
 
-                                <td>
-                                    <a href="{{url('/admin/editor/'.$brand->id.'/viewadmin')}}">
-                                    {{$brand->user_name}}
-                                </a>
-                                </td>
+                                    <td>
+                                        <a href="{{ url('/admin/editor/' . $brand->id . '/viewadmin') }}">
+                                            {{ $brand->user_name }}
+                                        </a>
+                                    </td>
                                     {{-- <th>Approved By</th>
                                     <th>Updated By</th>
                                     <th>Update Approved By</th> --}}
@@ -86,7 +87,7 @@
                     </tbody>
                 </table>
                 <div class="d-flex justify-content-center">
-                    {{$data->links() }}
+                    {{ $data->links() }}
                 </div>
             </div>
         </div>

@@ -15,7 +15,7 @@ class Batch_MigrationSeeder extends Seeder
      */
     public function run()
     {
-        $data = ['batch_name'=>'testBatch'];
+        $data = ['batch_name'=>'Batch 1'];
         Batch_Migration::insert($data);
     }
 }

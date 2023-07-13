@@ -7,6 +7,7 @@ use Illuminate\Pagination\Paginator;
 use Illuminate\Http\Request;
 use App\Models\Admin\Brand;
 use App\Models\admin\User;
+use Illuminate\Support\Facades\Auth;
 
 
 class BrandController extends Controller
@@ -67,8 +68,8 @@ class BrandController extends Controller
         //     );
 
 
-        $addedby = session('user')['id'];
-        if (session('user')['role'] == 'Admin') {
+        $addedby = Auth::guard()->user()->id;
+        if (Auth::guard()->user()->role == 'Admin') {
             $file = $request->file('Brandfile');
             $filename = $file->getClientOriginalName();
             $file->move(public_path() . '/storage/brands/', $filename);
@@ -122,7 +123,7 @@ class BrandController extends Controller
         //     ]
         //     );
 
-        if (session('user')['role'] == 'Admin') {
+        if (Auth::guard()->user()->role == 'Admin') {
             $file = $request->file('Brandfile');
 
             if ($request->Brandfile) {
@@ -132,13 +133,13 @@ class BrandController extends Controller
                 $filename = $request->previousFile;
             }
             $brand =  Brand::find($id);
-            $updatedby = session('user')['id'];
+            $updatedby = Auth::guard()->user()->id;
             $brand->update(array_merge($request->all(), ['brand_image' => $filename, 'updatedby' => $updatedby, 'updateapprovedby' => $updatedby, 'updatestatus' => "approved"]));
             session()->put('AdminFaliure', 'Brand Updated');
             return redirect('/admin/brand/');
         }
         $brand =  Brand::find($id);
-        $updatedby = session('user')['id'];
+        $updatedby = Auth::guard()->user()->id;
         $brand->update(array_merge($request->all(), ['updatedby' => $updatedby, 'updateapprovedby' => $updatedby, 'updatestatus' => 'pending']));
         return redirect('/admin/brand/');
     }

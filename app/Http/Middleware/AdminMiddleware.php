@@ -26,7 +26,7 @@ class AdminMiddleware
         //     return redirect('/login');
         // }
 
-        // if(session('user')['role']=='Admin')
+        // if(Auth::guard()->user()->role=='Admin')
         // {
         // return $next($request);
         // }

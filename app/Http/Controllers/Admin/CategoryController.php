@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
 use App\Models\Admin\Category;
+use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends Controller
 {
@@ -51,8 +52,8 @@ class CategoryController extends Controller
             'category_name' => 'required|alpha_dash',
             'parent' => 'required|numeric',
         ]);
-        $addedby = session('user')['id'];
-        if (session('user')['role'] == 'Admin') {
+        $addedby = Auth::guard()->user()->id;
+        if (Auth::guard()->user()->role == 'Admin') {
             $file = $request->file('categorythumbnail');
             $filename = time() . '.' . $file->getClientOriginalExtension();
             $file->storeAs('public/categorythumbnail', $filename);
@@ -107,9 +108,9 @@ class CategoryController extends Controller
             'category_name' => 'required|',
             'parent' => 'required|numeric',
         ]);
-        $updatedby = session('user')['id'];
+        $updatedby = Auth::guard()->user()->id;
         $category = Category::find($id);
-        if (session('user')['role'] == 'Admin') {
+        if (Auth::guard()->user()->role == 'Admin') {
             $file = $request->file('categorythumbnail');
             $filename = time() . '.' . $file->getClientOriginalExtension();
             $file->move(public_path() . '/storage/categorythumbnail/', $filename);
