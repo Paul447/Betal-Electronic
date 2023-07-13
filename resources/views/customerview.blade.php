@@ -2,11 +2,11 @@
     document.title = "Betal International | View User"
 </script>
 <style>
-    a{
+    a {
         text-decoration: none;
     }
 
-   
+
     /* Container styles */
     .container.emp-profile {
         margin-top: 95px;
@@ -143,14 +143,12 @@
     @foreach ($data as $dtata)
         <div class="profile-card">
             <div class="profile-img">
-                @if (is_null($dtata->password))
-                  
-                <img src="{{ asset('/admin/img/' . $dtata->image) }}" alt="Profile Image" />
+                @if ($dtata->password != '' || $dtata->password != null)
+                    <img src="{{ asset('/admin/img/' . $dtata->image) }}" alt="Profile Image" />
                 @else
-                <img src="{{ $dtata->image }}" alt="Profile Image" />
-               
+                    <img src="{{ $dtata->image }}" alt="Profile Image" />
                 @endif
-                
+
             </div>
             <div class="profile-details">
                 <h5 class="customer-name" style="color: #a50318;">{{ $dtata->user_name }}</h5>
@@ -161,13 +159,11 @@
                                 <thead>
                                     <th class="pb-4">Email :&nbsp;{{ $dtata->email }} </th>
                                 </thead>
-                                <tbody >
-                                    <td class="justify-content-center d-flex" >
-                                        @if (is_null($dtata->password))
-                                
-                                        <a href="{{'/changepass'}}"  style="text-decoration: none;" class="view-details">Change Password</a>
-                                        @else
-                                            
+                                <tbody>
+                                    <td class="justify-content-center d-flex">
+                                        @if ($dtata->password != '' || $dtata->password != null)
+                                            <a href="{{ '/changepass' }}" style="text-decoration: none;"
+                                                class="view-details">Change Password</a>
                                         @endif
                                     </td>
                                 </tbody>
