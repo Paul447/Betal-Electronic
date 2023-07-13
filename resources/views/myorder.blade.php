@@ -21,6 +21,7 @@
     .status.pending {
         background-color: #ebc474;
     }
+    tr.orderdetailpreview { cursor: pointer; }
 </style>
 @include('welcome')
 <div class="container cont d-flex justify-content-center align-content-center ">
@@ -46,7 +47,7 @@
                 @endphp
                 @if (isset($result))
                     @foreach ($result as $data)
-                        <tr data-href="{{ 'orderProductDetailView' }}" data-value="{{ $data->order_id }}">
+                        <tr data-href="{{ 'orderProductDetailView' }}" data-value="{{ $data->order_id }}" class="orderdetailpreview">
                             <td>{{ $i }}</td>
                             <td> {{ $data->customer_name }}</td>
                             <td> {{ $data->location }}</td>

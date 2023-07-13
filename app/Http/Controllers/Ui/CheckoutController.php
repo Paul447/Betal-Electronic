@@ -32,7 +32,7 @@ class CheckoutController extends Controller
             'phone' => 'required|numeric|digits:10',
             'zipcode' => 'required|numeric|',
         ]);
-   
+
         $selectedproductCartID = json_decode($request->input('selectedProductId'));
         $totalCartAmountRequest = json_decode($request->input('totalCartData'));
         $productQuantity = json_decode($request->input('selectedCart'));
@@ -44,22 +44,21 @@ class CheckoutController extends Controller
         $zipcode = $request->input('zipcode');
 
         $pIDdata = $request->input('selectedProductId');
-        if(isset($selectedproductCartID)){
-        // $pqty = $request->input('selectedCart');
-        Cache::put('my_data_1', $selectedproductCartID, 60);
-        Cache::put('my_data_2', $productQuantity, 60);
-        Cache::put('my_data_3', $name, 60);
-        Cache::put('my_data_4', $address, 60);
-        Cache::put('my_data_5', $phone, 60);
-        Cache::put('my_data_6', $zipcode, 60);
-        }
-        else{
+        if (isset($selectedproductCartID)) {
+            // $pqty = $request->input('selectedCart');
+            Cache::put('my_data_1', $selectedproductCartID, 60);
+            Cache::put('my_data_2', $productQuantity, 60);
+            Cache::put('my_data_3', $name, 60);
+            Cache::put('my_data_4', $address, 60);
+            Cache::put('my_data_5', $phone, 60);
+            Cache::put('my_data_6', $zipcode, 60);
+        } else {
             session()->put('uifail', 'None of the product was selected');
             return redirect('/CartView');
         }
         return view('confrim')->with(compact('totalCartAmountRequest', 'selectedProductName', 'productQuantity'));
     }
-    public function datastore(Request $request)
+    public function datastore(Request $request,$id)
     {
         $productIdd = Cache::get('my_data_1');
 
@@ -70,9 +69,9 @@ class CheckoutController extends Controller
         $phone = Cache::get('my_data_5');
         $zipcode = Cache::get('my_data_6');
         $customerID = session('customer')['id'];
-        $mydata = $request['q'];
+        $data = $id;
 
-        if ($mydata == 'su') {
+        if ($data == 124421) {
             foreach ($productIdd as $key => $procarId) {
                 $cartquantity = $productQuantity[$key];
                 $productPrice = addProductBatch::where('product', $procarId)
@@ -168,10 +167,10 @@ class CheckoutController extends Controller
                 ]);
             }
 
-            session()->put('SuccessfullyPaid', 'Payment Successful !! Your Order is in Process');
+            session()->put('SuccessfullyPaid', ' Your Order is Placed !!');
             return redirect('CartView');
         } else {
-            session()->put('UnsuccessfullyPaid', 'Payment Unsuccessful !!');
+            session()->put('UnsuccessfullyPaid', 'Order Canceled !!');
             return redirect('CartView');
         }
     }
@@ -186,24 +185,23 @@ class CheckoutController extends Controller
             'zipcode' => 'required|numeric|',
         ]);
         $selectedproductCartID = json_decode($request->input('product_id'));
-        if(isset($selectedproductCartID)){
-        $data = $request->input();
-        Cache::put('name', $request->name, 60);
-        Cache::put('address', $request->address, 60);
-        Cache::put('phone', $request->phone, 60);
-        Cache::put('zipcode', $request->zipcode, 60);
-        Cache::put('product_id', $request->product_id, 60);
-        Cache::put('quantity', $request->quantity, 60);
-        Cache::put('total', $request->total, 60);
-        }
-        else{
+        if (isset($selectedproductCartID)) {
+            $data = $request->input();
+            Cache::put('name', $request->name, 60);
+            Cache::put('address', $request->address, 60);
+            Cache::put('phone', $request->phone, 60);
+            Cache::put('zipcode', $request->zipcode, 60);
+            Cache::put('product_id', $request->product_id, 60);
+            Cache::put('quantity', $request->quantity, 60);
+            Cache::put('total', $request->total, 60);
+        } else {
             session()->put('uifail', 'None of the product was selected');
             return redirect('/CartView');
         }
         return view('buy_confirm')->with(compact('data'));
     }
 
-    public function store_buy_data(Request $request)
+    public function store_buy_data(Request $request,$id)
     {
         $name = Cache::get('name');
         $address = Cache::get('address');
@@ -213,8 +211,9 @@ class CheckoutController extends Controller
         $quantity = Cache::get('quantity');
         $total_price = Cache::get('total');
         $customer_id = Session('customer')['id'];
+        $data = $id;
 
-        if ($request->q == 'su') {
+        if ($data == 124421) {
             $order_id = Order::create([
                 'name' => $name,
                 'address' => $address,
@@ -243,10 +242,10 @@ class CheckoutController extends Controller
                 'status' => 'Pending',
             ]);
 
-            session()->put('SuccessfullyPaid', 'Payment Successful !! Your Order is in Process');
+            session()->put('SuccessfullyPaid', ' Your Order is Placed !!');
             return redirect('/');
         } else {
-            session()->put('UnsuccessfullyPaid', 'Payment Unsuccessful !!');
+            session()->put('UnsuccessfullyPaid', 'Order Canceled !!');
             return redirect('/');
         }
     }

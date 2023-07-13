@@ -52,6 +52,38 @@
 
 </footer>
 <script>
+   
+    function payConfirm(id) {
+        Swal.fire({
+            title: 'Place Order',
+            text: "Order Will Be Placed To The Mention Address in Shipping Detail!",
+            icon: 'info',
+            showCancelButton: true,
+            confirmButtonColor: '#a3dd82',
+            cancelButtonColor: '#d33',
+            cancelButtonText: "No, cancel!",
+            confirmButtonText: 'Confirm Order'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('confirm-form-' + id).submit();
+            }
+        })
+    }
+
+    function cancelOrder(id) {
+        Swal.fire({
+            title: 'Cancel Order',
+            text: "Are You Sure Want to Cancel Order!!",
+            icon: 'danger',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            confirmButtonText: 'Cancel Order'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('cancel-order-' + id).submit();
+            }
+        })
+    }
     const showToastButton = document.querySelectorAll(".show-toast");
     var toast = document.querySelector('.toast');
     showToastButton.forEach((btnToast, i) => {
@@ -121,66 +153,66 @@
 </script>
 
 @if (session('uifail'))
-<script>
-    Toast.fire({
-        icon: 'error',
-        title: '{{ session('uifail') }}'
-    })
-</script>
-@php
-    session()->forget('uifail');
-@endphp
+    <script>
+        Toast.fire({
+            icon: 'error',
+            title: '{{ session('uifail') }}'
+        })
+    </script>
+    @php
+        session()->forget('uifail');
+    @endphp
 @endif
 
 
 @if (session('uiinfo'))
-<script>
-    Toast.fire({
-        icon: 'info',
-        title: '{{ session('uiinfo') }}'
-    })
-</script>
-@php
-    session()->forget('uiinfo');
-@endphp
+    <script>
+        Toast.fire({
+            icon: 'info',
+            title: '{{ session('uiinfo') }}'
+        })
+    </script>
+    @php
+        session()->forget('uiinfo');
+    @endphp
 @endif
 
 @if (session('uisuccess'))
-<script>
-    Toast.fire({
-        icon: 'success',
-        title: '{{ session('uisuccess') }}'
-    })
-</script>
-@php
-    session()->forget('uisuccess');
-@endphp
+    <script>
+        Toast.fire({
+            icon: 'success',
+            title: '{{ session('uisuccess') }}'
+        })
+    </script>
+    @php
+        session()->forget('uisuccess');
+    @endphp
 @endif
 
 
 {{-- Only For payment status --}}
 @if (session('SuccessfullyPaid'))
-<script>
-    Swal.fire({
-        icon: 'success',
-        title: '{{ session('SuccessfullyPaid') }}',
-    })
-</script>
-@php
-    session()->forget('SuccessfullyPaid');
-@endphp
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: '{{ session('SuccessfullyPaid') }}',
+        })
+    </script>
+    @php
+        session()->forget('SuccessfullyPaid');
+    @endphp
 @endif
 
 @if (session('UnsuccessfullyPaid'))
-<script>
-    Swal.fire({
-        icon: 'error',
-        title: '{{ session('UnsuccessfullyPaid') }}',
-    })
-</script>
-@php
-    session()->forget('UnsuccessfullyPaid');
-@endphp
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: '{{ session('UnsuccessfullyPaid') }}',
+        })
+    </script>
+    @php
+        session()->forget('UnsuccessfullyPaid');
+    @endphp
 @endif
 {{-- Till here --}}
 

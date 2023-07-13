@@ -110,17 +110,14 @@
                     <table id="table2">
                         <tbody>
                             <tr>
-                                <td>Cart SubTotal</td>
+                                <td>Cart Total</td>
                                 <td class="cardTotals" id="sumDiv"></td>
                             </tr>
                             <tr>
                                 <td>Shipping</td>
                                 <td>free</td>
                             </tr>
-                            <tr>
-                                <td><strong>Total</strong></td>
-                                <td style="font-weight: bold" class="cardTotals" id="sumDiv">$0</td>
-                            </tr>
+                          
                         </tbody>
                     </table>
                 </div>

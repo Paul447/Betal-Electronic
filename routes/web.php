@@ -50,7 +50,7 @@ use App\Http\Controllers\viewprofileController;
 
 Route::get('/buy/{quantity},{product_id}', [CheckoutController::class, 'index']);
 Route::post('/buy/confirm', [CheckoutController::class, 'confirm']);
-Route::get('/buy/confirm/', [CheckoutController::class, 'store_buy_data']);
+Route::post('/buy/confirm/{id}', [CheckoutController::class, 'store_buy_data']);
 Route::get('/categorySearch/{id}', [ProductviewController::class, 'categorySearch']);
 Route::get('/fetchbyBrand/{id}', [ProductviewController::class, 'fetchbyBrand']);
 Route::get('/', [ProductviewController::class, 'index']);
@@ -140,7 +140,7 @@ Route::get('/check/{qty},{idd}', [CheckoutController::class, 'store']);
 Route::get('/viewCategories/{catoid}', [CategoryViewController::class, 'viewCategories']);
 
 Route::post('/confirm/', [CheckoutController::class, 'store']);
-Route::get('/storeorderInfo/', [CheckoutController::class, 'datastore']);
+Route::post('/storeorderInfo/{id}', [CheckoutController::class, 'datastore']);
 
 Route::get('/postCartData', [CartViewController::class, 'fetchDataForCart']);
 Route::get('/termncondition', [CartViewController::class, 'termncondition']);

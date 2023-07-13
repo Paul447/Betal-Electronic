@@ -18,7 +18,7 @@
                     <div>
                         <h6 class="my-0">Product name</h6>
                         <h6 class="text-muted">Quantity:</h6>
-                        <h6 class="text-muted">Price:</h6>
+                
                     </div>
 
                     <br />
@@ -26,7 +26,7 @@
                     <div>
                         <span class="text-muted d-flex float-start">{{ $product }}</span><br />
                         <span class="text-muted d-flex float-start">{{ $quantity }}</span><br />
-                        <span class="text-muted">{{ $price }}</span>
+                        
                     </div>
                 </li>
 
