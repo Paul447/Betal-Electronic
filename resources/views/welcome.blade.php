@@ -54,7 +54,7 @@
         <nav class="right">
             <ul class="d-flex align-items-center" class="myUlclass">
                 <li class="mx-2 mx-lg-3">
-                    <form action="{{ route('products.search') }}" class="position-relative">
+                    <form action="{{ route('products.search') }}" class="position-relative search-form">
                         <input type="search" name="search" class="py-1 rounded-1 border border-dark-subtle px-2"
                             id="search" placeholder="Search">
                         <button type="submit" class="btn--search bg-transparent position-absolute border-0 ">

@@ -721,6 +721,10 @@ form i {
     margin-top: 5px
 }
 
+.search-form i {
+    margin-top: 0;
+}
+
 @media(max-width :520px) {
     .brandImage {
         width: 200px;
