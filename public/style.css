@@ -1283,6 +1283,12 @@ h1 {
     padding: 20px
 }
 
+.product-image-sm {
+    max-width: 100px;
+    height: 60px;
+    object-fit: contain
+}
+
 .mb-4 {
     margin-bottom: 1rem
 }
