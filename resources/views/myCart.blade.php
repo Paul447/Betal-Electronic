@@ -3,247 +3,6 @@
 </script>
 @include('welcome')
 
-
-<style>
-    :root {
-        --primary-color: #a50318;
-        --secondary-color: #eaeaea;
-        --light-gray: #f8f8f8;
-    }
-
-    h1 {
-        text-align: center;
-
-        margin-top: 30px;
-    }
-
-    .table {
-        margin-top: 20px;
-        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-        border-radius: 10px;
-        overflow: hidden;
-    }
-
-    .table thead th {
-        color: #fff;
-        background-color: var(--primary-color);
-        border-color: var(--primary-color);
-        padding: 20px;
-        font-weight: bold;
-        text-align: center;
-        vertical-align: middle;
-    }
-
-    .table tbody td {
-        padding: 20px;
-        text-align: center;
-        vertical-align: middle;
-    }
-
-    .table-striped tbody tr:nth-of-type(odd) {
-        background-color: var(--light-gray);
-    }
-
-    .table-striped tbody tr:hover {
-        background-color: var(--secondary-color);
-    }
-
-    .btn-danger {
-        background-color: var(--primary-color);
-        border-color: var(--primary-color);
-        color: #fff;
-    }
-
-    .btn-danger:hover {
-        background-color: #7f0211;
-        border-color: #7f0211;
-    }
-
-    .fixed-column {
-        position: sticky;
-        left: 0;
-        z-index: 1;
-        background-color: #fff;
-        padding: 20px;
-    }
-
-    /* Checkbox styling */
-    .custom-checkbox input[type="checkbox"] {
-        display: none;
-    }
-
-    .custom-checkbox label {
-        position: relative;
-        display: inline-block;
-        width: 18px;
-        height: 18px;
-        border: 2px solid var(--primary-color);
-        border-radius: 4px;
-        cursor: pointer;
-    }
-
-    .custom-checkbox label::after {
-        content: "";
-        position: absolute;
-        top: 2px;
-        left: 2px;
-        width: 10px;
-        height: 10px;
-        background-color: var(--primary-color);
-        border-radius: 2px;
-        opacity: 0;
-        transition: opacity 0.2s ease;
-    }
-
-    .custom-checkbox input[type="checkbox"]:checked+label::after {
-        opacity: 1;
-    }
-
-    .custom-checkbox input[type="checkbox"]:focus+label::before {
-        box-shadow: 0 0 0 3px rgba(165, 3, 24, 0.2);
-    }
-
-    .product-image {
-        max-width: 100px;
-        height: 60px;
-        object-fit: contain;
-    }
-
-    .mb-4 {
-        margin-bottom: 1rem;
-    }
-
-    .prodetail {
-        background-color: var(--secondary-color);
-        border-radius: 10px;
-        padding: 20px;
-    }
-
-    .section-p1 h3 {
-        color: var(--primary-color);
-        margin-bottom: 20px;
-    }
-
-    #table2 {
-        width: 100%;
-        margin-bottom: 20px;
-    }
-
-    #table2 td {
-        padding: 10px;
-        border-top: none;
-    }
-
-    #table2 tr:nth-of-type(odd) {
-        background-color: var(--light-gray);
-    }
-
-    #table2 tr:last-child {
-        font-weight: bold;
-    }
-
-    .mine {
-        background-color: var(--light-gray);
-        border-radius: 10px;
-        padding: 20px;
-    }
-
-    .fw-bold {
-        font-weight: bold;
-    }
-
-    .form-control {
-        border-color: var(--primary-color);
-    }
-
-    .form-control:focus {
-        box-shadow: 0 0 0 0.2rem rgba(165, 3, 24, 0.25);
-        border-color: var(--primary-color);
-    }
-
-    .normal {
-        background-color: var(--primary-color);
-        border-color: var(--primary-color);
-        color: #fff;
-        padding: 10px 20px;
-        font-weight: bold;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-
-    .normal:hover {
-        background-color: #7f0211;
-        border-color: #7f0211;
-    }
-
-    /* Chrome, Safari, Edge, Opera */
-    input::-webkit-outer-spin-button,
-    input::-webkit-inner-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-    }
-
-    /* Firefox */
-    input[type=number] {
-        -moz-appearance: textfield;
-    }
-
-    /* Responsive styles */
-    @media (max-width: 574px) {
-
-        .col-md-4.col-md-mx-4.order-md-2.mb-4,
-        .col-md-7.order-md-1.mine.me-2 {
-            margin-bottom: 20px;
-        }
-
-        .prodetail,
-        .mine {
-            padding: 10px;
-        }
-
-        .section-p1 h3 {
-            font-size: 18px;
-        }
-
-        #table2 td {
-            padding: 5px;
-        }
-
-        .form-control {
-            font-size: 14px;
-        }
-
-        .normal {
-            padding: 8px 15px;
-            font-size: 14px;
-        }
-    }
-
-    @media (max-width: 375px) {
-
-        .prodetail,
-        .mine {
-            padding: 5px;
-        }
-
-        .section-p1 h3 {
-            font-size: 16px;
-        }
-
-        #table2 td {
-            padding: 3px;
-        }
-
-        .form-control {
-            font-size: 12px;
-        }
-
-        .normal {
-            padding: 6px 12px;
-            font-size: 12px;
-        }
-    }
-</style>
 <div class="container cont d-flex justify-content-center align-content-center ">
     <div class="table-responsive w-100">
         <h2 class="feture mx-auto  mt-5 mb-5 "> Cart Item</h2>
@@ -266,86 +25,76 @@
                 </tr>
                 @endif
                 @foreach ($productIddata as $cartData)
-                    <tr>
-                        <td>
-                            <button class="btn btn-danger" onclick="deleteRecord({{ $cartData->id }})"><span
-                                    class="bi bi-trash" style="font-size: 15px;"></span></button>
-                        </td>
-                        <form id="delete-form-{{ $cartData->id }}" action="{{ url('/cart', $cartData->id) }}"
-                            method="POST" style="display: none;">
-                            @csrf
-                            @method('DELETE')
-                        </form>
-                        <td><img src="{{ asset('/storage/thumbnails/' . $cartData->thumbnail) }}" alt="Product Image"
-                                class="product-image" loading="lazy"></td>
-                        <td>{{ $cartData->product_name }}</td>
-                        <td>@php
+                <tr>
+                    <td>
+                        <button class="btn btn-danger" onclick="deleteRecord({{ $cartData->id }})"><span class="bi bi-trash" style="font-size: 15px;"></span></button>
+                    </td>
+                    <form id="delete-form-{{ $cartData->id }}" action="{{ url('/cart', $cartData->id) }}" method="POST" style="display: none;">
+                        @csrf
+                        @method('DELETE')
+                    </form>
+                    <td><img src="{{ asset('/storage/thumbnails/' . $cartData->thumbnail) }}" alt="Product Image" class="product-image" loading="lazy"></td>
+                    <td>{{ $cartData->product_name }}</td>
+                    <td>@php
+                        $hello = DB::table('add_product_batches')
+                        ->where('product', $cartData->product_id)
+                        ->whereNotNull('availablequantity')
+                        ->where('availablequantity', '<>', 0)
+                            ->orderBy('batchid', 'asc')
+                            ->limit(1)
+                            ->pluck('sellingprice')
+                            ->first();
+                            $val = 'Out Of Stock';
+
+                            @endphp
+                            @if (is_null($hello))
+                            {{ $val }}
+                            @else
+                            Rs.{{ $hello }}
+                            @endif
+                    </td>
+                    <td>
+                        <div class="d-flex flex-row justify-content-center">
+                            <button class="cart_dec btn btn-link px-2" name="{{ $cartData->product_id }}" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            @php
                             $hello = DB::table('add_product_batches')
-                                ->where('product', $cartData->product_id)
-                                ->whereNotNull('availablequantity')
-                                ->where('availablequantity', '<>', 0)
+                            ->where('product', $cartData->product_id)
+                            ->whereNotNull('availablequantity')
+                            ->where('availablequantity', '<>', 0)
                                 ->orderBy('batchid', 'asc')
                                 ->limit(1)
-                                ->pluck('sellingprice')
+                                ->pluck('availablequantity')
                                 ->first();
-                            $val = 'Out Of Stock';
-                            
-                        @endphp
-                            @if (is_null($hello))
-                                {{ $val }}
-                            @else
-                                Rs.{{ $hello }}
-                            @endif
-                        </td>
-                        <td>
-                            <div class="d-flex flex-row justify-content-center">
-                                <button class="cart_dec btn btn-link px-2" name="{{ $cartData->product_id }}"
-                                    onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                                @php
-                                    $hello = DB::table('add_product_batches')
-                                        ->where('product', $cartData->product_id)
-                                        ->whereNotNull('availablequantity')
-                                        ->where('availablequantity', '<>', 0)
-                                        ->orderBy('batchid', 'asc')
-                                        ->limit(1)
-                                        ->pluck('availablequantity')
-                                        ->first();
-                                    
-                                @endphp
-                                <input id="CartDataValue" type="number" min="1" max="{{ $hello }}"
-                                    name="{{ $cartData->product_name }}" value="{{ $cartData->quantity }}"
-                                    type="number" id="quantity" class="itemQty form-control form-control-sm"
-                                    style="width: 50px"
-                                    onchange="fetccchCart({{ $cartData->product_id }}, this.value, 1)" />
 
-                                <button class="cart_inc btn btn-link px-2" name="{{ $cartData->product_id }}"
-                                    onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                                @endphp
+                                <input id="CartDataValue" type="number" min="1" max="{{ $hello }}" name="{{ $cartData->product_name }}" value="{{ $cartData->quantity }}" type="number" id="quantity" class="itemQty form-control form-control-sm" style="width: 50px" onchange="fetccchCart({{ $cartData->product_id }}, this.value, 1)" />
+
+                                <button class="cart_inc btn btn-link px-2" name="{{ $cartData->product_id }}" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
                                     <i class="fas fa-plus"></i>
                                 </button>
-                            </div>
-                        </td>
-                        <td> @php
-                            
-                            $hello = DB::table('add_product_batches')
-                                ->where('product', $cartData->product_id)
-                                ->whereNotNull('availablequantity')
-                                ->where('availablequantity', '<>', 0)
-                                ->orderBy('batchid', 'asc')
-                                ->limit(1)
-                                ->pluck('sellingprice')
-                                ->first();
+                        </div>
+                    </td>
+                    <td> @php
+
+                        $hello = DB::table('add_product_batches')
+                        ->where('product', $cartData->product_id)
+                        ->whereNotNull('availablequantity')
+                        ->where('availablequantity', '<>', 0)
+                            ->orderBy('batchid', 'asc')
+                            ->limit(1)
+                            ->pluck('sellingprice')
+                            ->first();
                             $val = 'Out Of Stock';
-                            
+
                             $total = $hello * $cartData->quantity;
                             echo 'Rs.' . ' ' . $total;
-                        @endphp</td>
-                        <td>
-                            <input class="form-check-input" type="checkbox" id="checkbox1"
-                                value="{{ $total }},{{ $cartData->product_id }},{{ $cartData->quantity }},{{ $cartData->product_name }}">
-                        </td>
-                    </tr>
+                            @endphp</td>
+                    <td>
+                        <input class="form-check-input" type="checkbox" id="checkbox1" value="{{ $total }},{{ $cartData->product_id }},{{ $cartData->quantity }},{{ $cartData->product_name }}">
+                    </td>
+                </tr>
                 @endforeach
             </tbody>
         </table>
@@ -388,28 +137,22 @@
                         <input type="hidden" name="selectedCart" id="selectedCartQty">
                         <input type="hidden" name="totalCartData" id="ttlAmount">
                         <input type="hidden" name="pname" id="productName">
-                        <input type="text" class="form-control mt-2" id="firstName"
-                            placeholder="Enter your Full Name" value="" name="name" required
-                            pattern="[A-Z].[A-Z a-z]+"
-                            title="Name must be in only character, First Letter Must be Capital" />
+                        <input type="text" class="form-control mt-2" id="firstName" placeholder="Enter your Full Name" value="" name="name" required pattern="[A-Z].[A-Z a-z]+" title="Name must be in only character, First Letter Must be Capital" />
                         <div class="invalid-feedback">
                             Valid first name is required.
                         </div>
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="address"><i class="fa fa-institution"></i> Address</label>
-                        <input type="text" class="form-control mt-2" id="address" required="" name="address"
-                            placeholder="Enter Primary Address..." />
+                        <input type="text" class="form-control mt-2" id="address" required="" name="address" placeholder="Enter Primary Address..." />
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="phone"><i class="fa fa-phone"></i> Phone Number</label>
-                        <input type="number" class="form-control mt-2" id="phone" required=""
-                            name="phone" placeholder="Enter Phone Number..." />
+                        <input type="number" class="form-control mt-2" id="phone" required="" name="phone" placeholder="Enter Phone Number..." />
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="zip">Zip Code</label>
-                        <input type="text" class="form-control mt-2" id="zip" name="zipcode"
-                            placeholder="Zip Code..." required="" />
+                        <input type="text" class="form-control mt-2" id="zip" name="zipcode" placeholder="Zip Code..." required="" />
                     </div>
                 </div>
                 <hr class="mb-2" />
@@ -571,15 +314,16 @@
 
 
 @if (session('DeletedItem'))
-    <script>
-        Toast.fire({
-            icon: 'success',
-            title: '{{ session('DeletedItem') }}'
-        })
-    </script>
-    @php
-        session()->forget('DeletedItem');
-    @endphp
+<script>
+    Toast.fire({
+        icon: 'success',
+        title: '{{ session('
+        DeletedItem ') }}'
+    })
+</script>
+@php
+session()->forget('DeletedItem');
+@endphp
 @endif
 
 {{-- @if (session('Qty'))
@@ -587,34 +331,35 @@
     Toast.fire({
     icon: 'success',
     title: '{{session('Qty')}}'
-    })
-    </script>
-    @php
-    session()->forget('Qty');
-    @endphp
-    @endif --}}
+})
+</script>
+@php
+session()->forget('Qty');
+@endphp
+@endif --}}
 {{-- @if (session('uifail'))
     <script>
         Swal.fire({
             icon: 'error',
             title: '{{ session('uifail') }}',
-        })
-    </script>
-    @php
-        session()->forget('uifail');
-    @endphp
+})
+</script>
+@php
+session()->forget('uifail');
+@endphp
 @endif
 
 @if (session('uisuccess'))
-    <script>
-        Toast.fire({
-            icon: 'success',
-            title: '{{ session('uisuccess') }}'
-        })
-    </script>
-    @php
-        session()->forget('uisuccess');
-    @endphp
+<script>
+    Toast.fire({
+        icon: 'success',
+        title: '{{ session('
+        uisuccess ') }}'
+    })
+</script>
+@php
+session()->forget('uisuccess');
+@endphp
 @endif --}}
 
 @include('footermain')
