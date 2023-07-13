@@ -14,7 +14,6 @@ use Illuminate\Http\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 
-
 class CheckoutController extends Controller
 {
     public function index($quantity, $product_id)
@@ -26,6 +25,7 @@ class CheckoutController extends Controller
     }
     public function store(Request $request)
     {
+   
         $selectedproductCartID = json_decode($request->input('selectedProductId'));
         $totalCartAmountRequest = json_decode($request->input('totalCartData'));
         $productQuantity = json_decode($request->input('selectedCart'));
@@ -36,15 +36,20 @@ class CheckoutController extends Controller
         $phone = $request->input('phone');
         $zipcode = $request->input('zipcode');
 
-
         $pIDdata = $request->input('selectedProductId');
-        // $pqty = $request->input('selectedCart'); 
+        if(isset($selectedproductCartID)){
+        // $pqty = $request->input('selectedCart');
         Cache::put('my_data_1', $selectedproductCartID, 60);
         Cache::put('my_data_2', $productQuantity, 60);
         Cache::put('my_data_3', $name, 60);
         Cache::put('my_data_4', $address, 60);
         Cache::put('my_data_5', $phone, 60);
         Cache::put('my_data_6', $zipcode, 60);
+        }
+        else{
+            session()->put('uifail', 'None of the product was selected');
+            return redirect('/CartView');
+        }
         return view('confrim')->with(compact('totalCartAmountRequest', 'selectedProductName', 'productQuantity'));
     }
     public function datastore(Request $request)
@@ -60,20 +65,19 @@ class CheckoutController extends Controller
         $customerID = session('customer')['id'];
         $mydata = $request['q'];
 
-        if ($mydata == "su") {
-
+        if ($mydata == 'su') {
             foreach ($productIdd as $key => $procarId) {
                 $cartquantity = $productQuantity[$key];
                 $productPrice = addProductBatch::where('product', $procarId)
                     ->latest()
                     ->first();
-                $productPricee =  $productPrice['sellingprice'] * $cartquantity;
+                $productPricee = $productPrice['sellingprice'] * $cartquantity;
                 Order::create([
                     'name' => $name,
                     'address' => $address,
                     'phone' => $phone,
                     'zipcode' => $zipcode,
-                    'paymentstatus' => "verified",
+                    'paymentstatus' => 'verified',
                     'customer' => $customerID,
                     'product' => $procarId,
                     'quantity' => $cartquantity,
@@ -81,34 +85,48 @@ class CheckoutController extends Controller
                 ]);
 
                 $availabeqtyDetail = DB::table('add_product_batches')
-                    ->where('product', $procarId)->whereNotNull('availablequantity')
+                    ->where('product', $procarId)
+                    ->whereNotNull('availablequantity')
                     ->where('availablequantity', '<>', 0)
-                    ->orderBy('batchid', 'asc')->limit(1)->pluck('availablequantity')->first();
+                    ->orderBy('batchid', 'asc')
+                    ->limit(1)
+                    ->pluck('availablequantity')
+                    ->first();
 
                 $newAvailabeQty = $availabeqtyDetail - $cartquantity;
 
                 $soldqty = DB::table('add_product_batches')
-                    ->where('product', $procarId)->whereNotNull('availablequantity')
+                    ->where('product', $procarId)
+                    ->whereNotNull('availablequantity')
                     ->where('availablequantity', '<>', 0)
-                    ->orderBy('batchid', 'asc')->limit(1)->pluck('soldquantity')->first();
+                    ->orderBy('batchid', 'asc')
+                    ->limit(1)
+                    ->pluck('soldquantity')
+                    ->first();
 
                 $soldQuantity = $soldqty + $cartquantity;
 
                 $costPrice = DB::table('add_product_batches')
-                    ->where('product', $procarId)->whereNotNull('availablequantity')
+                    ->where('product', $procarId)
+                    ->whereNotNull('availablequantity')
                     ->where('availablequantity', '<>', 0)
-                    ->orderBy('batchid', 'asc')->limit(1)->pluck('costprice')->first();
-
+                    ->orderBy('batchid', 'asc')
+                    ->limit(1)
+                    ->pluck('costprice')
+                    ->first();
 
                 $sellprice = DB::table('add_product_batches')
-                    ->where('product', $procarId)->whereNotNull('availablequantity')
+                    ->where('product', $procarId)
+                    ->whereNotNull('availablequantity')
                     ->where('availablequantity', '<>', 0)
-                    ->orderBy('batchid', 'asc')->limit(1)->pluck('sellingprice')->first();
-
+                    ->orderBy('batchid', 'asc')
+                    ->limit(1)
+                    ->pluck('sellingprice')
+                    ->first();
 
                 $average = $sellprice - $costPrice;
                 $productProfit = $average * $soldQuantity;
-                addProductBatch::where('product', $procarId)->update(array('availablequantity' => $newAvailabeQty, 'soldquantity' => $soldQuantity, 'profit' => $productProfit));
+                addProductBatch::where('product', $procarId)->update(['availablequantity' => $newAvailabeQty, 'soldquantity' => $soldQuantity, 'profit' => $productProfit]);
             }
 
             $uniqueValues = Order::select('customer', 'created_at')
@@ -127,16 +145,19 @@ class CheckoutController extends Controller
                     ->groupBy('created_at')
                     ->first();
 
-
-                $fetch_name = Order::where('created_at', $row->created_at)->pluck('name')->first();
-                $fetch_address = Order::where('created_at', $row->created_at)->pluck('address')->first();
+                $fetch_name = Order::where('created_at', $row->created_at)
+                    ->pluck('name')
+                    ->first();
+                $fetch_address = Order::where('created_at', $row->created_at)
+                    ->pluck('address')
+                    ->first();
                 deliverys::create([
                     'order_id' => $row->created_at,
                     'customer_name' => $fetch_name,
                     'item' => $countOrder,
                     'location' => $fetch_address,
                     'amount' => $sumByCreatedDate['total'],
-                    'status' => "Pending",
+                    'status' => 'Pending',
                 ]);
             }
 
@@ -172,14 +193,13 @@ class CheckoutController extends Controller
         $total_price = Cache::get('total');
         $customer_id = Session('customer')['id'];
 
-        if ($request->q == "su") {
-
+        if ($request->q == 'su') {
             $order_id = Order::create([
                 'name' => $name,
                 'address' => $address,
                 'phone' => $phone,
                 'zipcode' => $zipcode,
-                'paymentstatus' => "verified",
+                'paymentstatus' => 'verified',
                 'customer' => $customer_id,
                 'product' => $product_id,
                 'quantity' => $quantity,
@@ -199,7 +219,7 @@ class CheckoutController extends Controller
                 'item' => 1,
                 'location' => $address,
                 'amount' => $total_price,
-                'status' => "Pending",
+                'status' => 'Pending',
             ]);
 
             session()->put('SuccessfullyPaid', 'Payment Successful !! Your Order is in Process');
