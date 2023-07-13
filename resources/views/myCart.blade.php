@@ -382,6 +382,7 @@
             <form class="needs-validation" method="post" id="myForm" action="{{ '/confirm' }}">
                 @csrf
                 <div class="row">
+                   
                     <div class="col-md-6 mb-3">
                         <label for="firstName"><i class="fa fa-user"></i> Full Name</label>
                         <input type="hidden" name="selectedProductId" id="selectedValuesInput">
@@ -392,24 +393,33 @@
                             placeholder="Enter your Full Name" value="" name="name" required
                             pattern="[A-Z].[A-Z a-z]+"
                             title="Name must be in only character, First Letter Must be Capital" />
-                        <div class="invalid-feedback">
-                            Valid first name is required.
-                        </div>
+                        @error('name')
+                        <span class=" text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="address"><i class="fa fa-institution"></i> Address</label>
                         <input type="text" class="form-control mt-2" id="address" required="" name="address"
                             placeholder="Enter Primary Address..." />
+                            @error('address')
+                            <span class=" text-danger">{{ $message }}</span>
+                            @enderror
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="phone"><i class="fa fa-phone"></i> Phone Number</label>
                         <input type="number" class="form-control mt-2" id="phone" required=""
                             name="phone" placeholder="Enter Phone Number..." />
+                            @error('phone')
+                            <span class=" text-danger">{{ $message }}</span>
+                            @enderror
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="zip">Zip Code</label>
                         <input type="text" class="form-control mt-2" id="zip" name="zipcode"
                             placeholder="Zip Code..." required="" />
+                            @error('zipcode')
+                            <span class=" text-danger">{{ $message }}</span>
+                            @enderror
                     </div>
                 </div>
                 <hr class="mb-2" />

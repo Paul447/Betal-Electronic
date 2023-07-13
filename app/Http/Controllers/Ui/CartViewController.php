@@ -18,7 +18,7 @@ class CartViewController extends Controller
     public function index()
     {
         if (is_null(session('customer'))) {
-            $mydata = session()->put('uiinfo', 'Please Login First');
+            $mydata = session()->put('uifail', 'Please Login First');
             return view('login')->with(compact('mydata'));
         }
         $userId = session('customer')['id'];
@@ -66,20 +66,16 @@ class CartViewController extends Controller
             } else {
                 $updatedQty = $qty[0]->quantity + $quantity;
                 if ($available_quantity < $updatedQty || $updatedQty <= 0) {
-                    return response()->json(['uifail' => 'Invalid Item Quantity ' . $quantity]);
+                    return response()->json(['uifail' => 'Invalid Item Quantity ' . $updatedQty]);
                 }
                 $subbTTl = $updatedQty * $productPrice;
             }
             Cart::where('product', $pID)->update(['quantity' => $updatedQty, 'subtotal' => $subbTTl]);
-            // session()->put('QtyUpdated', );
-
             return response()->json(['uisuccess' => 'Item Quantity Updated To ' . $updatedQty]);
-            // Sesssion::set('itemIncresed') = "";
         } else {
             $subTotal = $productPrice * $quantity;
             if ($available_quantity < $quantity || $quantity <= 0) {
-                // change status message div
-                return response()->json(['uisuccess' => 'Invalid Item Quantity ' . $quantity]);
+                return response()->json(['uifail' => 'Invalid Item Quantity ' . $quantity]);
             }
             Cart::create([
                 'product' => $pID,
@@ -89,42 +85,6 @@ class CartViewController extends Controller
             ]);
             return response()->json(['uisuccess' => 'Item Added To Cart']);
         }
-    }
-    public function storedataa($id, $hel)
-    {
-        $qtyAmount = $id;
-        $pId = $hel;
-        $customerID = session('customer')['id'];
-        $findexistingProduct = Cart::where('product', '=', $pId)
-            ->where('user', '=', $customerID)
-            ->get();
-        $pproductPrice = DB::table('add_product_batches')
-            ->where('product', $pId)
-            ->whereNotNull('availablequantity')
-            ->where('availablequantity', '<>', 0)
-            ->orderBy('batchid', 'asc')
-            ->limit(1)
-            ->pluck('sellingprice')
-            ->first();
-        $worDCount = $findexistingProduct->count();
-        if ($worDCount > 0) {
-            $qtty = Cart::select('quantity')
-                ->where('product', $pId)
-                ->get();
-            $updatedQTy = $qtty[0]->quantity + $qtyAmount;
-            $subttl = $updatedQTy * $pproductPrice;
-            Cart::where('product', $pId)->update(['quantity' => $updatedQTy, 'subtotal' => $subttl]);
-        } else {
-            $subTtotal = $qtyAmount * $pproductPrice;
-            Cart::create([
-                'product' => $pId,
-                'user' => $customerID,
-                'quantity' => $qtyAmount,
-                'subtotal' => $subTtotal,
-            ]);
-            return response()->json(['uisuccess' => 'Item Added To Cart']);
-        }
-        return view('login');
     }
     public function inc($inpvalue, $productId)
     {
