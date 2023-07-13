@@ -1,27 +1,7 @@
 <script>
     document.title = "Betal International | Order Detail"
 </script>
-<style>
-    .status {
-        padding: .4rem 0;
-        border-radius: 2rem;
-        text-align: center;
-    }
 
-    .status.delivered {
-        background-color: #86e49d;
-        color: #006b21;
-    }
-
-    .status.cancelled {
-        background-color: #d893a3;
-        color: #b30021;
-    }
-
-    .status.pending {
-        background-color: #ebc474;
-    }
-</style>
 @include('welcome')
 <div class="container cont d-flex justify-content-center align-content-center ">
     <div class="table-responsive w-100">
