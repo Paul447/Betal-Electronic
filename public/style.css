@@ -1466,3 +1466,21 @@ input[type=number] {
 .confirm-order-table tr {
     background-color: var(--footer-bg)
 }
+
+/* ============== footer ============== */
+footer a {
+    color: var(--footer-text);
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: var(--primary-red);
+}
+
+footer i {
+    color: var(--primary-red);
+}
+
+footer i:hover {
+    color: var(--footer-text);
+}
