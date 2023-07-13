@@ -3,7 +3,7 @@
 </script>
 @include('welcome')
 
-<div class="container mt-5">
+<div class="container mt-5 checkout-container">
     <div class="py-5 text-center">
         <!-- <img class="d-block mx-auto mb-4" src="img\logo.png" alt="" width="130" height="130"> -->
         <h1 class="feture text-center mx-auto fs-1">Checkout Page</h1>
@@ -20,8 +20,6 @@
                         <h6 class="text-muted">Quantity:</h6>
                 
                     </div>
-
-                    <br />
 
                     <div>
                         <span class="text-muted d-flex float-start">{{ $product }}</span><br />
@@ -47,42 +45,36 @@
                 <input type="hidden" name="price" value="{{ $price }}">
                 <input type="hidden" name="total" value="{{ $total }}">
                 <div class="row">
-                    
+
                     <div class="col-md-6 mb-3">
                         <label for="firstName"><i class="fa fa-user"></i>&nbsp;Full Name</label>
-                        <input type="text" class="form-control mt-2" id="firstName"
-                            placeholder="Enter your Full Name" value="" name="name" required
-                            pattern="[A-Z].[A-Z a-z]+"
-                            title="Name must be in only charater,First Letter Must be Capital" />
-                            @error('name')
-                            <span class=" text-danger">{{ $message }}</span>
-                            @enderror
+                        <input type="text" class="form-control mt-2" id="firstName" placeholder="Enter your Full Name" value="" name="name" required pattern="[A-Z].[A-Z a-z]+" title="Name must be in only charater,First Letter Must be Capital" />
+                        @error('name')
+                        <span class=" text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
 
                     <div class="col-md-6 mb-3">
                         <label for="address"><i class="fa fa-institution"></i> &nbsp;Address</label>
-                        <input type="text" class="form-control mt-2" id="address" required="" name="address"
-                            placeholder="Enter Primary Address..." />
-                            @error('address')
-                            <span class=" text-danger">{{ $message }}</span>
-                            @enderror
+                        <input type="text" class="form-control mt-2" id="address" required="" name="address" placeholder="Enter Primary Address..." />
+                        @error('address')
+                        <span class=" text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
 
                     <div class="col-md-6 mb-3">
                         <label for="phone"><i class="fa fa-phone"></i> &nbsp;Phone Number</label>
-                        <input type="number" class="form-control mt-2" id="address" required="" name="phone"
-                            placeholder="Enter Phone Number..." />
-                            @error('phone')
-                            <span class=" text-danger">{{ $message }}</span>
-                            @enderror
+                        <input type="number" class="form-control mt-2" id="address" required="" name="phone" placeholder="Enter Phone Number..." />
+                        @error('phone')
+                        <span class=" text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="phone">Zip Code</label>
-                        <input type="text" class="form-control mt-2" id="zip" name="zipcode"
-                            placeholder="Zip Code..." required="" />
-                            @error('zipcode')
-                            <span class=" text-danger">{{ $message }}</span>
-                            @enderror
+                        <input type="text" class="form-control mt-2" id="zip" name="zipcode" placeholder="Zip Code..." required="" />
+                        @error('zipcode')
+                        <span class=" text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                 </div>
 
@@ -95,4 +87,3 @@
     </div>
 </div>
 @include('footermain')
-
