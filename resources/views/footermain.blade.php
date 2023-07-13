@@ -5,7 +5,7 @@
             <h3>Social media</h3>
             <div class="divider"></div>
         </div>
-        <p class="text--stay-connected">Stay connected with us</p>
+        <p class="text--stay-connected mb-4">Stay connected with us</p>
         <a href="#"><i class="fab fa-facebook-f"></i></a>
         <a href="#"><i class="fab fa-instagram-square"></i></a>
         <a href="#"><i class="fab fa-youtube"></i></a>
