@@ -1,13 +1,5 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-<style>
-    img.slide {
-        width: 100%;
-        max-inline-size: 100%;
-        block-size: auto;
-        aspect-ratio: 16 / 9;
-    }
-    
-</style>
+
 <div id="demo" class="carousel  mx-auto justify-content-center main" data-bs-ride="carousel">
 
     @php

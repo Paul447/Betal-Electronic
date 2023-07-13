@@ -20,12 +20,13 @@ class Category extends Model
         'is_visible',
         'updatestatus',
     ];
-    public function ds(){
-        return $this->hasMany(self::class, 'categorys_id','parent');
+    public function ds()
+    {
+        return $this->hasMany(self::class, 'categorys_id', 'parent');
     }
-    public function us(){
-        return $this->belongsTo(self::class,'parent','categorys_id');
+    public function us()
+    {
+        return $this->belongsTo(self::class, 'parent', 'categorys_id');
     }
-    protected $primaryKey= 'categorys_id';
-
+    protected $primaryKey = 'categorys_id';
 }

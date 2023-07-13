@@ -5,7 +5,7 @@ namespace App\Http\Controllers\UI;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Province;
-use App\Models\admin\User;
+use App\Models\Admin\User;
 use Exception;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
@@ -117,7 +117,7 @@ class CustomerRegController extends Controller
             $name = $userDataObj['profile_namee'];
             $email = $userDataObj['emaill'];
             $image = $userDataObj['profile_imagee'];
-            
+
 
             $sql_email = User::select()->pluck('email');
 

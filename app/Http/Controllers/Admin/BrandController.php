@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Http\Request;
 use App\Models\Admin\Brand;
-use App\Models\admin\User;
+use App\Models\Admin\User;
 
 
 class BrandController extends Controller

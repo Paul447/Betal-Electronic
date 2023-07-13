@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Pagination\Paginator;
-use App\Models\admin\Variation;
-use App\Models\admin\Variationoption;
+use App\Models\Admin\Variation;
+use App\Models\Admin\Variationoption;
 use Illuminate\Http\Request;
 
 
@@ -87,7 +87,7 @@ class VariationoptionController extends Controller
         $title = "Update Variation Option";
         $variation = Variation::where('status', '=', 'approved')->get();
         $data = Variationoption::join('variations', 'variation', '=', 'variations.variation_id')->find($id);
-       
+
         return view('admin.variationoption.variationoption')->with(compact('url', 'title', 'variation', 'data'));
     }
 

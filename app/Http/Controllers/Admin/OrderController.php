@@ -8,7 +8,7 @@ use App\Models\deliverys;
 use App\Models\addProductBatch;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\DB;
-use App\Models\admin\User;
+use App\Models\Admin\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 

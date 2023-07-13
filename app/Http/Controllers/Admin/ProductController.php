@@ -8,8 +8,8 @@ use Illuminate\Http\Request;
 use App\Models\Admin\Category;
 use App\Models\Admin\Variation;
 use App\Models\Admin\Brand;
-use App\Models\admin\Productimage;
-use App\Models\admin\Product;
+use App\Models\Admin\Productimage;
+use App\Models\Admin\Product;
 use App\Models\Admin\Productprice;
 use App\Models\Admin\Productcategory;
 use App\Models\Admin\Productvariation;
@@ -25,7 +25,7 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-   
+
     public function index()
     {
         Paginator::useBootstrap();
@@ -61,7 +61,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-       
+
         $addedby = session('user')['id'];
         if (session('user')['role'] == 'Admin') {
             $file = $request->file('Productthumbfile');
@@ -148,7 +148,7 @@ class ProductController extends Controller
             'soldquantity' => '0',
             'profit' => '0',
         ]);
-     
+
         $category = $request->Category;
         for ($i = 0; $i < count($category); $i++) {
             Productcategory::insert([

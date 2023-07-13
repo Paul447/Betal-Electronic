@@ -3,85 +3,6 @@
 </script>
 @include('welcome')
 
-<style>
-    @media(max-width : 520px) {
-        .brandImage {
-            width: 200px;
-            height: 200px;
-        }
-    }
-
-    :root {
-        --red: #A50318;
-        --light-red: #aa4f5b9c;
-    }
-
-    .signup--container {
-        outline: 2px solid var(--red);
-        margin: 48px auto;
-        max-width: 800px;
-        padding: 10px 30px;
-    }
-
-    .address--picker select {
-        width: 48.86%;
-    }
-
-    .btn--register {
-        background-color: var(--red);
-        font-weight: bold;
-        border: none;
-    }
-
-    .btn--register:focus,
-    .btn--register:hover {
-        outline: 3px solid var(--light-red);
-    }
-
-    /* while using text (login) */
-    .signup--footer a {
-        color: #A50318;
-    }
-
-    /* while using button (login) */
-    .btn--login {
-        background-color: #A50318;
-        border: none;
-    }
-
-    .error--text {
-        color: var(--red);
-        display: none;
-    }
-
-    input[type="password"] {
-        padding-right: 30px !important;
-    }
-
-    .btn--toggle-password {
-        width: 30px;
-        position: absolute;
-        right: 0;
-        top: 50%;
-    }
-
-    @media (max-width: 375px) {
-        .signup--container {
-            width: calc(100% - 40px);
-            margin: 0 20px;
-            padding: 10px 20px;
-        }
-    }
-
-    @media (max-width: 810px) {
-
-        .signup--container {
-
-            margin: 48px 20px !important;
-        }
-    }
-</style>
-
 <section class="signup--container rounded-1 main-reg ">
     <div class="signup--header">
         <h2 class="text-center fw-bold mt-2">Registration</h2>
@@ -160,7 +81,7 @@
 
                     <div class="address--picker d-flex flex-wrap justify-content-between mb-1" id="address">
 
-                        <select name="province" class="form-select form-control form-select-lg" id="province"
+                        <select name="province" class="form-select form-control px-2 py-1" id="province"
                             onchange="fetchDistrict(this.value)" class="edit">
                             <option value="" disabled selected>Province</option>
                             @foreach ($province as $province)
@@ -221,17 +142,10 @@
                         class="btn--register text-white mt-3 w-100 py-2 rounded-1">Register</button>
 
                     <div class="signup--footer mt-2">
-                        <!-- while using text (login) -->
                         <p class="text-center">Already have an account? <a href="{{ '/customerAdd' }}">Login</a></p>
-
-                        <!-- while using button (login) -->
-                        <!-- <p class="text-center mt-3">Already have an account?</p>
-                                                                            <button type="button" class="btn--login d-block text-white rounded-1 fw-bold py-1 mx-auto w-50">Login</button> -->
-
                     </div>
                 </div>
         </form>
-    </div>
     </div>
 </section>
 

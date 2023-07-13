@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-Use App\Models\admin\Productimage;
+Use App\Models\Admin\Productimage;
 
 class ProductimageSeeder extends Seeder
 {

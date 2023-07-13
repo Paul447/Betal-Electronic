@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Admin\Category;
 use App\Models\Admin\Variation;
 use App\Models\Admin\Variationoption;
@@ -78,8 +79,8 @@ class CategoryViewController extends Controller
     public function viewBychoice()
     {
         $viewcategorydata = Category::with('ds')
-        ->where('is_visible', '=', 0)
-        ->get();
+            ->where('is_visible', '=', 0)
+            ->get();
         return view('categorychoice')->with(compact('viewcategorydata'));
     }
 }

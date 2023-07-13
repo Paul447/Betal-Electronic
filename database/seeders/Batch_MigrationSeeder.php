@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\admin\Batch_Migration;
+use App\Models\Admin\Batch_Migration;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -15,7 +15,7 @@ class Batch_MigrationSeeder extends Seeder
      */
     public function run()
     {
-        $data = ['batch_name'=>'testBatch'];
+        $data = ['batch_name' => 'testBatch'];
         Batch_Migration::insert($data);
     }
 }

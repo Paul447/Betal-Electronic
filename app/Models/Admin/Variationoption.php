@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\admin;
+namespace App\Models\Admin;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Variationoption extends Model
 {
     use HasFactory;
-    protected $fillable=[
+    protected $fillable = [
         'variation',
         'value',
         'addedby',
@@ -18,5 +18,5 @@ class Variationoption extends Model
         'status',
         'updatestatus',
     ];
-    protected$primaryKey = 'variationoption_id';
+    protected $primaryKey = 'variationoption_id';
 }

@@ -6,7 +6,7 @@ namespace Database\Seeders;
 
 use App\Models\Admin\Category;
 use App\Models\Admin\Productcategory;
-use App\Models\admin\Productimage;
+use App\Models\Admin\Productimage;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -25,19 +25,19 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
         $this->call([
-           ProvinceSeeder::class,
-           DistrictSeeder::class,
-           MunicipalitySeeder::class,
-           UserSeeder::class,
-           BrandSeeder::class,
-           CategorySeeder::class,
-           ProductSeeder::class,
-     
-           ProductimageSeeder::class,
-           ProductcategorySeeder::class,
-           Batch_MigrationSeeder::class,
-           addPbatch::class,
-           BannerSeeder::class,
+            ProvinceSeeder::class,
+            DistrictSeeder::class,
+            MunicipalitySeeder::class,
+            UserSeeder::class,
+            BrandSeeder::class,
+            CategorySeeder::class,
+            ProductSeeder::class,
+
+            ProductimageSeeder::class,
+            ProductcategorySeeder::class,
+            Batch_MigrationSeeder::class,
+            addPbatch::class,
+            BannerSeeder::class,
         ]);
     }
 }

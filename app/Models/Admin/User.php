@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\admin;
+namespace App\Models\Admin;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class User extends Model
 {
     use HasFactory;
-    protected $fillable=[
+    protected $fillable = [
         'user_name',
         'email',
         'role',
@@ -25,12 +25,14 @@ class User extends Model
         'otp',
 
     ];
-    public function ds(){
-        return $this->hasMany(self::class, 'id','createdby');
+    public function ds()
+    {
+        return $this->hasMany(self::class, 'id', 'createdby');
     }
-    public function us(){
-        return $this->belongsTo(self::class,'createdby','id');
+    public function us()
+    {
+        return $this->belongsTo(self::class, 'createdby', 'id');
     }
 
-    protected $primaryKey='id';
+    protected $primaryKey = 'id';
 }
