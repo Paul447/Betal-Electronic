@@ -30,6 +30,13 @@
       <li><strong>Total Price: </strong>{{$totalCartAmountRequest}} </li>
       <li><strong>Payment Method: </strong> Cash on Delivery</li>
 
+      {{-- TODO: replace hardcoded values with values from table --}}
+
+      <li><strong>Full name: </strong> Suresh Dahal</li>
+      <li><strong>Address: </strong> Chardobato, Banepa</li>
+      <li><strong>Phone: </strong> 9841234567</li>
+      <li><strong>Zip code: </strong> 44600</li>
+
       <form action="https://uat.esewa.com.np/epay/main" method="POST">
         <input value="{{$totalCartAmountRequest}}" name="tAmt" type="hidden">
         <input value="{{$totalCartAmountRequest}}" name="amt" type="hidden">
