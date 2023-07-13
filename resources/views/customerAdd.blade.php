@@ -71,7 +71,7 @@
 
                     <div class="address--picker d-flex flex-wrap justify-content-between mb-1" id="address">
 
-                        <select name="province" class="form-select-sm form-control px-2 py-1" id="province">
+                        <select name="province" class="form-select-sm form-control px-2 py-1" id="province"
                             onchange="fetchDistrict(this.value)" class="edit">
                             <option value="" disabled selected>Province</option>
                             @foreach ($province as $province)
