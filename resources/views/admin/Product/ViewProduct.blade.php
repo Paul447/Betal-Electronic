@@ -12,13 +12,13 @@
             <table class="table table-striped table-fixed order-table">
                 <thead>
                     <tr>
-           
+
                         <th scope="col" class="fixed-column">S.N</th>
                         <th scope="col" class="fixed-column">Product Name</th>
-                        <th scope="col" >Price</th>
-                        <th  scope="col" >Image</th>
-                        <th  scope="col" >Status</th>
-                        <th  scope="col" >Thumbnail</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Thumbnail</th>
                         <th scope="col">Brand Name</th>
                         {{-- <th>Added By</th> --}}
                         <th>Category Name</th>
@@ -79,7 +79,7 @@
                             @php
                                 
                             @endphp
-                            {{-- @if (session('user')['role'] == 'Admin')
+                            {{-- @if (Auth::guard()->user()->role == 'Admin')
                                 <td>
                                     <a href="{{ url('/admin/editor/' . $product->id . '/viewadmin') }}">
                                         {{ $product->user_name }}
@@ -177,12 +177,12 @@
             })();
 
             /*console.log(document.readyState);
-    	document.addEventListener('readystatechange', function() {
-    		if (document.readyState === 'complete') {
-          console.log(document.readyState);
-    			TableFilter.init();
-    		}
-    	}); */
+        	document.addEventListener('readystatechange', function() {
+        		if (document.readyState === 'complete') {
+              console.log(document.readyState);
+        			TableFilter.init();
+        		}
+        	}); */
 
             TableFilter.init();
         })();

@@ -15,6 +15,7 @@ use App\Models\Admin\Productcategory;
 use App\Models\Admin\Productvariation;
 use App\Models\addProductBatch;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 
 use Image;
 

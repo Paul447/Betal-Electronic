@@ -20,12 +20,11 @@
     {{-- <link rel="stylesheet" href="{{ asset('vendor/sweetalert2/sweetalert2.min.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset('admin/css/sty.css') }}" />
     <script src=" {{ asset('admin/bootstrap-5.2.3-dist/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script> --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
 
 
-    <script src="https://code.jquery.com/jquery-3.6.4.slim.js"
-        integrity="sha256-dWvV84T6BhzO4vG6gWhsWVKVoa4lVmLnpBOZh/CAHU4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.slim.js" integrity="sha256-dWvV84T6BhzO4vG6gWhsWVKVoa4lVmLnpBOZh/CAHU4=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" defer></script>
 
@@ -155,7 +154,7 @@
                 })
                 .then(response => response.json())
                 .then(response => {
-                    let html = response.status;
+                    let html = response.uisuccess;
                     Toast.fire({
                         icon: 'success',
                         title: html,
@@ -176,7 +175,7 @@
             } else {
                 var url = location.origin + controller + cartvalue + "/" + quantity;
             }
-            console.log(url);
+
             fetch(url, {
                     method: 'GET',
                     headers: {
@@ -185,7 +184,7 @@
                 })
                 .then(response => response.json())
                 .then(response => {
-                    let html = response.status;
+                    let html = response.uisuccess;
                     Toast.fire({
                         icon: 'success',
                         title: html,

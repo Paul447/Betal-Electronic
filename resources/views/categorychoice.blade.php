@@ -14,7 +14,7 @@
             <a href="{{ url('/categorySearch/' . $catdata->categorys_id) }}">
 
                 <li class="">
-                    <img src="{{ asset('/storage/categorythumbnail/' . $catdata->categorythumbnail) }}" alt="">
+                    <img src="{{ asset('/storage/categorythumbnail/' . $catdata->categorythumbnail) }}" alt="{{ $catdata->category_name}}" loading="lazy">
                 </li>
                 <p> {{ $catdata->category_name }}</p>
             </a>

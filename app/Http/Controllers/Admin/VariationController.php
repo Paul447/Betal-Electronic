@@ -11,6 +11,7 @@ use App\Models\Admin\Productvariation;
 use App\Models\Admin\Product;
 use App\Models\Admin\Category;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class VariationController extends Controller
 {
@@ -37,8 +38,8 @@ class VariationController extends Controller
             'variation_name' => 'required|alpha_dash',
         ]);
 
-        $addedby = session('user')['id'];
-        if (session('user')['role'] == 'Admin') {
+        $addedby = Auth::guard()->user()->id;
+        if (Auth::guard()->user()->role == 'Admin') {
             Variation::create(array_merge($request->all(), ['addedby' => $addedby, 'approvedby' => $addedby, 'status' => 'approved']));
             session()->put('AdminSuccess', 'New Attribute Created');
             return redirect('/admin/variation/create');
@@ -64,9 +65,9 @@ class VariationController extends Controller
 
     public function update(Request $request, $id)
     {
-        $updatedby = session('user')['id'];
+        $updatedby = Auth::guard()->user()->id;
         $variation = Variation::find($id);
-        if (session('user')['role'] == 'Admin') {
+        if (Auth::guard()->user()->role == 'Admin') {
             $variation->update(array_merge($request->all(), ['updatedby' => $updatedby, 'updateapprovedby' => $updatedby, 'updatestatus' => 'approved']));
             session()->put('AdminSuccess', 'Attribute Updated');
             return redirect('/admin/variation/');

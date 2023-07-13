@@ -26,7 +26,7 @@
                     <a href="{{ '/productdetails/' . $featured->product_id . '/' . $featured->slug }}">
                         <div class="product-image">
                             <img src="{{ asset('/storage/thumbnails/' . $featured->thumbnail) }}" class="imgs"
-                                id="CardImage" alt="{{ $featured->product_name }}" />
+                                id="CardImage" alt="{{ $featured->product_name }}" loading="lazy" />
                         </div>
                     </a>
 
@@ -85,42 +85,3 @@
 
 @include('categorychoice')
 @include('footermain')
-
-
-<script>
-    const showToastButton = document.querySelectorAll(".show-toast");
-    var toast = document.querySelector('.toast');
-    showToastButton.forEach((btnToast, i) => {
-        btnToast.addEventListener("click", (e) => {
-            Toast.fire({
-                icon: 'info',
-                title: 'Please Login First to Countinue'
-            })
-        })
-    });
-</script>
-{{-- Logged In successfully message --}}
-@if (session('message'))
-    <script>
-        Toast.fire({
-            icon: 'success',
-            title: '{{ session('message') }}'
-        })
-    </script>
-    @php
-        session()->forget('message');
-    @endphp
-@endif
-
-{{-- Registered Successfully message --}}
-@if (session('Registered'))
-    <script>
-        Toast.fire({
-            icon: 'success',
-            title: '{{ session('Registered') }}'
-        })
-    </script>
-    @php
-        session()->forget('Registered');
-    @endphp
-@endif

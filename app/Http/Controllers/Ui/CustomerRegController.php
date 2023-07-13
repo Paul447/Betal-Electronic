@@ -61,10 +61,10 @@ class CustomerRegController extends Controller
         $sql_contact = User::select()->pluck('contact');
 
         if (in_array($email, $sql_email->toArray())) {
-            session()->put('errormessage', 'Username Or Previously Exist');
+            session()->put('uifail', 'Username Or Previously Exist');
             return redirect('/customerAdd/create');
         } elseif (in_array($contact, $sql_contact->toArray())) {
-            session()->put('errormessage', 'Phone Number already Exist');
+            session()->put('uifail', 'Phone Number already Exist');
             return redirect('/customerAdd/create');
         }
 
@@ -81,7 +81,7 @@ class CustomerRegController extends Controller
                 });
                 if ($ismailsended) {
                     session()->put('id', $insert);
-                    session()->put('otpSend', 'Please Check The Gmail And Enter OTP!');
+                    session()->put('uisuccess', 'Please Check The Gmail And Enter OTP!');
                     return view('otpVerify');
                 }
             } catch (Exception $e) {
@@ -94,7 +94,7 @@ class CustomerRegController extends Controller
             });
             if ($ismailsended) {
                 session()->put('id', $insert);
-                session()->put('otpSend', 'Please Check The Gmail And Enter OTP!');
+                session()->put('uisuccess', 'Please Check The Gmail And Enter OTP!');
                 return view('otpVerify');
             }
         }
@@ -118,7 +118,6 @@ class CustomerRegController extends Controller
             $email = $userDataObj['emaill'];
             $image = $userDataObj['profile_imagee'];
 
-
             $sql_email = User::select()->pluck('email');
 
             if (in_array($email, $sql_email->toArray())) {
@@ -126,7 +125,7 @@ class CustomerRegController extends Controller
                     ->get()
                     ->first();
                 $request->session()->put('customer', $user);
-                session()->put('message', 'Logged In Successfully');
+                session()->put('uisuccess', 'Logged In Successfully');
                 return redirect('/');
             } else {
                 $insert = User::create([
@@ -146,7 +145,7 @@ class CustomerRegController extends Controller
                     ->get()
                     ->first();
                 $request->session()->put('customer', $user);
-                session()->put('message', 'Registered Successfully');
+                session()->put('uisuccess', 'Registered Successfully');
                 return redirect('/');
             }
         }
@@ -203,12 +202,12 @@ class CustomerRegController extends Controller
             ->first();
 
         if ($user->otp != $request->otp) {
-            session()->put('otperror', 'OTP Does not Match Check Your Mail And Try Again');
+            session()->put('uifail', 'OTP Does not Match Check Your Mail And Try Again');
             return view('otpVerify');
         } else {
             $request->session()->put('customer', $user);
             $find = User::find($id);
-            session()->put('Registered', 'Your Account Registered Successfully');
+            session()->put('uisuccess', 'Your Account Registered Successfully');
             $find->update(['user_status' => 'verified', 'otp' => '']);
             return redirect('/');
         }
@@ -225,14 +224,14 @@ class CustomerRegController extends Controller
             $user = Auth::guard()->user();
             if ($user->user_status == 'verified') {
                 $request->session()->put('customer', $user);
-                session()->put('message', 'Logged In Successfully');
+                session()->put('uisuccess', 'Logged In Successfully');
                 return redirect('/');
             } else {
                 session()->put('id', $user->id);
                 return view('otpverify');
             }
         } else {
-            $request->session()->put('logerror', 'Incorrect Username or Password!');
+            $request->session()->put('uifail', 'Incorrect Username or Password!');
             return redirect('/customerAdd');
         }
     }
@@ -250,13 +249,10 @@ class CustomerRegController extends Controller
 
     function generateOTP(Request $request)
     {
-
-
         $request->validate([
             // this will check if the input email exist in the data base
 
             // 'email' => 'email | required | exists:users',
-
 
             // this method will validate of all the email belongs to role user only.
             'email' => [
@@ -265,11 +261,12 @@ class CustomerRegController extends Controller
                 Rule::exists('users')->where(function ($query) {
                     $query->where('role', 'user');
                 }),
-            ]
+            ],
         ]);
 
-
-        $user = User::where('email', $request->email)->get()->first();
+        $user = User::where('email', $request->email)
+            ->get()
+            ->first();
         $user_id = $user->id;
         $name = $user->user_name;
 
@@ -283,7 +280,7 @@ class CustomerRegController extends Controller
             $user->save();
 
             // $user->update(['reset_password_otp'=>$rand]);
-
+            $request->session()->put('uiinfo', 'Please Check Mail for OTP!');
             return view('otpverifyfochangepass')->with(compact('user_id'));
             // return redirect('/customerLogin/verify');
         } catch (Exception $e) {
@@ -301,17 +298,20 @@ class CustomerRegController extends Controller
             $user->reset_password_otp = null;
             $user->retry = 3;
             $user->save();
+            $request->session()->put('uisuccess', 'OTP Matched!');
             return view('changepassconfirm')->with(compact('user_id'));
         } else {
-            session()->put('errormessage', 'Invalid OTP');
+            session()->put('uifail', 'Invalid OTP');
             $retry = $user->retry - 1;
             $user->retry = $retry;
             $user->save();
             if ($user->retry >= 0) {
+                session()->put('uiinfo', 'Your remainng attempt is ' . $user->retry);
                 return view('otpverifyfochangepass')->with(compact('user_id', 'retry'));
             } else {
                 $user->retry = 3;
                 $user->save();
+                session()->put('uiinfo', 'Not Matched in three attempt');
                 return redirect('/customerLogin/forgot')->with(compact('user_id'));
             }
         }
@@ -319,8 +319,14 @@ class CustomerRegController extends Controller
 
     function resetPassword(Request $request)
     {
+        // $request->validate([
+        //     'password' => 'required|min:7|confirmed',
+        //     'password_confirmation' => 'required',
+        // ]);
+        $user = User::find($request->user_id);
+        $user_id = $user->id;
         if ($request->password == $request->password_confirmation) {
-            $user = User::find($request->user_id);
+
             $user->password = Hash::make($request->password);
             $user->save();
 
@@ -332,8 +338,11 @@ class CustomerRegController extends Controller
                 echo "something went wrong, mail can't be sent";
             }
 
-            session()->put('errormessage', "Password Reset Successfully");
+            session()->put('uisuccess', 'Password Reset Successfully');
             return redirect('/customerAdd');
+        } else {
+            session()->put('uifail', 'Password and Confirm Password dosent match');
+            return view('changepassconfirm')->with(compact('user_id'));
         }
     }
 }

@@ -18,7 +18,7 @@ class CartViewController extends Controller
     public function index()
     {
         if (is_null(session('customer'))) {
-            $mydata = session()->put('logError', 'Please Login First');
+            $mydata = session()->put('uiinfo', 'Please Login First');
             return view('login')->with(compact('mydata'));
         }
         $userId = session('customer')['id'];
@@ -26,47 +26,7 @@ class CartViewController extends Controller
             ->join('products', 'carts.product', '=', 'products.product_id')
             ->get();
         $max = Cart::where('user', '=', $userId)->sum('subtotal');
-
-        // if (!is_null($productIddata && $max)) {
-        //     return response()->json(array('pData' => $productIddata, 'mydata'=>$max ), 200);
-        // } else {
-        //     return response()->json(array('Error' => "No Records Found"), 404);
-        // }
-        // $data = compact('productIddata','max');
-        // return response()->json(array('pidData' => $productIddata, 'max'=>$max), 200);
-        // return response()->json($data);
-
-        // $rows = Order::select('created_at')
-        // ->groupBy('created_at')
-        // ->havingRaw('COUNT(*) > 1')
-        // ->get();
-
-        // $timestamps = $rows->pluck('created_at');
-
-        //  $products = Order::whereIn('created_at', $timestamps)
-        //     ->select('id')
-        //     ->get();
-
-        //     echo $products."<br>";
-
-        // foreach ($rows as $row) {
-        //     $createdAt = $row->created_at;
-        //     $count = Order::where('created_at', '=', $createdAt)->count();
-        //     echo $row;
-        //     echo $count."<br>";
-        //     if ($count > 1) {
-        //         // Rows with the same created_at timestamp found
-        //         // Do something with the rows, such as retrieve them or update them
-        //     }
-        // }
-        // var_dump($rows);
-
-        //    var_dump($pdata);
-        // $notsameCreatedAt = Order::distinct('created_at')
-        // ->get(['created_at']);
-        // dd($notsameCreatedAt);
         return view('myCart')->with(compact('productIddata', 'max'));
-        // return view('myCart');
     }
 
     public function store(Request $request)
@@ -99,29 +59,27 @@ class CartViewController extends Controller
                 ->get();
             if ($reset) {
                 if ($available_quantity < $quantity || $quantity <= 0) {
-                    // change status message div
-                    return response()->json(['status' => 'Invalid Item Quantity ' . $quantity]);
+                    return response()->json(['uifail' => 'Invalid Item Quantity ' . $quantity]);
                 }
                 $updatedQty = $quantity;
                 $subbTTl = $updatedQty * $productPrice[0];
             } else {
                 $updatedQty = $qty[0]->quantity + $quantity;
                 if ($available_quantity < $updatedQty || $updatedQty <= 0) {
-                    // change status message div
-                    return response()->json(['status' => 'Invalid Item Quantity ' . $quantity]);
+                    return response()->json(['uifail' => 'Invalid Item Quantity ' . $quantity]);
                 }
                 $subbTTl = $updatedQty * $productPrice;
             }
             Cart::where('product', $pID)->update(['quantity' => $updatedQty, 'subtotal' => $subbTTl]);
             // session()->put('QtyUpdated', );
 
-            return response()->json(['status' => 'Item Quantity Updated To ' . $updatedQty]);
+            return response()->json(['uisuccess' => 'Item Quantity Updated To ' . $updatedQty]);
             // Sesssion::set('itemIncresed') = "";
         } else {
             $subTotal = $productPrice * $quantity;
             if ($available_quantity < $quantity || $quantity <= 0) {
                 // change status message div
-                return response()->json(['status' => 'Invalid Item Quantity ' . $quantity]);
+                return response()->json(['uisuccess' => 'Invalid Item Quantity ' . $quantity]);
             }
             Cart::create([
                 'product' => $pID,
@@ -129,7 +87,7 @@ class CartViewController extends Controller
                 'quantity' => $quantity,
                 'subtotal' => $subTotal,
             ]);
-            return response()->json(['status' => 'Item Added To Cart']);
+            return response()->json(['uisuccess' => 'Item Added To Cart']);
         }
     }
     public function storedataa($id, $hel)
@@ -164,6 +122,7 @@ class CartViewController extends Controller
                 'quantity' => $qtyAmount,
                 'subtotal' => $subTtotal,
             ]);
+            return response()->json(['uisuccess' => 'Item Added To Cart']);
         }
         return view('login');
     }
@@ -192,14 +151,14 @@ class CartViewController extends Controller
             $updatedQTy = $qtty[0]->quantity + $qtyAmount;
             if ($available_quantity < $updatedQTy || $updatedQTy <= 0) {
                 // change status message div
-                return response()->json(['changedQty' => 'Invalid Item Quantity ' . $updatedQTy]);
+                return response()->json(['uisuccess' => 'Invalid Item Quantity ' . $updatedQTy]);
             }
             if ($updatedQTy == 0) {
                 $updatedQTy = 1;
             } else {
                 $subttl = $updatedQTy * $pproductPrice;
                 Cart::where('product', $pId)->update(['quantity' => $updatedQTy, 'subtotal' => $subttl]);
-                return response()->json(['changedQty' => 'Product Quantity Changed To ' . $updatedQTy]);
+                return response()->json(['uisuccess' => 'Product Quantity Changed To ' . $updatedQTy]);
             }
         }
     }
@@ -207,7 +166,7 @@ class CartViewController extends Controller
     {
         $data = Cart::find($id);
         $data->delete();
-        session()->put('DeletedItem', 'Item Deleted From Cart');
+        session()->put('uisuccess', 'Item Deleted From Cart');
         return back();
     }
     public function termncondition()

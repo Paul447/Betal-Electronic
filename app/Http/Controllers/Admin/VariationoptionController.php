@@ -7,7 +7,7 @@ use Illuminate\Pagination\Paginator;
 use App\Models\Admin\Variation;
 use App\Models\Admin\Variationoption;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 
 class VariationoptionController extends Controller
 {
@@ -52,8 +52,8 @@ class VariationoptionController extends Controller
         //        'category'=>'required|numeric,'
         //     ]
         //     );
-        $addedby = session('user')['id'];
-        if (session('user')['role'] == 'Admin') {
+        $addedby = Auth::guard()->user()->id;
+        if (Auth::guard()->user()->role == 'Admin') {
 
             Variationoption::create(array_merge($request->all(), ['addedby' => $addedby, 'approvedby' => $addedby, 'status' => 'approved']));
             session()->put('AdminSuccess', 'New Attribute Option Created');
@@ -100,9 +100,9 @@ class VariationoptionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $updatedby = session('user')['id'];
+        $updatedby = Auth::guard()->user()->id;
         $var = Variationoption::find($id);
-        if (session('user')['role'] == 'Admin') {
+        if (Auth::guard()->user()->role == 'Admin') {
             $var->update(array_merge($request->all(), ['updatedby' => $updatedby, 'updateapprovedby' => $updatedby, 'updatestatus' => "approved"]));
             session()->put('AdminFaliure', 'Attribute Option Updated');
             return redirect(('admin/variationoption/'));

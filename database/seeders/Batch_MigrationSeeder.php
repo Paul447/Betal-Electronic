@@ -8,14 +8,14 @@ use Illuminate\Database\Seeder;
 
 class Batch_MigrationSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-    public function run()
-    {
-        $data = ['batch_name' => 'testBatch'];
-        Batch_Migration::insert($data);
-    }
+        /**
+         * Run the database seeds.
+         *
+         * @return void
+         */
+        public function run()
+        {
+                $data = ['batch_name' => 'Batch 1'];
+                Batch_Migration::insert($data);
+        }
 }

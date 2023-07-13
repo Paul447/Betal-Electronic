@@ -12,7 +12,7 @@
             <a href="{{ url('/fetchbyBrand/' . $branddata->brands_id) }}">
 
                 <li class="">
-                    <img src="{{ asset('/storage/brands/' . $branddata->brand_image) }}" alt="">
+                    <img src="{{ asset('/storage/brands/' . $branddata->brand_image) }}" alt=" {{$branddata->brand_name}}" loading="lazy">
                 </li>
             </a>
         </swiper-slide>
