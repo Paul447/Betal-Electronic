@@ -13,10 +13,10 @@ class AdminMiddleware
 
         if (Auth::guard()->check() && Auth::user()->role == "Admin") {
             return $next($request);
-            // return redirect('/login');
         }
-
-        abort(403, 'Unauthorized');
+        
+        return redirect('/login');
+        // abort(403, 'Unauthorized');
         // if($request->path()=="login" && $request->session()->has('user'))
         // {
         //     return redirect('/home');
