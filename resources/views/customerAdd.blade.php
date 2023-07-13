@@ -71,59 +71,59 @@
 
                     <div class="address--picker d-flex flex-wrap justify-content-between mb-1" id="address">
 
-                        <<<<<<< HEAD <select name="province" class="form-select form-control px-2 py-1" id="province"=======<select name="province" class="form-select form-control form-select-sm" id="province">>>>>>> 3f3c263a5872969ecf6c7abd914fccf291590885
+                        <select name="province" class="form-select-sm form-control px-2 py-1" id="province">
                             onchange="fetchDistrict(this.value)" class="edit">
                             <option value="" disabled selected>Province</option>
                             @foreach ($province as $province)
                             <option value="{{ $province->province_id }}">{{ $province->province }}</option>
                             @endforeach
-                            </select>
+                        </select>
 
-                            <select name="district" id="district" class="py-1 form-control form-select-sm px-2 rounded-1" onchange="fetchMunicipalities(this.value)">
-                                <option value="">District</option>
-                            </select>
+                        <select name="district" id="district" class="py-1 form-control form-select-sm px-2 rounded-1" onchange="fetchMunicipalities(this.value)">
+                            <option value="">District</option>
+                        </select>
 
-                            <select name="municipality" id="municipality" class="mt-2 form-control form-select-sm py-1 px-2 rounded-1">
-                                <option value="">Local body</option>
-                            </select>
+                        <select name="municipality" id="municipality" class="mt-2 form-control form-select-sm py-1 px-2 rounded-1">
+                            <option value="">Local body</option>
+                        </select>
 
-                            <select name="ward" id="ward" class="mt-2 form-control form-select-sm py-1 px-2">
-                                <option value="">Ward</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                                <option value="10">10</option>
-                                <option value="11">11</option>
-                                <option value="12">12</option>
-                                <option value="13">13</option>
-                                <option value="14">14</option>
-                                <option value="15">15</option>
-                                <option value="16">16</option>
-                                <option value="17">17</option>
-                                <option value="18">18</option>
-                                <option value="19">19</option>
-                                <option value="20">20</option>
-                                <option value="21">21</option>
-                                <option value="22">22</option>
-                                <option value="23">23</option>
-                                <option value="24">24</option>
-                                <option value="25">25</option>
-                                <option value="26">26</option>
-                                <option value="27">27</option>
-                                <option value="28">28</option>
-                                <option value="29">29</option>
-                                <option value="30">30</option>
-                                <option value="31">31</option>
-                                <option value="32">32</option>
-                                <option value="33">33</option>
-                                <option value="34">34</option>
-                            </select>
+                        <select name="ward" id="ward" class="mt-2 form-control form-select-sm py-1 px-2">
+                            <option value="">Ward</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            <option value="16">16</option>
+                            <option value="17">17</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
+                            <option value="21">21</option>
+                            <option value="22">22</option>
+                            <option value="23">23</option>
+                            <option value="24">24</option>
+                            <option value="25">25</option>
+                            <option value="26">26</option>
+                            <option value="27">27</option>
+                            <option value="28">28</option>
+                            <option value="29">29</option>
+                            <option value="30">30</option>
+                            <option value="31">31</option>
+                            <option value="32">32</option>
+                            <option value="33">33</option>
+                            <option value="34">34</option>
+                        </select>
                     </div>
 
                     <button type="submit" class="btn--register text-white mt-3 w-100 py-2 rounded-1">Register</button>
