@@ -7,6 +7,7 @@ use App\Models\Order;
 use App\Models\deliverys;
 use App\Models\addProductBatch;
 use App\Models\Admin\Product;
+use Illuminate\Validation\Rule;
 use App\Models\Admin\Productprice;
 use Database\Seeders\addPbatch;
 use Illuminate\Support\Facades\DB;
@@ -25,6 +26,12 @@ class CheckoutController extends Controller
     }
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required|max:255',
+            'address' => 'required|max:255',
+            'phone' => 'required|numeric|digits:10',
+            'zipcode' => 'required|numeric|',
+        ]);
    
         $selectedproductCartID = json_decode($request->input('selectedProductId'));
         $totalCartAmountRequest = json_decode($request->input('totalCartData'));
@@ -171,6 +178,15 @@ class CheckoutController extends Controller
 
     public function confirm(Request $request)
     {
+        $request->validate([
+            'product_id' => 'required',
+            'name' => 'required|max:255',
+            'address' => 'required|max:255',
+            'phone' => 'required|numeric|digits:10',
+            'zipcode' => 'required|numeric|',
+        ]);
+        $selectedproductCartID = json_decode($request->input('product_id'));
+        if(isset($selectedproductCartID)){
         $data = $request->input();
         Cache::put('name', $request->name, 60);
         Cache::put('address', $request->address, 60);
@@ -179,6 +195,11 @@ class CheckoutController extends Controller
         Cache::put('product_id', $request->product_id, 60);
         Cache::put('quantity', $request->quantity, 60);
         Cache::put('total', $request->total, 60);
+        }
+        else{
+            session()->put('uifail', 'None of the product was selected');
+            return redirect('/CartView');
+        }
         return view('buy_confirm')->with(compact('data'));
     }
 

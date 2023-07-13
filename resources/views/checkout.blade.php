@@ -47,33 +47,42 @@
                 <input type="hidden" name="price" value="{{ $price }}">
                 <input type="hidden" name="total" value="{{ $total }}">
                 <div class="row">
+                    
                     <div class="col-md-6 mb-3">
                         <label for="firstName"><i class="fa fa-user"></i>&nbsp;Full Name</label>
                         <input type="text" class="form-control mt-2" id="firstName"
                             placeholder="Enter your Full Name" value="" name="name" required
                             pattern="[A-Z].[A-Z a-z]+"
                             title="Name must be in only charater,First Letter Must be Capital" />
-                        <div class="invalid-feedback">
-                            Valid first name is required.
-                        </div>
+                            @error('name')
+                            <span class=" text-danger">{{ $message }}</span>
+                            @enderror
                     </div>
 
                     <div class="col-md-6 mb-3">
                         <label for="address"><i class="fa fa-institution"></i> &nbsp;Address</label>
                         <input type="text" class="form-control mt-2" id="address" required="" name="address"
                             placeholder="Enter Primary Address..." />
+                            @error('address')
+                            <span class=" text-danger">{{ $message }}</span>
+                            @enderror
                     </div>
 
                     <div class="col-md-6 mb-3">
                         <label for="phone"><i class="fa fa-phone"></i> &nbsp;Phone Number</label>
                         <input type="number" class="form-control mt-2" id="address" required="" name="phone"
                             placeholder="Enter Phone Number..." />
+                            @error('phone')
+                            <span class=" text-danger">{{ $message }}</span>
+                            @enderror
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="phone">Zip Code</label>
-
                         <input type="text" class="form-control mt-2" id="zip" name="zipcode"
                             placeholder="Zip Code..." required="" />
+                            @error('zipcode')
+                            <span class=" text-danger">{{ $message }}</span>
+                            @enderror
                     </div>
                 </div>
 

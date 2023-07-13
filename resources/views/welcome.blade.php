@@ -7,11 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="stylesheet" href="{{ asset('admin/bootstrap-5.2.3-dist/css/bootstrap.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('style.css')}}" />
+    <link rel="stylesheet" href="{{ asset('style.css') }}" />
     {{-- <link rel="stylesheet" href="{{ asset('admin/css/productcardmain.css') }}" /> --}}
     {{-- <link rel="stylesheet" href="{{ asset('admin/css/toast.css') }}" /> --}}
-    {{--<link rel="stylesheet" type="text/css" href="{{ asset('admin/css/login.css') }}" />--}}
-    {{--<link rel="stylesheet" href="{{ asset('admin/css/foot.css') }}" /> --}}
+    {{-- <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/login.css') }}" /> --}}
+    {{-- <link rel="stylesheet" href="{{ asset('admin/css/foot.css') }}" /> --}}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.min.js"
@@ -24,12 +24,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
 
 
-    <script src="https://code.jquery.com/jquery-3.6.4.slim.js" integrity="sha256-dWvV84T6BhzO4vG6gWhsWVKVoa4lVmLnpBOZh/CAHU4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.slim.js"
+        integrity="sha256-dWvV84T6BhzO4vG6gWhsWVKVoa4lVmLnpBOZh/CAHU4=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" defer></script>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -52,7 +55,8 @@
             <ul class="d-flex align-items-center" class="myUlclass">
                 <li class="mx-2 mx-lg-3">
                     <form action="{{ route('products.search') }}" class="position-relative">
-                        <input type="search" name="search" class="py-1 rounded-1 border border-dark-subtle px-2" id="search" placeholder="Search">
+                        <input type="search" name="search" class="py-1 rounded-1 border border-dark-subtle px-2"
+                            id="search" placeholder="Search">
                         <button type="submit" class="btn--search bg-transparent position-absolute border-0 ">
                             <i class="fa-solid fa-search text-secondary"></i>
                         </button>
@@ -60,35 +64,35 @@
                 </li>
                 <div class="d-flex justify-content-evenly">
                     @if (is_null(session('customer')))
-                    <li class="mx-2 mx-lg-3 account px-2">
-                        <i class="fa-solid fa-user account--icon"></i>
-                        <div class="account--dropdown">
-                            <div class="account--dropdown-container">
-                                <a href="{{ '/customerAdd/create/' }}" class="navitemsss">Signup</a>
-                                <a href="{{ '/customerAdd/' }}" class="navitemsss">Login</a>
+                        <li class="mx-2 mx-lg-3 account px-2">
+                            <i class="fa-solid fa-user account--icon"></i>
+                            <div class="account--dropdown">
+                                <div class="account--dropdown-container">
+                                    <a href="{{ '/customerAdd/create/' }}" class="navitemsss">Signup</a>
+                                    <a href="{{ '/customerAdd/' }}" class="navitemsss">Login</a>
+                                </div>
                             </div>
-                        </div>
-                    </li>
+                        </li>
                     @else
-                    <li class="mx-2 mx-lg-3 account ">
-                        <a href="/customerlogout/{{ Session::get('customer')['id'] }}" class="navitemsss">
-                            <i class="fa fa-sign-out "></i>
-                        </a>
-                    </li>
-                    <li class="mx-2 mx-lg-3 account px-2">
-                        <i class="fa-solid fa-user account--icon"></i>
-                        <div class="account--dropdown">
-                            <div class="account--dropdown-container">
-                                <a class="navitemsss" href="{{ '/viewprofile' }}">
-                                    My Profile
-                                </a>
-                                <a class="navitemsss" href="{{ '/myorder' }}">
+                        <li class="mx-2 mx-lg-3 account ">
+                            <a href="/customerlogout/{{ Session::get('customer')['id'] }}" class="navitemsss">
+                                <i class="fa fa-sign-out "></i>
+                            </a>
+                        </li>
+                        <li class="mx-2 mx-lg-3 account px-2">
+                            <i class="fa-solid fa-user account--icon"></i>
+                            <div class="account--dropdown">
+                                <div class="account--dropdown-container">
+                                    <a class="navitemsss" href="{{ '/viewprofile' }}">
+                                        My Profile
+                                    </a>
+                                    <a class="navitemsss" href="{{ '/myorder' }}">
 
-                                    My Orders
-                                </a>
+                                        My Orders
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                    </li>
+                        </li>
                     @endif
                     <li class="mx-2 mx-lg-3">
                         <a href="/CartView/" class="navitemsss">
@@ -154,15 +158,20 @@
                 })
                 .then(response => response.json())
                 .then(response => {
+                    let error = response.uifail;
                     let html = response.uisuccess;
-                    Toast.fire({
-                        icon: 'success',
-                        title: html,
-                    })
-                    Toast.fire({
-                        icon: 'success',
-                        title: html,
-                    })
+                    if (error) {
+                        Toast.fire({
+                            icon: 'error',
+                            title: error,
+                        })
+                    }
+                    if (html) {
+                        Toast.fire({
+                            icon: 'success',
+                            title: html,
+                        })
+                    }
                 })
         }
 
@@ -185,15 +194,21 @@
                 .then(response => response.json())
                 .then(response => {
                     let html = response.uisuccess;
-                    Toast.fire({
-                        icon: 'success',
-                        title: html,
-                    })
-                    Toast.fire({
-                        icon: 'success',
-                        title: html,
-                    })
+                    let error = response.uifail;
+                    if (html) {
+                        Toast.fire({
+                            icon: 'success',
+                            title: html,
+                        })
+                    }
+                    if (error) {
+                        Toast.fire({
+                            icon: 'error',
+                            title: error,
+                        })
+                    }
                 })
+
 
             if (reset) {
                 setTimeout(function() {
@@ -224,15 +239,3 @@
             }
         });
     </script>
-    @if (session('errormessage'))
-    <script>
-        Toast.fire({
-            icon: 'error',
-            title: '{{ session('
-            errormessage ') }}'
-        })
-    </script>
-    @php
-    session()->forget('errormessage');
-    @endphp
-    @endif
