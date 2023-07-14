@@ -101,7 +101,7 @@
                             </td>
 
                             <td>
-                                <a class="btn btn-primary text-white" href="{{ '/product/edit' }}/{{ 5 }}"
+                                <a class="btn btn-primary text-white" href="{{ url('/admin/product') . '/' .  $product->product_id . '/edit' }}"
                                     style="text-decoration:none; width: 5rem; margin: 0.125rem;" role="button"> Edit </a>
 
                                 @if ($product->is_disabled)

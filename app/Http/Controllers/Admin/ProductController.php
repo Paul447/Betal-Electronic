@@ -102,7 +102,25 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $url = "/admin/product/$id";
+        $title = 'Update Product';
+        $category = Category::all()
+            ->where('parent', 0)
+            ->where('status', '=', 'approved');
+        $brand = Brand::all()->where('status', '=', 'approved');
+        $variatioon = Variation::all();
+
+        $product = Product::find($id);
+
+        $price = addProductBatch::where('product', $id)->latest()->get()->first();
+
+        // $product_category = Productcategory::where('product_id', $id);
+        // dd($product_category->first());
+
+        $data = compact('url', 'title', 'category', 'brand', 'variatioon', 'product', 'price');
+        return view('admin/Product/AddProductForm')->with($data);
+
+        dd('edit product', $id);
     }
 
     /**
@@ -114,7 +132,40 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if ($request->file('Productthumbfile' !== null)) {
+            $file = $request->file('Productthumbfile');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path() . '/storage/thumbnails/', $filename);
+        } else {
+            $filename = Product::find($id)->thumbnail;
+        }
+
+        Product::find($id)->update([
+            'product_name' => $request->Productname,
+            'brand' => $request->Brand,
+            'discription' => $request->Productcontent,
+            'slug' => Str::slug($request->Productname),
+            'lowstockindication' => $request->lowstockindication,
+            'thumbnail' => $filename,
+        ]);
+
+        if ($request->file('Productfile') !== null) {
+            $image = [];
+            foreach ($request->file('Productfile') as $file) {
+                $filename = time() . '.' . $file->getClientOriginalExtension();
+                $file->move(public_path() . '/storage/product/', $filename);
+                $image[] = $filename;
+            }
+
+            $productImage = Productimage::where('product_id', $id)->first();
+            $productImage_id = $productImage->image_id;
+            $existing_images_name = $productImage->image;
+            $new_images_name = $existing_images_name . "|" . implode('|', $image);
+            Productimage::where('image_id', $productImage_id)->update(['image' => $new_images_name]);
+        }
+
+        session()->put('AdminSuccess', 'Product Updated');
+        return redirect('/admin/product');
     }
 
     /**
