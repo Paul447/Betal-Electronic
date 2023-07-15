@@ -101,17 +101,17 @@
     </div>
 </div>
 <div class="container mt-3">
-    <h2 class="feture mx-auto  mt-5 mb-5 "> Check Out? </h2>
+    <h2 class="feture mx-auto  mt-5 mb-5 "> Checkout </h2>
     <div class="row justify-content-center mb-4">
         <div class="col col-md-4 col-md-mx-4 order-md-2 mb-4 prodetail">
             <section id="cart-add" class="section-p1">
                 <div id="subTotal">
-                    <h3>Cart Totals</h3>
+                    <h3>Cart Total</h3>
                     <table id="table2">
                         <tbody>
                             <tr>
                                 <td>Cart Total</td>
-                                <td class="cardTotals" id="sumDiv"></td>
+                                <td class="cardTotals" id="sumDiv">Rs: 0</td>
                             </tr>
                             <tr>
                                 <td>Shipping</td>
@@ -198,6 +198,11 @@
                 producttName.push(pname);
             } else if (!isNaN(total)) {
                 sum -= total;
+
+                if(sum < 0){
+                    sum = 0;
+                }
+
                 const index = selectedProductId.indexOf(productId);
 
                 if (index > -1) {
