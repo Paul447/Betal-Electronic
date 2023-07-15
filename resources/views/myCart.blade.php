@@ -117,7 +117,7 @@
                                 <td>Shipping</td>
                                 <td>free</td>
                             </tr>
-                          
+
                         </tbody>
                     </table>
                 </div>
@@ -128,44 +128,38 @@
             <form class="needs-validation" method="post" id="myForm" action="{{ '/confirm' }}">
                 @csrf
                 <div class="row">
-                   
+
                     <div class="col-md-6 mb-3">
                         <label for="firstName"><i class="fa fa-user"></i> Full Name</label>
                         <input type="hidden" name="selectedProductId" id="selectedValuesInput">
                         <input type="hidden" name="selectedCart" id="selectedCartQty">
                         <input type="hidden" name="totalCartData" id="ttlAmount">
                         <input type="hidden" name="pname" id="productName">
-                        <input type="text" class="form-control mt-2" id="firstName"
-                            placeholder="Enter your Full Name" value="" name="name" required
-                            pattern="[A-Z].[A-Z a-z]+"
-                            title="Name must be in only character, First Letter Must be Capital" />
+                        <input type="text" class="form-control mt-2" id="firstName" placeholder="Enter your Full Name" value="" name="name" required pattern="[A-Z].[A-Z a-z]+" title="Name must be in only character, First Letter Must be Capital" />
                         @error('name')
                         <span class=" text-danger">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="address"><i class="fa fa-institution"></i> Address</label>
-                        <input type="text" class="form-control mt-2" id="address" required="" name="address"
-                            placeholder="Enter Primary Address..." />
-                            @error('address')
-                            <span class=" text-danger">{{ $message }}</span>
-                            @enderror
+                        <input type="text" class="form-control mt-2" id="address" required="" name="address" placeholder="Enter Primary Address..." />
+                        @error('address')
+                        <span class=" text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="phone"><i class="fa fa-phone"></i> Phone Number</label>
-                        <input type="number" class="form-control mt-2" id="phone" required=""
-                            name="phone" placeholder="Enter Phone Number..." />
-                            @error('phone')
-                            <span class=" text-danger">{{ $message }}</span>
-                            @enderror
+                        <input type="number" class="form-control mt-2" id="phone" required="" name="phone" placeholder="Enter Phone Number..." />
+                        @error('phone')
+                        <span class=" text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="zip">Zip Code</label>
-                        <input type="text" class="form-control mt-2" id="zip" name="zipcode"
-                            placeholder="Zip Code..." required="" />
-                            @error('zipcode')
-                            <span class=" text-danger">{{ $message }}</span>
-                            @enderror
+                        <input type="text" class="form-control mt-2" id="zip" name="zipcode" placeholder="Zip Code..." required="" />
+                        @error('zipcode')
+                        <span class=" text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                 </div>
                 <hr class="mb-2" />
@@ -184,45 +178,50 @@
     const producttName = [];
     let sum = 0;
     checkbox.forEach((btnCheck) => {
-        btnCheck.addEventListener("change", (event) => {
-            const value = event.target.value;
-            const parts = value.split(",");
-            const total = parseInt(parts[0], 10);
-            const productId = parseInt(parts[1], 10);
-            const cartQty = parseInt(parts[2], 10);
-            const pname = (parts[3]);
-            if (btnCheck.checked) {
-                sum += total;
-                selectedProductId.push(productId);
-                selectedCartValue.push(cartQty);
-                producttName.push(pname);
-            } else if (!isNaN(total)) {
-                sum -= total;
-
-                if(sum < 0){
-                    sum = 0;
-                }
-
-                const index = selectedProductId.indexOf(productId);
-
-                if (index > -1) {
-                    selectedProductId.splice(index, 1);
-                    selectedCartValue.splice(index, 1);
-                    producttName.splice(index, 1);
-                }
-            }
-            const sumDiv = document.getElementById("sumDiv");
-            sumDiv.textContent = `Rs: ${sum}`;
-            const mine = document.getElementById('ttlAmount');
-            mine.value = JSON.stringify(sum);
-            const MineCartValue = document.getElementById('selectedCartQty');
-            MineCartValue.value = JSON.stringify(selectedCartValue);
-            const selectedValuesInput = document.getElementById('selectedValuesInput');
-            selectedValuesInput.value = JSON.stringify(selectedProductId);
-            const selectedProductName = document.getElementById('productName');
-            selectedProductName.value = JSON.stringify(producttName);
+        btnCheck.addEventListener("change", () => {
+            doCalculation(btnCheck);
         });
     });
+
+    window.onload = () => {
+        checkbox.forEach((btnCheck) => {
+            doCalculation(btnCheck);
+        })
+    };
+
+    const doCalculation = (btnCheck) => {
+        const value = btnCheck.value
+        const parts = value.split(",");
+        const total = parseInt(parts[0], 10);
+        const productId = parseInt(parts[1], 10);
+        const cartQty = parseInt(parts[2], 10);
+        const pname = (parts[3]);
+
+        if (btnCheck.checked) {
+            sum += total;
+            selectedProductId.push(productId);
+            selectedCartValue.push(cartQty);
+            producttName.push(pname);
+        } else if (!isNaN(total)) {
+            const index = selectedProductId.indexOf(productId);
+            if (index > -1) {
+                sum -= total;
+                selectedProductId.splice(index, 1);
+                selectedCartValue.splice(index, 1);
+                producttName.splice(index, 1);
+            }
+        }
+        const sumDiv = document.getElementById("sumDiv");
+        sumDiv.textContent = `Rs: ${sum}`;
+        const mine = document.getElementById('ttlAmount');
+        mine.value = JSON.stringify(sum);
+        const MineCartValue = document.getElementById('selectedCartQty');
+        MineCartValue.value = JSON.stringify(selectedCartValue);
+        const selectedValuesInput = document.getElementById('selectedValuesInput');
+        selectedValuesInput.value = JSON.stringify(selectedProductId);
+        const selectedProductName = document.getElementById('productName');
+        selectedProductName.value = JSON.stringify(producttName);
+    }
 
     function myfunctionCheck() {
         const myForm = document.getElementById('myForm');
