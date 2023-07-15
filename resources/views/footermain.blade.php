@@ -90,7 +90,7 @@
         btnToast.addEventListener("click", (e) => {
             Toast.fire({
                 icon: 'info',
-                title: 'Please Login First to Countinue'
+                title: 'Please Login First to Continue'
             })
         })
     });
