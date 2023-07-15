@@ -172,6 +172,14 @@
 </div>
 
 <script>
+    // auto capitalize first character of name for better use experience
+    const fullNameInputElem = document.getElementById("firstName");
+    fullNameInputElem.addEventListener("input", () => {
+        const firstCharacter = fullNameInputElem.value[0]
+        const fullName = firstCharacter.toUpperCase() + fullNameInputElem.value.slice(1)
+        fullNameInputElem.value = fullName
+    })
+
     const checkbox = document.querySelectorAll(".form-check-input");
     const selectedProductId = [];
     const selectedCartValue = [];
