@@ -87,7 +87,7 @@ class ProductviewController extends Controller
     {
         $mydata = 'New Arrivals';
         $data = Product::latest()->where('is_disabled', 0)
-            ->limit(10)
+            ->limit(16)
             ->get();
         return view('searchItem')->with(compact('data', 'mydata'));
     }

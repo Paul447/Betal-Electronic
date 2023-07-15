@@ -82,6 +82,7 @@
         </div>
     @endif
 </section>
+@include('newarrivaltoui')
 
 @include('categorychoice')
 @include('footermain')
