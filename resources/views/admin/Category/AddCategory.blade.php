@@ -33,7 +33,7 @@
                         {{-- @php
                print_r(old('category_name'));
             @endphp --}}
-                        <Span class="text-denger">
+                        <Span class="text-danger">
                             @error('category_name')
                                 {{ $message }}
                             @enderror
@@ -73,6 +73,16 @@
                         </p>
                     </div>
 
+                    <div class="mb-3">
+                        <label for="meta_desc" class="col-form-label">Meta Description</label>
+                        <input type="text" class="form-control" id="meta_desc" name="meta_desc" autocomplete="off"
+                            @if (isset($data)) value="{{ $data->meta_desc }}" @endif />
+                        <Span class="text-danger">
+                            @error('meta_desc')
+                                {{ $message }}
+                            @enderror
+                        </Span>
+                    </div>
 
                     <!-- Modal footer -->
                     <div class="modal-footer">

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
 use App\Models\Admin\Category;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -57,7 +58,7 @@ class CategoryController extends Controller
             $file = $request->file('categorythumbnail');
             $filename = time() . '.' . $file->getClientOriginalExtension();
             $file->storeAs('public/categorythumbnail', $filename);
-            Category::create(array_merge($request->all(), ['categorythumbnail' => $filename, 'addedby' => $addedby, 'approvedby' => $addedby, 'status' => 'approved']));
+            Category::create(array_merge($request->all(), ['categorythumbnail' => $filename, 'addedby' => $addedby, 'approvedby' => $addedby, 'status' => 'approved', 'slug' => Str::slug($request->category_name)]));
             session()->put('AdminSuccess', 'Category Added');
             return redirect('/admin/category/');
         } else {

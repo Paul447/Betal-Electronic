@@ -19,6 +19,7 @@ class Category extends Model
         'status',
         'is_visible',
         'updatestatus',
+        'meta_desc',
     ];
     public function ds()
     {

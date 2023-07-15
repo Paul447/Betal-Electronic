@@ -29,6 +29,7 @@ return new class extends Migration
             $table->string('status')->default('pending');
             $table->string('updatestatus')->nullable();
             $table->integer('is_visible')->default(0);
+            $table->string('meta_desc');
             $table->timestamps();
         });
     }
