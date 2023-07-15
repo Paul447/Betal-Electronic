@@ -78,6 +78,7 @@ class ProductController extends Controller
                 'approvedby' => $addedby,
                 'thumbnail' => $filename,
                 'status' => 'approved',
+                'meta_desc' => $request->meta_desc,
             ])->product_id;
             session()->put('AdminSuccess', 'Product Added');
             return $this->uploadimage($id, $request);
@@ -147,6 +148,7 @@ class ProductController extends Controller
             'slug' => Str::slug($request->Productname),
             'lowstockindication' => $request->lowstockindication,
             'thumbnail' => $filename,
+            'meta_desc' => $request->meta_desc,
         ]);
 
         if ($request->file('Productfile') !== null) {
