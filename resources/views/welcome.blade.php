@@ -39,7 +39,7 @@
     @include('sweetalert::alert')
     <header class="d-flex justify-content-between  align-items-center">
         <a href="{{ '/' }}">
-            <img src="{{ asset('admin/img/logo.jpg') }}" alt="logo" class="logo">
+            <img src="{{ asset('admin/img/logo.png') }}" alt="logo" class="logo">
         </a>
 
         <nav class="middle">
@@ -47,7 +47,7 @@
                 <li class="mx-2 mx-lg-3"><a href="{{ '/' }}" class="navitemsss">Home</a></li>
                 <li class="mx-2 mx-lg-3"><a href="{{ '/newarrivals' }}" class="navitemsss">New Arrivals</a></li>
                 <li class="mx-2 mx-lg-3"><a href="#" class="navitemsss">Blogs</a></li>
-                {{-- <li class="mx-2 mx-lg-3"><a href="#" class="navitemsss">Contact us</a></li> --}}
+                <li class="mx-2 mx-lg-3"><a href="{{ '/aboutbetal' }}" class="navitemsss">About Betal</a></li>
             </ul>
         </nav>
 

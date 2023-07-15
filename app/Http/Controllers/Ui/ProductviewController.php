@@ -73,8 +73,9 @@ class ProductviewController extends Controller
         $dataname = Productcategory::where('category_id', $id)->pluck('product_id');
         $data = Product::whereIn('product_id', $dataname)->get();
         $mydata = Category::where('categorys_id', $id)->value('category_name');
+        $descdata = Category::where('categorys_id', $id)->value('meta_desc');
         // echo $mydata;
-        return view('searchItem')->with(compact('data', 'mydata'));
+        return view('searchItem')->with(compact('data', 'mydata','descdata'));
     }
     public function fetchbyBrand($id)
     {

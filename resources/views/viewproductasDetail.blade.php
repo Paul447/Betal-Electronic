@@ -3,7 +3,10 @@
         var message = '{{ $catname->category_name }}';
         document.title = "Betal International | " + message
     </script>
+<meta name="description" content="{{ $catname->meta_desc }}">
 @endforeach
+
+
 @include('welcome')
 @include('slider')
 

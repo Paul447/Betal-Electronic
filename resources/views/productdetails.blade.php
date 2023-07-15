@@ -3,7 +3,7 @@
    <meta name="author" content="Mukesh,Subesh,Suresh">
    @foreach ($data as $product)
    @endforeach
-   <meta name="description" content="{{ $product->discription }}">
+   <meta name="description" content="{{ $product->meta_desc }}">
    <meta name="application-name" content="{{ $product->product_name }}">
    <meta name="keywords"
        content="{{ $product->lowstockindication }},Computer accessories in Kathmandu,Buy computer accessories Kathmandu">

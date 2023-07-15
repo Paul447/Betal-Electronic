@@ -27,11 +27,11 @@
             @foreach ($banners as $banner)
             @if ($banner_count == 0)
             <div class="carousel-item active ">
-                <img class="slide" src="{{ asset('storage/banner/' . $banner->banner_img) }}" alt="{{ $banner->image_alt_text }}" loading="lazy" />
+                <img class="slide" src="{{ asset('storage/banner/' . $banner->banner_img) }}" alt="{{ $banner->image_alt_text }}" loading="lazzy" />
             </div>
             @else
             <div class="carousel-item ">
-                <img class="slide" src="{{ asset('storage/banner/' . $banner->banner_img) }}" alt="{{ $banner->image_alt_text }}" loading="lazy" />
+                <img class="slide" src="{{ asset('storage/banner/' . $banner->banner_img) }}" alt="{{ $banner->image_alt_text }}" loading="lazzy" />
             </div>
             @endif
             @php $banner_count++; @endphp

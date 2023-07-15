@@ -43,14 +43,14 @@ class CategoryViewController extends Controller
     public function viewCategories($id)
     {
         $pdata = ProductCategory::where('category_id', $id)->pluck('product_id');
-        $catoName = Category::where('categorys_id', $id)->get('category_name');
-        // echo $catoName;
+        $catoName = Category::where('categorys_id', $id)->get();
+
         $data = Product::join('brands', 'brand', 'brands_id')
             ->whereIn('product_id', $pdata)
             ->where('is_disabled', 0)
             ->select('products.*', 'brands.*')
             ->get();
-        // echo $data;
+        
         return view('viewproductasDetail')->with(compact('data', 'catoName'));
     }
     public function viewCatos()

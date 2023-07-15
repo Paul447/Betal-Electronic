@@ -4,7 +4,7 @@
     <!-- Sidebar  -->
     <nav id="sidebar">
         <div class="sidebar-header  d-flex justify-content-center">
-            <img src="{{ asset('admin/img/logo.jpg') }}" style="object-fit: contain" height="200px" width="200px"
+            <img src="{{ asset('admin/img/logo.png') }}" style="object-fit: contain" height="200px" width="200px"
                 class=" m-0 p-0" alt="">
         </div>
         <ul class="list-unstyled components">

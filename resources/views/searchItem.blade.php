@@ -2,6 +2,10 @@
     var message = '{{ $mydata}}';
     document.title = "Betal International | "+message
 </script>
+@if(isset($descdata))
+<meta name="description" content="{{ $descdata }}"> 
+@endif
+
 @include('welcome')
 
 
