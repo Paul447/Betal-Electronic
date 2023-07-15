@@ -23,6 +23,7 @@ class Product extends Model
         'thumbnail',
         'featured',
         'is_disabled',
+        'meta_desc',
     ];
     protected $primaryKey = 'product_id';
 }

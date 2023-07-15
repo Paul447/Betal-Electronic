@@ -26,7 +26,7 @@ class ProductSeeder extends Seeder
                 'slug' => 'this-is-slug',
                 'lowstockindication' => "4",
                 'thumbnail' => "havitmouse.jpg",
-                'addedby' => '1', 'approvedby' => '1', 'status' => "approved"
+                'addedby' => '1', 'approvedby' => '1', 'status' => "approved", 'meta_desc' => 'This is meta description of product'
             ],
 
             [
@@ -40,7 +40,7 @@ class ProductSeeder extends Seeder
                 'slug' => 'this-is-slug',
                 'lowstockindication' => "6",
                 'thumbnail' => "logictechmouse.jpg",
-                'addedby' => '1', 'approvedby' => '1', 'status' => "approved"
+                'addedby' => '1', 'approvedby' => '1', 'status' => "approved", 'meta_desc' => 'This is meta description of product'
             ],
 
             [
@@ -51,7 +51,7 @@ class ProductSeeder extends Seeder
                 'slug' => 'this-is-slug',
                 'lowstockindication' => "3",
                 'thumbnail' => "dellmouse.jpg",
-                'addedby' => '1', 'approvedby' => '1', 'status' => "approved"
+                'addedby' => '1', 'approvedby' => '1', 'status' => "approved", 'meta_desc' => 'This is meta description of product'
             ],
 
             [
@@ -66,7 +66,7 @@ class ProductSeeder extends Seeder
                 'slug' => 'this-is-slug',
                 'lowstockindication' => "5",
                 'thumbnail' => "fantechmouse.jpg",
-                'addedby' => '1', 'approvedby' => '1', 'status' => "approved"
+                'addedby' => '1', 'approvedby' => '1', 'status' => "approved", 'meta_desc' => 'This is meta description of product'
             ],
 
             [
@@ -77,7 +77,7 @@ class ProductSeeder extends Seeder
                 'slug' => 'this-is-slug',
                 'lowstockindication' => "7",
                 'thumbnail' => "dell-2mouse.jpg",
-                'addedby' => '1', 'approvedby' => '1', 'status' => "approved"
+                'addedby' => '1', 'approvedby' => '1', 'status' => "approved", 'meta_desc' => 'This is meta description of product'
             ],
 
             [
@@ -89,7 +89,7 @@ class ProductSeeder extends Seeder
                 'slug' => 'this-is-slug',
                 'lowstockindication' => "10",
                 'thumbnail' => "logictechkeyboard.jpg",
-                'addedby' => '1', 'approvedby' => '1', 'status' => "approved"
+                'addedby' => '1', 'approvedby' => '1', 'status' => "approved", 'meta_desc' => 'This is meta description of product'
             ],
 
             [
@@ -103,7 +103,7 @@ class ProductSeeder extends Seeder
                 'slug' => 'this-is-slug',
                 'lowstockindication' => "5",
                 'thumbnail' => "rapookeybard.jpg",
-                'addedby' => '1', 'approvedby' => '1', 'status' => "approved"
+                'addedby' => '1', 'approvedby' => '1', 'status' => "approved", 'meta_desc' => 'This is meta description of product'
             ],
 
             [
@@ -114,7 +114,7 @@ class ProductSeeder extends Seeder
                 'slug' => 'this-is-slug',
                 'lowstockindication' => "5",
                 'thumbnail' => "Rapookeyboard2.jpg",
-                'addedby' => '1', 'approvedby' => '1', 'status' => "approved"
+                'addedby' => '1', 'approvedby' => '1', 'status' => "approved", 'meta_desc' => 'This is meta description of product'
             ],
 
             [
@@ -124,7 +124,7 @@ class ProductSeeder extends Seeder
                 'slug' => 'this-is-slug',
                 'lowstockindication' => "3",
                 'thumbnail' => "logitechkeyboard2.jpg",
-                'addedby' => '1', 'approvedby' => '1', 'status' => "approved"
+                'addedby' => '1', 'approvedby' => '1', 'status' => "approved", 'meta_desc' => 'This is meta description of product'
             ],
 
             [
@@ -143,7 +143,7 @@ class ProductSeeder extends Seeder
                 'slug' => 'this-is-slug',
                 'lowstockindication' => "5",
                 'thumbnail' => "lenovokeyboard.jpg",
-                'addedby' => '1', 'approvedby' => '1', 'status' => "approved"
+                'addedby' => '1', 'approvedby' => '1', 'status' => "approved", 'meta_desc' => 'This is meta description of product'
             ],
 
             [
@@ -164,7 +164,7 @@ class ProductSeeder extends Seeder
                 'slug' => 'this-is-slug',
                 'lowstockindication' => "5",
                 'thumbnail' => "pnygraphic.jpg",
-                'addedby' => '1', 'approvedby' => '1', 'status' => "approved"
+                'addedby' => '1', 'approvedby' => '1', 'status' => "approved", 'meta_desc' => 'This is meta description of product'
             ],
 
             [
@@ -186,7 +186,7 @@ class ProductSeeder extends Seeder
                 'slug' => 'this-is-slug',
                 'lowstockindication' => "21",
                 'thumbnail' => "msigraphic.jpg",
-                'addedby' => '1', 'approvedby' => '1', 'status' => "approved"
+                'addedby' => '1', 'approvedby' => '1', 'status' => "approved", 'meta_desc' => 'This is meta description of product'
             ],
 
             [
@@ -201,7 +201,7 @@ class ProductSeeder extends Seeder
                 'slug' => 'this-is-slug',
                 'lowstockindication' => "numericalvalue",
                 'thumbnail' => "asusgraphic.jpg",
-                'addedby' => '1', 'approvedby' => '1', 'status' => "approved"
+                'addedby' => '1', 'approvedby' => '1', 'status' => "approved", 'meta_desc' => 'This is meta description of product'
             ],
 
             [
@@ -217,7 +217,7 @@ class ProductSeeder extends Seeder
                 'slug' => 'this-is-slug',
                 'lowstockindication' => "31",
                 'thumbnail' => "ocpcgraphic.jpg",
-                'addedby' => '1', 'approvedby' => '1', 'status' => "approved"
+                'addedby' => '1', 'approvedby' => '1', 'status' => "approved", 'meta_desc' => 'This is meta description of product'
             ],
 
             [
@@ -240,7 +240,7 @@ class ProductSeeder extends Seeder
                 'slug' => 'this-is-slug',
                 'lowstockindication' => "5",
                 'thumbnail' => "galaxgraphic.jpg",
-                'addedby' => '1', 'approvedby' => '1', 'status' => "approved"
+                'addedby' => '1', 'approvedby' => '1', 'status' => "approved", 'meta_desc' => 'This is meta description of product'
             ],
 
             [
@@ -250,7 +250,7 @@ class ProductSeeder extends Seeder
                 'slug' => 'this-is-slug',
                 'lowstockindication' => "32",
                 'thumbnail' => "xcpu2.jpg",
-                'addedby' => '1', 'approvedby' => '1', 'status' => "approved"
+                'addedby' => '1', 'approvedby' => '1', 'status' => "approved", 'meta_desc' => 'This is meta description of product'
             ],
 
             [
@@ -260,7 +260,7 @@ class ProductSeeder extends Seeder
                 'slug' => 'this-is-slug',
                 'lowstockindication' => "22",
                 'thumbnail' => "i9cpu.jpg",
-                'addedby' => '1', 'approvedby' => '1', 'status' => "approved"
+                'addedby' => '1', 'approvedby' => '1', 'status' => "approved", 'meta_desc' => 'This is meta description of product'
             ],
 
             [
@@ -270,7 +270,7 @@ class ProductSeeder extends Seeder
                 'slug' => 'this-is-slug',
                 'lowstockindication' => "32",
                 'thumbnail' => "amdcpu.webp",
-                'addedby' => '1', 'approvedby' => '1', 'status' => "approved"
+                'addedby' => '1', 'approvedby' => '1', 'status' => "approved", 'meta_desc' => 'This is meta description of product'
             ],
 
             [
@@ -280,7 +280,7 @@ class ProductSeeder extends Seeder
                 'slug' => 'this-is-slug',
                 'lowstockindication' => "11",
                 'thumbnail' => "ryzen.jpg",
-                'addedby' => '1', 'approvedby' => '1', 'status' => "approved"
+                'addedby' => '1', 'approvedby' => '1', 'status' => "approved", 'meta_desc' => 'This is meta description of product'
             ],
 
             [
@@ -290,7 +290,7 @@ class ProductSeeder extends Seeder
                 'slug' => 'this-is-slug',
                 'lowstockindication' => "11",
                 'thumbnail' => "amdr2.png",
-                'addedby' => '1', 'approvedby' => '1', 'status' => "approved"
+                'addedby' => '1', 'approvedby' => '1', 'status' => "approved", 'meta_desc' => 'This is meta description of product'
             ],
 
             [
@@ -307,7 +307,7 @@ class ProductSeeder extends Seeder
                 'slug' => 'this-is-slug',
                 'lowstockindication' => "32",
                 'thumbnail' => "case1.jpg",
-                'addedby' => '1', 'approvedby' => '1', 'status' => "approved"
+                'addedby' => '1', 'approvedby' => '1', 'status' => "approved", 'meta_desc' => 'This is meta description of product'
             ],
 
             [
@@ -325,7 +325,7 @@ class ProductSeeder extends Seeder
                 'slug' => 'this-is-slug',
                 'lowstockindication' => "22",
                 'thumbnail' => "case2.jpg",
-                'addedby' => '1', 'approvedby' => '1', 'status' => "approved"
+                'addedby' => '1', 'approvedby' => '1', 'status' => "approved", 'meta_desc' => 'This is meta description of product'
             ],
 
             [
@@ -341,7 +341,7 @@ class ProductSeeder extends Seeder
                 'slug' => 'this-is-slug',
                 'lowstockindication' => "22",
                 'thumbnail' => "case3.jpg",
-                'addedby' => '1', 'approvedby' => '1', 'status' => "approved"
+                'addedby' => '1', 'approvedby' => '1', 'status' => "approved", 'meta_desc' => 'This is meta description of product'
             ],
 
         ];

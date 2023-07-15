@@ -149,12 +149,22 @@
                             </div>
                         @endif
 
+                        <div class="mb-3">
+                            <label for="meta_desc" class="col-form-label">Meta Description</label>
+                            <input type="text" class="form-control" id="meta_desc" name="meta_desc" autocomplete="off"
+                                @if (isset($product)) value="{{ $product->meta_desc }}" @endif />
+                            <Span class="text-danger">
+                                @error('meta_desc')
+                                    {{ $message }}
+                                @enderror
+                            </Span>
+                        </div>
                     </div>
 
 
                     <div class="modal-footer">
 
-                        <a href="" class="btn btn-secondary btn-md m-4" role="button">Cancel</a>
+                        <a href="{{url('admin/product/')}}" class="btn btn-secondary btn-md m-4" role="button">Cancel</a>
                         <button type="submit" class="btn btn-primary btn-md float-start" name="submit">
                             Submit
                         </button>
