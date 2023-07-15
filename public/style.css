@@ -1508,3 +1508,8 @@ p {
         margin-right: 0 !important;
     }
 }
+
+/* capitalize first and last name for better user experience */
+#firstname {
+    text-transform: capitalize;
+}
