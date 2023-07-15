@@ -51,7 +51,7 @@ use App\Http\Controllers\viewprofileController;
 Route::get('/buy/{quantity},{product_id}', [CheckoutController::class, 'index']);
 Route::post('/buy/confirm', [CheckoutController::class, 'confirm']);
 Route::post('/buy/confirm/{id}', [CheckoutController::class, 'store_buy_data']);
-Route::get('/categorySearch/{id}', [ProductviewController::class, 'categorySearch']);
+Route::get('/categorySearch/{id}/{slug}', [ProductviewController::class, 'categorySearch']);
 Route::get('/fetchbyBrand/{id}', [ProductviewController::class, 'fetchbyBrand']);
 Route::get('/', [ProductviewController::class, 'index']);
 Route::get('/productdetails/{id}/{slug}', [ProductviewController::class, 'viewdetails']);
@@ -137,7 +137,7 @@ Route::get('/CartViewww/{id},{hel}', [CartViewController::class, 'storedataa']);
 Route::get('/CheckOutDetail/{inpvalue},{productId}', [CartViewController::class, 'inc']);
 
 Route::get('/check/{qty},{idd}', [CheckoutController::class, 'store']);
-Route::get('/viewCategories/{catoid}', [CategoryViewController::class, 'viewCategories']);
+Route::get('/viewCategories/{catoid}/{slug}', [CategoryViewController::class, 'viewCategories']);
 
 Route::post('/confirm/', [CheckoutController::class, 'store']);
 Route::post('/storeorderInfo/{id}', [CheckoutController::class, 'datastore']);

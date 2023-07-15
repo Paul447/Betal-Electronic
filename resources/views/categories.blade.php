@@ -9,7 +9,7 @@
 <div class="container categorycontainer">
     @foreach ($cato as $x)
         <div class="card-categories-li hp-mod-card-hover align-left" style="background-color:#eee">
-            <a class="card-categories-li-content" href="{{ "/viewCategories/$x->categorys_id" }}" >
+            <a class="card-categories-li-content" href="{{ '/viewCategories/'.$x->categorys_id .'/'.$x->category_name }}" >
                 @php
                     $image = DB::table('products')
                         ->select('thumbnail')

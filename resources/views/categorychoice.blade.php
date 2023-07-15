@@ -11,8 +11,8 @@
 
     @foreach ($viewcategorydata as $catdata)
         <swiper-slide class="">
-            <a href="{{ url('/categorySearch/' . $catdata->categorys_id) }}">
-
+            <a href="{{ '/categorySearch/' . $catdata->categorys_id.'/'.$catdata->category_name }}">
+         
                 <li class="">
                     <img src="{{ asset('/storage/categorythumbnail/' . $catdata->categorythumbnail) }}" alt="{{ $catdata->category_name}}" loading="lazy">
                 </li>
