@@ -4,6 +4,14 @@
         .card-header {
             background: #440474;
         }
+
+        .cross-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 1;
+            /* Ensures the button appears above the image */
+        }
     </style>
 
     </head>
@@ -23,19 +31,35 @@
                     @if (isset($product))
                         @method('PUT')
                     @endif
+                    @if (isset($product))
+                        @foreach ($images as $item)
+                            <div class="m-2 position-relative" style="display: inline-block;">
+                                <img src="{{ asset('/storage/product/' . $item) }}" alt=""
+                                    style="border: 1px solid rgb(135, 135, 135); border-radius: 4px;" height="120px"
+                                    width="150px">
+                                <div class="position-absolute top-0 end-0">
+                                    <span class="btn btn-danger cross-button"
+                                        onclick="removeImageContainer(this)">&times;</span>
+                                </div>
+                            </div>
+                        @endforeach
+                    @endif
+
                     <div class="row mb-3 main-Wrapper" id="output">
+
                         <div class="col col-12 col-lg-6 col-sm-12 col-md-12 col-xl-4 mb-3">
                             <label for="recipient-name" class="col-form-label">Product Name</label>
                             <input type="text" class="form-control" id="Productname" name="Productname" required
-                                value="@if (isset($product)){{ $product->product_name }}@endif"
+                                value="@if (isset($product)) {{ $product->product_name }} @endif"
                                 {{-- pattern="[A-Z].[A-Z a-z]+" --}}
-                                title="Name must be in only character, First Letter Must be in captial" autocomplete="off"/>
+                                title="Name must be in only character, First Letter Must be in captial"
+                                autocomplete="off" />
                         </div>
 
                         <div class="col col-12 col-lg-6 col-sm-12 col-md-12 col-xl-4 mb-3">
                             <label for="formFile" class="form-label">Product Thumbnail Image</label>
                             <input type="file" class="form-control" id="ProductFile" name="Productthumbfile"
-                                accept="image/jpg,image/png" @if (!isset($product)){{ "required" }}@endif />
+                                accept="image/jpg,image/png" @if (!isset($product)) {{ 'required' }} @endif />
                             <p class="text-danger">
                                 <strong class="text-warning">Warning</strong> : Image size must be
                                 less the 2MB
@@ -45,7 +69,8 @@
                         <div class="col col-12 col-lg-6 col-sm-12 col-md-12 col-xl-4 mb-3">
                             <label for="formFile" class="form-label">Product Image</label>
                             <input type="file" class="form-control" id="ProductFile" name="Productfile[]"
-                                accept="image/jpg,image/png" multiple="multiple" @if (!isset($product)){{ "required" }}@endif />
+                                accept="image/jpg,image/png" multiple="multiple"
+                                @if (!isset($product)) {{ 'required' }} @endif />
                             <p class="text-danger">
                                 <strong class="text-warning">Warning</strong> : Image size must be
                                 less the 2MB
@@ -55,28 +80,32 @@
                         <div class="col col-12  mb-3">
                             <label for="recipient-name" class="col-form-label">Product Content</label>
                             <textarea id="Productcontent" name="Productcontent" class="form-control" cols="30" rows="5" required
-                                autocomplete="off">@if (isset($product)){{ $product->discription }}@endif</textarea>
+                                autocomplete="off">
+@if (isset($product))
+{{ $product->discription }}
+@endif
+</textarea>
                         </div>
 
                         <div class="col col-12 col-lg-6 col-sm-12 col-md-12 col-xl-4 mb-3">
                             <label for="recipient-name" class="col-form-label">Product Cost Price</label>
                             <input type="number" class="form-control" id="Productprice" name="productprice" required
                                 pattern="[0-9]+" autocomplete="off" title="Only be in number"
-                                @if (isset($product)) {{ "value=$price->costprice" }} {{"disabled"}} @endif />
+                                @if (isset($product)) {{ "value=$price->costprice" }} {{ 'disabled' }} @endif />
                         </div>
 
                         <div class="col col-12 col-lg-6 col-sm-12 col-md-12 col-xl-4 mb-3">
                             <label for="recipient-name" class="col-form-label">Product Selling Price</label>
                             <input type="number" class="form-control" id="Productsprice" name="productsprice" required
                                 pattern="[0-9]+" autocomplete="off" title="Only be in number"
-                                @if (isset($product)) {{ "value=$price->sellingprice"}} {{"disabled"}}@endif />
+                                @if (isset($product)) {{ "value=$price->sellingprice" }} {{ 'disabled' }} @endif />
                         </div>
 
                         <div class="col col-12 col-lg-6 col-sm-12 col-md-12 col-xl-4 mb-3">
                             <label for="recipient-name" class="col-form-label">Quantity</label>
                             <input type="number" class="form-control" id="Productsprice" name="qty" required
                                 pattern="[0-9]+" autocomplete="off" title="Only be in number"
-                                @if (isset($product)) {{ "value=$price->availablequantity"}} {{"disabled"}}@endif />
+                                @if (isset($product)) {{ "value=$price->availablequantity" }} {{ 'disabled' }} @endif />
                         </div>
 
                         <div class="col col-12 col-lg-6 col-sm-12 col-md-12 col-xl-4 mb-3">
@@ -84,25 +113,27 @@
                             <select class="form-select" name="Brand" aria-label="Default select example">
                                 <option selected>Choose The Menu</option>
                                 @foreach ($brand as $brand)
-                                        <option value="{{ $brand->brands_id }}" @if (isset($product) && $product->brand == $brand->brands_id){{ 'selected' }} @endif>{{ $brand->brand_name }}</option>
+                                    <option value="{{ $brand->brands_id }}"
+                                        @if (isset($product) && $product->brand == $brand->brands_id) {{ 'selected' }} @endif>
+                                        {{ $brand->brand_name }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="col col-12 col-lg-6 col-sm-12 col-md-12 col-xl-4 mb-3">
                             <label for="recipient-name" class="col-form-label">Meta-Data</label>
-                            <input type="text" class="form-control" id="Productname" name="lowstockindication" required
-                                autocomplete="off"
-                                value = "@if (isset($product)){{ $product->lowstockindication }}@endif" />
+                            <input type="text" class="form-control" id="Productname" name="lowstockindication"
+                                required autocomplete="off"
+                                value="@if (isset($product)) {{ $product->lowstockindication }} @endif" />
                         </div>
 
                         @if (!isset($product))
-                        <div class="col col-12 col-lg-6 col-sm-12 col-md-12 col-xl-4 mb-3">
-                            <label for="recipient-name" class="col-form-label">Select Category</label>
-                            <select class="form-select" name="Category[]" aria-label="Default select example"
-                                onchange="fetcchCategory(this.value);" id="category_fetched">
-                                <option selected value="">Choose The Menu</option>
-                                @foreach ($category as $category)
-                                    {{-- @if (isset($product) && $product)
+                            <div class="col col-12 col-lg-6 col-sm-12 col-md-12 col-xl-4 mb-3">
+                                <label for="recipient-name" class="col-form-label">Select Category</label>
+                                <select class="form-select" name="Category[]" aria-label="Default select example"
+                                    onchange="fetcchCategory(this.value);" id="category_fetched">
+                                    <option selected value="">Choose The Menu</option>
+                                    @foreach ($category as $category)
+                                        {{-- @if (isset($product) && $product)
                                         <option value="{{ $category->categorys_id }}" {{ 'selected' }}>
                                             {{ $category->category_name }}
                                         </option>
@@ -110,11 +141,12 @@
                                             continue;
                                         @endphp
                                     @endif --}}
-                                    <option value="{{ $category->categorys_id }}">{{ $category->category_name }}</option>
-                                @endforeach
+                                        <option value="{{ $category->categorys_id }}">{{ $category->category_name }}
+                                        </option>
+                                    @endforeach
 
-                            </select>
-                        </div>
+                                </select>
+                            </div>
                         @endif
 
                     </div>
@@ -163,10 +195,11 @@
                     })
             }
 
-            // let category = document.querySelector("#category_fetched");
-            // if (category.value) {
-            //     fetcchCategory(category.value)
-            // }
+        
+            function removeImageContainer(button) {
+                var container = button.closest('.position-relative');
+                container.parentNode.removeChild(container);
+            }
         </script>
     </body>
 @endsection

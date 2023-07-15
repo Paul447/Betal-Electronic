@@ -15,6 +15,7 @@ use App\Models\Admin\Productcategory;
 use App\Models\Admin\Productvariation;
 use App\Models\addProductBatch;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 use Image;
@@ -32,7 +33,8 @@ class ProductController extends Controller
         Paginator::useBootstrap();
         $data = Product::join('brands', 'brand', 'brands_id')
             ->join('users', 'products.addedby', 'users.id')
-            ->where('products.status', '=', 'approved')->Paginate(5);
+            ->where('products.status', '=', 'approved')
+            ->Paginate(5);
         return view('admin.Product.ViewProduct')->with(compact('data'));
     }
 
@@ -62,7 +64,6 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-
         $addedby = session('user')['id'];
         if (session('user')['role'] == 'Admin') {
             $file = $request->file('Productthumbfile');
@@ -112,15 +113,21 @@ class ProductController extends Controller
 
         $product = Product::find($id);
 
-        $price = addProductBatch::where('product', $id)->latest()->get()->first();
+        $image = DB::table('productimages')
+            ->where('product_id', $id)
+            ->first();
+        $images = explode('|', $image->image);
+
+        $price = addProductBatch::where('product', $id)
+            ->latest()
+            ->get()
+            ->first();
 
         // $product_category = Productcategory::where('product_id', $id);
         // dd($product_category->first());
 
-        $data = compact('url', 'title', 'category', 'brand', 'variatioon', 'product', 'price');
+        $data = compact('url', 'title', 'category', 'brand', 'variatioon', 'product', 'price','images');
         return view('admin/Product/AddProductForm')->with($data);
-
-        dd('edit product', $id);
     }
 
     /**
@@ -160,7 +167,7 @@ class ProductController extends Controller
             $productImage = Productimage::where('product_id', $id)->first();
             $productImage_id = $productImage->image_id;
             $existing_images_name = $productImage->image;
-            $new_images_name = $existing_images_name . "|" . implode('|', $image);
+            $new_images_name = $existing_images_name . '|' . implode('|', $image);
             Productimage::where('image_id', $productImage_id)->update(['image' => $new_images_name]);
         }
 
