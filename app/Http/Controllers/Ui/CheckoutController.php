@@ -44,6 +44,10 @@ class CheckoutController extends Controller
         $zipcode = $request->input('zipcode');
 
         $pIDdata = $request->input('selectedProductId');
+        if ($totalCartAmountRequest == 0) {
+            session()->put('uifail', 'None of the product was selected');
+            return redirect('/CartView');
+        }
         if (isset($selectedproductCartID)) {
             // $pqty = $request->input('selectedCart');
             Cache::put('my_data_1', $selectedproductCartID, 60);
@@ -58,7 +62,7 @@ class CheckoutController extends Controller
         }
         return view('confrim')->with(compact('totalCartAmountRequest', 'selectedProductName', 'productQuantity'));
     }
-    public function datastore(Request $request,$id)
+    public function datastore(Request $request, $id)
     {
         $productIdd = Cache::get('my_data_1');
 
@@ -70,7 +74,7 @@ class CheckoutController extends Controller
         $zipcode = Cache::get('my_data_6');
         $customerID = session('customer')['id'];
         $data = $id;
-
+        
         if ($data == 124421) {
             foreach ($productIdd as $key => $procarId) {
                 $cartquantity = $productQuantity[$key];
@@ -201,7 +205,7 @@ class CheckoutController extends Controller
         return view('buy_confirm')->with(compact('data'));
     }
 
-    public function store_buy_data(Request $request,$id)
+    public function store_buy_data(Request $request, $id)
     {
         $name = Cache::get('name');
         $address = Cache::get('address');
