@@ -95,7 +95,7 @@
                                 value = "@if (isset($product)){{ $product->lowstockindication }}@endif" />
                         </div>
 
-                        @if (!isset($product) && $product)
+                        @if (!isset($product))
                         <div class="col col-12 col-lg-6 col-sm-12 col-md-12 col-xl-4 mb-3">
                             <label for="recipient-name" class="col-form-label">Select Category</label>
                             <select class="form-select" name="Category[]" aria-label="Default select example"
