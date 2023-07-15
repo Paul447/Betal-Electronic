@@ -117,8 +117,10 @@ class ProductController extends Controller
         $image = DB::table('productimages')
             ->where('product_id', $id)
             ->first();
+            // dd($image);
+            $old_images = $image->image;
         $images = explode('|', $image->image);
-
+            // dd($images);
         $price = addProductBatch::where('product', $id)
             ->latest()
             ->get()
@@ -127,7 +129,7 @@ class ProductController extends Controller
         // $product_category = Productcategory::where('product_id', $id);
         // dd($product_category->first());
 
-        $data = compact('url', 'title', 'category', 'brand', 'variatioon', 'product', 'price','images');
+        $data = compact('url', 'title', 'category', 'brand', 'variatioon', 'product', 'price', 'old_images', 'images');
         return view('admin/Product/AddProductForm')->with($data);
     }
 
@@ -140,6 +142,8 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $existing_images_name = substr($request->old_images, -1) == "|" ? substr($request->old_images, 0, -1) :  $request->old_images;
+
         if ($request->file('Productthumbfile' !== null)) {
             $file = $request->file('Productthumbfile');
             $filename = time() . '.' . $file->getClientOriginalExtension();
@@ -168,9 +172,12 @@ class ProductController extends Controller
 
             $productImage = Productimage::where('product_id', $id)->first();
             $productImage_id = $productImage->image_id;
-            $existing_images_name = $productImage->image;
             $new_images_name = $existing_images_name . '|' . implode('|', $image);
             Productimage::where('image_id', $productImage_id)->update(['image' => $new_images_name]);
+        }else{
+            $productImage = Productimage::where('product_id', $id)->first();
+            $productImage_id = $productImage->image_id;
+            Productimage::where('image_id', $productImage_id)->update(['image' => $existing_images_name]);
         }
 
         session()->put('AdminSuccess', 'Product Updated');

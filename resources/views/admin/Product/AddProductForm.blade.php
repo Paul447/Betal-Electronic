@@ -32,6 +32,7 @@
                         @method('PUT')
                     @endif
                     @if (isset($product))
+                        <input type="hidden" name="old_images" id="old_images" value="{{ $old_images }}">
                         @foreach ($images as $item)
                             <div class="m-2 position-relative" style="display: inline-block;">
                                 <img src="{{ asset('/storage/product/' . $item) }}" alt=""
@@ -151,7 +152,8 @@
 
                         <div class="mb-3">
                             <label for="meta_desc" class="col-form-label">Meta Description</label>
-                            <input type="text" class="form-control" id="meta_desc" name="meta_desc" autocomplete="off"
+                            <input type="text" class="form-control" id="meta_desc" name="meta_desc"
+                                autocomplete="off"
                                 @if (isset($product)) value="{{ $product->meta_desc }}" @endif />
                             <Span class="text-danger">
                                 @error('meta_desc')
@@ -164,7 +166,8 @@
 
                     <div class="modal-footer">
 
-                        <a href="{{url('admin/product/')}}" class="btn btn-secondary btn-md m-4" role="button">Cancel</a>
+                        <a href="{{ url('admin/product/') }}" class="btn btn-secondary btn-md m-4"
+                            role="button">Cancel</a>
                         <button type="submit" class="btn btn-primary btn-md float-start" name="submit">
                             Submit
                         </button>
@@ -205,10 +208,21 @@
                     })
             }
 
-        
+
             function removeImageContainer(button) {
                 var container = button.closest('.position-relative');
+                let splited_str = container.children[0].src.split('/')
+                let image_name = splited_str[splited_str.length - 1];
                 container.parentNode.removeChild(container);
+                image_name_cat(image_name);
+            }
+
+            function image_name_cat(name) {
+                let old_images = document.querySelector("#old_images");
+
+                let new_images = old_images.value.replace(name, '');
+                new_images = new_images.replace('||', '|');
+                old_images.value = new_images;
             }
         </script>
     </body>
