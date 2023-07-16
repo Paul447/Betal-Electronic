@@ -120,6 +120,7 @@ Route::group(['prefix' => '/admin', 'middleware' => 'admin'], function () {
     // Route::resource('/variationoption',VariationoptionController::class);
 
     Route::get('/order/', [OrderController::class, 'index']);
+    Route::get('/order/create', [OrderController::class, 'create']);
     Route::get('/order/pendingOrder', [OrderController::class, 'pendingOrder']);
     Route::get('/order/completeOrder', [OrderController::class, 'completeOrder']);
     Route::get('/order/calculation', [OrderController::class, 'calculation']);
