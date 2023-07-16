@@ -43,7 +43,7 @@ class AssignAttribute extends Controller
 
     public function create()
     {
-        $url = '/admin/assign/';
+        $url = "/admin/assign/";
         $title = 'Assign attributes';
         $excludepro = Productvariation::distinct('product')->pluck('product');
         $product = Product::whereNotIn('product_id', $excludepro)->get();
