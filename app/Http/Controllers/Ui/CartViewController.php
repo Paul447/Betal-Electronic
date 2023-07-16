@@ -62,7 +62,7 @@ class CartViewController extends Controller
                     return response()->json(['uifail' => 'Invalid Item Quantity ' . $quantity]);
                 }
                 $updatedQty = $quantity;
-                $subbTTl = $updatedQty * $productPrice[0];
+                $subbTTl = $updatedQty * $productPrice;
             } else {
                 $updatedQty = $qty[0]->quantity + $quantity;
                 if ($available_quantity < $updatedQty || $updatedQty <= 0) {
