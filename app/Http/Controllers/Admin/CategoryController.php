@@ -33,7 +33,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $url = '/admin/category/';
+        $url = "/admin/category/";
         $title = 'Add Category';
         $cat = Category::where('status', '=', 'approved')->get();
         $data = compact('title', 'url', 'cat');

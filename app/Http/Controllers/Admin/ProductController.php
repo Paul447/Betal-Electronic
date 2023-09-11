@@ -45,7 +45,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $url = '/admin/product/';
+        $url = "/admin/product/";
         $title = 'Add Product';
         $category = Category::all()
             ->where('parent', 0)

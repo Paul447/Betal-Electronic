@@ -24,7 +24,7 @@ class VariationController extends Controller
 
     public function create()
     {
-        $url = '/admin/variation/';
+        $url = "/admin/variation/";
         $title = 'Add Varition';
         $category = Category::where('status', '=', 'approved');
         $data = compact('url', 'title', 'category');
