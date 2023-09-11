@@ -17,11 +17,11 @@
                         ->limit(1)
                         ->get();
                 @endphp
-                @foreach ($image as $img)
+              
                     <div class="card-categories-image-container">
-                        <img class="image" src="{{ asset('/storage/thumbnails/' . $img->thumbnail) }}" alt="{{ $x->category_name }}" loading="lazy">
+                        <img class="image" src="{{ asset('/storage/categorythumbnail/' . $x->categorythumbnail) }}" alt="{{ $x->category_name }}" loading="lazy">
                     </div>
-                @endforeach
+              
                 <div class="card-categories-name">
                     <span class="text text-dark">
                         {{ $x->category_name }}

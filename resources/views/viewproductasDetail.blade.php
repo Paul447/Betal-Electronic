@@ -3,7 +3,14 @@
         var message = '{{ $catname->category_name }}';
         document.title = "Betal International | " + message
     </script>
-<meta name="description" content="{{ $catname->meta_desc }}">
+
+    @php
+        $metadescription = $catname->meta_desc;
+        $metakeyword = $catname->category_name;
+        $ogtitle = $catname->category_name;
+        $appname = $catname->category_name;
+        $ogimage = $ogcategortythumb;
+    @endphp
 @endforeach
 
 
@@ -29,13 +36,15 @@
                     </div>
                 </a>
 
-                <div class="product-info text-align-center">
+                <div class="product-info text-align-center pt-2">
                     <span class="text-align-center">{{ $product->brand_name }}
                     </span>
                     <a href="{{ '/productdetails/' . $product->product_id . '/' . $product->slug }}">
                         <h4 class="product-name">{{ $product->product_name }}</h4>
                     </a>
-                    <p class="product-price">
+
+
+                    <p class="product-price fw-bold text-dark">
 
                         @php
                             $price = DB::table('add_product_batches')
@@ -61,23 +70,19 @@
                         @endif
 
                     </p>
-                    <div class="product-buttons">
+                    <div class="product-buttons pt-4 pb-1">
                         <a href="{{ '/productdetails/' . $product->product_id . '/' . $product->slug }}"
-                            class="view-details" style="text-decoration: none;"><i class="fas fa-info-circle"></i></a>
+                            class="view-details p-2" style="text-decoration: none;"><i class="fas fa-info-circle"></i></a>
                         @if (!is_null(session('customer')))
-                            <button class="add-to-cart" id="addToCartFromCard" value="{{ $product->product_id }}"
+                            <button class="add-to-cart p-2" id="addToCartFromCard" value="{{ $product->product_id }}"
                                 onclick="fetcchCart(this.value);">
                                 <i class="fas fa-cart-plus"></i>
                             </button>
                         @else
-                            <button id="" class="show-toast add-to-cart"><i class="fas fa-cart-plus"></i></a>
+                            <button id="" class="show-toast add-to-cart p-2"><i class="fas fa-cart-plus"></i></a>
                         @endif
                     </div>
                 </div>
-
-                {{-- <div class="ribbon-wrap">
-            <div class="ribbon"></div>
-          </div> --}}
             </div>
         @endforeach
     </div>

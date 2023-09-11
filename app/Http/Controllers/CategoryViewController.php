@@ -44,14 +44,15 @@ class CategoryViewController extends Controller
     {
         $pdata = ProductCategory::where('category_id', $id)->pluck('product_id');
         $catoName = Category::where('categorys_id', $id)->get();
-
+        $categortythumb = Category::where('categorys_id', $id)->pluck('categorythumbnail')->first();
+        $ogcategortythumb = "/storage/categorythumbnail/$categortythumb";
         $data = Product::join('brands', 'brand', 'brands_id')
             ->whereIn('product_id', $pdata)
             ->where('is_disabled', 0)
             ->select('products.*', 'brands.*')
             ->get();
-        
-        return view('viewproductasDetail')->with(compact('data', 'catoName'));
+
+        return view('viewproductasDetail')->with(compact('data', 'catoName','ogcategortythumb'));
     }
     public function viewCatos()
     {

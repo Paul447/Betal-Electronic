@@ -6,21 +6,59 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="{{ asset('admin/bootstrap-5.2.3-dist/css/bootstrap.min.css') }}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css" integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{{ asset('style.css') }}" />
+
+    {{-- Meta Property --}}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Mukesh,Subesh,Suresh">
+    <meta property="og:site_name" content="Betal International">
+    @if (isset($metadescription))
+        <meta name="description" content="{{ $metadescription }}">
+    @else
+        <meta name="description" content="Power up your world with Betal International - Your one-stop computer shop!">
+    @endif
+
+    @if (isset($metakeyword))
+        <meta name="keywords" content="{{ $metakeyword }}">
+    @else
+        <meta name="keywords"
+            content="Laptop accessories Kathmandu,Gaming accessories Nepal,Computer peripherals Kathmandu,Printers and scanners Nepal,Best deals on computer accessories Kathmandu,Keyboard and mouse Kathmandu">
+    @endif
+
+    @if (isset($ogimage))
+        <meta property="og:image" content="{{ asset($ogimage) }}">
+    @else
+        <meta property="og:image" content="{{ asset('admin/img/logo.png') }}">
+    @endif
+
+    @if (isset($ogtitle))
+    <meta property="og:title" content="{{$ogtitle}}">   
+    @else
+    <meta property="og:title" content="Best Computer Store - Buy Laptops, PC Components in Nepal">
+    @endif
+
+    @if (isset($appname))
+    <meta name="application-name" content="{{$appname}}"> 
+    @else
+    <meta name="application-name" content="Betal International">
+    @endif
+
+    {{-- Meta Property END --}}
+
     {{-- <link rel="stylesheet" href="{{ asset('admin/css/productcardmain.css') }}" /> --}}
     {{-- <link rel="stylesheet" href="{{ asset('admin/css/toast.css') }}" /> --}}
     {{-- <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/login.css') }}" /> --}}
     {{-- <link rel="stylesheet" href="{{ asset('admin/css/foot.css') }}" /> --}}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.min.js"
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.min.js"
         integrity="sha512-3dZ9wIrMMij8rOH7X3kLfXAzwtcHpuYpEgQg1OA4QAob1e81H8ntUQmQm3pBudqIoySO5j0tHN4ENzA6+n2r4w=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script> 
     {{-- <link rel="stylesheet" href="{{ asset('vendor/sweetalert2/sweetalert2.min.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset('admin/css/sty.css') }}" />
-    <script src=" {{ asset('admin/bootstrap-5.2.3-dist/js/bootstrap.bundle.min.js') }}"></script>
-    {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script> --}}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
 
 

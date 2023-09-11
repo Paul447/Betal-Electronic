@@ -22,7 +22,12 @@ class ProductviewController extends Controller
         $data = Product::join('brands', 'brand', 'brands_id')
             ->where([['products.featured', '=', ' unfeatured'], ['products.is_disabled', '=', 0]])
             ->get();
-        return view('product')->with(compact('data', 'featured'));
+        $metadescription = 'Power up your world with Betal International - Your one-stop computer shop!';
+        $metakeyword = 'Laptop accessories Kathmandu,Gaming accessories Nepal,Computer peripherals Kathmandu,Printers and scanners Nepal,Best deals on computer accessories Kathmandu,Keyboard and mouse Kathmandu';
+        $metatitle = 'Best Computer Store - Buy Laptops, PC Components in Nepal';
+        $ogimage = "/admin/img/logo.png";
+        $ogtitle = "Best Computer Store - Buy Laptops, PC Components in Nepal";
+        return view('product')->with(compact('data', 'featured', 'metadescription','metakeyword','metatitle','ogimage','ogtitle'));
     }
 
     public function viewdetails($id)
@@ -33,7 +38,8 @@ class ProductviewController extends Controller
             ->get();
         $cato = ProductCategory::where('product_id', $id)->pluck('category_id');
         $productIds = ProductCategory::whereIn('category_id', $cato)->pluck('product_id');
-        $getProductDetail = Product::join('brands', 'brand', 'brands_id')->where('is_disabled', 0)
+        $getProductDetail = Product::join('brands', 'brand', 'brands_id')
+            ->where('is_disabled', 0)
             ->whereIn('product_id', $productIds)
             ->whereNotIn('product_id', [$id])
             ->get();
@@ -46,8 +52,13 @@ class ProductviewController extends Controller
             ->select('products.product_name as product_name', 'variations.variation_name as variation_name', 'variationoptions.value as option_name')
             ->groupBy('variation_name', 'product_name', 'option_name')
             ->get();
+        $metadescriptiondetail = Product::where('product_id', $id)->pluck('meta_desc')->first();
+        $metaprokeyword = Product::where('product_id', $id)->pluck('lowstockindication')->first();
+        $metaproductimage = Product::where('product_id', $id)->pluck('thumbnail')->first();
+        $thumb = "/storage/thumbnails/$metaproductimage";
+        $ogproducttitle = Product::where('product_id', $id)->pluck('product_name')->first();
 
-        return view('productdetails')->with(compact('data', 'getProductDetail', 'productData'));
+        return view('productdetails')->with(compact('data', 'getProductDetail', 'productData', 'metadescriptiondetail','metaprokeyword','thumb','metaproductimage','ogproducttitle'));
     }
     public function search(Request $request)
     {
@@ -57,7 +68,8 @@ class ProductviewController extends Controller
             ->join('brands', 'products.brand', 'brands_id')
             ->where('products.is_disabled', 0)
             ->where(function ($query) use ($search) {
-                $query->where('products.product_name', 'LIKE', "%$search")
+                $query
+                    ->where('products.product_name', 'LIKE', "%$search")
                     ->orWhere('brand_name', $search)
                     ->orWhere('category_name', 'LIKE', "$search%");
             })
@@ -70,24 +82,30 @@ class ProductviewController extends Controller
 
     public function categorySearch($id)
     {
-        $dataname = Productcategory::where('category_id', $id)->pluck('product_id');
-        $data = Product::whereIn('product_id', $dataname)->get();
-        $mydata = Category::where('categorys_id', $id)->value('category_name');
-        $descdata = Category::where('categorys_id', $id)->value('meta_desc');
-        // echo $mydata;
-        return view('searchItem')->with(compact('data', 'mydata','descdata'));
+        $pdata = ProductCategory::where('category_id', $id)->pluck('product_id');
+        $catoName = Category::where('categorys_id', $id)->get();
+        $categortythumb = Category::where('categorys_id', $id)->pluck('categorythumbnail')->first();
+        $ogcategortythumb = "/storage/categorythumbnail/$categortythumb";
+        $data = Product::join('brands', 'brand', 'brands_id')
+            ->whereIn('product_id', $pdata)
+            ->where('is_disabled', 0)
+            ->select('products.*', 'brands.*')
+            ->get();
+
+        return view('viewproductasDetail')->with(compact('data', 'catoName','ogcategortythumb'));
     }
     public function fetchbyBrand($id)
     {
-        $data = Product::where('brand', $id)->get();
+        $data = Product::join('brands', 'brand', 'brands_id')->where('brand', $id)->get();
         $mydata = Brand::where('brands_id', $id)->value('brand_name');
         return view('searchItem')->with(compact('data', 'mydata'));
     }
     public function newarrivals()
     {
         $mydata = 'New Arrivals';
-        $data = Product::latest()->where('is_disabled', 0)
-            ->limit(16)
+        $data = Product::join('brands', 'brand', 'brands_id')
+            ->where('is_disabled', 0)
+            ->orderBy('product_id', 'DESC')->limit(16)
             ->get();
         return view('searchItem')->with(compact('data', 'mydata'));
     }

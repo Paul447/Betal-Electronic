@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+    <url>
+        <loc>http://localhost/viewCategories/1/Mouse</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/viewCategories/2/Keyboard</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/viewCategories/3/Graphic Card</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/viewCategories/4/CPU</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/viewCategories/5/Computer Case</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/viewCategories/6/Cable</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/viewCategories/7/Storage</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/viewCategories/8/Cooling</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/viewCategories/9/Memory</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/viewCategories/10/Monitor</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/viewCategories/11/Motherboard</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/viewCategories/12/Power Supply</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/viewCategories/13/Laptops</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/viewCategories/14/UPS</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/viewCategories/15/Optical Mouse</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/viewCategories/16/Gaming Mouse</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/viewCategories/17/Standard Keyboard</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/viewCategories/18/Gaming Keyboard</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/viewCategories/19/Intel</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/viewCategories/20/AMD</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/viewCategories/21/Normal Case</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/viewCategories/22/Gamming Case</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/viewCategories/23/HDMI</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/viewCategories/24/VGA</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/viewCategories/25/Display Port</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/viewCategories/26/USB</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/viewCategories/27/Multiport Adapter</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/viewCategories/28/Internal HDD and SSD</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/viewCategories/29/External HDD and SDD</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/viewCategories/30/Flash Drive</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/viewCategories/31/Cooling Fan</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/viewCategories/32/Thermal Paste</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/viewCategories/33/RAM</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/viewCategories/34/ROM</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/viewCategories/35/LED Monitor</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/viewCategories/36/LCD Monitor</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/viewCategories/37/OLED Monitor</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/viewCategories/38/Curved Monitor</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/viewCategories/39/Standard Motherboard</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/viewCategories/40/Gaming Motherboard</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/viewCategories/41/Dell</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/viewCategories/42/MSI</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/viewCategories/43/ASUS</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/viewCategories/44/Lenovo</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/viewCategories/45/HP</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/viewCategories/46/Apple</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/productdetails/1/Havit MS1027 Gaming Mouse</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/productdetails/2/Logitech M90 Optical USB Mouse</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/productdetails/3/Dell Premier Rechargeable Wireless Mouse – MS7421W</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/productdetails/4/Fantech UX1 Hero Ultimate Macro RGB Gaming Mouse</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/productdetails/5/Dell Optical Mouse- MS116</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/productdetails/6/Logitech K480 Bluetooth Multi Device Keyboard</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/productdetails/7/Rapoo Mechanical Gaming Keyboard</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/productdetails/8/Rapoo NK1800 Wired Keyboard</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/productdetails/9/Logitech Classic Keyboard K100</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/productdetails/10/Lenovo Wired Keyboard K103</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/productdetails/11/PNY GTX 1660 TI 6GB Dual Fan XLR8 Graphic Card</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/productdetails/12/MSI GPU: NVIDIA GTX 1050 Ti</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/productdetails/13/ASUS Dual GeForce RTX 3060 12GB V2 Graphics Card</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/productdetails/14/OCPC RTX 3070 8GB DDR6 Graphics card</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/productdetails/15/GALAX GeForce RTX 4080 16GB GDDR6X SG 1-Click OC Graphics Card</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/productdetails/16/Intel® Core™ X-Series CPU</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/productdetails/17/Intel® Core™ i9 Processors</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/productdetails/18/AMD EPYC™ Embedded 7001 Series</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/productdetails/19/AMD Ryzen™ Embedded Family</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/productdetails/20/AMD Embedded R-Series</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/productdetails/21/Fantech AERO XL CG81 Full Tower Case</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/productdetails/22/FANTECH PULSE CG71 RGB MIDDLE TOWER CASE</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/productdetails/23/MSI MAG VAMPIRIC 011C Mid Tower Gaming Computer Case</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/productdetails/24/Nasim Wood</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+    <url>
+        <loc>http://localhost/productdetails/25/Hello World</loc>
+            <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+            </url>
+</urlset>

@@ -166,7 +166,7 @@
 
                     <div class="modal-footer">
 
-                        <a href="{{ url('admin/product/') }}" class="btn btn-secondary btn-md m-4"
+                        <a href="{{ url('/admin/product/') }}" class="btn btn-secondary btn-md m-4"
                             role="button">Cancel</a>
                         <button type="submit" class="btn btn-primary btn-md float-start" name="submit">
                             Submit

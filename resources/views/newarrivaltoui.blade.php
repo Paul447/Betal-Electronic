@@ -28,59 +28,59 @@
                 </a>
 
 
-                <span class="brandname">@php
-                    
-                    $brand = DB::table('brands')
-                        ->where('brands_id', $product->brand)
-                        ->first();
-                    
-                    $brandName = $brand ? $brand->brand_name : '';
-                @endphp
-
-                    {{ $brandName }}
-                </span>
-                <a href="{{ '/productdetails/' . $product->product_id . '/' . $product->slug }}"
-                    style="text-decoration: none;">
-                    <h4 class="product-name">{{ $product->product_name }}</h4>
-                </a>
-                <p class="product-price">
-
-                    @php
-                        $price = DB::table('add_product_batches')
-                            ->where('product', $product->product_id)
+                <div class="product-info pt-2">
+                    <span class="float-center">@php
+                        $brand = DB::table('brands')
+                            ->where('brands_id', $product->brand)
                             ->first();
-                        $xy = $price->availablequantity;
-                        
-                        $hello = DB::table('add_product_batches')
-                            ->where('product', $product->product_id)
-                            ->whereNotNull('availablequantity')
-                            ->where('availablequantity', '<>', 0)
-                            ->orderBy('batchid', 'asc')
-                            ->limit(1)
-                            ->pluck('sellingprice')
-                            ->first();
-                        $val = 'Out Of Stock';
-                        
+                        $brandName = $brand ? $brand->brand_name : '';
                     @endphp
-                    @if (is_null($hello))
-                        {{ $val }}
-                    @else
-                        Rs.{{ $hello }}
-                    @endif
 
-                </p>
-                <div class="product-buttons ">
+                        <center>{{ $brandName }}</center>
+                    </span>
                     <a href="{{ '/productdetails/' . $product->product_id . '/' . $product->slug }}"
-                        class="view-details" style="text-decoration: none; text-align:center;"><i
-                            class="fas fa-info-circle"></i></a>
-                    @if (!is_null(session('customer')))
-                        <button class="add-to-cart" id="addToCartFromCard" value="{{ $product->product_id }}"
-                            onclick="fetcchCart(this.value);"><i class="fas fa-cart-plus"></i></button>
-                    @else
-                        <button id="" class="show-toast add-to-cart"><i class="fas fa-cart-plus"></i></a>
-                    @endif
-                </div>
+                        style="text-decoration: none;">
+                        <h4 class="product-name">{{ $product->product_name }}</h4>
+                    </a>
+                    <p class="product-price fw-bold text-dark">
 
+                        @php
+                            $price = DB::table('add_product_batches')
+                                ->where('product', $product->product_id)
+                                ->first();
+                            $xy = $price->availablequantity;
+                            
+                            $hello = DB::table('add_product_batches')
+                                ->where('product', $product->product_id)
+                                ->whereNotNull('availablequantity')
+                                ->where('availablequantity', '<>', 0)
+                                ->orderBy('batchid', 'asc')
+                                ->limit(1)
+                                ->pluck('sellingprice')
+                                ->first();
+                            $val = 'Out Of Stock';
+                            
+                        @endphp
+                        @if (is_null($hello))
+                            {{ $val }}
+                        @else
+                            Rs.{{ $hello }}
+                        @endif
+
+                    </p>
+                    <div class="product-buttons pt-4 pb-1">
+                        <a href="{{ '/productdetails/' . $product->product_id . '/' . $product->slug }}"
+                            class="view-details p-1" style="text-decoration: none; text-align:center;"><i
+                                class="fas fa-info-circle"></i></a>
+                        @if (!is_null(session('customer')))
+                            <button class="add-to-cart p-1" id="addToCartFromCard" value="{{ $product->product_id }}"
+                                onclick="fetcchCart(this.value);"><i class="fas fa-cart-plus"></i></button>
+                        @else
+                            <button id="" class="show-toast add-to-cart p-1"><i
+                                    class="fas fa-cart-plus"></i></a>
+                        @endif
+                    </div>
+                </div>
             </div>
         @endforeach
 

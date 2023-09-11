@@ -64,8 +64,8 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $addedby = session('user')['id'];
-        if (session('user')['role'] == 'Admin') {
+        $addedby = Auth::guard()->user()->id;
+        if (Auth::guard()->user()->role == 'Admin') {
             $file = $request->file('Productthumbfile');
             $filename = time() . '.' . $file->getClientOriginalExtension();
             $file->move(public_path() . '/storage/thumbnails/', $filename);
